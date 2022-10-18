@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # OS environment
-.DStore
+.DS_Store
 
 # VS Code
 .vscode
