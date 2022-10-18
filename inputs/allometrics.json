@@ -1,0 +1,142 @@
+{
+  "decidu": {
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 18.288,
+    "height_at_maturity_feet": 60,
+    "common_name": "European White Birch",
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1,
+          "DBHMax": 27
+        }
+      }
+    }
+  },
+  "conifer": {
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 39.624,
+    "height_at_maturity_feet": 130,
+    "common_name": "Norway Spruce",
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 0.7293,
+          "B1": 5.4819,
+          "B2": -0.0988,
+          "DBHMin": 1.3,
+          "DBHMax": 28.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 1.786,
+          "B1": 1.732,
+          "B2": -0.0221,
+          "DBHMin": 1.3,
+          "DBHMax": 39
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 3.8501,
+          "B1": 2.5431,
+          "B2": -0.0436,
+          "DBHMin": 1.3,
+          "DBHMax": 31
+        }
+      }
+    }
+  },
+  "Fraxinus Excelsior": {
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 19.2024,
+    "height_at_maturity_feet": 63,
+    "common_name": "European Ash",
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -2.4718,
+          "B": 2.5466,
+          "C": 0.0
+        }
+      },
+      "height": {
+        "equation_type": "parametric",
+        "params": {
+          "B0": 1.37,
+          "B1": 2.78,
+          "B2": 0.46,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "parametric",
+        "params": {
+          "B0": 0,
+          "B1": 0.54,
+          "B2": 0.78,
+          "DBHMin": 1,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1,
+          "DBHMax": 27
+        }
+      }
+    }
+  }
+}
