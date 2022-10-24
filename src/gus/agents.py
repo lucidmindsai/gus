@@ -6,11 +6,13 @@ import numpy as np
 # Mesa Packages
 from mesa import Agent
 
+
 class Tree(Agent):
     """A generic Tree agent with basic structural attributes and a growth model.
 
     It inherits the generic mesa.Agent class.
     """
+
     # Def: Carbon storage cap in sequestration calculations. A tree with that amount of CARBON or above this level
     # has a constant yearly sequestration which is 25kg/year.
     # Unit: Kg
@@ -32,22 +34,19 @@ class Tree(Agent):
     # 0.56: Park conditions
     # 1.0:  Open-grown conditions, street trees.
     # Source: iTree
-    sun_exposure_rates = {
-        'forest': 0.44,
-        'park': 0.56,
-        'street': 1.0,
-        'pocket':0.56}
+    sun_exposure_rates = {"forest": 0.44, "park": 0.56, "street": 1.0, "pocket": 0.56}
 
     # Condition multipliers. Used at adjusting growth rates.
     # Ref: Fleming, 1988, and Nowak 2002b
     condition_multiplier = {
-        'excellent': 1,
-        'good': 1,
-        'fair': 1,
-        'poor': 0.76,
-        'critical': 0.42,
-        'dying': 0.15,
-        'dead': 0}
+        "excellent": 1,
+        "good": 1,
+        "fair": 1,
+        "poor": 0.76,
+        "critical": 0.42,
+        "dying": 0.15,
+        "dead": 0,
+    }
 
     # Ref: Root to shoot ratio (Cairns et al. 1997)
     root_to_shoot_ratio = 0.26
@@ -55,12 +54,18 @@ class Tree(Agent):
     # Biomass ratio at crown to trunk: Needs validation
     crown_to_trunk_ratio = 0.05
 
-    def __init__(self, unique_id, model, dbh, species,
-                 height=None,
-                 kind="deciduous",
-                 fixed_sun_exposure=False,
-                 condition=None,
-                 dieback=None):
+    def __init__(
+        self,
+        unique_id,
+        model,
+        dbh,
+        species,
+        height=None,
+        kind="deciduous",
+        fixed_sun_exposure=False,
+        condition=None,
+        dieback=None,
+    ):
         """The constructor method.
 
         Args:
@@ -93,11 +98,11 @@ class Tree(Agent):
         self.overlap_ratio = 0
 
         # Initialize canonical growth functions
-        self.f_tree_height = self.model.species.get_eqn(self.species,'height')
+        self.f_tree_height = self.model.species.get_eqn(self.species, "height")
         self.f_biomass = self.model.species.get_eqn_biomass(self.species)
-        self.f_crown_width = self.model.species.get_eqn(self.species,'crown_width')
-        self.f_crown_height = self.model.species.get_eqn(self.species,'crown_height')
-        
+        self.f_crown_width = self.model.species.get_eqn(self.species, "crown_width")
+        self.f_crown_height = self.model.species.get_eqn(self.species, "crown_height")
+
         # Record initial allometries
         if height:
             self.tree_height = height
@@ -109,7 +114,7 @@ class Tree(Agent):
         # dieback related initializations:
         # Note: this needs to be handled at the initialization module
         self.dieback = 0
-        self.condition = 'excellent'
+        self.condition = "excellent"
         if dieback and condition:
             self.condition = condition
             self.dieback = dieback
@@ -128,7 +133,7 @@ class Tree(Agent):
         # c(0.23, 0.33, 0.43) in inch/yr Source: https://database.itreetools.org/#/splash
         # Converted into cm.
 
-        #Default crown light exposure based on site types.
+        # Default crown light exposure based on site types.
         self.cle = Tree.sun_exposure_rates[self.model.site_type]
         # Crown light exposure to sunlight (CLE).
         # CLE <- c(0.44, 0.56, 1)
@@ -136,7 +141,9 @@ class Tree(Agent):
         # (2) Park conditions
         # (3) Open-grown conditions.
 
-        self.average_height_at_maturity = model.species.get_height_at_maturity(self.species)
+        self.average_height_at_maturity = model.species.get_height_at_maturity(
+            self.species
+        )
         # Avg height at maturity for the given species.
 
         self.biomass = self.compute_biomass()  # In Kg
@@ -178,7 +185,7 @@ class Tree(Agent):
         """
         # Once the replaced tree agents are removed from the model, this line will be idle and s
         # should be removed too.
-        if self.condition == 'replaced':
+        if self.condition == "replaced":
             return
 
         # The tree is dead and its carbon release schedule is accounted.
@@ -188,35 +195,35 @@ class Tree(Agent):
                 self.replace()
             return
 
-        if self.condition == 'dead':
+        if self.condition == "dead":
             self.compute_decomposition()
             return
 
         # check frost free days for the past year.
         frost_free_days = self.model.WeatherAPI.check_frost_free_days()
-        #print('Tree: {} checks ffdays = {} ...'.format(self.unique_id, frost_free_days))
+        # print('Tree: {} checks ffdays = {} ...'.format(self.unique_id, frost_free_days))
 
         # compute the light exposure
         self.compute_light_exposure()
 
         # check state of the health of the tree
-        #print('Tree: {} checks dieback ...'.format(self.unique_id))
+        # print('Tree: {} checks dieback ...'.format(self.unique_id))
         self.check_dieback()
 
         # compute the growth
-        #print('Tree: {} grows ...'.format(self.unique_id))
+        # print('Tree: {} grows ...'.format(self.unique_id))
         self.grow(frost_free_days)
 
         # compute the total biomass
         self.compute_biomass()
-        #print('Tree: {} biomass ...'.format(self.unique_id))
+        # print('Tree: {} biomass ...'.format(self.unique_id))
 
         # compute the amount of new carbon sequestration
         self.compute_sequestration()
-        #print('Tree: {} sequestration ...'.format(self.unique_id))
+        # print('Tree: {} sequestration ...'.format(self.unique_id))
 
         # compute the amount of carbon release due to decomposition
-        #print('Tree: {} decomposition ...'.format(self.unique_id))
+        # print('Tree: {} decomposition ...'.format(self.unique_id))
         self.compute_decomposition()
 
     def grow(self, frost_free_days):
@@ -260,7 +267,7 @@ class Tree(Agent):
         # Adjust the growth rate according to health condition.
         delta_dbh *= Tree.condition_multiplier[self.condition]
         self.dbh += delta_dbh * (frost_free_days / 153)
-       
+
         # Update the tree height based on the updated dbh.
         self.update_tree_height(generic=False)
         # Update the change at canopy.
@@ -307,9 +314,9 @@ class Tree(Agent):
             None
         """
         self.tree_height += Tree.condition_multiplier[self.condition] * 0.15
-    
+
     def update_crown_height(self):
-        """Computes the vertical length of the tree crown based on 
+        """Computes the vertical length of the tree crown based on
         the species and its current dbh.
 
         Args:
@@ -319,9 +326,9 @@ class Tree(Agent):
         """
         self.crown_height = self.f_crown_height(self.dbh)
         return self.crown_height
-  
+
     def update_crown_width(self):
-        """Computes the horizontal length of the tree crown based on 
+        """Computes the horizontal length of the tree crown based on
         the species and its current dbh.
 
         Args:
@@ -352,30 +359,29 @@ class Tree(Agent):
             * The assumption needs to be revisited and validated.
             * The model needs to be revised in case the same location is shared by other species.
         """
-        if self.fixed_sun_exposure: return
+        if self.fixed_sun_exposure:
+            return
 
-        #cellmates = self.model.grid.get_cell_list_contents([self.pos])
+        # cellmates = self.model.grid.get_cell_list_contents([self.pos])
         posns_list = self.model.grid.get_neighborhood(
-            self.pos,
-            moore = False,
-            include_center = False,
-            radius = 1)
+            self.pos, moore=False, include_center=False, radius=1
+        )
         neighboors = self.model.grid.get_cell_list_contents(posns_list)
         self.overlap_ratio = 0
         combined_overlap = 0
         for t in neighboors:
             t_w = t.crown_width
             t_h = t.tree_height
-            # 0.5 multiplier is a mean multiplier to correct square shaped assumption on tree crown shape. 
+            # 0.5 multiplier is a mean multiplier to correct square shaped assumption on tree crown shape.
             overlap = max(0, 0.5 * (self.crown_width + t_w) - self.model.dt_resolution)
             # 0.25 multiplier is to account one of the four sides of the grid cell.
             overlap_ratio = 0.25 * min(1, (overlap / self.crown_width))
             # a taller tree creates more shading
             combined_overlap += overlap_ratio * (t_h / (t_h + self.tree_height))
-            self.overlap_ratio += overlap_ratio 
+            self.overlap_ratio += overlap_ratio
         # Cases needs to be inspected
         self.overlap_ratio = min(1, self.overlap_ratio)
-        light_loss_multiplier = 0.75 # arbitrary to be fixed with empirical data. 
+        light_loss_multiplier = 0.75  # arbitrary to be fixed with empirical data.
         self.cle = max(0, 1 - light_loss_multiplier * combined_overlap)
 
         # try:
@@ -395,13 +401,12 @@ class Tree(Agent):
             (:obj:`float`):  contagion risk a value within the inclusive range [0,0.9]
         """
         posns_list = self.model.grid.get_neighborhood(
-            self.pos,
-            moore = False,
-            include_center = False,
-            radius = 1)
+            self.pos, moore=False, include_center=False, radius=1
+        )
         neighboors = self.model.grid.get_cell_list_contents(posns_list)
         count_neighboors = len(neighboors)
-        if count_neighboors == 0: return 0
+        if count_neighboors == 0:
+            return 0
 
         contagion_risk = 0
         for atree in neighboors:
@@ -410,15 +415,10 @@ class Tree(Agent):
             contagion_risk /= count_neighboors
         else:
             contagion_risk /= 4
-        #TODO: 0.9 is an adjustment parameter that needs calibration.
+        # TODO: 0.9 is an adjustment parameter that needs calibration.
         return 0.9 * contagion_risk
- 
-  
-    def check_dieback(
-            self,
-            stochastic=True,
-            risk_rate=0.005,
-            healing_rate=0.005):
+
+    def check_dieback(self, stochastic=True, risk_rate=0.005, healing_rate=0.005):
         """The dieback calculation for the tree. It is a path dependent.
         A 'random walk' from latest state is considered. The new rate is drawn from
         a uniform distribution between -1 * healing_rate and risk_rate. A tree with
@@ -436,9 +436,10 @@ class Tree(Agent):
             Update the data either using measured dieback for species or
             a site/species specific distribution function.
         """
+
         def register_death():
             self.dieback = 1.0
-            self.condition = 'dead'
+            self.condition = "dead"
 
         # The dieback model below is based on Nowak et al (1986, 2002b:p13)
         # Mortality rate:
@@ -459,36 +460,44 @@ class Tree(Agent):
 
         if self.dieback >= 1:
             register_death()
-        elif self.condition == 'dead':
+        elif self.condition == "dead":
             register_death()
-        elif self.condition in ('good', 'excellent') and self.dbh < 7.62 and risk <= 0.0196 * dr:
+        elif (
+            self.condition in ("good", "excellent")
+            and self.dbh < 7.62
+            and risk <= 0.0196 * dr
+        ):
             register_death()
-        elif self.condition in ('good', 'excellent') and self.dbh >= 7.62 and risk <= 0.0146 * dr:
+        elif (
+            self.condition in ("good", "excellent")
+            and self.dbh >= 7.62
+            and risk <= 0.0146 * dr
+        ):
             register_death()
-        elif self.condition == 'fair' and risk <= 0.0332 * dr:
+        elif self.condition == "fair" and risk <= 0.0332 * dr:
             register_death()
-        elif self.condition == 'poor' and risk <= 0.0886 * dr:
+        elif self.condition == "poor" and risk <= 0.0886 * dr:
             register_death()
-        elif self.condition == 'critical' and risk <= 0.1308 * dr:
+        elif self.condition == "critical" and risk <= 0.1308 * dr:
             register_death()
-        elif self.condition == 'dying' and risk <= min(0.9, 0.5 * dr):
+        elif self.condition == "dying" and risk <= min(0.9, 0.5 * dr):
             register_death()
         else:
             # The dieback model below is path dependent and depends on
-            # (i) the latest condition of the tree, 
-            # (ii) the age via DBH and  
+            # (i) the latest condition of the tree,
+            # (ii) the age via DBH and
             # (iii) the health of neighboring trees.
-            # the new rate is drawn from a 
+            # the new rate is drawn from a
             # uniform distribution between -1 * healing_rate and risk_rate.
             if stochastic:
                 contagion_risk = self.compute_contagion_risk()
-                #multiplier = Tree.condition_multiplier[self.condition] * np.sqrt(self.dbh)
-                if self.condition == 'excellent':
+                # multiplier = Tree.condition_multiplier[self.condition] * np.sqrt(self.dbh)
+                if self.condition == "excellent":
                     if np.random.uniform(0, 1) < 0.5:
                         self.dieback -= 0.001
                     else:
                         self.dieback += 0.001
-                elif self.condition == 'good':
+                elif self.condition == "good":
                     if np.random.uniform(0, 1) < 0.5:
                         self.dieback -= 0.005
                     else:
@@ -498,7 +507,7 @@ class Tree(Agent):
                     if multiplier > 0.01:
                         heal_range = -1 * multiplier * healing_rate
                         die_range = risk_rate / multiplier
-                        #die_range = risk_rate
+                        # die_range = risk_rate
                         self.dieback += np.random.uniform(heal_range, die_range)
                 self.dieback = min(1, self.dieback)
                 self.dieback = max(0, self.dieback)
@@ -519,19 +528,19 @@ class Tree(Agent):
         """
 
         if dieback < 0.01:
-            condition = 'excellent'
+            condition = "excellent"
         elif dieback <= 0.10:
-            condition = 'good'
+            condition = "good"
         elif dieback <= 0.25:
-            condition = 'fair'
+            condition = "fair"
         elif dieback <= 0.50:
-            condition = 'poor'
+            condition = "poor"
         elif dieback <= 0.75:
-            condition = 'critical'
+            condition = "critical"
         elif dieback <= 0.99:
-            condition = 'dying'
+            condition = "dying"
         else:
-            condition = 'dead'
+            condition = "dead"
         self.condition = condition
         return condition
 
@@ -548,17 +557,17 @@ class Tree(Agent):
              This is used when percent crown data is missing but condition of
              of a tree is given a qualitatively. Condition class brackets are based on Nowak 2002b.
         """
-        if condition == 'excellent':
+        if condition == "excellent":
             self.dieback = np.random.uniform(0, 0.01)
-        elif condition == 'good':
+        elif condition == "good":
             self.dieback = np.random.uniform(0.01, 0.11)
-        elif condition == 'fair':
+        elif condition == "fair":
             dieback = np.random.uniform(0.11, 0.26)
-        elif condition == 'poor':
+        elif condition == "poor":
             self.dieback = np.random.uniform(0.26, 0.51)
-        elif condition == 'critical':
+        elif condition == "critical":
             self.dieback = np.random.uniform(0.51, 0.76)
-        elif condition == 'dying':
+        elif condition == "dying":
             self.dieback = np.random.uniform(0.76, 0.99)
         else:
             self.dieback = 1.0
@@ -581,7 +590,7 @@ class Tree(Agent):
         self.biomass = self.f_biomass(self.dbh)
         carbon_estimate = self.biomass * Tree.carbon_coeff
         if carbon_estimate > Tree.carbon_storage_cap:
-            #self.biomass = (1 / Tree.carbon_coeff) * Tree.carbon_storage_cap
+            # self.biomass = (1 / Tree.carbon_coeff) * Tree.carbon_storage_cap
             self.biomass = Tree.carbon_storage_cap
         return self.biomass
 
@@ -616,7 +625,7 @@ class Tree(Agent):
 
         # self.release = self.decomposition_rate * self.dieback * self.carbon_storage
         self._reset_release_track()
-        if self.condition == 'dead':
+        if self.condition == "dead":
             self._compute_decomposition_dead()
             return
         # the tree is alive
@@ -709,7 +718,7 @@ class Tree(Agent):
         # large trees
         self.carbon_storage = min(carbon_estimate, Tree.carbon_storage_cap)
 
-        if (carbon_estimate >= Tree.carbon_storage_cap):
+        if carbon_estimate >= Tree.carbon_storage_cap:
             self.annual_gross_carbon_sequestration = Tree.sequestration_at_maturity
             return self.annual_gross_carbon_sequestration
 
@@ -723,7 +732,7 @@ class Tree(Agent):
         return self.annual_gross_carbon_sequestration
 
     def replace(self) -> int:
-        """ In case of a maintenance project in place a new young tree or sapling is planted
+        """In case of a maintenance project in place a new young tree or sapling is planted
         at the location where the tree is dead.
 
         Args:
@@ -732,18 +741,14 @@ class Tree(Agent):
             (:obj:`int`): new agent id.
 
         """
-        self.condition = 'replaced'
+        self.condition = "replaced"
 
         # Replacing with the site specific minimum sapling.
-        dbh = np.random.uniform(self.model.sapling_dbh, self.model.sapling_dbh+1)
+        dbh = np.random.uniform(self.model.sapling_dbh, self.model.sapling_dbh + 1)
         id = self.model.next_id()
         new_tree = Tree(
-            id,
-            self.model,
-            dbh,
-            self.species,
-            condition='excellent',
-            dieback=0)
+            id, self.model, dbh, self.species, condition="excellent", dieback=0
+        )
         self.model.grid.place_agent(new_tree, self.pos)
         self.model.schedule.add(new_tree)
         return id
