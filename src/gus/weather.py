@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 
-
-class WeatherSim:
+class WeatherSim():
     """The environment objects that simulates the weather."""
 
     # Yearly mean frost free days at a given site.
@@ -35,7 +34,8 @@ class WeatherSim:
 
         # Drawing frost free days for the given year from a normal distriburion
         # where the mean is based on iTree's proxy variable.
-        self.frost_free_days_ref = np.random.normal(self.ffdays_mean, self.ffdays_var)
+        self.frost_free_days_ref = np.random.normal(
+            self.ffdays_mean, self.ffdays_var)
 
     def check_frost_free_days(self):
         """The method generates frost free days based on mean and variance of a given site.
