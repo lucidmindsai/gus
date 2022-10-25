@@ -1,4 +1,0 @@
-include *.txt
-recursive-include inputs *.csv
-recursive-include inputs *.json
-recursive-include tests *.py

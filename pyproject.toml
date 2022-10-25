@@ -1,6 +1,42 @@
-[build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
+[tool.poetry]
+name = "gus"
+version = "0.1.5"
+description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
+authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
+maintainers = [
+    "Oguzhan Yayla <oguzhan@lucidminds.ai>", 
+    "Marko Petrovic <marko@lucidminds.ai>", 
+    "Axel Nilsson <axel@darkmatterlabs.org>"
 ]
-build-backend = "setuptools.build_meta"
+license = "Apache License 2.0"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    'Environment :: Console',
+    'Operating System :: OS Independent',
+    'Intended Audience :: Developers',
+    'License :: Other/Proprietary License',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3 :: Only',
+    'Topic :: Software Development :: Libraries',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+    'Topic :: Utilities'
+]
+packages = [
+    {include = "gus", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.8.0"
+ipython = "^7.27.0"
+mesa = "^0.8.9"
+numpy = "^1.21.2"
+pandas = "^1.3.3"
+pytest = "^7.1.2"
+fuzzywuzzy = "^0.18.0"
+matplotlib = "^3.4.3"
+seaborn = "^0.11.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
