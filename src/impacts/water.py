@@ -20,8 +20,14 @@ class Calibration():
     # Conversion coefficient meter to millimeter
     m_to_mm = 1
 
-    # Extinction coefficient =0. 7 for trees and 0.3 for shrubs (Wang et al. 2008)
+    # Extinction coefficient =0.7 for trees and 0.3 for shrubs (Wang et al. 2008)
     kappa = 0.7
+
+    # Shade factor, is the percentage of sky covered by foliage and branches within
+    # the perimeter of individual tree crowns, can vary by species from about
+    # 60% to 95% when trees are in-leaf (McPherson, 1984).
+    # The value below is set according to Glasgow mean
+    avg_shade_factor = 0.85
 
     # Specific leaf storage of water (sl =0.0002 m).
     leaf_storage = 0.0002 * m_to_mm
@@ -53,9 +59,8 @@ class Calibration():
             None
         Note:
 
-        Todo:
+        TODO:
             * pass optional settings as key word parameters.
-
         """
         self.leaf_storage = leaf_storage * Calibration.m_to_mm
         self.leaf_transition_days = leaf_transition_days
@@ -85,3 +90,57 @@ class Calibration():
             self.maximum_impervious_cover_storage = impervios_storage_max * Calibration.m_to_mm
         if pervios_storage_max:
             self.maximum_pervious_cover_storage = pervios_storage_max * Calibration.m_to_mm
+    
+
+def compute_leaf_area_index(
+    dbh,
+    tree_height,
+    crown_height,
+    crown_width,
+    crown_missing = 0,
+    shade_factor = Calibration.avg_shade_factor):
+    """The function given allometrics of a tree computes its leaf, bark and plant area indices. 
+
+    Args:
+        dbh: (:obj:`float`): the diameter in cm of the trunk usually measured at 1.3m from the ground.
+        tree_height: (:obj:`float`): The tree height in meters.
+        crown_height: (:obj:`float`): The vertical length of tree crown in meters.
+        crown_width: (:obj:`float`): The horizontal length (diameter) of tree crown in meters.
+        crown_missing: (:obj:`float`): The percentage loss of the crown.
+        shade_factor: (:obj:`float`): The percentage of sky covered by foliage and branches.
+
+    Returns:
+        (:obj:`tuple`): the tuple returns the tree indices (LAI,BAI,PAI)
+    Note:
+        The beta multipliers and the main equation is based on Nowak (1996).
+
+    TODO:
+        Parametrize beta multipliers.
+    """
+    loss = crown_missing
+    th = tree_height
+    cw = crown_width
+    ch = crown_height
+    sf = shade_factor
+    beta_0 = -4.3309
+    beta_1 = 0.2942
+    beta_2 = 0.7312
+    beta_3 = 5.7217
+    beta_4 = 0.0148
+
+    def compute_under_canopy_area(crown_width):
+        return pow((crown_width/2),2) * np.pi
+    
+    def compute_bark_area(dbh, tree_height, crown_height):
+        # * 0.01 converts DBH(cm) into meter.
+        return np.pi * (dbh * 0.01) * (tree_height - crown_height)
+
+    # Outer surface area estimate below is based on Gacka-Grzesikiewicz (1980).
+    under_canopy = compute_under_canopy_area(cw)
+    crown_surface = np.pi  * crown_width * (crown_height + crown_width)/2
+    bark_area = compute_bark_area(dbh,th,ch)
+    leaf_area = (1-loss) * np.exp(beta_0 + beta_1 * th + beta_2 * cw + beta_3 * sf - beta_4 * crown_surface)
+    leaf_area_index = leaf_area / under_canopy
+    bark_area_index = bark_area / under_canopy
+    plant_area_index = leaf_area_index + bark_area_index
+    return (leaf_area_index, bark_area_index, plant_area_index)
