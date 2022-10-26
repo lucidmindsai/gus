@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gus"
-version = "0.1.5"
+version = "0.1.6"
 description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
 maintainers = [
@@ -23,8 +23,9 @@ classifiers = [
     'Topic :: Utilities'
 ]
 packages = [
-    {include = "gus", from = "src" }
+    {include = "src"},
 ]
+
 
 [tool.poetry.dependencies]
 python = "^3.8.0"
