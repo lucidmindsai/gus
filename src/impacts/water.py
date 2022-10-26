@@ -2,9 +2,6 @@
 
 # Water retention related implementation.
 # Based on Notebook implemenation created by Marko Petrovic
-#  
-
-# Package for using operating system dependent functionality
 
 # Numerical data processing
 import pandas as pd
