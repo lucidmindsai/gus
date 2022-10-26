@@ -14,11 +14,10 @@ from mesa.time import RandomActivation
 from mesa.space import MultiGrid
 from mesa.datacollection import DataCollector
 
-# Importing needed SAF objects
+# Importing needed GUS objects
 from .agents import Tree
 from .allometrics import Species
 from .weather import WeatherSim
-
 
 class Urban(Model):
     """A generic urban green space model. To be tailored according to specific sites.
@@ -64,6 +63,7 @@ class Urban(Model):
         
         self._load_site_parameters(site_config)
         self._load_experiment_parameters(scenario)
+
         # Load species composition and their allometrics
         self.species = Species(species_composition)  # will be used by agents.
     
