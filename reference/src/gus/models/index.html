@@ -1,0 +1,3578 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.4, mkdocs-material-7.3.6">
+    
+    
+      
+        <title>Models - gus</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a57b2b03.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="green" data-md-color-accent="lightgreen">
+  
+    
+    <script>function __prefix(e){return new URL("../../../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-srcgusmodels" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="gus" class="md-header__button md-logo" aria-label="gus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            gus
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Models
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/lucidmindsai/gus/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gus
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="gus" class="md-nav__button md-logo" aria-label="gus" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    gus
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/lucidmindsai/gus/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    gus
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../README-pypi/" class="md-nav__link">
+        Readme Pypi
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1">
+          Src
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Src" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Src
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_2" type="checkbox" id="__nav_3_1_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_2">
+          Gus
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Gus" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Gus
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agents/" class="md-nav__link">
+        Agents
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../allometrics/" class="md-nav__link">
+        Allometrics
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Models
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#urban" class="md-nav__link">
+    Urban
+  </a>
+  
+    <nav class="md-nav" aria-label="Urban">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-variables" class="md-nav__link">
+    Class variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods" class="md-nav__link">
+    Static methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agg_std_sequestration" class="md-nav__link">
+    agg_std_sequestration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate" class="md-nav__link">
+    aggregate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate_sequestration" class="md-nav__link">
+    aggregate_sequestration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute_carbon_release_rate" class="md-nav__link">
+    compute_carbon_release_rate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute_current_carbon_release" class="md-nav__link">
+    compute_current_carbon_release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_weather_projection" class="md-nav__link">
+    get_weather_projection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next_id" class="md-nav__link">
+    next_id
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset_randomizer" class="md-nav__link">
+    reset_randomizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_model" class="md-nav__link">
+    run_model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step" class="md-nav__link">
+    step
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utilities/" class="md-nav__link">
+        Utilities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weather/" class="md-nav__link">
+        Weather
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1_3" type="checkbox" id="__nav_3_1_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1_3">
+          Impacts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Impacts" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Impacts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../impacts/carbon/" class="md-nav__link">
+        Carbon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../impacts/" class="md-nav__link">
+        Index
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../impacts/water/" class="md-nav__link">
+        Water
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    Classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#urban" class="md-nav__link">
+    Urban
+  </a>
+  
+    <nav class="md-nav" aria-label="Urban">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ancestors-in-mro" class="md-nav__link">
+    Ancestors (in MRO)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-variables" class="md-nav__link">
+    Class variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods" class="md-nav__link">
+    Static methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agg_std_sequestration" class="md-nav__link">
+    agg_std_sequestration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate" class="md-nav__link">
+    aggregate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregate_sequestration" class="md-nav__link">
+    aggregate_sequestration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute_carbon_release_rate" class="md-nav__link">
+    compute_carbon_release_rate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compute_current_carbon_release" class="md-nav__link">
+    compute_current_carbon_release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#count" class="md-nav__link">
+    count
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_weather_projection" class="md-nav__link">
+    get_weather_projection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next_id" class="md-nav__link">
+    next_id
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reset_randomizer" class="md-nav__link">
+    reset_randomizer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_model" class="md-nav__link">
+    run_model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step" class="md-nav__link">
+    step
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lucidmindsai/gus/edit/main/reference/src/gus/models.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="module-srcgusmodels">Module src.gus.models</h1>
+<p>None</p>
+<p>None</p>
+<details class="example"><summary>View Source</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span>
+<span class="normal">496</span>
+<span class="normal">497</span>
+<span class="normal">498</span>
+<span class="normal">499</span>
+<span class="normal">500</span>
+<span class="normal">501</span>
+<span class="normal">502</span>
+<span class="normal">503</span>
+<span class="normal">504</span>
+<span class="normal">505</span>
+<span class="normal">506</span>
+<span class="normal">507</span>
+<span class="normal">508</span>
+<span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span>
+<span class="normal">523</span>
+<span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span>
+<span class="normal">527</span>
+<span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span>
+<span class="normal">545</span>
+<span class="normal">546</span>
+<span class="normal">547</span>
+<span class="normal">548</span>
+<span class="normal">549</span>
+<span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
+<span class="normal">586</span>
+<span class="normal">587</span>
+<span class="normal">588</span>
+<span class="normal">589</span>
+<span class="normal">590</span>
+<span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
+<span class="normal">605</span>
+<span class="normal">606</span>
+<span class="normal">607</span>
+<span class="normal">608</span>
+<span class="normal">609</span>
+<span class="normal">610</span>
+<span class="normal">611</span>
+<span class="normal">612</span>
+<span class="normal">613</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span>
+<span class="normal">617</span>
+<span class="normal">618</span>
+<span class="normal">619</span>
+<span class="normal">620</span>
+<span class="normal">621</span>
+<span class="normal">622</span>
+<span class="normal">623</span>
+<span class="normal">624</span>
+<span class="normal">625</span>
+<span class="normal">626</span>
+<span class="normal">627</span>
+<span class="normal">628</span>
+<span class="normal">629</span>
+<span class="normal">630</span>
+<span class="normal">631</span>
+<span class="normal">632</span>
+<span class="normal">633</span>
+<span class="normal">634</span>
+<span class="normal">635</span>
+<span class="normal">636</span>
+<span class="normal">637</span>
+<span class="normal">638</span>
+<span class="normal">639</span>
+<span class="normal">640</span>
+<span class="normal">641</span>
+<span class="normal">642</span>
+<span class="normal">643</span>
+<span class="normal">644</span>
+<span class="normal">645</span>
+<span class="normal">646</span>
+<span class="normal">647</span>
+<span class="normal">648</span>
+<span class="normal">649</span>
+<span class="normal">650</span>
+<span class="normal">651</span>
+<span class="normal">652</span>
+<span class="normal">653</span>
+<span class="normal">654</span>
+<span class="normal">655</span>
+<span class="normal">656</span>
+<span class="normal">657</span>
+<span class="normal">658</span>
+<span class="normal">659</span>
+<span class="normal">660</span>
+<span class="normal">661</span>
+<span class="normal">662</span>
+<span class="normal">663</span>
+<span class="normal">664</span>
+<span class="normal">665</span>
+<span class="normal">666</span>
+<span class="normal">667</span>
+<span class="normal">668</span>
+<span class="normal">669</span>
+<span class="normal">670</span>
+<span class="normal">671</span>
+<span class="normal">672</span>
+<span class="normal">673</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1"># Importing Python Libraries</span>
+
+<span class="kn">import</span> <span class="nn">site</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="c1"># Importing necessary Mesa packages</span>
+
+<span class="kn">from</span> <span class="nn">mesa</span> <span class="kn">import</span> <span class="n">Model</span>
+
+<span class="kn">from</span> <span class="nn">mesa.time</span> <span class="kn">import</span> <span class="n">RandomActivation</span>
+
+<span class="kn">from</span> <span class="nn">mesa.space</span> <span class="kn">import</span> <span class="n">MultiGrid</span>
+
+<span class="kn">from</span> <span class="nn">mesa.datacollection</span> <span class="kn">import</span> <span class="n">DataCollector</span>
+
+<span class="c1"># Importing needed SAF objects</span>
+
+<span class="kn">from</span> <span class="nn">.agents</span> <span class="kn">import</span> <span class="n">Tree</span>
+
+<span class="kn">from</span> <span class="nn">.allometrics</span> <span class="kn">import</span> <span class="n">Species</span>
+
+<span class="kn">from</span> <span class="nn">.weather</span> <span class="kn">import</span> <span class="n">WeatherSim</span>
+
+<span class="k">class</span> <span class="nc">Urban</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;A generic urban green space model. To be tailored according to specific sites.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Used to hold the scaling of actual physical space within the digital space.</span>
+
+    <span class="c1"># It shows the size of each cell (square) in meters.</span>
+
+    <span class="c1"># TODO: this needs to be brought up as a parameter and placed within the groups</span>
+
+    <span class="c1">#      of parameters that handle physical to digital twin mapping.</span>
+
+    <span class="n">dt_resolution</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#in meters</span>
+
+    <span class="n">site_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;park&#39;</span><span class="p">,</span><span class="s1">&#39;street&#39;</span><span class="p">,</span><span class="s1">&#39;forest&#39;</span><span class="p">,</span><span class="s1">&#39;pocket&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+
+        <span class="n">population</span><span class="p">,</span>
+
+        <span class="n">species_composition</span><span class="p">,</span>
+
+        <span class="n">site_config</span><span class="p">,</span>
+
+        <span class="n">scenario</span><span class="p">,</span>
+
+        <span class="n">batch</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The constructor method.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            population: (:obj:`pd.DataFrame`): A dataframe tree properties are read from a site.</span>
+
+<span class="sd">            species_composition (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.</span>
+
+<span class="sd">            site_config: (:obj:`string`): name of the json file.</span>
+
+<span class="sd">            scenario: (:obj:`dict`): Python dictionary that holds experiment parameters.</span>
+
+<span class="sd">            batch: (:obj:`bool`): Mesa parameter to control single vs batch runs.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            First release model.</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">            Check for hard coded constants and parameterize further.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Setting MESA specific parameters</span>
+
+        <span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">xpos</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">ypos</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span> <span class="o">=</span> <span class="n">MultiGrid</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">torus</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+                <span class="c1"># to be parameterized and set during initialization.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span> <span class="o">=</span> <span class="n">RandomActivation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_site_parameters</span><span class="p">(</span><span class="n">site_config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_experiment_parameters</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
+
+        <span class="c1"># Load species composition and their allometrics</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">species_composition</span><span class="p">)</span>  <span class="c1"># will be used by agents.</span>
+
+        <span class="c1"># Test that the df is complete or raise keyerror</span>
+
+        <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;dbh&#39;</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;xpos&#39;</span><span class="p">,</span> <span class="s1">&#39;ypos&#39;</span><span class="p">]:</span>
+
+            <span class="n">population</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+
+        <span class="c1"># copy and import df</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">population</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_agents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sapling_dbh</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">dbh</span><span class="p">)</span>
+
+        <span class="c1"># Each entry index i, represents number of years since the biomass is decay period.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">release_bins</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;slow&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>  <span class="c1"># for dead root and standing tree.</span>
+
+                             <span class="s1">&#39;fast&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># for mulched biomass</span>
+
+                             <span class="p">}</span>
+
+        <span class="c1"># Create agents.</span>
+
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+
+            <span class="c1"># Tree init</span>
+
+            <span class="n">a</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span>
+
+                     <span class="n">dbh</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">dbh</span><span class="p">,</span>
+
+                     <span class="n">species</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">species</span><span class="p">,</span>
+
+                     <span class="n">condition</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">condition</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+            <span class="c1"># Place trees on the plot sequentially</span>
+
+            <span class="c1"># based on their id/index.</span>
+
+            <span class="c1"># TODO: This snippet may need to be converted into a function as part of</span>
+
+            <span class="c1"># initilisartion module and x,y points need to be part of input DB.</span>
+
+            <span class="c1">#x = int(index % self.grid.width)</span>
+
+            <span class="c1">#y = int(index / self.grid.height)</span>
+
+            <span class="c1"># # Add the agent to a random grid cell</span>
+
+            <span class="c1">#x = self.random.randrange(self.grid.width)</span>
+
+            <span class="c1">#y = self.random.randrange(self.grid.height)</span>
+
+            <span class="c1"># # Locate the trees based on actual physical positioning</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpos</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">ypos</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">place_agent</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+        <span class="c1"># This variable below works as an indexer while adding new trees to the population during the run time.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="c1"># Collecting model and agent level data</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">datacollector</span> <span class="o">=</span> <span class="n">DataCollector</span><span class="p">(</span>
+
+            <span class="n">model_reporters</span><span class="o">=</span><span class="p">{</span>
+
+                <span class="s2">&quot;Storage&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;carbon_storage&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Seq&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;annual_gross_carbon_sequestration&#39;</span><span class="p">),</span>
+
+                <span class="c1"># &quot;Sequestrated&quot;: self.aggregate_sequestration,</span>
+
+                <span class="s2">&quot;Released&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_current_carbon_release</span><span class="p">,</span>
+
+                <span class="s2">&quot;Alive&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;excellent&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;fair&#39;</span><span class="p">,</span> <span class="s1">&#39;poor&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">,</span> <span class="s1">&#39;dying&#39;</span><span class="p">]),</span>
+
+                <span class="s2">&quot;Dead&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;dead&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Critical&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;critical&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Dying&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;dying&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Poor&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;poor&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Replaced&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;replaced&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Seq_std&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_std_sequestration</span><span class="p">,</span>
+
+            <span class="p">},</span>
+
+            <span class="n">agent_reporters</span><span class="o">=</span><span class="p">{</span>
+
+                <span class="s2">&quot;species&quot;</span><span class="p">:</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;dbh&quot;</span><span class="p">:</span> <span class="s1">&#39;dbh&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="s1">&#39;tree_height&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;crownH&quot;</span><span class="p">:</span> <span class="s1">&#39;crown_height&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;crownW&quot;</span><span class="p">:</span> <span class="s1">&#39;crown_width&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;canopy_overlap&quot;</span><span class="p">:</span> <span class="s2">&quot;overlap_ratio&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;cle&quot;</span><span class="p">:</span> <span class="s2">&quot;cle&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;dieback&quot;</span><span class="p">:</span> <span class="s1">&#39;dieback&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;biomass&quot;</span><span class="p">:</span> <span class="s1">&#39;biomass&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="s1">&#39;annual_gross_carbon_sequestration&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;carbon&quot;</span><span class="p">:</span> <span class="s2">&quot;carbon_storage&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;deroot&quot;</span><span class="p">:</span> <span class="s1">&#39;decomposing_root&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;detrunk&quot;</span><span class="p">:</span> <span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;mulched&quot;</span><span class="p">:</span> <span class="s1">&#39;mulched&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;burnt&quot;</span><span class="p">:</span> <span class="s1">&#39;immediate_release&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="s1">&#39;pos&#39;</span><span class="p">,})</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Initialisation of the Digital Twins of </span><span class="si">{}</span><span class="s2"> trees on a </span><span class="si">{}</span><span class="s2"> by </span><span class="si">{}</span><span class="s2"> digital space is complete!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_agents</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Customized MESA method that sets the major components of scenario analyses process.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Year:</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_weather_projection</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Agents are working ...&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Yearly data is being collected ...&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">datacollector</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># print(&#39;Step:{}&#39;.format(self.schedule.time))</span>
+
+        <span class="c1"># print(self.release_bins[&#39;slow&#39;])</span>
+
+        <span class="c1"># print(self.release_bins[&#39;fast&#39;])</span>
+
+    <span class="k">def</span> <span class="nf">_load_experiment_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">experiment</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Loads site configuration information.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            experiment: (:obj:`dict`): Python dictionary that holds experiment parameters.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Read denisty to set the digital twin resolution which is defined as</span>
+
+        <span class="c1"># the cell size in terms of actual distance.</span>
+
+        <span class="k">if</span> <span class="s1">&#39;maintenance_scope&#39;</span> <span class="ow">in</span> <span class="n">experiment</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="c1">#maintenance_scope: (:obj:`int`): It can be 0:None,1:base, 2:cared)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">maintenance_scope</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">[</span><span class="s1">&#39;maintenance_scope&#39;</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Maintenance scope is not given. A high maintenance site is assumed.&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">maintenance_scope</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">_load_site_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Loads site configuration information.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            config_file: (:obj:`string`): name of the json file.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+        <span class="c1">#read site type</span>
+
+        <span class="n">stype</span> <span class="o">=</span> <span class="s1">&#39;park&#39;</span> <span class="c1">#default type</span>
+
+        <span class="k">if</span> <span class="s1">&#39;project_site_type&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;project_site_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Urban</span><span class="o">.</span><span class="n">site_types</span><span class="p">:</span>
+
+                <span class="n">stype</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;project_site_type&#39;</span><span class="p">]</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Undefined site type recognized. Park type will be used.&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Site type is not provided. Park type will be used.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">site_type</span> <span class="o">=</span> <span class="n">stype</span>
+
+        <span class="c1"># Read in growth season mean and variance to be used by weather forecasting module.</span>
+
+        <span class="k">try</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="s1">&#39;growth_season_mean&#39;</span><span class="p">]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">season_var</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="s1">&#39;growth_season_var&#39;</span><span class="p">]</span>
+
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span> <span class="o">=</span> <span class="mi">153</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">season_var</span> <span class="o">=</span> <span class="mi">7</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Tree growth season mean and variance is not provided as expected. Global average is used.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Read denisty to set the digital twin resolution which is defined as</span>
+
+        <span class="c1"># the cell size in terms of actual distance.</span>
+
+        <span class="k">if</span> <span class="s1">&#39;area_tree_density_per_hectare&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">dt_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10000</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;area_tree_density_per_hectare&#39;</span><span class="p">])</span>
+
+            <span class="c1"># The distance between the center of two tree trunks in meters. Even spatial distribution is assumed.</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;area_tree_density_per_hectare is not given the default </span><span class="si">{}</span><span class="s2"> meters is used the distance from the clossest tree trunks.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_resolution</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">get_weather_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The method retrieves wetaher projection for the current iteration,</span>
+
+<span class="sd">        eg. year, at the moment it uses a simulated projections on the go,</span>
+
+<span class="sd">        instead previously computed estimates or forecasts can be used as well.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span>
+
+<span class="sd">            These variables need to be parameterrized and read-in through site (model) specific</span>
+
+<span class="sd">            initialization module.</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">            * Implement a site initialization method that sets the initial parameters</span>
+
+<span class="sd">            and tree specific variables.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span>
+
+        <span class="c1"># These variables need to be parameterrized and read-in through site (model) specific</span>
+
+        <span class="c1"># initialization module.</span>
+
+        <span class="c1"># season_mean = 200</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">WeatherAPI</span> <span class="o">=</span> <span class="n">WeatherSim</span><span class="p">(</span>
+
+            <span class="n">season_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="p">,</span> <span class="n">season_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;A higher order function that aggregates a given variable.</span>
+
+<span class="sd">        The aggregation function and the initial conditions can be specified.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="p">[</span><span class="nb">eval</span><span class="p">(</span><span class="s1">&#39;a.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var</span><span class="p">))</span>
+
+                      <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">],</span> <span class="n">init</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">predicate</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;A higher order function for counting agents that satisfy a specific attribute.&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span>
+
+            <span class="nb">list</span><span class="p">(</span>
+
+                <span class="nb">filter</span><span class="p">(</span>
+
+                    <span class="n">predicate</span><span class="p">,</span> <span class="p">[</span>
+
+                        <span class="nb">eval</span><span class="p">(</span>
+
+                            <span class="s1">&#39;a.</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">memory</span><span class="p">))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">])))</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">aggregate_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">captured</span> <span class="o">=</span> <span class="p">[</span>
+
+            <span class="n">a</span><span class="o">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">agg_std_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The function estimates the standard deviation for yearly sequestration data from all trees within the site.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">captured</span> <span class="o">=</span> <span class="p">[</span>
+
+            <span class="n">a</span><span class="o">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">compute_current_carbon_release</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># roll current bins stored as np.array</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># aggregate required type of release (mulched, etc)</span>
+
+        <span class="n">mulched</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;mulched&#39;</span><span class="p">)</span>
+
+        <span class="n">standing</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">)</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;decomposing_root&#39;</span><span class="p">)</span>
+
+        <span class="n">immediate</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;immediate_release&#39;</span><span class="p">)</span>
+
+        <span class="c1"># add new potential releases into release bins</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">standing</span> <span class="o">+</span> <span class="n">root</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">mulched</span>
+
+        <span class="c1"># compute and aggregate release</span>
+
+        <span class="k">def</span> <span class="nf">update_release</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+
+            <span class="n">carbon_release</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="nb">type</span><span class="p">])):</span>
+
+                <span class="n">mass</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="nb">type</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+
+                <span class="n">rate</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+
+                <span class="n">released</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">*</span> <span class="n">mass</span>
+
+                <span class="n">carbon_release</span> <span class="o">+=</span> <span class="n">released</span>
+
+                <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="nb">type</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">released</span>
+
+            <span class="k">return</span> <span class="n">carbon_release</span>
+
+        <span class="n">carbon_release_slow</span> <span class="o">=</span> <span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">)</span>
+
+        <span class="n">carbon_release_fast</span> <span class="o">=</span> <span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;fast&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">carbon_release_fast</span> <span class="o">+</span> <span class="n">carbon_release_slow</span> <span class="o">+</span> <span class="n">immediate</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">compute_carbon_release_rate</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;fast&#39;</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Determines a carbon release rate.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            year: (:obj:`int`) or (:obj:`float`): time passed since the biomass is dead.</span>
+
+<span class="sd">            state: (:obj:`str`): Represents exposure type can be one of (&#39;standing&#39;, &#39;mulched&#39;, &#39;root&#39;, &#39;fast&#39;, &#39;slow&#39;,)</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`float`): decay rate.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            The function computes the release rate based on the time spent since</span>
+
+<span class="sd">            the total carbon within biomass of a dead tree or its parts. The shape of function</span>
+
+<span class="sd">            assures a unit integral as time goes to infinity.</span>
+
+<span class="sd">            When k = 2, in the first 3 years around 60% is released, which corresponds to</span>
+
+<span class="sd">            empirical findings for mulched biomass above ground.</span>
+
+<span class="sd">            When k = 5, in the first 3 years around 40% is released, which corresponds to</span>
+
+<span class="sd">            empirical reports for carbon release for standing dead trees as well as underground roots.</span>
+
+<span class="sd">            check:</span>
+
+<span class="sd">                import scipy.integrate as integrate</span>
+
+<span class="sd">                integrate.quad(f, 0, 20) &gt; 0.96 for k in (2:5).</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">state</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span> <span class="s1">&#39;fast&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">5</span>
+
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">year</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</details>
+<h2 id="classes">Classes</h2>
+<h3 id="urban">Urban</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Urban</span><span class="p">(</span>
+    <span class="n">population</span><span class="p">,</span>
+    <span class="n">species_composition</span><span class="p">,</span>
+    <span class="n">site_config</span><span class="p">,</span>
+    <span class="n">scenario</span><span class="p">,</span>
+    <span class="n">batch</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">Urban</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;A generic urban green space model. To be tailored according to specific sites.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Used to hold the scaling of actual physical space within the digital space.</span>
+
+    <span class="c1"># It shows the size of each cell (square) in meters.</span>
+
+    <span class="c1"># TODO: this needs to be brought up as a parameter and placed within the groups</span>
+
+    <span class="c1">#      of parameters that handle physical to digital twin mapping.</span>
+
+    <span class="n">dt_resolution</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#in meters</span>
+
+    <span class="n">site_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;park&#39;</span><span class="p">,</span><span class="s1">&#39;street&#39;</span><span class="p">,</span><span class="s1">&#39;forest&#39;</span><span class="p">,</span><span class="s1">&#39;pocket&#39;</span><span class="p">]</span>
+
+    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+
+        <span class="n">population</span><span class="p">,</span>
+
+        <span class="n">species_composition</span><span class="p">,</span>
+
+        <span class="n">site_config</span><span class="p">,</span>
+
+        <span class="n">scenario</span><span class="p">,</span>
+
+        <span class="n">batch</span><span class="o">=</span><span class="n">False</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The constructor method.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            population: (:obj:`pd.DataFrame`): A dataframe tree properties are read from a site.</span>
+
+<span class="sd">            species_composition (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.</span>
+
+<span class="sd">            site_config: (:obj:`string`): name of the json file.</span>
+
+<span class="sd">            scenario: (:obj:`dict`): Python dictionary that holds experiment parameters.</span>
+
+<span class="sd">            batch: (:obj:`bool`): Mesa parameter to control single vs batch runs.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            First release model.</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">            Check for hard coded constants and parameterize further.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Setting MESA specific parameters</span>
+
+        <span class="n">width</span> <span class="o">=</span> <span class="nb nb-Type">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">xpos</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">height</span> <span class="o">=</span> <span class="nb nb-Type">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">ypos</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span> <span class="o">=</span> <span class="n">MultiGrid</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">torus</span><span class="o">=</span><span class="n">False</span><span class="p">)</span>
+
+                <span class="c1"># to be parameterized and set during initialization.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span> <span class="o">=</span> <span class="n">RandomActivation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_site_parameters</span><span class="p">(</span><span class="n">site_config</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_load_experiment_parameters</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
+
+        <span class="c1"># Load species composition and their allometrics</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">species_composition</span><span class="p">)</span>  <span class="c1"># will be used by agents.</span>
+
+        <span class="c1"># Test that the df is complete or raise keyerror</span>
+
+        <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;dbh&#39;</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;xpos&#39;</span><span class="p">,</span> <span class="s1">&#39;ypos&#39;</span><span class="p">]:</span>
+
+            <span class="n">population</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+
+        <span class="c1"># copy and import df</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">population</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_agents</span> <span class="o">=</span> <span class="n">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sapling_dbh</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">dbh</span><span class="p">)</span>
+
+        <span class="c1"># Each entry index i, represents number of years since the biomass is decay period.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">release_bins</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;slow&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>  <span class="c1"># for dead root and standing tree.</span>
+
+                             <span class="s1">&#39;fast&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># for mulched biomass</span>
+
+                             <span class="p">}</span>
+
+        <span class="c1"># Create agents.</span>
+
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+
+            <span class="c1"># Tree init</span>
+
+            <span class="n">a</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span>
+
+                     <span class="n">dbh</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">dbh</span><span class="p">,</span>
+
+                     <span class="n">species</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">species</span><span class="p">,</span>
+
+                     <span class="n">condition</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">condition</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+            <span class="c1"># Place trees on the plot sequentially</span>
+
+            <span class="c1"># based on their id/index.</span>
+
+            <span class="c1"># TODO: This snippet may need to be converted into a function as part of</span>
+
+            <span class="c1"># initilisartion module and x,y points need to be part of input DB.</span>
+
+            <span class="c1">#x = int(index % self.grid.width)</span>
+
+            <span class="c1">#y = int(index / self.grid.height)</span>
+
+            <span class="c1"># # Add the agent to a random grid cell</span>
+
+            <span class="c1">#x = self.random.randrange(self.grid.width)</span>
+
+            <span class="c1">#y = self.random.randrange(self.grid.height)</span>
+
+            <span class="c1"># # Locate the trees based on actual physical positioning</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpos</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">ypos</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">place_agent</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+        <span class="c1"># This variable below works as an indexer while adding new trees to the population during the run time.</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="c1"># Collecting model and agent level data</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">datacollector</span> <span class="o">=</span> <span class="n">DataCollector</span><span class="p">(</span>
+
+            <span class="n">model_reporters</span><span class="o">=</span><span class="p">{</span>
+
+                <span class="s2">&quot;Storage&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;carbon_storage&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Seq&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;annual_gross_carbon_sequestration&#39;</span><span class="p">),</span>
+
+                <span class="c1"># &quot;Sequestrated&quot;: self.aggregate_sequestration,</span>
+
+                <span class="s2">&quot;Released&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_current_carbon_release</span><span class="p">,</span>
+
+                <span class="s2">&quot;Alive&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;excellent&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;fair&#39;</span><span class="p">,</span> <span class="s1">&#39;poor&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">,</span> <span class="s1">&#39;dying&#39;</span><span class="p">]),</span>
+
+                <span class="s2">&quot;Dead&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;dead&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Critical&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;critical&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Dying&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;dying&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Poor&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;poor&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Replaced&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+
+                    <span class="n">m</span><span class="p">,</span>
+
+                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;replaced&#39;</span><span class="p">),</span>
+
+                <span class="s2">&quot;Seq_std&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_std_sequestration</span><span class="p">,</span>
+
+            <span class="p">},</span>
+
+            <span class="n">agent_reporters</span><span class="o">=</span><span class="p">{</span>
+
+                <span class="s2">&quot;species&quot;</span><span class="p">:</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;dbh&quot;</span><span class="p">:</span> <span class="s1">&#39;dbh&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="s1">&#39;tree_height&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;crownH&quot;</span><span class="p">:</span> <span class="s1">&#39;crown_height&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;crownW&quot;</span><span class="p">:</span> <span class="s1">&#39;crown_width&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;canopy_overlap&quot;</span><span class="p">:</span> <span class="s2">&quot;overlap_ratio&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;cle&quot;</span><span class="p">:</span> <span class="s2">&quot;cle&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;dieback&quot;</span><span class="p">:</span> <span class="s1">&#39;dieback&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;biomass&quot;</span><span class="p">:</span> <span class="s1">&#39;biomass&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="s1">&#39;annual_gross_carbon_sequestration&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;carbon&quot;</span><span class="p">:</span> <span class="s2">&quot;carbon_storage&quot;</span><span class="p">,</span>
+
+                <span class="s2">&quot;deroot&quot;</span><span class="p">:</span> <span class="s1">&#39;decomposing_root&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;detrunk&quot;</span><span class="p">:</span> <span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;mulched&quot;</span><span class="p">:</span> <span class="s1">&#39;mulched&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;burnt&quot;</span><span class="p">:</span> <span class="s1">&#39;immediate_release&#39;</span><span class="p">,</span>
+
+                <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="s1">&#39;pos&#39;</span><span class="p">,})</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_agents</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+
+    <span class="n">def</span> <span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Customized MESA method that sets the major components of scenario analyses process.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Year:{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_weather_projection</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Agents are working ...&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Yearly data is being collected ...&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">datacollector</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># print(&#39;Step:{}&#39;.format(self.schedule.time))</span>
+
+        <span class="c1"># print(self.release_bins[&#39;slow&#39;])</span>
+
+        <span class="c1"># print(self.release_bins[&#39;fast&#39;])</span>
+
+    <span class="n">def</span> <span class="n">_load_experiment_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">experiment</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Loads site configuration information.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            experiment: (:obj:`dict`): Python dictionary that holds experiment parameters.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Read denisty to set the digital twin resolution which is defined as</span>
+
+        <span class="c1"># the cell size in terms of actual distance.</span>
+
+        <span class="k">if</span> <span class="s1">&#39;maintenance_scope&#39;</span> <span class="ow">in</span> <span class="n">experiment</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="c1">#maintenance_scope: (:obj:`int`): It can be 0:None,1:base, 2:cared)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">maintenance_scope</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">[</span><span class="s1">&#39;maintenance_scope&#39;</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Maintenance scope is not given. A high maintenance site is assumed.&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">maintenance_scope</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="n">def</span> <span class="n">_load_site_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Loads site configuration information.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            config_file: (:obj:`string`): name of the json file.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">try</span><span class="p">:</span>
+
+            <span class="n">f</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+
+        <span class="n">except</span> <span class="n">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+        <span class="c1">#read site type</span>
+
+        <span class="n">stype</span> <span class="o">=</span> <span class="s1">&#39;park&#39;</span> <span class="c1">#default type</span>
+
+        <span class="k">if</span> <span class="s1">&#39;project_site_type&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;project_site_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Urban</span><span class="o">.</span><span class="n">site_types</span><span class="p">:</span>
+
+                <span class="n">stype</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;project_site_type&#39;</span><span class="p">]</span>
+
+            <span class="k">else</span><span class="p">:</span>
+
+                <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Undefined site type recognized. Park type will be used.&quot;</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Site type is not provided. Park type will be used.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">site_type</span> <span class="o">=</span> <span class="n">stype</span>
+
+        <span class="c1"># Read in growth season mean and variance to be used by weather forecasting module.</span>
+
+        <span class="n">try</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="s1">&#39;growth_season_mean&#39;</span><span class="p">]</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">season_var</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="s1">&#39;growth_season_var&#39;</span><span class="p">]</span>
+
+        <span class="n">except</span> <span class="n">KeyError</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span> <span class="o">=</span> <span class="mi">153</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">season_var</span> <span class="o">=</span> <span class="mi">7</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Tree growth season mean and variance is not provided as expected. Global average is used.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Read denisty to set the digital twin resolution which is defined as</span>
+
+        <span class="c1"># the cell size in terms of actual distance.</span>
+
+        <span class="k">if</span> <span class="s1">&#39;area_tree_density_per_hectare&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">dt_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10000</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;area_tree_density_per_hectare&#39;</span><span class="p">])</span>
+
+            <span class="c1"># The distance between the center of two tree trunks in meters. Even spatial distribution is assumed.</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;area_tree_density_per_hectare is not given the default {} meters is used the distance from the clossest tree trunks.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_resolution</span><span class="p">))</span>
+
+    <span class="n">def</span> <span class="n">get_weather_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The method retrieves wetaher projection for the current iteration,</span>
+
+<span class="sd">        eg. year, at the moment it uses a simulated projections on the go,</span>
+
+<span class="sd">        instead previously computed estimates or forecasts can be used as well.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span>
+
+<span class="sd">            These variables need to be parameterrized and read-in through site (model) specific</span>
+
+<span class="sd">            initialization module.</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">            * Implement a site initialization method that sets the initial parameters</span>
+
+<span class="sd">            and tree specific variables.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span>
+
+        <span class="c1"># These variables need to be parameterrized and read-in through site (model) specific</span>
+
+        <span class="c1"># initialization module.</span>
+
+        <span class="c1"># season_mean = 200</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">WeatherAPI</span> <span class="o">=</span> <span class="n">WeatherSim</span><span class="p">(</span>
+
+            <span class="n">season_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="p">,</span> <span class="n">season_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="p">)</span>
+
+    <span class="err">@</span><span class="n">staticmethod</span>
+
+    <span class="n">def</span> <span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="k">var</span><span class="p">,</span> <span class="k">func</span><span class="o">=</span><span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;A higher order function that aggregates a given variable.</span>
+
+<span class="sd">        The aggregation function and the initial conditions can be specified.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">func</span><span class="p">,</span> <span class="p">[</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="k">var</span><span class="p">))</span>
+
+                      <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">],</span> <span class="n">init</span><span class="p">)</span>
+
+    <span class="err">@</span><span class="n">staticmethod</span>
+
+    <span class="n">def</span> <span class="n">count</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">predicate</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;A higher order function for counting agents that satisfy a specific attribute.&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">len</span><span class="p">(</span>
+
+            <span class="n">list</span><span class="p">(</span>
+
+                <span class="n">filter</span><span class="p">(</span>
+
+                    <span class="n">predicate</span><span class="p">,</span> <span class="p">[</span>
+
+                        <span class="n">eval</span><span class="p">(</span>
+
+                            <span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">memory</span><span class="p">))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">])))</span>
+
+    <span class="err">@</span><span class="n">staticmethod</span>
+
+    <span class="n">def</span> <span class="n">aggregate_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">captured</span> <span class="o">=</span> <span class="p">[</span>
+
+            <span class="n">a</span><span class="o">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">sum</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+
+    <span class="err">@</span><span class="n">staticmethod</span>
+
+    <span class="n">def</span> <span class="n">agg_std_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The function estimates the standard deviation for yearly sequestration data from all trees within the site.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">captured</span> <span class="o">=</span> <span class="p">[</span>
+
+            <span class="n">a</span><span class="o">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+
+    <span class="err">@</span><span class="n">staticmethod</span>
+
+    <span class="n">def</span> <span class="n">compute_current_carbon_release</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># roll current bins stored as np.array</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># aggregate required type of release (mulched, etc)</span>
+
+        <span class="n">mulched</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;mulched&#39;</span><span class="p">)</span>
+
+        <span class="n">standing</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">)</span>
+
+        <span class="n">root</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;decomposing_root&#39;</span><span class="p">)</span>
+
+        <span class="n">immediate</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;immediate_release&#39;</span><span class="p">)</span>
+
+        <span class="c1"># add new potential releases into release bins</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">standing</span> <span class="o">+</span> <span class="n">root</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">mulched</span>
+
+        <span class="c1"># compute and aggregate release</span>
+
+        <span class="n">def</span> <span class="n">update_release</span><span class="p">(</span><span class="n">type</span><span class="p">):</span>
+
+            <span class="n">carbon_release</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">])):</span>
+
+                <span class="n">mass</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+
+                <span class="n">rate</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">type</span><span class="p">)</span>
+
+                <span class="n">released</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">*</span> <span class="n">mass</span>
+
+                <span class="n">carbon_release</span> <span class="o">+=</span> <span class="n">released</span>
+
+                <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">released</span>
+
+            <span class="k">return</span> <span class="n">carbon_release</span>
+
+        <span class="n">carbon_release_slow</span> <span class="o">=</span> <span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">)</span>
+
+        <span class="n">carbon_release_fast</span> <span class="o">=</span> <span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;fast&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">carbon_release_fast</span> <span class="o">+</span> <span class="n">carbon_release_slow</span> <span class="o">+</span> <span class="n">immediate</span>
+
+    <span class="err">@</span><span class="n">staticmethod</span>
+
+    <span class="n">def</span> <span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;fast&#39;</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Determines a carbon release rate.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            year: (:obj:`int`) or (:obj:`float`): time passed since the biomass is dead.</span>
+
+<span class="sd">            state: (:obj:`str`): Represents exposure type can be one of (&#39;standing&#39;, &#39;mulched&#39;, &#39;root&#39;, &#39;fast&#39;, &#39;slow&#39;,)</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`float`): decay rate.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            The function computes the release rate based on the time spent since</span>
+
+<span class="sd">            the total carbon within biomass of a dead tree or its parts. The shape of function</span>
+
+<span class="sd">            assures a unit integral as time goes to infinity.</span>
+
+<span class="sd">            When k = 2, in the first 3 years around 60% is released, which corresponds to</span>
+
+<span class="sd">            empirical findings for mulched biomass above ground.</span>
+
+<span class="sd">            When k = 5, in the first 3 years around 40% is released, which corresponds to</span>
+
+<span class="sd">            empirical reports for carbon release for standing dead trees as well as underground roots.</span>
+
+<span class="sd">            check:</span>
+
+<span class="sd">                import scipy.integrate as integrate</span>
+
+<span class="sd">                integrate.quad(f, 0, 20) &gt; 0.96 for k in (2:5).</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">state</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span> <span class="s1">&#39;fast&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">5</span>
+
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">year</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="ancestors-in-mro">Ancestors (in MRO)</h4>
+<ul>
+<li>mesa.model.Model</li>
+</ul>
+<h4 id="class-variables">Class variables</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">dt_resolution</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">site_types</span>
+</code></pre></div>
+
+<h4 id="static-methods">Static methods</h4>
+<h4 id="agg_std_sequestration">agg_std_sequestration</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">agg_std_sequestration</span><span class="p">(</span>
+    <span class="n">model</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The function estimates the standard deviation for yearly sequestration data from all trees within the site.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model</td>
+<td>None</td>
+<td>(:obj:<code>Urban</code>): an urban forest model.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:float`): total sequestration in Kg.</td>
+</tr>
+</tbody>
+</table>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="nv">@staticmethod</span>
+
+    <span class="n">def</span> <span class="n">agg_std_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The function estimates the standard deviation for yearly sequestration data from all trees within the site.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+        <span class="n">captured</span> <span class="o">=</span> <span class="err">[</span>
+
+            <span class="n">a</span><span class="p">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="k">in</span> <span class="n">model</span><span class="p">.</span><span class="k">schedule</span><span class="p">.</span><span class="n">agents</span><span class="err">]</span>
+
+        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nf">std</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="aggregate">aggregate</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">aggregate</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">var</span><span class="p">,</span>
+    <span class="n">func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">Urban</span><span class="o">.&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x12ddafca0</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">init</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>A higher order function that aggregates a given variable.</p>
+<p>The aggregation function and the initial conditions can be specified.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="err">@</span><span class="n">staticmethod</span>
+
+    <span class="n">def</span> <span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="k">var</span><span class="p">,</span> <span class="k">func</span><span class="o">=</span><span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;A higher order function that aggregates a given variable.</span>
+
+<span class="sd">        The aggregation function and the initial conditions can be specified.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">func</span><span class="p">,</span> <span class="p">[</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="k">var</span><span class="p">))</span>
+
+                      <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">],</span> <span class="n">init</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="aggregate_sequestration">aggregate_sequestration</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">aggregate_sequestration</span><span class="p">(</span>
+    <span class="n">model</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The function that accumulates yearly sequestration data from all trees within the site.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model</td>
+<td>None</td>
+<td>(:obj:<code>Urban</code>): an urban forest model.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:float`): total sequestration in Kg.</td>
+</tr>
+<tr>
+<td>Note:</td>
+<td></td>
+</tr>
+<tr>
+<td>Todo:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="nv">@staticmethod</span>
+
+    <span class="n">def</span> <span class="n">aggregate_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The function that accumulates yearly sequestration data from all trees within the site.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="s2">        Note:</span>
+
+<span class="s2">        Todo:</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+        <span class="n">captured</span> <span class="o">=</span> <span class="err">[</span>
+
+            <span class="n">a</span><span class="p">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="k">in</span> <span class="n">model</span><span class="p">.</span><span class="k">schedule</span><span class="p">.</span><span class="n">agents</span><span class="err">]</span>
+
+        <span class="k">return</span> <span class="nf">sum</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="compute_carbon_release_rate">compute_carbon_release_rate</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_carbon_release_rate</span><span class="p">(</span>
+    <span class="n">year</span><span class="p">,</span>
+    <span class="n">state</span><span class="o">=</span><span class="s1">&#39;fast&#39;</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Determines a carbon release rate.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td>None</td>
+<td>(:obj:<code>int</code>) or (:obj:<code>float</code>): time passed since the biomass is dead.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>state</td>
+<td>None</td>
+<td>(:obj:<code>str</code>): Represents exposure type can be one of ('standing', 'mulched', 'root', 'fast', 'slow',)</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>float</code>): decay rate.</td>
+</tr>
+<tr>
+<td>Note:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="n">The</span> <span class="n">function</span> <span class="n">computes</span> <span class="n">the</span> <span class="n">release</span> <span class="n">rate</span> <span class="n">based</span> <span class="n">on</span> <span class="n">the</span> <span class="n">time</span> <span class="n">spent</span> <span class="n">since</span>
+<span class="n">the</span> <span class="n">total</span> <span class="n">carbon</span> <span class="n">within</span> <span class="n">biomass</span> <span class="n">of</span> <span class="n">a</span> <span class="n">dead</span> <span class="n">tree</span> <span class="ow">or</span> <span class="n">its</span> <span class="n">parts</span><span class="o">.</span> <span class="n">The</span> <span class="n">shape</span> <span class="n">of</span> <span class="n">function</span>
+<span class="n">assures</span> <span class="n">a</span> <span class="n">unit</span> <span class="n">integral</span> <span class="k">as</span> <span class="n">time</span> <span class="n">goes</span> <span class="n">to</span> <span class="n">infinity</span><span class="o">.</span>
+
+<span class="n">When</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">3</span> <span class="n">years</span> <span class="n">around</span> <span class="mi">60</span><span class="o">%</span> <span class="ow">is</span> <span class="n">released</span><span class="p">,</span> <span class="n">which</span> <span class="n">corresponds</span> <span class="n">to</span>
+<span class="n">empirical</span> <span class="n">findings</span> <span class="k">for</span> <span class="n">mulched</span> <span class="n">biomass</span> <span class="n">above</span> <span class="n">ground</span><span class="o">.</span>
+
+<span class="n">When</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">first</span> <span class="mi">3</span> <span class="n">years</span> <span class="n">around</span> <span class="mi">40</span><span class="o">%</span> <span class="ow">is</span> <span class="n">released</span><span class="p">,</span> <span class="n">which</span> <span class="n">corresponds</span> <span class="n">to</span>
+<span class="n">empirical</span> <span class="n">reports</span> <span class="k">for</span> <span class="n">carbon</span> <span class="n">release</span> <span class="k">for</span> <span class="n">standing</span> <span class="n">dead</span> <span class="n">trees</span> <span class="k">as</span> <span class="n">well</span> <span class="k">as</span> <span class="n">underground</span> <span class="n">roots</span><span class="o">.</span>
+
+<span class="n">check</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">scipy.integrate</span> <span class="k">as</span> <span class="nn">integrate</span>
+    <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.96</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span> <span class="o">|</span>
+</code></pre></div>
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="nv">@staticmethod</span>
+
+    <span class="n">def</span> <span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="kt">year</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;fast&#39;</span><span class="p">)</span><span class="o">:</span>
+
+        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">Determines a carbon release rate.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            year: (:obj:`int`) or (:obj:`float`): time passed since the biomass is dead.</span>
+
+<span class="s2">            state: (:obj:`str`): Represents exposure type can be one of (&#39;standing&#39;, &#39;mulched&#39;, &#39;root&#39;, &#39;fast&#39;, &#39;slow&#39;,)</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`float`): decay rate.</span>
+
+<span class="s2">        Note:</span>
+
+<span class="s2">            The function computes the release rate based on the time spent since</span>
+
+<span class="s2">            the total carbon within biomass of a dead tree or its parts. The shape of function</span>
+
+<span class="s2">            assures a unit integral as time goes to infinity.</span>
+
+<span class="s2">            When k = 2, in the first 3 years around 60% is released, which corresponds to</span>
+
+<span class="s2">            empirical findings for mulched biomass above ground.</span>
+
+<span class="s2">            When k = 5, in the first 3 years around 40% is released, which corresponds to</span>
+
+<span class="s2">            empirical reports for carbon release for standing dead trees as well as underground roots.</span>
+
+<span class="s2">            check:</span>
+
+<span class="s2">                import scipy.integrate as integrate</span>
+
+<span class="s2">                integrate.quad(f, 0, 20) &gt; 0.96 for k in (2:5).</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+
+        <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">state</span> <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span> <span class="s1">&#39;fast&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">5</span>
+
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="kt">year</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="compute_current_carbon_release">compute_current_carbon_release</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_current_carbon_release</span><span class="p">(</span>
+    <span class="n">model</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The function that accumulates yearly sequestration data from all trees within the site.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>model</td>
+<td>None</td>
+<td>(:obj:<code>Urban</code>): an urban forest model.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:float`): total sequestration in Kg.</td>
+</tr>
+<tr>
+<td>Note:</td>
+<td></td>
+</tr>
+<tr>
+<td>Todo:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_current_carbon_release</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            model: (:obj:`Urban`): an urban forest model.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            (:obj:float`): total sequestration in Kg.</span>
+
+<span class="ss">        Note:</span>
+
+<span class="ss">        Todo:</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">roll</span><span class="w"> </span><span class="k">current</span><span class="w"> </span><span class="n">bins</span><span class="w"> </span><span class="n">stored</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="k">array</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">&#39;slow&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">&#39;slow&#39;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">&#39;fast&#39;</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">&#39;fast&#39;</span><span class="o">]</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">aggregate</span><span class="w"> </span><span class="n">required</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">release</span><span class="w"> </span><span class="p">(</span><span class="n">mulched</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">mulched</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="p">.</span><span class="k">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mulched&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">standing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="p">.</span><span class="k">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="p">.</span><span class="k">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;decomposing_root&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">immediate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="p">.</span><span class="k">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;immediate_release&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">potential</span><span class="w"> </span><span class="n">releases</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="k">release</span><span class="w"> </span><span class="n">bins</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">&#39;slow&#39;</span><span class="o">][</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">standing</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">root</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">&#39;fast&#39;</span><span class="o">][</span><span class="n">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mulched</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="k">compute</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="k">aggregate</span><span class="w"> </span><span class="k">release</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">update_release</span><span class="p">(</span><span class="n">type</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">carbon_release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">type</span><span class="o">]</span><span class="p">))</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">mass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">type</span><span class="o">][</span><span class="n">i</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="p">.</span><span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">released</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mass</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">carbon_release</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">released</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">model</span><span class="p">.</span><span class="n">release_bins</span><span class="o">[</span><span class="n">type</span><span class="o">][</span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">released</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">carbon_release</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_release_slow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_release_fast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;fast&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">carbon_release_fast</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">carbon_release_slow</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">immediate</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="count">count</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">memory</span><span class="p">,</span>
+    <span class="n">predicate</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>A higher order function for counting agents that satisfy a specific attribute.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="n">predicate</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;A higher order function for counting agents that satisfy a specific attribute.&quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nf">len</span><span class="p">(</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">list</span><span class="p">(</span><span class="w"></span>
+
+<span class="w">                </span><span class="k">filter</span><span class="p">(</span><span class="w"></span>
+
+<span class="w">                    </span><span class="n">predicate</span><span class="p">,</span><span class="w"> </span><span class="o">[</span><span class="n"></span>
+
+<span class="n">                        eval(</span>
+
+<span class="n">                            &#39;a.{}&#39;.format(memory)) for a in model.schedule.agents</span><span class="o">]</span><span class="p">)))</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="methods">Methods</h4>
+<h4 id="get_weather_projection">get_weather_projection</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_weather_projection</span><span class="p">(</span>
+    <span class="bp">self</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The method retrieves wetaher projection for the current iteration,
+eg. year, at the moment it uses a simulated projections on the go,
+instead previously computed estimates or forecasts can be used as well.</p>
+<p>Args:
+    None</p>
+<p>Returns:
+    None
+Note:
+    The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)
+    These variables need to be parameterrized and read-in through site (model) specific
+    initialization module.
+Todo:
+    * Implement a site initialization method that sets the initial parameters
+    and tree specific variables.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">get_weather_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The method retrieves wetaher projection for the current iteration,</span>
+
+<span class="sd">        eg. year, at the moment it uses a simulated projections on the go,</span>
+
+<span class="sd">        instead previously computed estimates or forecasts can be used as well.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span>
+
+<span class="sd">            These variables need to be parameterrized and read-in through site (model) specific</span>
+
+<span class="sd">            initialization module.</span>
+
+<span class="sd">        Todo:</span>
+
+<span class="sd">            * Implement a site initialization method that sets the initial parameters</span>
+
+<span class="sd">            and tree specific variables.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span>
+
+        <span class="c1"># These variables need to be parameterrized and read-in through site (model) specific</span>
+
+        <span class="c1"># initialization module.</span>
+
+        <span class="c1"># season_mean = 200</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">WeatherAPI</span> <span class="o">=</span> <span class="n">WeatherSim</span><span class="p">(</span>
+
+            <span class="n">season_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="p">,</span> <span class="n">season_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="p">)</span>
+</code></pre></div>
+
+</details>
+<h4 id="next_id">next_id</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">next_id</span><span class="p">(</span>
+    <span class="bp">self</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</code></pre></div>
+
+<p>Return the next unique ID for agents, increment current_id</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">next_id</span><span class="p">(</span><span class="kr">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">int</span><span class="o">:</span>
+
+        <span class="s">&quot;&quot;&quot;Return the next unique ID for agents, increment current_id&quot;&quot;&quot;</span>
+
+        <span class="kr">self</span><span class="p">.</span><span class="n">current_id</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="kr">return</span> <span class="kr">self</span><span class="p">.</span><span class="n">current_id</span>
+</code></pre></div>
+
+</details>
+<h4 id="reset_randomizer">reset_randomizer</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">reset_randomizer</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">seed</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">NoneType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+<p>Reset the model random number generator.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seed</td>
+<td>None</td>
+<td>A new seed for the RNG; if None, reset using the current seed</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">reset_randomizer</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">seed</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">None</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;Reset the model random number generator.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            seed: A new seed for the RNG; if None, reset using the current seed</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">seed</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">None</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">_seed</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">_seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">seed</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="run_model">run_model</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">run_model</span><span class="p">(</span>
+    <span class="bp">self</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+
+<p>Run the model until the end condition is reached. Overload as</p>
+<p>needed.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">run_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">None</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;Run the model until the end condition is reached. Overload as</span>
+
+<span class="sd">        needed.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</code></pre></div>
+
+</details>
+<h4 id="step">step</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">step</span><span class="p">(</span>
+    <span class="bp">self</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Customized MESA method that sets the major components of scenario analyses process.</p>
+<p>Args:
+    None</p>
+<p>Returns:
+    None</p>
+<p>Note:</p>
+<p>Todo:</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    def step(self):
+
+        &quot;&quot;&quot;Customized MESA method that sets the major components of scenario analyses process.
+
+        Args:
+
+            None
+
+        Returns:
+
+            None
+
+        Note:
+
+        Todo:
+
+        &quot;&quot;&quot;
+
+        logging.info(&quot;Year:{}&quot;.format(self.schedule.time + 1))
+
+        self.get_weather_projection()
+
+        logging.info(&quot;Agents are working ...&quot;)
+
+        self.schedule.step()
+
+        logging.info(&quot;Yearly data is being collected ...&quot;)
+
+        self.datacollector.collect(self)
+</code></pre></div>
+
+</details>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../" title="Index" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Index
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../utilities/" title="Utilities" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Utilities
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Powered by
+        <a href="http://timothycrosley.github.io/portray">portray.</a>
+        You too can
+        <a href="http://timothycrosley.github.io/portray">
+          portray</a>
+        your Python project well using automatic documentation.
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.b1047164.min.js"></script>
+      
+    
+  </body>
+</html>
