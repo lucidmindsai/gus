@@ -56,8 +56,8 @@ class Urban(Model):
         super().__init__()
         # Setting MESA specific parameters
         width = int(max(population.xpos)) + 1
-        height = int(max(population.ypos)) + 1
-        self.grid = MultiGrid(width, height, torus=False)
+        length = int(max(population.ypos)) + 1
+        self.grid = MultiGrid(width, length, torus=False)
                 # to be parameterized and set during initialization.
         self.schedule = RandomActivation(self)
         
