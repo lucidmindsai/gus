@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gus"
-version = "0.1.6"
+version = "0.1.7"
 description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
 maintainers = [
@@ -9,7 +9,8 @@ maintainers = [
     "Axel Nilsson <axel@darkmatterlabs.org>"
 ]
 license = "Apache License 2.0"
-readme = "README.md"
+readme = "README-pypi.md"
+repository = "https://github.com/lucidmindsai/gus"
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     'Environment :: Console',
