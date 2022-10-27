@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gus"
-version = "0.1.7"
+version = "0.1.8"
 description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
 maintainers = [
