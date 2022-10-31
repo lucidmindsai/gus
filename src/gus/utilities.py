@@ -17,7 +17,9 @@ def get_raster_data(dtwin,
     Returns:
             (:obj:numpy.ndarray`): raster like data on a 2D grid.
         Note:
+            None
         Todo:
+            None
     """
     if counts: probe = lambda x,y: x + 1
     raster = np.zeros((dtwin.grid.width, dtwin.grid.height))

@@ -45,6 +45,8 @@ class WeatherSim():
         Returns:
             (:obj:`int`): Number of frost free days.
         Note:
+            None
         Todo:
+            None
         """
         return self.frost_free_days_ref

@@ -55,6 +55,7 @@ class Calibration():
         Returns:
             None
         Note:
+            None
 
         TODO:
             * pass optional settings as key word parameters.
@@ -77,9 +78,9 @@ class Calibration():
         Returns:
             None
         Note:
-
+            None
         Todo:
-
+            None
         """
         if leaf_storage:
             self.leaf_storage = leaf_storage * Calibration.m_to_mm
@@ -169,6 +170,7 @@ def pai_seasons(x, leaf_on_start, leaf_off_start, leaf_transition_days):
         Association 44, no. 1 (February 2008): 75–85. https://doi.org/10.1111/j.1752-1688.2007.00139.x   
 
     Todo:
+        None
     """
     x = x.assign(PAI = np.where(x['Conifers'], x['BAI']+x['LAI'],
                                 np.where(x.Date_time.dt.day_of_year < leaf_on_start, x['BAI'],
@@ -196,6 +198,7 @@ def lmbd(temperature):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015.  
 
     Todo:
+        None
     """
     return 2.501-0.002361*temperature
 
@@ -217,6 +220,7 @@ def e_s(temperature):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return 0.6108*np.exp(17.27*temperature/(237.3+temperature))
 
@@ -238,6 +242,7 @@ def e(dew_point_temperature):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return 0.6108*np.exp(17.27*dew_point_temperature/(237.3+dew_point_temperature))
 
@@ -261,6 +266,7 @@ def DELTA(temperature):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return 4098*e_s(temperature)/(237.3+temperature)**2
 
@@ -283,6 +289,7 @@ def rho_a(temperature, surface_pressure):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return 3.486 * surface_pressure/(275+temperature)
 
@@ -304,6 +311,7 @@ def rho_w(temperature):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return 999.88 + 0.018*temperature - 0.0051*temperature**2
 
@@ -329,6 +337,7 @@ def D(temperature, dew_point_temperature):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return np.maximum(e_s(temperature)-e(dew_point_temperature),0)
 
@@ -355,6 +364,7 @@ def U_t(wind_speed, wind_estimate_height):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return wind_speed*np.log(wind_estimate_height/d_w)/np.log(Z_u/d_w)
 
@@ -382,6 +392,7 @@ def r_a(wind_speed, wind_estimate_height, roughness_height):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     if roughness_height >= 0:
         return 4.72*np.log(wind_estimate_height/(Z_ov*roughness_height))/(1+0.53*U_t(wind_speed, wind_estimate_height))
@@ -409,6 +420,7 @@ def gamma(temperature,surface_pressure):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     #return 10**(-3)*c_p*surface_pressure*10/(lmbd(temperature)*0.622)# pressure in mbar
     return 10**(-3)*c_p*surface_pressure/(lmbd(temperature)*0.622)# pressure in kPa
@@ -431,6 +443,7 @@ def r_s(pai):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return 200/pai
 
@@ -455,6 +468,7 @@ def C_leaf(temperature):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return 2165*e_s(temperature)/(temperature+273.15)
 
@@ -480,6 +494,7 @@ def C_air(dew_point_temperature, temperature):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     return 2165*e(dew_point_temperature)/(temperature+273.15)
 
@@ -491,8 +506,10 @@ def potential_evaporation(temperature, dew_point, solar_radiation, sea_level_pre
     Returns: the updated ata frame 
         
     Note:
+        None
 
     Todo:
+        None
     """
     potential_evaporation = M_TO_MM*(1/(lmbd(temperature)*rho_w(temperature)))*(DELTA(temperature)*solar_radiation+(rho_a(temperature, sea_level_pressure)*c_p*D(temperature, dew_point))/r_a(wind_speed, wind_estimate_height, roughness_height))/(DELTA(temperature)+gamma(temperature, sea_level_pressure)*(1+(r_s(pai)/r_a(wind_speed, wind_estimate_height, roughness_height))))
 
@@ -506,8 +523,10 @@ def potential_evapotranspiration(df):
     Returns: the updated ata frame 
         
     Note:
+        None
 
     Todo:
+        None
     """
     df = df.assign(
         Potential_evaporation_v = lambda x: potential_evaporation(x.Temperature, x.Dew_Point, x.Solar_Radiation, x.Sea_Level_Pressure, x.PAI, x.Wind_Speed, x.height, roughness_height_trees),
@@ -550,6 +569,7 @@ def ped1(Date_time, Precipitation, Potential_evaporation, Maximum_storage, evp):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     df=pd.DataFrame({'Date_time':Date_time, 'Precipitation':Precipitation, 
     'Potential_evaporation':Potential_evaporation})
@@ -589,6 +609,7 @@ def ped3(df, evp_v, evp_g):
                 Washington, DC: US Department of Agriculture, Forest Service, 2015. 
 
     Todo:
+        None
     """
     df['Storage'] = 0
     df['Potential_evaporation_v_lag1'] = df.Potential_evaporation_v.shift(1).interpolate(limit_direction ='backward')
@@ -634,8 +655,10 @@ def ecosystem_services(i):
     Returns: water retention benefits for each agent [data frame] 
         
     Note:
+        None
 
     Todo:
+        None
     """
     output = df_scenario[tree_population.AgentID == AGENTS[i]]
     output = output[['Step', 'AgentID', 'height','BAI', 'LA','LAI', 'PAI', 'Conifers', 'Under_canopy_area', 'Total_under_canopy_area','Scenario', 'Precipitation_scale', 

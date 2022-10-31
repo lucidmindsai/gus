@@ -175,9 +175,10 @@ class Urban(Model):
             None
 
         Note:
+            None
 
         Todo:
-
+            None
         """
         logging.info("Year:{}".format(self.schedule.time + 1))
         self.get_weather_projection()
@@ -200,6 +201,7 @@ class Urban(Model):
         Returns:
             None
         Todo:
+            None
 
         """
 
@@ -222,6 +224,7 @@ class Urban(Model):
         Returns:
             None
         Todo:
+            None
 
         """
         try:
@@ -315,7 +318,9 @@ class Urban(Model):
         Returns:
             (:obj:float`): total sequestration in Kg.
         Note:
+            None
         Todo:
+            None
         """
         captured = [
             a.annual_gross_carbon_sequestration for a in model.schedule.agents]
@@ -347,7 +352,9 @@ class Urban(Model):
         Returns:
             (:obj:float`): total sequestration in Kg.
         Note:
+            None
         Todo:
+            None
         """
         # roll current bins stored as np.array
         model.release_bins['slow'] = np.roll(model.release_bins['slow'], 1)
