@@ -38,7 +38,18 @@ pytest = "^7.1.2"
 fuzzywuzzy = "^0.18.0"
 matplotlib = "^3.4.3"
 seaborn = "^0.11.2"
+portray = "^1.7.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.portray]
+modules = ["src"]
+
+
+[tool.portray.mkdocs.theme]
+name = "readthedocs"
+
+[[tool.portray.mkdocs.nav]]
+Home = "README.md"

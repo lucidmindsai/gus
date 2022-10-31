@@ -1,5 +1,22 @@
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 # gus
+![GUS-IMAGE](https://miro.medium.com/max/1400/1*fMM7rnq1RJCh-nFBGLUvyA.png)
 Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis.
+
+### Installation
+
+Install GUS from PyPi:
+
+```
+$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple gus==0.1.8
+```
+
+You can use, Poetry as well:
+
+```
+$ poetry add gus
+```
 
 ### Development
 
@@ -20,7 +37,7 @@ eval "$(pyenv virtualenv-init -)"
 Install a specific python version:
 
 ```
-$ pyenv install 3.9.12 -- Pick your Python version
+$ pyenv install 3.9.12 -- Pick your Python version (3.8 is available too)
 ```
 
 Create a virtualenv:
@@ -35,11 +52,12 @@ To enable virtualenv:
 $ pyenv shell gus
 ```
 
-Install GUS Python Deps:
+Now run poetry to setup GUS:
 
 ```
-$ pip install -r requirements.txt
+$ poetry build
 ```
+
 
 Stick to PEP8 rules for code development. To do the checks, install `flake8` to your local machine:
 
@@ -50,19 +68,6 @@ Once you're done with developing on your branch, before pushing your changes, pl
 `$ flake8 <file_you_changed_or_added>`
 
 Please fix the errors and warnings if they appear.
-
-### Documentation
-
-To read the documentation, navigate to `html/src` directory and open the index file.
-
-To generate documentation based on the docstr of the code
-first install
-
-`$ pip3 install pdoc3`
-
-and then run
-
-`pdoc --html gus/src`
 
 ### Testing
 

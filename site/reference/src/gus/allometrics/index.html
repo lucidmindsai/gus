@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Allometrics - gus</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../../../css/theme.css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Allometrics";
+    var mkdocs_page_input_path = "reference/src/gus/allometrics.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> gus</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Reference</span></p>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Src</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../../">Index</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">Gus</a>
+    <ul class="current">
+                <li class="toctree-l3"><a class="reference internal" href="../agents/">Agents</a>
+                </li>
+                <li class="toctree-l3 current"><a class="reference internal current" href="./">Allometrics</a>
+    <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../">Index</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../models/">Models</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../utilities/">Utilities</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../weather/">Weather</a>
+                </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="#">Impacts</a>
+    <ul>
+                <li class="toctree-l3"><a class="reference internal" href="../../impacts/carbon/">Carbon</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../impacts/">Index</a>
+                </li>
+                <li class="toctree-l3"><a class="reference internal" href="../../impacts/water/">Water</a>
+                </li>
+    </ul>
+                </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">gus</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Reference &raquo;</li>
+        
+      
+        
+          <li>Src &raquo;</li>
+        
+      
+        
+          <li>Gus &raquo;</li>
+        
+      
+    
+    <li>Allometrics</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/lucidmindsai/gus/edit/main/reference/src/gus/allometrics.md"> Edit on gus</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="module-srcgusallometrics">Module src.gus.allometrics</h1>
+<p>None</p>
+<p>None</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1"># Importing Python Libraries</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">fuzzywuzzy</span> <span class="kn">import</span> <span class="n">process</span>
+
+<span class="k">class</span> <span class="nc">Species</span><span class="p">():</span>
+
+    <span class="sd">&quot;&quot;&quot;Object that holds standard tree growth rate by species at different sites.</span>
+
+<span class="sd">    Source: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">    Todo:</span>
+
+<span class="sd">        Consider to convert this into a db or API.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Ref: Root to shoot ratio (Cairns et al. 1997)</span>
+
+    <span class="n">root_to_shoot_ratio</span> <span class="o">=</span> <span class="mf">0.26</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species_db</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;The constructor method.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_db: (:obj:`str`): File name that holds parameters for allometrics of</span>
+
+<span class="sd">            the species used in the models. Eg:&#39;./gus/inpurs/allometrics.json&#39;</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">species_filename</span> <span class="o">=</span> <span class="n">species_db</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">species_filename</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="kp">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">get_diameter_growth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Retrieve annual avg diameter growth rate for the site for the given species.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format. Ex</span>
+
+<span class="sd">            &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`float`): the standard growth per year in cm.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">species</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">species</span><span class="p">][</span><span class="s1">&#39;diameter_growth&#39;</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="c1"># Return moderate growth rate.</span>
+
+            <span class="k">return</span> <span class="mf">0.8382</span>
+
+    <span class="k">def</span> <span class="nf">get_height_at_maturity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Observed avg total height of the tree for the given species.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format. Ex</span>
+
+<span class="sd">            &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`int`): Avg height in meters.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">species</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">species</span><span class="p">][</span><span class="s1">&#39;height_at_maturity&#39;</span><span class="p">]</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="c1"># Return moderate growth rate.</span>
+
+            <span class="k">return</span> <span class="mi">25</span>
+
+    <span class="k">def</span> <span class="nf">list_species</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;List existing species whose carbon related parameters exist within the library.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`list` of `String`): List of species names.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">fuzzymatching</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; Fuzzy matching species name.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species: (:obj:`string`): name of the species</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`string`): Species name in &#39;genusName_speciesName&#39; format</span>
+
+<span class="sd">            that has highest matching score.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            If the best matching has a poor score (&lt;10% similarity) then</span>
+
+<span class="sd">            betula_pendula is passed on as default.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">highest</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">extractOne</span><span class="p">(</span><span class="n">species</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_species</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+
+            <span class="n">highest</span> <span class="o">=</span> <span class="s1">&#39;betula_pendula&#39;</span>
+
+        <span class="k">return</span> <span class="n">highest</span>
+
+    <span class="k">def</span> <span class="nf">get_eqn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species_name</span><span class="p">,</span> <span class="n">allometry_type</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; The method retrieves parameters of a given growth function</span>
+
+<span class="sd">        and sets its constant paramters and returns a function to be used</span>
+
+<span class="sd">        by the tree agents.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="sd">            allometry_type: (:obj:`string`): type of of growth can be height, canopy_width</span>
+
+<span class="sd">                canopy_height.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`f(string)-&gt;float`): the growth function</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">eq_type</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form_and_constants</span><span class="p">(</span>
+
+            <span class="n">species_name</span><span class="p">,</span> <span class="n">allometry_type</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">eq_type</span> <span class="o">==</span> <span class="s1">&#39;exponential&#39;</span><span class="p">:</span>
+
+            <span class="k">return</span> <span class="n">Species</span><span class="o">.</span><span class="n">fit_exponential</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">eq_type</span> <span class="o">==</span> <span class="s1">&#39;polynomial&#39;</span><span class="p">:</span>
+
+            <span class="k">return</span> <span class="n">Species</span><span class="o">.</span><span class="n">fit_polynomial</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">eq_type</span> <span class="o">==</span> <span class="s1">&#39;parametric&#39;</span><span class="p">:</span>
+
+            <span class="k">return</span> <span class="n">Species</span><span class="o">.</span><span class="n">fit_parametric</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;Equation </span><span class="si">{}</span><span class="s1"> for </span><span class="si">{}</span><span class="s1"> type is not implemented.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+
+                <span class="n">eq_type</span><span class="p">,</span> <span class="n">allometry_type</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">get_eqn_biomass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species_name</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; The method retrieves constants of a bimomass function for the given species</span>
+
+<span class="sd">        and returns the species specific function.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`f(string)-&gt;float`): the biomass function</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            Refactoring note: Consider to re implement this by the generic function above.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">eq_type</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_form_and_constants</span><span class="p">(</span><span class="n">species_name</span><span class="p">,</span> <span class="s1">&#39;biomass&#39;</span><span class="p">)</span>
+
+        <span class="n">A</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span>
+
+        <span class="n">B</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
+
+        <span class="n">C</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">eq_type</span> <span class="o">==</span> <span class="s1">&#39;mass_1&#39;</span><span class="p">:</span>
+
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">dbh</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">e</span> <span class="o">**</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="kp">log</span><span class="p">(</span><span class="n">dbh</span><span class="p">)</span> <span class="o">+</span> <span class="n">C</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Species</span><span class="o">.</span><span class="n">root_to_shoot_ratio</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">eq_type</span> <span class="o">==</span> <span class="s1">&#39;mass_2&#39;</span><span class="p">:</span>
+
+            <span class="k">return</span> <span class="k">lambda</span> <span class="n">dbh</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Species</span><span class="o">.</span><span class="n">root_to_shoot_ratio</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_form_and_constants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">species_name</span><span class="p">,</span> <span class="n">allometry_type</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot; The method retrieves parameters and type of a growth function for</span>
+
+<span class="sd">        the given species.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="sd">            allometry_type: (:obj:`string`): type of of growth can be height, canopy_width</span>
+
+<span class="sd">                canopy_height.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`(string, dict`)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">form</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">species_name</span><span class="p">][</span><span class="s1">&#39;equations&#39;</span><span class="p">][</span><span class="n">allometry_type</span><span class="p">][</span><span class="s1">&#39;equation_type&#39;</span><span class="p">]</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">species_name</span><span class="p">][</span><span class="s1">&#39;equations&#39;</span><span class="p">][</span><span class="n">allometry_type</span><span class="p">][</span><span class="s1">&#39;params&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">filter_dbh_size</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span> <span class="n">minv</span><span class="p">,</span> <span class="n">maxv</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Utility function to assure the range of dbh that can be used by the growth functions</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># converting the dbh in cm into inche</span>
+
+        <span class="n">dbh</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">minv</span><span class="p">,</span> <span class="mf">0.393700787</span> <span class="o">*</span> <span class="n">dbh</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">maxv</span><span class="p">,</span> <span class="n">dbh</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">fit_polynomial</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Static method that sets the constant of a second degree polynomial function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">B0</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span>
+
+        <span class="n">B1</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span>
+
+        <span class="n">B2</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">]</span>
+
+        <span class="n">DBHMin</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMin&#39;</span><span class="p">]</span>
+
+        <span class="n">DBHMax</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMax&#39;</span><span class="p">]</span>
+
+        <span class="k">def</span> <span class="nf">fit_pol</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span>
+
+            <span class="c1"># converting the dbh in cm into inche</span>
+
+            <span class="n">dbh</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">DBHMax</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">DBHMin</span><span class="p">,</span> <span class="mf">0.393700787</span> <span class="o">*</span> <span class="n">dbh</span><span class="p">))</span>
+
+            <span class="n">estimate</span> <span class="o">=</span> <span class="n">B0</span> <span class="o">+</span> <span class="p">(</span><span class="n">B1</span> <span class="o">*</span> <span class="n">dbh</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">B2</span> <span class="o">*</span> <span class="n">dbh</span> <span class="o">*</span> <span class="n">dbh</span><span class="p">)</span>
+
+            <span class="c1"># converting into meters</span>
+
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3048</span> <span class="o">*</span> <span class="n">estimate</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fit_pol</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">fit_exponential</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Static method that sets the constant of the exponential function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">B0</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span>
+
+        <span class="n">B1</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span>
+
+        <span class="n">DBHMin</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMin&#39;</span><span class="p">]</span>
+
+        <span class="n">DBHMax</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMax&#39;</span><span class="p">]</span>
+
+        <span class="k">def</span> <span class="nf">fit_exp</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span>
+
+            <span class="c1"># converting the dbh in cm into inche</span>
+
+            <span class="n">dbh</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">DBHMax</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">DBHMin</span><span class="p">,</span> <span class="mf">0.393700787</span> <span class="o">*</span> <span class="n">dbh</span><span class="p">))</span>
+
+            <span class="n">estimate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="kp">exp</span><span class="p">(</span><span class="n">B0</span> <span class="o">+</span> <span class="n">B1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="kp">log</span><span class="p">(</span><span class="n">dbh</span><span class="p">))</span>
+
+            <span class="c1"># converting into meters</span>
+
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.3048</span> <span class="o">*</span> <span class="n">estimate</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fit_exp</span>
+
+    <span class="nd">@staticmethod</span>
+
+    <span class="k">def</span> <span class="nf">fit_parametric</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Static method that sets the constant of the exponential function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">B0</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span>
+
+        <span class="n">B1</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span>
+
+        <span class="n">B2</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">]</span>
+
+        <span class="k">def</span> <span class="nf">fit_parametric</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span>
+
+            <span class="n">estimate</span> <span class="o">=</span> <span class="n">B0</span> <span class="o">+</span> <span class="n">B1</span> <span class="o">*</span> <span class="p">(</span><span class="n">dbh</span> <span class="o">**</span> <span class="n">B2</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">estimate</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fit_parametric</span>
+</code></pre></div>
+
+</details>
+<h2 id="classes">Classes</h2>
+<h3 id="species">Species</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Species</span><span class="p">(</span>
+    <span class="n">species_db</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Species</span><span class="p">():</span><span class="w"></span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Object that holds standard tree growth rate by species at different sites.</span>
+
+<span class="sd">    Source: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">    Todo:</span>
+
+<span class="sd">        Consider to convert this into a db or API.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Ref: Root to shoot ratio (Cairns et al. 1997)</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">root_to_shoot_ratio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.26</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">species_db</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The constructor method.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_db: (:obj:`str`): File name that holds parameters for allometrics of</span>
+
+<span class="sd">            the species used in the models. Eg:&#39;./gus/inpurs/allometrics.json&#39;</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">species_filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">species_db</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">species_filename</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_diameter_growth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Retrieve annual avg diameter growth rate for the site for the given species.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format. Ex</span>
+
+<span class="sd">            &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`float`): the standard growth per year in cm.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">species</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">species</span><span class="p">][</span><span class="s1">&#39;diameter_growth&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># Return moderate growth rate.</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mf">0.8382</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_height_at_maturity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Observed avg total height of the tree for the given species.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format. Ex</span>
+
+<span class="sd">            &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`int`): Avg height in meters.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">species</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">species</span><span class="p">][</span><span class="s1">&#39;height_at_maturity&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># Return moderate growth rate.</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">list_species</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List existing species whose carbon related parameters exist within the library.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`list` of `String`): List of species names.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">fuzzymatching</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Fuzzy matching species name.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species: (:obj:`string`): name of the species</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`string`): Species name in &#39;genusName_speciesName&#39; format</span>
+
+<span class="sd">            that has highest matching score.</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            If the best matching has a poor score (&lt;10% similarity) then</span>
+
+<span class="sd">            betula_pendula is passed on as default.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">highest</span><span class="p">,</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">process</span><span class="o">.</span><span class="n">extractOne</span><span class="p">(</span><span class="n">species</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">list_species</span><span class="p">())</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">highest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;betula_pendula&#39;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">highest</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_eqn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="p">,</span><span class="w"> </span><span class="n">allometry_type</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; The method retrieves parameters of a given growth function</span>
+
+<span class="sd">        and sets its constant paramters and returns a function to be used</span>
+
+<span class="sd">        by the tree agents.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="sd">            allometry_type: (:obj:`string`): type of of growth can be height, canopy_width</span>
+
+<span class="sd">                canopy_height.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`f(string)-&gt;float`): the growth function</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">eq_type</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">get_form_and_constants</span><span class="p">(</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">species_name</span><span class="p">,</span><span class="w"> </span><span class="n">allometry_type</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;exponential&#39;</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Species</span><span class="o">.</span><span class="n">fit_exponential</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;polynomial&#39;</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Species</span><span class="o">.</span><span class="n">fit_polynomial</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;parametric&#39;</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Species</span><span class="o">.</span><span class="n">fit_parametric</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">else</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">NameError</span><span class="p">(</span><span class="s1">&#39;Equation {} for {} type is not implemented.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">eq_type</span><span class="p">,</span><span class="w"> </span><span class="n">allometry_type</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_eqn_biomass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; The method retrieves constants of a bimomass function for the given species</span>
+
+<span class="sd">        and returns the species specific function.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`f(string)-&gt;float`): the biomass function</span>
+
+<span class="sd">        Note:</span>
+
+<span class="sd">            Refactoring note: Consider to re implement this by the generic function above.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">eq_type</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">get_form_and_constants</span><span class="p">(</span><span class="n">species_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;biomass&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;mass_1&#39;</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">dbh</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dbh</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Species</span><span class="o">.</span><span class="n">root_to_shoot_ratio</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">elif</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;mass_2&#39;</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">dbh</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">pow</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">C</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Species</span><span class="o">.</span><span class="n">root_to_shoot_ratio</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_form_and_constants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="p">,</span><span class="w"> </span><span class="n">allometry_type</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; The method retrieves parameters and type of a growth function for</span>
+
+<span class="sd">        the given species.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="sd">            allometry_type: (:obj:`string`): type of of growth can be height, canopy_width</span>
+
+<span class="sd">                canopy_height.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`(string, dict`)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">species_name</span><span class="p">][</span><span class="s1">&#39;equations&#39;</span><span class="p">][</span><span class="n">allometry_type</span><span class="p">][</span><span class="s1">&#39;equation_type&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="n">species_name</span><span class="p">][</span><span class="s1">&#39;equations&#39;</span><span class="p">][</span><span class="n">allometry_type</span><span class="p">][</span><span class="s1">&#39;params&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">form</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">filter_dbh_size</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">minv</span><span class="p">,</span><span class="w"> </span><span class="n">maxv</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Utility function to assure the range of dbh that can be used by the growth functions</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1"># converting the dbh in cm into inche</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dbh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">minv</span><span class="p">,</span><span class="w"> </span><span class="mf">0.393700787</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">maxv</span><span class="p">,</span><span class="w"> </span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">fit_polynomial</span><span class="p">(</span><span class="n">params</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Static method that sets the constant of a second degree polynomial function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">DBHMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMin&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">DBHMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMax&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">fit_pol</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># converting the dbh in cm into inche</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">dbh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">DBHMax</span><span class="p">,</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">DBHMin</span><span class="p">,</span><span class="w"> </span><span class="mf">0.393700787</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">B1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">B2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># converting into meters</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3048</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">estimate</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fit_pol</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">fit_exponential</span><span class="p">(</span><span class="n">params</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Static method that sets the constant of the exponential function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">DBHMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMin&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">DBHMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMax&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">fit_exp</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># converting the dbh in cm into inche</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">dbh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">DBHMax</span><span class="p">,</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">DBHMin</span><span class="p">,</span><span class="w"> </span><span class="mf">0.393700787</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">B0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dbh</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># converting into meters</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3048</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">estimate</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fit_exp</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">fit_parametric</span><span class="p">(</span><span class="n">params</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Static method that sets the constant of the exponential function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">fit_parametric</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">dbh</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">B2</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">estimate</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fit_parametric</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="class-variables">Class variables</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">root_to_shoot_ratio</span>
+</code></pre></div>
+
+<h4 id="static-methods">Static methods</h4>
+<h4 id="filter_dbh_size">filter_dbh_size</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">filter_dbh_size</span><span class="p">(</span>
+    <span class="n">dbh</span><span class="p">,</span>
+    <span class="n">minv</span><span class="p">,</span>
+    <span class="n">maxv</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Utility function to assure the range of dbh that can be used by the growth functions</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">filter_dbh_size</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">minv</span><span class="p">,</span><span class="w"> </span><span class="n">maxv</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot;Utility function to assure the range of dbh that can be used by the growth functions</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">converting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">dbh</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">cm</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">inche</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">dbh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">minv</span><span class="p">,</span><span class="w"> </span><span class="mf">0.393700787</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">maxv</span><span class="p">,</span><span class="w"> </span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="fit_exponential">fit_exponential</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">fit_exponential</span><span class="p">(</span>
+    <span class="n">params</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Static method that sets the constant of the exponential function.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">fit_exponential</span><span class="p">(</span><span class="n">params</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Static method that sets the constant of the exponential function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">DBHMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMin&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">DBHMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMax&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">fit_exp</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># converting the dbh in cm into inche</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">dbh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">DBHMax</span><span class="p">,</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">DBHMin</span><span class="p">,</span><span class="w"> </span><span class="mf">0.393700787</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">B0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dbh</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># converting into meters</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3048</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">estimate</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fit_exp</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="fit_parametric">fit_parametric</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">fit_parametric</span><span class="p">(</span>
+    <span class="n">params</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Static method that sets the constant of the exponential function.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">fit_parametric</span><span class="p">(</span><span class="n">params</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Static method that sets the constant of the exponential function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">fit_parametric</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">dbh</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">B2</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">estimate</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fit_parametric</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="fit_polynomial">fit_polynomial</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">fit_polynomial</span><span class="p">(</span>
+    <span class="n">params</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Static method that sets the constant of a second degree polynomial function.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">fit_polynomial</span><span class="p">(</span><span class="n">params</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Static method that sets the constant of a second degree polynomial function.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B0&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B1&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">DBHMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMin&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">DBHMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DBHMax&#39;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">fit_pol</span><span class="p">(</span><span class="n">dbh</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># converting the dbh in cm into inche</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">dbh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">DBHMax</span><span class="p">,</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">DBHMin</span><span class="p">,</span><span class="w"> </span><span class="mf">0.393700787</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">B1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">B2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># converting into meters</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3048</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">estimate</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fit_pol</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="methods">Methods</h4>
+<h4 id="fuzzymatching">fuzzymatching</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">fuzzymatching</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">species</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Fuzzy matching species name.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>species</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): name of the species</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>string</code>): Species name in 'genusName_speciesName' format</td>
+</tr>
+<tr>
+<td>that has highest matching score.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Note:
+    If the best matching has a poor score (&lt;10% similarity) then
+    betula_pendula is passed on as default. |</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">fuzzymatching</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2"> Fuzzy matching species name.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            species: (:obj:`string`): name of the species</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`string`): Species name in &#39;genusName_speciesName&#39; format</span>
+
+<span class="s2">            that has highest matching score.</span>
+
+<span class="s2">        Note:</span>
+
+<span class="s2">            If the best matching has a poor score (&lt;10% similarity) then</span>
+
+<span class="s2">            betula_pendula is passed on as default.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">highest</span><span class="p">,</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">process</span><span class="p">.</span><span class="n">extractOne</span><span class="p">(</span><span class="n">species</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">list_species</span><span class="p">())</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">score</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">highest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;betula_pendula&#39;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">highest</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="get_diameter_growth">get_diameter_growth</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_diameter_growth</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">species</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Retrieve annual avg diameter growth rate for the site for the given species.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>species</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): name of the species in 'genusName_speciesName' format. Ex</td>
+<td>None</td>
+</tr>
+<tr>
+<td>'picea_abies'. Use the iTree naming scheme</td>
+<td>None</td>
+<td>https://database.itreetools.org/#/speciesSearch</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>float</code>): the standard growth per year in cm.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_diameter_growth</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">Retrieve annual avg diameter growth rate for the site for the given species.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            species: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format. Ex</span>
+
+<span class="s2">            &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`float`): the standard growth per year in cm.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">species</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="k">keys</span><span class="p">()</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">parameters</span><span class="err">[</span><span class="n">species</span><span class="err">][</span><span class="s1">&#39;diameter_growth&#39;</span><span class="err">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">else</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># Return moderate growth rate.</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mf">0.8382</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="get_eqn">get_eqn</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_eqn</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">species_name</span><span class="p">,</span>
+    <span class="n">allometry_type</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The method retrieves parameters of a given growth function</p>
+<p>and sets its constant paramters and returns a function to be used
+by the tree agents.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>species_name</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): name of the species</td>
+<td>None</td>
+</tr>
+<tr>
+<td>allometry_type</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): type of of growth can be height, canopy_width</td>
+<td></td>
+</tr>
+<tr>
+<td>canopy_height.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>f(string)-&gt;float</code>): the growth function</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_eqn</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="p">,</span><span class="w"> </span><span class="n">allometry_type</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2"> The method retrieves parameters of a given growth function</span>
+
+<span class="s2">        and sets its constant paramters and returns a function to be used</span>
+
+<span class="s2">        by the tree agents.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="s2">            allometry_type: (:obj:`string`): type of of growth can be height, canopy_width</span>
+
+<span class="s2">                canopy_height.</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`f(string)-&gt;float`): the growth function</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">eq_type</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">get_form_and_constants</span><span class="p">(</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">species_name</span><span class="p">,</span><span class="w"> </span><span class="n">allometry_type</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;exponential&#39;</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Species</span><span class="p">.</span><span class="n">fit_exponential</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">elif</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;polynomial&#39;</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Species</span><span class="p">.</span><span class="n">fit_polynomial</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">elif</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;parametric&#39;</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">Species</span><span class="p">.</span><span class="n">fit_parametric</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">else</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">raise</span><span class="w"> </span><span class="n">NameError</span><span class="p">(</span><span class="s1">&#39;Equation {} for {} type is not implemented.&#39;</span><span class="p">.</span><span class="k">format</span><span class="p">(</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">eq_type</span><span class="p">,</span><span class="w"> </span><span class="n">allometry_type</span><span class="p">))</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="get_eqn_biomass">get_eqn_biomass</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_eqn_biomass</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">species_name</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The method retrieves constants of a bimomass function for the given species</p>
+<p>and returns the species specific function.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>species_name</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): name of the species</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>f(string)-&gt;float</code>): the biomass function</td>
+</tr>
+<tr>
+<td>Note:</td>
+<td></td>
+</tr>
+<tr>
+<td>Refactoring note: Consider to re implement this by the generic function above.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_eqn_biomass</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2"> The method retrieves constants of a bimomass function for the given species</span>
+
+<span class="s2">        and returns the species specific function.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`f(string)-&gt;float`): the biomass function</span>
+
+<span class="s2">        Note:</span>
+
+<span class="s2">            Refactoring note: Consider to re implement this by the generic function above.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">eq_type</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">get_form_and_constants</span><span class="p">(</span><span class="n">species_name</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;biomass&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="err">[</span><span class="s1">&#39;A&#39;</span><span class="err">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="err">[</span><span class="s1">&#39;B&#39;</span><span class="err">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="err">[</span><span class="s1">&#39;C&#39;</span><span class="err">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;mass_1&#39;</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">dbh</span><span class="o">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">e</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">dbh</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Species</span><span class="p">.</span><span class="n">root_to_shoot_ratio</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">elif</span><span class="w"> </span><span class="n">eq_type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;mass_2&#39;</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">dbh</span><span class="o">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nf">pow</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">C</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Species</span><span class="p">.</span><span class="n">root_to_shoot_ratio</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="get_form_and_constants">get_form_and_constants</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_form_and_constants</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">species_name</span><span class="p">,</span>
+    <span class="n">allometry_type</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>The method retrieves parameters and type of a growth function for</p>
+<p>the given species.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>species_name</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): name of the species</td>
+<td>None</td>
+</tr>
+<tr>
+<td>allometry_type</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): type of of growth can be height, canopy_width</td>
+<td></td>
+</tr>
+<tr>
+<td>canopy_height.</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>(string, dict</code>)</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_form_and_constants</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="p">,</span><span class="w"> </span><span class="n">allometry_type</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="ss">&quot;&quot;&quot; The method retrieves parameters and type of a growth function for</span>
+
+<span class="ss">        the given species.</span>
+
+<span class="ss">        Args:</span>
+
+<span class="ss">            species_name: (:obj:`string`): name of the species</span>
+
+<span class="ss">            allometry_type: (:obj:`string`): type of of growth can be height, canopy_width</span>
+
+<span class="ss">                canopy_height.</span>
+
+<span class="ss">        Returns:</span>
+
+<span class="ss">            (:obj:`(string, dict`)</span>
+
+<span class="ss">        &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">form</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">parameters</span><span class="o">[</span><span class="n">species_name</span><span class="o">][</span><span class="n">&#39;equations&#39;</span><span class="o">][</span><span class="n">allometry_type</span><span class="o">][</span><span class="n">&#39;equation_type&#39;</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="k">parameters</span><span class="o">[</span><span class="n">species_name</span><span class="o">][</span><span class="n">&#39;equations&#39;</span><span class="o">][</span><span class="n">allometry_type</span><span class="o">][</span><span class="n">&#39;params&#39;</span><span class="o">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">form</span><span class="p">,</span><span class="w"> </span><span class="n">params</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="get_height_at_maturity">get_height_at_maturity</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">get_height_at_maturity</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">species</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>Observed avg total height of the tree for the given species.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>species</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): name of the species in 'genusName_speciesName' format. Ex</td>
+<td>None</td>
+</tr>
+<tr>
+<td>'picea_abies'. Use the iTree naming scheme</td>
+<td>None</td>
+<td>https://database.itreetools.org/#/speciesSearch</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>int</code>): Avg height in meters.</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_height_at_maturity</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">species</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">Observed avg total height of the tree for the given species.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            species: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format. Ex</span>
+
+<span class="s2">            &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`int`): Avg height in meters.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">species</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="k">keys</span><span class="p">()</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">parameters</span><span class="err">[</span><span class="n">species</span><span class="err">][</span><span class="s1">&#39;height_at_maturity&#39;</span><span class="err">]</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">else</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="c1"># Return moderate growth rate.</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="list_species">list_species</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">list_species</span><span class="p">(</span>
+    <span class="bp">self</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>List existing species whose carbon related parameters exist within the library.</p>
+<p>Args:
+    None</p>
+<p>Returns:
+    (:obj:<code>list</code> of <code>String</code>): List of species names.</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">list_species</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">List existing species whose carbon related parameters exist within the library.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            None</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`list` of `String`): List of species names.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">list</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">parameters</span><span class="p">.</span><span class="k">keys</span><span class="p">())</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../" class="btn btn-neutral float-right" title="Index">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../agents/" class="btn btn-neutral" title="Agents"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../agents/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../../..';</script>
+    <script src="../../../../js/theme_extra.js" defer></script>
+    <script src="../../../../js/theme.js" defer></script>
+      <script src="../../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
