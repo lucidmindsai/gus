@@ -50,10 +50,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="" href="/reference/src">Code_Docs</a>
-                    </li>
-                </ul>
                 <p class="caption"><span class="caption-text">Reference</span></p>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Src</a>
@@ -143,7 +139,9 @@
                 <h1 id="module-srcgusmodels">Module src.gus.models</h1>
 <p>None</p>
 <p>None</p>
-<details class="example"><summary>View Source</summary><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
 <span class="normal">  4</span>
@@ -815,7 +813,7 @@
 <span class="normal">670</span>
 <span class="normal">671</span>
 <span class="normal">672</span>
-<span class="normal">673</span></pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="normal">673</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
 
 <span class="c1"># -*- coding: utf-8 -*-</span>
 
@@ -841,7 +839,7 @@
 
 <span class="kn">from</span> <span class="nn">mesa.datacollection</span> <span class="kn">import</span> <span class="n">DataCollector</span>
 
-<span class="c1"># Importing needed SAF objects</span>
+<span class="c1"># Importing needed GUS objects</span>
 
 <span class="kn">from</span> <span class="nn">.agents</span> <span class="kn">import</span> <span class="n">Tree</span>
 
@@ -1488,8 +1486,8 @@
         <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">state</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span> <span class="s1">&#39;fast&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">5</span>
 
         <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">year</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
+
 </details>
 <h2 id="classes">Classes</h2>
 <h3 id="urban">Urban</h3>
@@ -1502,37 +1500,39 @@
 <span class="p">)</span>
 </code></pre></div>
 
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">Urban</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="n">Urban</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span><span class="w"></span>
 
-    <span class="sd">&quot;&quot;&quot;A generic urban green space model. To be tailored according to specific sites.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A generic urban green space model. To be tailored according to specific sites.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span><span class="w"></span>
 
-    <span class="c1"># Used to hold the scaling of actual physical space within the digital space.</span>
+<span class="w">    </span><span class="c1"># Used to hold the scaling of actual physical space within the digital space.</span><span class="w"></span>
 
-    <span class="c1"># It shows the size of each cell (square) in meters.</span>
+<span class="w">    </span><span class="c1"># It shows the size of each cell (square) in meters.</span><span class="w"></span>
 
-    <span class="c1"># TODO: this needs to be brought up as a parameter and placed within the groups</span>
+<span class="w">    </span><span class="c1"># TODO: this needs to be brought up as a parameter and placed within the groups</span><span class="w"></span>
 
-    <span class="c1">#      of parameters that handle physical to digital twin mapping.</span>
+<span class="w">    </span><span class="c1">#      of parameters that handle physical to digital twin mapping.</span><span class="w"></span>
 
-    <span class="n">dt_resolution</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#in meters</span>
+<span class="w">    </span><span class="n">dt_resolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="c1">#in meters</span><span class="w"></span>
 
-    <span class="n">site_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;park&#39;</span><span class="p">,</span><span class="s1">&#39;street&#39;</span><span class="p">,</span><span class="s1">&#39;forest&#39;</span><span class="p">,</span><span class="s1">&#39;pocket&#39;</span><span class="p">]</span>
+<span class="w">    </span><span class="n">site_types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;park&#39;</span><span class="p">,</span><span class="s1">&#39;street&#39;</span><span class="p">,</span><span class="s1">&#39;forest&#39;</span><span class="p">,</span><span class="s1">&#39;pocket&#39;</span><span class="p">]</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"></span>
 
-        <span class="n">population</span><span class="p">,</span>
+<span class="w">        </span><span class="n">population</span><span class="p">,</span><span class="w"></span>
 
-        <span class="n">species_composition</span><span class="p">,</span>
+<span class="w">        </span><span class="n">species_composition</span><span class="p">,</span><span class="w"></span>
 
-        <span class="n">site_config</span><span class="p">,</span>
+<span class="w">        </span><span class="n">site_config</span><span class="p">,</span><span class="w"></span>
 
-        <span class="n">scenario</span><span class="p">,</span>
+<span class="w">        </span><span class="n">scenario</span><span class="p">,</span><span class="w"></span>
 
-        <span class="n">batch</span><span class="o">=</span><span class="n">False</span><span class="p">):</span>
+<span class="w">        </span><span class="n">batch</span><span class="o">=</span><span class="n">False</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;The constructor method.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The constructor method.</span>
 
 <span class="sd">        Args:</span>
 
@@ -1558,213 +1558,213 @@
 
 <span class="sd">            Check for hard coded constants and parameterize further.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="n">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+<span class="w">        </span><span class="n">super</span><span class="p">()</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span><span class="w"></span>
 
-        <span class="c1"># Setting MESA specific parameters</span>
+<span class="w">        </span><span class="c1"># Setting MESA specific parameters</span><span class="w"></span>
 
-        <span class="n">width</span> <span class="o">=</span> <span class="nb nb-Type">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">xpos</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="w">        </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">xpos</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 
-        <span class="n">height</span> <span class="o">=</span> <span class="nb nb-Type">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">ypos</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="w">        </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb nb-Type">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">ypos</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">grid</span> <span class="o">=</span> <span class="n">MultiGrid</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">torus</span><span class="o">=</span><span class="n">False</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MultiGrid</span><span class="p">(</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">torus</span><span class="o">=</span><span class="n">False</span><span class="p">)</span><span class="w"></span>
 
-                <span class="c1"># to be parameterized and set during initialization.</span>
+<span class="w">                </span><span class="c1"># to be parameterized and set during initialization.</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span> <span class="o">=</span> <span class="n">RandomActivation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RandomActivation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_load_site_parameters</span><span class="p">(</span><span class="n">site_config</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_load_site_parameters</span><span class="p">(</span><span class="n">site_config</span><span class="p">)</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_load_experiment_parameters</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">_load_experiment_parameters</span><span class="p">(</span><span class="n">scenario</span><span class="p">)</span><span class="w"></span>
 
-        <span class="c1"># Load species composition and their allometrics</span>
+<span class="w">        </span><span class="c1"># Load species composition and their allometrics</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">species_composition</span><span class="p">)</span>  <span class="c1"># will be used by agents.</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">species</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">(</span><span class="n">species_composition</span><span class="p">)</span><span class="w">  </span><span class="c1"># will be used by agents.</span><span class="w"></span>
 
-        <span class="c1"># Test that the df is complete or raise keyerror</span>
+<span class="w">        </span><span class="c1"># Test that the df is complete or raise keyerror</span><span class="w"></span>
 
-        <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;dbh&#39;</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;xpos&#39;</span><span class="p">,</span> <span class="s1">&#39;ypos&#39;</span><span class="p">]:</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">attribute</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;dbh&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;species&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;xpos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ypos&#39;</span><span class="p">]:</span><span class="w"></span>
 
-            <span class="n">population</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+<span class="w">            </span><span class="n">population</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span><span class="w"></span>
 
-        <span class="c1"># copy and import df</span>
+<span class="w">        </span><span class="c1"># copy and import df</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">population</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">population</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">num_agents</span> <span class="o">=</span> <span class="n">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">num_agents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">sapling_dbh</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">dbh</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">sapling_dbh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
 
-        <span class="c1"># Each entry index i, represents number of years since the biomass is decay period.</span>
+<span class="w">        </span><span class="c1"># Each entry index i, represents number of years since the biomass is decay period.</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">release_bins</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;slow&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>  <span class="c1"># for dead root and standing tree.</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">release_bins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;slow&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="w">  </span><span class="c1"># for dead root and standing tree.</span><span class="w"></span>
 
-                             <span class="s1">&#39;fast&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># for mulched biomass</span>
+<span class="w">                             </span><span class="s1">&#39;fast&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w">  </span><span class="c1"># for mulched biomass</span><span class="w"></span>
 
-                             <span class="p">}</span>
+<span class="w">                             </span><span class="p">}</span><span class="w"></span>
 
-        <span class="c1"># Create agents.</span>
+<span class="w">        </span><span class="c1"># Create agents.</span><span class="w"></span>
 
-        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span><span class="w"></span>
 
-            <span class="c1"># Tree init</span>
+<span class="w">            </span><span class="c1"># Tree init</span><span class="w"></span>
 
-            <span class="n">a</span> <span class="o">=</span> <span class="n">Tree</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span>
+<span class="w">            </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tree</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">,</span><span class="w"></span>
 
-                     <span class="n">dbh</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">dbh</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">dbh</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">dbh</span><span class="p">,</span><span class="w"></span>
 
-                     <span class="n">species</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">species</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">species</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">species</span><span class="p">,</span><span class="w"></span>
 
-                     <span class="n">condition</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">condition</span><span class="p">)</span>
+<span class="w">                     </span><span class="n">condition</span><span class="o">=</span><span class="n">row</span><span class="o">.</span><span class="n">condition</span><span class="p">)</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"></span>
 
-            <span class="c1"># Place trees on the plot sequentially</span>
+<span class="w">            </span><span class="c1"># Place trees on the plot sequentially</span><span class="w"></span>
 
-            <span class="c1"># based on their id/index.</span>
+<span class="w">            </span><span class="c1"># based on their id/index.</span><span class="w"></span>
 
-            <span class="c1"># TODO: This snippet may need to be converted into a function as part of</span>
+<span class="w">            </span><span class="c1"># TODO: This snippet may need to be converted into a function as part of</span><span class="w"></span>
 
-            <span class="c1"># initilisartion module and x,y points need to be part of input DB.</span>
+<span class="w">            </span><span class="c1"># initilisartion module and x,y points need to be part of input DB.</span><span class="w"></span>
 
-            <span class="c1">#x = int(index % self.grid.width)</span>
+<span class="w">            </span><span class="c1">#x = int(index % self.grid.width)</span><span class="w"></span>
 
-            <span class="c1">#y = int(index / self.grid.height)</span>
+<span class="w">            </span><span class="c1">#y = int(index / self.grid.height)</span><span class="w"></span>
 
-            <span class="c1"># # Add the agent to a random grid cell</span>
+<span class="w">            </span><span class="c1"># # Add the agent to a random grid cell</span><span class="w"></span>
 
-            <span class="c1">#x = self.random.randrange(self.grid.width)</span>
+<span class="w">            </span><span class="c1">#x = self.random.randrange(self.grid.width)</span><span class="w"></span>
 
-            <span class="c1">#y = self.random.randrange(self.grid.height)</span>
+<span class="w">            </span><span class="c1">#y = self.random.randrange(self.grid.height)</span><span class="w"></span>
 
-            <span class="c1"># # Locate the trees based on actual physical positioning</span>
+<span class="w">            </span><span class="c1"># # Locate the trees based on actual physical positioning</span><span class="w"></span>
 
-            <span class="n">x</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">xpos</span>
+<span class="w">            </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span><span class="o">.</span><span class="n">xpos</span><span class="w"></span>
 
-            <span class="n">y</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">ypos</span>
+<span class="w">            </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row</span><span class="o">.</span><span class="n">ypos</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">place_agent</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">grid</span><span class="o">.</span><span class="n">place_agent</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span><span class="w"></span>
 
-        <span class="c1"># This variable below works as an indexer while adding new trees to the population during the run time.</span>
+<span class="w">        </span><span class="c1"># This variable below works as an indexer while adding new trees to the population during the run time.</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">current_id</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">current_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="w"></span>
 
-        <span class="c1"># Collecting model and agent level data</span>
+<span class="w">        </span><span class="c1"># Collecting model and agent level data</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">datacollector</span> <span class="o">=</span> <span class="n">DataCollector</span><span class="p">(</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">datacollector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataCollector</span><span class="p">(</span><span class="w"></span>
 
-            <span class="n">model_reporters</span><span class="o">=</span><span class="p">{</span>
+<span class="w">            </span><span class="n">model_reporters</span><span class="o">=</span><span class="p">{</span><span class="w"></span>
 
-                <span class="s2">&quot;Storage&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">m</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">m</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="s1">&#39;carbon_storage&#39;</span><span class="p">),</span>
+<span class="w">                    </span><span class="s1">&#39;carbon_storage&#39;</span><span class="p">),</span><span class="w"></span>
 
-                <span class="s2">&quot;Seq&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Seq&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">m</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">m</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="s1">&#39;annual_gross_carbon_sequestration&#39;</span><span class="p">),</span>
+<span class="w">                    </span><span class="s1">&#39;annual_gross_carbon_sequestration&#39;</span><span class="p">),</span><span class="w"></span>
 
-                <span class="c1"># &quot;Sequestrated&quot;: self.aggregate_sequestration,</span>
+<span class="w">                </span><span class="c1"># &quot;Sequestrated&quot;: self.aggregate_sequestration,</span><span class="w"></span>
 
-                <span class="s2">&quot;Released&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_current_carbon_release</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;Released&quot;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">compute_current_carbon_release</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;Alive&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Alive&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">m</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">m</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;excellent&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;fair&#39;</span><span class="p">,</span> <span class="s1">&#39;poor&#39;</span><span class="p">,</span> <span class="s1">&#39;critical&#39;</span><span class="p">,</span> <span class="s1">&#39;dying&#39;</span><span class="p">]),</span>
+<span class="w">                    </span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;excellent&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;good&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fair&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;poor&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;critical&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dying&#39;</span><span class="p">]),</span><span class="w"></span>
 
-                <span class="s2">&quot;Dead&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Dead&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">m</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">m</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;dead&#39;</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;dead&#39;</span><span class="p">),</span><span class="w"></span>
 
-                <span class="s2">&quot;Critical&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Critical&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">m</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">m</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;critical&#39;</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;critical&#39;</span><span class="p">),</span><span class="w"></span>
 
-                <span class="s2">&quot;Dying&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Dying&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">m</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">m</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;dying&#39;</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;dying&#39;</span><span class="p">),</span><span class="w"></span>
 
-                <span class="s2">&quot;Poor&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Poor&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">m</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">m</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;poor&#39;</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;poor&#39;</span><span class="p">),</span><span class="w"></span>
 
-                <span class="s2">&quot;Replaced&quot;</span><span class="p">:</span> <span class="n">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span>
+<span class="w">                </span><span class="s2">&quot;Replaced&quot;</span><span class="p">:</span><span class="w"> </span><span class="n">lambda</span><span class="w"> </span><span class="n">m</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">m</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">m</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="w"></span>
 
-                    <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;replaced&#39;</span><span class="p">),</span>
+<span class="w">                    </span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;replaced&#39;</span><span class="p">),</span><span class="w"></span>
 
-                <span class="s2">&quot;Seq_std&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">agg_std_sequestration</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;Seq_std&quot;</span><span class="p">:</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">agg_std_sequestration</span><span class="p">,</span><span class="w"></span>
 
-            <span class="p">},</span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
 
-            <span class="n">agent_reporters</span><span class="o">=</span><span class="p">{</span>
+<span class="w">            </span><span class="n">agent_reporters</span><span class="o">=</span><span class="p">{</span><span class="w"></span>
 
-                <span class="s2">&quot;species&quot;</span><span class="p">:</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;species&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;species&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;dbh&quot;</span><span class="p">:</span> <span class="s1">&#39;dbh&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;dbh&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;dbh&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="s1">&#39;tree_height&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;height&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;tree_height&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;crownH&quot;</span><span class="p">:</span> <span class="s1">&#39;crown_height&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;crownH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;crown_height&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;crownW&quot;</span><span class="p">:</span> <span class="s1">&#39;crown_width&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;crownW&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;crown_width&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;canopy_overlap&quot;</span><span class="p">:</span> <span class="s2">&quot;overlap_ratio&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;canopy_overlap&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;overlap_ratio&quot;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;cle&quot;</span><span class="p">:</span> <span class="s2">&quot;cle&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;cle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cle&quot;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;condition&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;dieback&quot;</span><span class="p">:</span> <span class="s1">&#39;dieback&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;dieback&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;dieback&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;biomass&quot;</span><span class="p">:</span> <span class="s1">&#39;biomass&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;biomass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;biomass&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;seq&quot;</span><span class="p">:</span> <span class="s1">&#39;annual_gross_carbon_sequestration&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;seq&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;annual_gross_carbon_sequestration&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;carbon&quot;</span><span class="p">:</span> <span class="s2">&quot;carbon_storage&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;carbon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carbon_storage&quot;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;deroot&quot;</span><span class="p">:</span> <span class="s1">&#39;decomposing_root&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;deroot&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;decomposing_root&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;detrunk&quot;</span><span class="p">:</span> <span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;detrunk&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;mulched&quot;</span><span class="p">:</span> <span class="s1">&#39;mulched&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;mulched&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;burnt&quot;</span><span class="p">:</span> <span class="s1">&#39;immediate_release&#39;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;burnt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;immediate_release&#39;</span><span class="p">,</span><span class="w"></span>
 
-                <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="s1">&#39;pos&#39;</span><span class="p">,})</span>
+<span class="w">                </span><span class="s2">&quot;coordinates&quot;</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;pos&#39;</span><span class="p">,})</span><span class="w"></span>
 
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_agents</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_agents</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;Customized MESA method that sets the major components of scenario analyses process.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Customized MESA method that sets the major components of scenario analyses process.</span>
 
 <span class="sd">        Args:</span>
 
@@ -1778,29 +1778,29 @@
 
 <span class="sd">        Todo:</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Year:{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">time</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Year:{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">time</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">get_weather_projection</span><span class="p">()</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">get_weather_projection</span><span class="p">()</span><span class="w"></span>
 
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Agents are working ...&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Agents are working ...&quot;</span><span class="p">)</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">step</span><span class="p">()</span><span class="w"></span>
 
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Yearly data is being collected ...&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Yearly data is being collected ...&quot;</span><span class="p">)</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">datacollector</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">datacollector</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"></span>
 
-        <span class="c1"># print(&#39;Step:{}&#39;.format(self.schedule.time))</span>
+<span class="w">        </span><span class="c1"># print(&#39;Step:{}&#39;.format(self.schedule.time))</span><span class="w"></span>
 
-        <span class="c1"># print(self.release_bins[&#39;slow&#39;])</span>
+<span class="w">        </span><span class="c1"># print(self.release_bins[&#39;slow&#39;])</span><span class="w"></span>
 
-        <span class="c1"># print(self.release_bins[&#39;fast&#39;])</span>
+<span class="w">        </span><span class="c1"># print(self.release_bins[&#39;fast&#39;])</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">_load_experiment_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">experiment</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_load_experiment_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">experiment</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;Loads site configuration information.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads site configuration information.</span>
 
 <span class="sd">        Args:</span>
 
@@ -1812,27 +1812,27 @@
 
 <span class="sd">        Todo:</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="c1"># Read denisty to set the digital twin resolution which is defined as</span>
+<span class="w">        </span><span class="c1"># Read denisty to set the digital twin resolution which is defined as</span><span class="w"></span>
 
-        <span class="c1"># the cell size in terms of actual distance.</span>
+<span class="w">        </span><span class="c1"># the cell size in terms of actual distance.</span><span class="w"></span>
 
-        <span class="k">if</span> <span class="s1">&#39;maintenance_scope&#39;</span> <span class="ow">in</span> <span class="n">experiment</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;maintenance_scope&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">experiment</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span><span class="w"></span>
 
-            <span class="c1">#maintenance_scope: (:obj:`int`): It can be 0:None,1:base, 2:cared)</span>
+<span class="w">            </span><span class="c1">#maintenance_scope: (:obj:`int`): It can be 0:None,1:base, 2:cared)</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">maintenance_scope</span> <span class="o">=</span> <span class="n">experiment</span><span class="p">[</span><span class="s1">&#39;maintenance_scope&#39;</span><span class="p">]</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">maintenance_scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">experiment</span><span class="p">[</span><span class="s1">&#39;maintenance_scope&#39;</span><span class="p">]</span><span class="w"></span>
 
-        <span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="k">else</span><span class="p">:</span><span class="w"></span>
 
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Maintenance scope is not given. A high maintenance site is assumed.&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Maintenance scope is not given. A high maintenance site is assumed.&quot;</span><span class="p">)</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">maintenance_scope</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">maintenance_scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">_load_site_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">_load_site_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">config_file</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;Loads site configuration information.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads site configuration information.</span>
 
 <span class="sd">        Args:</span>
 
@@ -1844,71 +1844,71 @@
 
 <span class="sd">        Todo:</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="n">try</span><span class="p">:</span>
+<span class="w">        </span><span class="n">try</span><span class="p">:</span><span class="w"></span>
 
-            <span class="n">f</span> <span class="o">=</span> <span class="n">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+<span class="w">            </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span><span class="w"></span>
 
-        <span class="n">except</span> <span class="n">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">IOError</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">e</span><span class="p">:</span><span class="w"></span>
 
-            <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+<span class="w">            </span><span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span><span class="w"></span>
 
-        <span class="n">params</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="w">        </span><span class="n">params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="w"></span>
 
-        <span class="c1">#read site type</span>
+<span class="w">        </span><span class="c1">#read site type</span><span class="w"></span>
 
-        <span class="n">stype</span> <span class="o">=</span> <span class="s1">&#39;park&#39;</span> <span class="c1">#default type</span>
+<span class="w">        </span><span class="n">stype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;park&#39;</span><span class="w"> </span><span class="c1">#default type</span><span class="w"></span>
 
-        <span class="k">if</span> <span class="s1">&#39;project_site_type&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;project_site_type&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span><span class="w"></span>
 
-            <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;project_site_type&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">Urban</span><span class="o">.</span><span class="n">site_types</span><span class="p">:</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;project_site_type&#39;</span><span class="p">]</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">Urban</span><span class="o">.</span><span class="n">site_types</span><span class="p">:</span><span class="w"></span>
 
-                <span class="n">stype</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;project_site_type&#39;</span><span class="p">]</span>
+<span class="w">                </span><span class="n">stype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;project_site_type&#39;</span><span class="p">]</span><span class="w"></span>
 
-            <span class="k">else</span><span class="p">:</span>
+<span class="w">            </span><span class="k">else</span><span class="p">:</span><span class="w"></span>
 
-                <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Undefined site type recognized. Park type will be used.&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Undefined site type recognized. Park type will be used.&quot;</span><span class="p">)</span><span class="w"></span>
 
-        <span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="k">else</span><span class="p">:</span><span class="w"></span>
 
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Site type is not provided. Park type will be used.&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Site type is not provided. Park type will be used.&quot;</span><span class="p">)</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">site_type</span> <span class="o">=</span> <span class="n">stype</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">site_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stype</span><span class="w"></span>
 
-        <span class="c1"># Read in growth season mean and variance to be used by weather forecasting module.</span>
+<span class="w">        </span><span class="c1"># Read in growth season mean and variance to be used by weather forecasting module.</span><span class="w"></span>
 
-        <span class="n">try</span><span class="p">:</span>
+<span class="w">        </span><span class="n">try</span><span class="p">:</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="s1">&#39;growth_season_mean&#39;</span><span class="p">]</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="s1">&#39;growth_season_mean&#39;</span><span class="p">]</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">season_var</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="s1">&#39;growth_season_var&#39;</span><span class="p">]</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;weather&#39;</span><span class="p">][</span><span class="s1">&#39;growth_season_var&#39;</span><span class="p">]</span><span class="w"></span>
 
-        <span class="n">except</span> <span class="n">KeyError</span><span class="p">:</span>
+<span class="w">        </span><span class="n">except</span><span class="w"> </span><span class="n">KeyError</span><span class="p">:</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span> <span class="o">=</span> <span class="mi">153</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">153</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">season_var</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="w"></span>
 
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Tree growth season mean and variance is not provided as expected. Global average is used.&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Tree growth season mean and variance is not provided as expected. Global average is used.&quot;</span><span class="p">)</span><span class="w"></span>
 
-        <span class="c1"># Read denisty to set the digital twin resolution which is defined as</span>
+<span class="w">        </span><span class="c1"># Read denisty to set the digital twin resolution which is defined as</span><span class="w"></span>
 
-        <span class="c1"># the cell size in terms of actual distance.</span>
+<span class="w">        </span><span class="c1"># the cell size in terms of actual distance.</span><span class="w"></span>
 
-        <span class="k">if</span> <span class="s1">&#39;area_tree_density_per_hectare&#39;</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="s1">&#39;area_tree_density_per_hectare&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">dt_resolution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10000</span> <span class="o">/</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;area_tree_density_per_hectare&#39;</span><span class="p">])</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">dt_resolution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;area_tree_density_per_hectare&#39;</span><span class="p">])</span><span class="w"></span>
 
-            <span class="c1"># The distance between the center of two tree trunks in meters. Even spatial distribution is assumed.</span>
+<span class="w">            </span><span class="c1"># The distance between the center of two tree trunks in meters. Even spatial distribution is assumed.</span><span class="w"></span>
 
-        <span class="k">else</span><span class="p">:</span>
+<span class="w">        </span><span class="k">else</span><span class="p">:</span><span class="w"></span>
 
-            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;area_tree_density_per_hectare is not given the default {} meters is used the distance from the clossest tree trunks.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_resolution</span><span class="p">))</span>
+<span class="w">            </span><span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;area_tree_density_per_hectare is not given the default {} meters is used the distance from the clossest tree trunks.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_resolution</span><span class="p">))</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">get_weather_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_weather_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;The method retrieves wetaher projection for the current iteration,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The method retrieves wetaher projection for the current iteration,</span>
 
 <span class="sd">        eg. year, at the moment it uses a simulated projections on the go,</span>
 
@@ -1936,105 +1936,57 @@
 
 <span class="sd">            and tree specific variables.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="c1"># The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span>
+<span class="w">        </span><span class="c1"># The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span><span class="w"></span>
 
-        <span class="c1"># These variables need to be parameterrized and read-in through site (model) specific</span>
+<span class="w">        </span><span class="c1"># These variables need to be parameterrized and read-in through site (model) specific</span><span class="w"></span>
 
-        <span class="c1"># initialization module.</span>
+<span class="w">        </span><span class="c1"># initialization module.</span><span class="w"></span>
 
-        <span class="c1"># season_mean = 200</span>
+<span class="w">        </span><span class="c1"># season_mean = 200</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">WeatherAPI</span> <span class="o">=</span> <span class="n">WeatherSim</span><span class="p">(</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">WeatherAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WeatherSim</span><span class="p">(</span><span class="w"></span>
 
-            <span class="n">season_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="p">,</span> <span class="n">season_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="p">)</span>
+<span class="w">            </span><span class="n">season_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="p">,</span><span class="w"> </span><span class="n">season_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="p">)</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">staticmethod</span>
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="k">var</span><span class="p">,</span> <span class="k">func</span><span class="o">=</span><span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="k">var</span><span class="p">,</span><span class="w"> </span><span class="k">func</span><span class="o">=</span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;A higher order function that aggregates a given variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A higher order function that aggregates a given variable.</span>
 
 <span class="sd">        The aggregation function and the initial conditions can be specified.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">func</span><span class="p">,</span> <span class="p">[</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="k">var</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">reduce</span><span class="p">(</span><span class="k">func</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="k">var</span><span class="p">))</span><span class="w"></span>
 
-                      <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">],</span> <span class="n">init</span><span class="p">)</span>
+<span class="w">                      </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">],</span><span class="w"> </span><span class="n">init</span><span class="p">)</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">staticmethod</span>
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">count</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">memory</span><span class="p">,</span> <span class="n">predicate</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="n">predicate</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;A higher order function for counting agents that satisfy a specific attribute.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A higher order function for counting agents that satisfy a specific attribute.&quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="n">len</span><span class="p">(</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">len</span><span class="p">(</span><span class="w"></span>
 
-            <span class="n">list</span><span class="p">(</span>
+<span class="w">            </span><span class="n">list</span><span class="p">(</span><span class="w"></span>
 
-                <span class="n">filter</span><span class="p">(</span>
+<span class="w">                </span><span class="n">filter</span><span class="p">(</span><span class="w"></span>
 
-                    <span class="n">predicate</span><span class="p">,</span> <span class="p">[</span>
+<span class="w">                    </span><span class="n">predicate</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 
-                        <span class="n">eval</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">eval</span><span class="p">(</span><span class="w"></span>
 
-                            <span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">memory</span><span class="p">))</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">])))</span>
+<span class="w">                            </span><span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">memory</span><span class="p">))</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">])))</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">staticmethod</span>
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">aggregate_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">aggregate_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
-
-<span class="sd">        Args:</span>
-
-<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
-
-<span class="sd">        Returns:</span>
-
-<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
-
-<span class="sd">        Note:</span>
-
-<span class="sd">        Todo:</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">captured</span> <span class="o">=</span> <span class="p">[</span>
-
-            <span class="n">a</span><span class="o">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="n">sum</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
-
-    <span class="err">@</span><span class="n">staticmethod</span>
-
-    <span class="n">def</span> <span class="n">agg_std_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
-
-        <span class="sd">&quot;&quot;&quot;The function estimates the standard deviation for yearly sequestration data from all trees within the site.</span>
-
-<span class="sd">        Args:</span>
-
-<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
-
-<span class="sd">        Returns:</span>
-
-<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">captured</span> <span class="o">=</span> <span class="p">[</span>
-
-            <span class="n">a</span><span class="o">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
-
-    <span class="err">@</span><span class="n">staticmethod</span>
-
-    <span class="n">def</span> <span class="n">compute_current_carbon_release</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
-
-        <span class="sd">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
 
 <span class="sd">        Args:</span>
 
@@ -2048,61 +2000,109 @@
 
 <span class="sd">        Todo:</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="c1"># roll current bins stored as np.array</span>
+<span class="w">        </span><span class="n">captured</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 
-        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="w">            </span><span class="n">a</span><span class="o">.</span><span class="n">annual_gross_carbon_sequestration</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span><span class="w"></span>
 
-        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span><span class="w"></span>
 
-        <span class="c1"># aggregate required type of release (mulched, etc)</span>
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
 
-        <span class="n">mulched</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;mulched&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">agg_std_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span><span class="w"></span>
 
-        <span class="n">standing</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The function estimates the standard deviation for yearly sequestration data from all trees within the site.</span>
 
-        <span class="n">root</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;decomposing_root&#39;</span><span class="p">)</span>
+<span class="sd">        Args:</span>
 
-        <span class="n">immediate</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;immediate_release&#39;</span><span class="p">)</span>
+<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
 
-        <span class="c1"># add new potential releases into release bins</span>
+<span class="sd">        Returns:</span>
 
-        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">standing</span> <span class="o">+</span> <span class="n">root</span>
+<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
 
-        <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">mulched</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="c1"># compute and aggregate release</span>
+<span class="w">        </span><span class="n">captured</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
 
-        <span class="n">def</span> <span class="n">update_release</span><span class="p">(</span><span class="n">type</span><span class="p">):</span>
+<span class="w">            </span><span class="n">a</span><span class="o">.</span><span class="n">annual_gross_carbon_sequestration</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">]</span><span class="w"></span>
 
-            <span class="n">carbon_release</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span><span class="w"></span>
 
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">])):</span>
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
 
-                <span class="n">mass</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_current_carbon_release</span><span class="p">(</span><span class="n">model</span><span class="p">):</span><span class="w"></span>
 
-                <span class="n">rate</span> <span class="o">=</span> <span class="n">Urban</span><span class="o">.</span><span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">type</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The function that accumulates yearly sequestration data from all trees within the site.</span>
 
-                <span class="n">released</span> <span class="o">=</span> <span class="n">rate</span> <span class="o">*</span> <span class="n">mass</span>
+<span class="sd">        Args:</span>
 
-                <span class="n">carbon_release</span> <span class="o">+=</span> <span class="n">released</span>
+<span class="sd">            model: (:obj:`Urban`): an urban forest model.</span>
 
-                <span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">released</span>
+<span class="sd">        Returns:</span>
 
-            <span class="k">return</span> <span class="n">carbon_release</span>
+<span class="sd">            (:obj:float`): total sequestration in Kg.</span>
 
-        <span class="n">carbon_release_slow</span> <span class="o">=</span> <span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">)</span>
+<span class="sd">        Note:</span>
 
-        <span class="n">carbon_release_fast</span> <span class="o">=</span> <span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;fast&#39;</span><span class="p">)</span>
+<span class="sd">        Todo:</span>
 
-        <span class="k">return</span> <span class="n">carbon_release_fast</span> <span class="o">+</span> <span class="n">carbon_release_slow</span> <span class="o">+</span> <span class="n">immediate</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-    <span class="err">@</span><span class="n">staticmethod</span>
+<span class="w">        </span><span class="c1"># roll current bins stored as np.array</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;fast&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;Determines a carbon release rate.</span>
+<span class="w">        </span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1"># aggregate required type of release (mulched, etc)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">mulched</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mulched&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">standing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;decomposing_trunk&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;decomposing_root&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">immediate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;immediate_release&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1"># add new potential releases into release bins</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;slow&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">standing</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">root</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mulched</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1"># compute and aggregate release</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">def</span><span class="w"> </span><span class="n">update_release</span><span class="p">(</span><span class="n">type</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">carbon_release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">range</span><span class="p">(</span><span class="n">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">])):</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">mass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Urban</span><span class="o">.</span><span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">released</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mass</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">carbon_release</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">released</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">model</span><span class="o">.</span><span class="n">release_bins</span><span class="p">[</span><span class="n">type</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">released</span><span class="w"></span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">carbon_release</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_release_slow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;slow&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_release_fast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">update_release</span><span class="p">(</span><span class="s1">&#39;fast&#39;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">carbon_release_fast</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">carbon_release_slow</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">immediate</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;fast&#39;</span><span class="p">):</span><span class="w"></span>
+
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determines a carbon release rate.</span>
 
 <span class="sd">        Args:</span>
 
@@ -2136,11 +2136,11 @@
 
 <span class="sd">                integrate.quad(f, 0, 20) &gt; 0.96 for k in (2:5).</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">state</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span> <span class="s1">&#39;fast&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">5</span>
+<span class="w">        </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fast&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">year</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -2198,11 +2198,13 @@
 </tr>
 </tbody>
 </table>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="nv">@staticmethod</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">agg_std_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">agg_std_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
 
-        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The function estimates the standard deviation for yearly sequestration data from all trees within the site.</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The function estimates the standard deviation for yearly sequestration data from all trees within the site.</span>
 
 <span class="s2">        Args:</span>
 
@@ -2212,13 +2214,13 @@
 
 <span class="s2">            (:obj:float`): total sequestration in Kg.</span>
 
-<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
 
-        <span class="n">captured</span> <span class="o">=</span> <span class="err">[</span>
+<span class="w">        </span><span class="n">captured</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[</span><span class="w"></span>
 
-            <span class="n">a</span><span class="p">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="k">in</span> <span class="n">model</span><span class="p">.</span><span class="k">schedule</span><span class="p">.</span><span class="n">agents</span><span class="err">]</span>
+<span class="w">            </span><span class="n">a</span><span class="p">.</span><span class="n">annual_gross_carbon_sequestration</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="k">schedule</span><span class="p">.</span><span class="n">agents</span><span class="err">]</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="nf">std</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="nf">std</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -2226,26 +2228,28 @@
 <div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">aggregate</span><span class="p">(</span>
     <span class="n">model</span><span class="p">,</span>
     <span class="n">var</span><span class="p">,</span>
-    <span class="n">func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">Urban</span><span class="o">.&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x130103c10</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="n">func</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">Urban</span><span class="o">.&lt;</span><span class="k">lambda</span><span class="o">&gt;</span> <span class="n">at</span> <span class="mh">0x12e436160</span><span class="o">&gt;</span><span class="p">,</span>
     <span class="n">init</span><span class="o">=</span><span class="mi">0</span>
 <span class="p">)</span>
 </code></pre></div>
 
 <p>A higher order function that aggregates a given variable.</p>
 <p>The aggregation function and the initial conditions can be specified.</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="err">@</span><span class="n">staticmethod</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="err">@</span><span class="n">staticmethod</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="k">var</span><span class="p">,</span> <span class="k">func</span><span class="o">=</span><span class="n">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">aggregate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="k">var</span><span class="p">,</span><span class="w"> </span><span class="k">func</span><span class="o">=</span><span class="n">lambda</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">init</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;A higher order function that aggregates a given variable.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A higher order function that aggregates a given variable.</span>
 
 <span class="sd">        The aggregation function and the initial conditions can be specified.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="k">func</span><span class="p">,</span> <span class="p">[</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="k">var</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">reduce</span><span class="p">(</span><span class="k">func</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;a.{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="k">var</span><span class="p">))</span><span class="w"></span>
 
-                      <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">],</span> <span class="n">init</span><span class="p">)</span>
+<span class="w">                      </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">schedule</span><span class="o">.</span><span class="n">agents</span><span class="p">],</span><span class="w"> </span><span class="n">init</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -2298,11 +2302,13 @@
 </tr>
 </tbody>
 </table>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="nv">@staticmethod</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">aggregate_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">aggregate_sequestration</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
 
-        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The function that accumulates yearly sequestration data from all trees within the site.</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The function that accumulates yearly sequestration data from all trees within the site.</span>
 
 <span class="s2">        Args:</span>
 
@@ -2316,13 +2322,13 @@
 
 <span class="s2">        Todo:</span>
 
-<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
 
-        <span class="n">captured</span> <span class="o">=</span> <span class="err">[</span>
+<span class="w">        </span><span class="n">captured</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">[</span><span class="w"></span>
 
-            <span class="n">a</span><span class="p">.</span><span class="n">annual_gross_carbon_sequestration</span> <span class="k">for</span> <span class="n">a</span> <span class="k">in</span> <span class="n">model</span><span class="p">.</span><span class="k">schedule</span><span class="p">.</span><span class="n">agents</span><span class="err">]</span>
+<span class="w">            </span><span class="n">a</span><span class="p">.</span><span class="n">annual_gross_carbon_sequestration</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="k">schedule</span><span class="p">.</span><span class="n">agents</span><span class="err">]</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="nf">sum</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">captured</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -2393,11 +2399,13 @@
     <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.96</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span> <span class="o">|</span>
 </code></pre></div>
 
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="nv">@staticmethod</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="kt">year</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;fast&#39;</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_carbon_release_rate</span><span class="p">(</span><span class="kt">year</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;fast&#39;</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
 
-        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">Determines a carbon release rate.</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">Determines a carbon release rate.</span>
 
 <span class="s2">        Args:</span>
 
@@ -2431,11 +2439,11 @@
 
 <span class="s2">                integrate.quad(f, 0, 20) &gt; 0.96 for k in (2:5).</span>
 
-<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
 
-        <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">state</span> <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span> <span class="s1">&#39;fast&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="mi">5</span>
+<span class="w">        </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;mulched&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fast&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">k</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="kt">year</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kt">year</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -2488,7 +2496,9 @@
 </tr>
 </tbody>
 </table>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_current_carbon_release</span><span class="p">(</span><span class="n">model</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
 
@@ -2567,7 +2577,9 @@
 </code></pre></div>
 
 <p>A higher order function for counting agents that satisfy a specific attribute.</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">@staticmethod</span><span class="w"></span>
 
 <span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">memory</span><span class="p">,</span><span class="w"> </span><span class="n">predicate</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
 
@@ -2608,9 +2620,11 @@ Note:
 Todo:
     * Implement a site initialization method that sets the initial parameters
     and tree specific variables.</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">get_weather_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">get_weather_projection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;The method retrieves wetaher projection for the current iteration,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The method retrieves wetaher projection for the current iteration,</span>
 
 <span class="sd">        eg. year, at the moment it uses a simulated projections on the go,</span>
 
@@ -2638,19 +2652,19 @@ Todo:
 
 <span class="sd">            and tree specific variables.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="c1"># The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span>
+<span class="w">        </span><span class="c1"># The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)</span><span class="w"></span>
 
-        <span class="c1"># These variables need to be parameterrized and read-in through site (model) specific</span>
+<span class="w">        </span><span class="c1"># These variables need to be parameterrized and read-in through site (model) specific</span><span class="w"></span>
 
-        <span class="c1"># initialization module.</span>
+<span class="w">        </span><span class="c1"># initialization module.</span><span class="w"></span>
 
-        <span class="c1"># season_mean = 200</span>
+<span class="w">        </span><span class="c1"># season_mean = 200</span><span class="w"></span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">WeatherAPI</span> <span class="o">=</span> <span class="n">WeatherSim</span><span class="p">(</span>
+<span class="w">        </span><span class="bp">self</span><span class="o">.</span><span class="n">WeatherAPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WeatherSim</span><span class="p">(</span><span class="w"></span>
 
-            <span class="n">season_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="p">,</span> <span class="n">season_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="p">)</span>
+<span class="w">            </span><span class="n">season_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_mean</span><span class="p">,</span><span class="w"> </span><span class="n">season_var</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">season_var</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -2661,13 +2675,15 @@ Todo:
 </code></pre></div>
 
 <p>Return the next unique ID for agents, increment current_id</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">next_id</span><span class="p">(</span><span class="kr">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">int</span><span class="o">:</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">next_id</span><span class="p">(</span><span class="kr">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">int</span><span class="o">:</span><span class="w"></span>
 
-        <span class="s">&quot;&quot;&quot;Return the next unique ID for agents, increment current_id&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="s">&quot;&quot;&quot;Return the next unique ID for agents, increment current_id&quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="kr">self</span><span class="p">.</span><span class="n">current_id</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="w">        </span><span class="kr">self</span><span class="p">.</span><span class="n">current_id</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 
-        <span class="kr">return</span> <span class="kr">self</span><span class="p">.</span><span class="n">current_id</span>
+<span class="w">        </span><span class="kr">return</span><span class="w"> </span><span class="kr">self</span><span class="p">.</span><span class="n">current_id</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -2698,7 +2714,9 @@ Todo:
 </tr>
 </tbody>
 </table>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">reset_randomizer</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">seed</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">None</span><span class="err">:</span><span class="w"></span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">reset_randomizer</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="nl">seed</span><span class="p">:</span><span class="w"> </span><span class="n">Optional</span><span class="o">[</span><span class="n">int</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">None</span><span class="err">:</span><span class="w"></span>
 
 <span class="w">        </span><span class="ss">&quot;&quot;&quot;Reset the model random number generator.</span>
 
@@ -2726,17 +2744,19 @@ Todo:
 
 <p>Run the model until the end condition is reached. Overload as</p>
 <p>needed.</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">run_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">None</span><span class="p">:</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">run_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">None</span><span class="p">:</span><span class="w"></span>
 
-        <span class="sd">&quot;&quot;&quot;Run the model until the end condition is reached. Overload as</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the model until the end condition is reached. Overload as</span>
 
 <span class="sd">        needed.</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span><span class="w"></span>
 
-        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span><span class="w"></span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="w">            </span><span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -2753,7 +2773,9 @@ Todo:
     None</p>
 <p>Note:</p>
 <p>Todo:</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    def step(self):
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code>    def step(self):
 
         &quot;&quot;&quot;Customized MESA method that sets the major components of scenario analyses process.
 

@@ -50,10 +50,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="" href="/reference/src">Code_Docs</a>
-                    </li>
-                </ul>
                 <p class="caption"><span class="caption-text">Reference</span></p>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Src</a>
@@ -80,6 +76,8 @@
     <ul class="current">
                 <li class="toctree-l3 current"><a class="reference internal current" href="./">Carbon</a>
     <ul class="current">
+    <li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a>
+    </li>
     </ul>
                 </li>
                 <li class="toctree-l3"><a class="reference internal" href="../">Index</a>
@@ -141,6 +139,479 @@
                 <h1 id="module-srcimpactscarbon">Module src.impacts.carbon</h1>
 <p>None</p>
 <p>None</p>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1"># Carbon storage estimation.</span>
+
+<span class="kn">from</span> <span class="nn">..gus.allometrics</span> <span class="kn">import</span> <span class="n">Species</span>
+
+<span class="k">class</span> <span class="nc">Carbon</span><span class="p">():</span>
+
+    <span class="sd">&quot;&quot;&quot;Species specific biomass and carbon storage estimator.&quot;&quot;&quot;</span>
+
+    <span class="c1">#  Unit: Kg, Ref: iTree, 2020</span>
+
+    <span class="n">storage_cap</span> <span class="o">=</span> <span class="mi">7500</span>
+
+    <span class="c1"># The coeff is used to estimate carbon storage through biomass.</span>
+
+    <span class="c1"># The stock of carbon is estimated by multiplying tree biomass by 0.5 (Chow and Rolfe 1989).</span>
+
+    <span class="n">coeff</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allometrics</span><span class="p">,</span> <span class="n">species_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;Constructor method.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            allometrics (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.</span>
+
+<span class="sd">                Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Allometrics</span> <span class="o">=</span> <span class="n">Species</span><span class="p">(</span><span class="n">allometrics</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">species_name</span><span class="p">:</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">species_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allometrics</span><span class="o">.</span><span class="n">fuzzymatching</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">f_biomass</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Allometrics</span><span class="o">.</span><span class="n">get_eqn_biomass</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">compute_carbon_storage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dbh</span><span class="p">,</span> <span class="n">species_name</span> <span class="o">=</span> <span class="s1">&#39;decidu&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;The carbon storage calculation for a tree, in KG.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            dbh: (:obj:`float`): the DBH measure which is diameter in cm of the trunk usually measured at 1.3m from the ground.</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.</span>
+
+<span class="sd">                Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">            height: (:obj:`float`): The tree height in meters.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`float`): Carbon in Kg.</span>
+
+<span class="sd">        TODO:</span>
+
+<span class="sd">            Update the method to allow receive the height data and use the allometric equations</span>
+
+<span class="sd">            with height parameter.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Load species composition and their allometrics</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">species_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Allometrics</span><span class="o">.</span><span class="n">fuzzymatching</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">f_biomass</span> <span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Allometrics</span><span class="o">.</span><span class="n">get_eqn_biomass</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span>
+
+        <span class="n">biomass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">f_biomass</span><span class="p">(</span><span class="n">dbh</span><span class="p">)</span>
+
+        <span class="n">carbon_estimate</span> <span class="o">=</span> <span class="n">biomass</span> <span class="o">*</span> <span class="n">Carbon</span><span class="o">.</span><span class="n">coeff</span>
+
+        <span class="c1"># min() function prevents carbon storage from over estimation for very large trees</span>
+
+        <span class="n">carbon_storage</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">carbon_estimate</span><span class="p">,</span> <span class="n">Carbon</span><span class="o">.</span><span class="n">storage_cap</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">carbon_storage</span>
+
+    <span class="k">def</span> <span class="nf">compute_biomass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dbh</span><span class="p">,</span> <span class="n">species_name</span> <span class="o">=</span> <span class="s1">&#39;decidu&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+
+        <span class="sd">&quot;&quot;&quot;The carbon storage calculation for a tree, in KG.</span>
+
+<span class="sd">        Args:</span>
+
+<span class="sd">            species_name: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.</span>
+
+<span class="sd">                    Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="sd">            dbh: (:obj:`float`): the DBH measure which is diameter in cm of the trunk usually measured at 1.3m from the ground.</span>
+
+<span class="sd">            height: (:obj:`float`): The tree height in meters.</span>
+
+<span class="sd">        Returns:</span>
+
+<span class="sd">            (:obj:`float`): Carbon in Kg.</span>
+
+<span class="sd">        TODO:</span>
+
+<span class="sd">            Convert and extend this into carbon estimation object.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">carbon_estimate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">compute_carbon_storage</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span> <span class="n">species_name</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">carbon_estimate</span> <span class="o">/</span> <span class="n">Carbon</span><span class="o">.</span><span class="n">coeff</span>
+</code></pre></div>
+
+</details>
+<h2 id="classes">Classes</h2>
+<h3 id="carbon">Carbon</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="nc">Carbon</span><span class="p">(</span>
+    <span class="n">allometrics</span><span class="p">,</span>
+    <span class="n">species_name</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">class</span><span class="w"> </span><span class="n">Carbon</span><span class="p">()</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">Species specific biomass and carbon storage estimator.</span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#  Unit: Kg, Ref: iTree, 2020</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">storage_cap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7500</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># The coeff is used to estimate carbon storage through biomass.</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># The stock of carbon is estimated by multiplying tree biomass by 0.5 (Chow and Rolfe 1989).</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">coeff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">allometrics</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">Constructor method.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            allometrics (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.</span>
+
+<span class="s2">            species_name: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.</span>
+
+<span class="s2">                Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            None</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">Allometrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Species</span><span class="p">(</span><span class="n">allometrics</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">species_name</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">species_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">Allometrics</span><span class="p">.</span><span class="n">fuzzymatching</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">f_biomass</span><span class="w"> </span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">Allometrics</span><span class="p">.</span><span class="n">get_eqn_biomass</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_carbon_storage</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;decidu&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">float</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The carbon storage calculation for a tree, in KG.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            dbh: (:obj:`float`): the DBH measure which is diameter in cm of the trunk usually measured at 1.3m from the ground.</span>
+
+<span class="s2">            species_name: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.</span>
+
+<span class="s2">                Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="s2">            height: (:obj:`float`): The tree height in meters.</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`float`): Carbon in Kg.</span>
+
+<span class="s2">        TODO:</span>
+
+<span class="s2">            Update the method to allow receive the height data and use the allometric equations</span>
+
+<span class="s2">            with height parameter.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1"># Load species composition and their allometrics</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">species_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">Allometrics</span><span class="p">.</span><span class="n">fuzzymatching</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">f_biomass</span><span class="w"> </span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">Allometrics</span><span class="p">.</span><span class="n">get_eqn_biomass</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">biomass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">f_biomass</span><span class="p">(</span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">biomass</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Carbon</span><span class="p">.</span><span class="n">coeff</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1"># min() function prevents carbon storage from over estimation for very large trees</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_storage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">carbon_estimate</span><span class="p">,</span><span class="w"> </span><span class="n">Carbon</span><span class="p">.</span><span class="n">storage_cap</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">carbon_storage</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_biomass</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;decidu&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">float</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The carbon storage calculation for a tree, in KG.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            species_name: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.</span>
+
+<span class="s2">                    Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="s2">            dbh: (:obj:`float`): the DBH measure which is diameter in cm of the trunk usually measured at 1.3m from the ground.</span>
+
+<span class="s2">            height: (:obj:`float`): The tree height in meters.</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`float`): Carbon in Kg.</span>
+
+<span class="s2">        TODO:</span>
+
+<span class="s2">            Convert and extend this into carbon estimation object.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">compute_carbon_storage</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">carbon_estimate</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Carbon</span><span class="p">.</span><span class="n">coeff</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<hr />
+<h4 id="class-variables">Class variables</h4>
+<div class="codehilite"><pre><span></span><code><span class="n">coeff</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">storage_cap</span>
+</code></pre></div>
+
+<h4 id="methods">Methods</h4>
+<h4 id="compute_biomass">compute_biomass</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_biomass</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">dbh</span><span class="p">,</span>
+    <span class="n">species_name</span><span class="o">=</span><span class="s1">&#39;decidu&#39;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</code></pre></div>
+
+<p>The carbon storage calculation for a tree, in KG.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>species_name</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): name of the species in 'genusName_speciesName' format.</td>
+<td></td>
+</tr>
+<tr>
+<td>Ex: 'picea_abies'. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>dbh</td>
+<td>None</td>
+<td>(:obj:<code>float</code>): the DBH measure which is diameter in cm of the trunk usually measured at 1.3m from the ground.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>height</td>
+<td>None</td>
+<td>(:obj:<code>float</code>): The tree height in meters.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>float</code>): Carbon in Kg.</td>
+</tr>
+<tr>
+<td>TODO:</td>
+<td></td>
+</tr>
+<tr>
+<td>Convert and extend this into carbon estimation object.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_biomass</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;decidu&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">float</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The carbon storage calculation for a tree, in KG.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            species_name: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.</span>
+
+<span class="s2">                    Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="s2">            dbh: (:obj:`float`): the DBH measure which is diameter in cm of the trunk usually measured at 1.3m from the ground.</span>
+
+<span class="s2">            height: (:obj:`float`): The tree height in meters.</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`float`): Carbon in Kg.</span>
+
+<span class="s2">        TODO:</span>
+
+<span class="s2">            Convert and extend this into carbon estimation object.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">compute_carbon_storage</span><span class="p">(</span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">carbon_estimate</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Carbon</span><span class="p">.</span><span class="n">coeff</span><span class="w"></span>
+</code></pre></div>
+
+</details>
+<h4 id="compute_carbon_storage">compute_carbon_storage</h4>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">compute_carbon_storage</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">dbh</span><span class="p">,</span>
+    <span class="n">species_name</span><span class="o">=</span><span class="s1">&#39;decidu&#39;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span>
+</code></pre></div>
+
+<p>The carbon storage calculation for a tree, in KG.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dbh</td>
+<td>None</td>
+<td>(:obj:<code>float</code>): the DBH measure which is diameter in cm of the trunk usually measured at 1.3m from the ground.</td>
+<td>None</td>
+</tr>
+<tr>
+<td>species_name</td>
+<td>None</td>
+<td>(:obj:<code>string</code>): name of the species in 'genusName_speciesName' format.</td>
+<td></td>
+</tr>
+<tr>
+<td>Ex: 'picea_abies'. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</td>
+<td>None</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>height</td>
+<td>None</td>
+<td>(:obj:<code>float</code>): The tree height in meters.</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(</td>
+<td>obj:<code>float</code>): Carbon in Kg.</td>
+</tr>
+<tr>
+<td>TODO:</td>
+<td></td>
+</tr>
+<tr>
+<td>Update the method to allow receive the height data and use the allometric equations</td>
+<td></td>
+</tr>
+<tr>
+<td>with height parameter.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">compute_carbon_storage</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">dbh</span><span class="p">,</span><span class="w"> </span><span class="n">species_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;decidu&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="kt">float</span><span class="o">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The carbon storage calculation for a tree, in KG.</span>
+
+<span class="s2">        Args:</span>
+
+<span class="s2">            dbh: (:obj:`float`): the DBH measure which is diameter in cm of the trunk usually measured at 1.3m from the ground.</span>
+
+<span class="s2">            species_name: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.</span>
+
+<span class="s2">                Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch</span>
+
+<span class="s2">            height: (:obj:`float`): The tree height in meters.</span>
+
+<span class="s2">        Returns:</span>
+
+<span class="s2">            (:obj:`float`): Carbon in Kg.</span>
+
+<span class="s2">        TODO:</span>
+
+<span class="s2">            Update the method to allow receive the height data and use the allometric equations</span>
+
+<span class="s2">            with height parameter.</span>
+
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1"># Load species composition and their allometrics</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">species_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">Allometrics</span><span class="p">.</span><span class="n">fuzzymatching</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">f_biomass</span><span class="w"> </span><span class="o">=</span><span class="n">self</span><span class="p">.</span><span class="n">Allometrics</span><span class="p">.</span><span class="n">get_eqn_biomass</span><span class="p">(</span><span class="n">species_name</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">biomass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">f_biomass</span><span class="p">(</span><span class="n">dbh</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">biomass</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Carbon</span><span class="p">.</span><span class="n">coeff</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1"># min() function prevents carbon storage from over estimation for very large trees</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">carbon_storage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">carbon_estimate</span><span class="p">,</span><span class="w"> </span><span class="n">Carbon</span><span class="p">.</span><span class="n">storage_cap</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">carbon_storage</span><span class="w"></span>
+</code></pre></div>
+
+</details>
               
             </div>
           </div>

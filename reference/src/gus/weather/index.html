@@ -50,10 +50,6 @@
                     <li class="toctree-l1"><a class="reference internal" href="../../../..">Home</a>
                     </li>
                 </ul>
-                <ul>
-                    <li class="toctree-l1"><a class="" href="/reference/src">Code_Docs</a>
-                    </li>
-                </ul>
                 <p class="caption"><span class="caption-text">Reference</span></p>
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="#">Src</a>
@@ -143,7 +139,9 @@
                 <h1 id="module-srcgusweather">Module src.gus.weather</h1>
 <p>None</p>
 <p>None</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -233,23 +231,25 @@
 <span class="p">)</span>
 </code></pre></div>
 
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code><span class="n">class</span> <span class="n">WeatherSim</span><span class="p">()</span><span class="o">:</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="n">class</span><span class="w"> </span><span class="n">WeatherSim</span><span class="p">()</span><span class="o">:</span><span class="w"></span>
 
-    <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The environment objects that simulates the weather.</span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The environment objects that simulates the weather.</span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
 
-    <span class="c1"># Yearly mean frost free days at a given site.</span>
+<span class="w">    </span><span class="c1"># Yearly mean frost free days at a given site.</span><span class="w"></span>
 
-    <span class="c1"># Source for 153 iTree, Nowak et.al., 2020.</span>
+<span class="w">    </span><span class="c1"># Source for 153 iTree, Nowak et.al., 2020.</span><span class="w"></span>
 
-    <span class="n">ffdays_mean</span> <span class="o">=</span> <span class="mi">153</span>
+<span class="w">    </span><span class="n">ffdays_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">153</span><span class="w"></span>
 
-    <span class="c1"># Yearly variance in frost free days for a given site.</span>
+<span class="w">    </span><span class="c1"># Yearly variance in frost free days for a given site.</span><span class="w"></span>
 
-    <span class="n">ffdays_var</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="w">    </span><span class="n">ffdays_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">season_length</span><span class="o">=</span><span class="k">None</span><span class="p">,</span> <span class="n">season_var</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span><span class="w"> </span><span class="n">season_length</span><span class="o">=</span><span class="k">None</span><span class="p">,</span><span class="w"> </span><span class="n">season_var</span><span class="o">=</span><span class="k">None</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
 
-        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The constructor method.</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The constructor method.</span>
 
 <span class="s2">        Args:</span>
 
@@ -271,27 +271,27 @@
 
 <span class="s2">            * Update the weather simulation based on trend and climate change.</span>
 
-<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
 
-        <span class="k">if</span> <span class="n">season_length</span><span class="o">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">season_length</span><span class="o">:</span><span class="w"></span>
 
-            <span class="n">self</span><span class="p">.</span><span class="n">ffdays_mean</span> <span class="o">=</span> <span class="n">season_length</span>
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ffdays_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">season_length</span><span class="w"></span>
 
-        <span class="k">if</span> <span class="n">season_var</span><span class="o">:</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">season_var</span><span class="o">:</span><span class="w"></span>
 
-            <span class="n">self</span><span class="p">.</span><span class="n">ffdays_var</span> <span class="o">=</span> <span class="n">season_var</span>
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ffdays_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">season_var</span><span class="w"></span>
 
-        <span class="c1"># Drawing frost free days for the given year from a normal distriburion</span>
+<span class="w">        </span><span class="c1"># Drawing frost free days for the given year from a normal distriburion</span><span class="w"></span>
 
-        <span class="c1"># where the mean is based on iTree&#39;s proxy variable.</span>
+<span class="w">        </span><span class="c1"># where the mean is based on iTree&#39;s proxy variable.</span><span class="w"></span>
 
-        <span class="n">self</span><span class="p">.</span><span class="n">frost_free_days_ref</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="k">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span>
+<span class="w">        </span><span class="n">self</span><span class="p">.</span><span class="n">frost_free_days_ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="p">.</span><span class="k">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span><span class="w"></span>
 
-            <span class="n">self</span><span class="p">.</span><span class="n">ffdays_mean</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">ffdays_var</span><span class="p">)</span>
+<span class="w">            </span><span class="n">self</span><span class="p">.</span><span class="n">ffdays_mean</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">ffdays_var</span><span class="p">)</span><span class="w"></span>
 
-    <span class="n">def</span> <span class="n">check_frost_free_days</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">check_frost_free_days</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
 
-        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The method generates frost free days based on mean and variance of a given site.</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The method generates frost free days based on mean and variance of a given site.</span>
 
 <span class="s2">        Args:</span>
 
@@ -305,9 +305,9 @@
 
 <span class="s2">        Todo:</span>
 
-<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">frost_free_days_ref</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">frost_free_days_ref</span><span class="w"></span>
 </code></pre></div>
 
 </details>
@@ -333,9 +333,11 @@ Returns:
     (:obj:<code>int</code>): Number of frost free days.
 Note:
 Todo:</p>
-<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><code>    <span class="n">def</span> <span class="n">check_frost_free_days</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span>
+<details class="example">
+<summary>View Source</summary>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">def</span><span class="w"> </span><span class="n">check_frost_free_days</span><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
 
-        <span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The method generates frost free days based on mean and variance of a given site.</span>
+<span class="w">        </span><span class="s2">&quot;</span><span class="se">&quot;&quot;</span><span class="s2">The method generates frost free days based on mean and variance of a given site.</span>
 
 <span class="s2">        Args:</span>
 
@@ -349,9 +351,9 @@ Todo:</p>
 
 <span class="s2">        Todo:</span>
 
-<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span>
+<span class="s2">        </span><span class="se">&quot;&quot;</span><span class="s2">&quot;</span><span class="w"></span>
 
-        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">frost_free_days_ref</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">self</span><span class="p">.</span><span class="n">frost_free_days_ref</span><span class="w"></span>
 </code></pre></div>
 
 </details>
