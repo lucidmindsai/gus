@@ -15,7 +15,7 @@ $ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https:
 You can use, Poetry as well:
 
 ```
-$ poetry add gus
+$ poetry add pyGus
 ```
 
 ### Development

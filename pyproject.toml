@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gus"
+name = "pyGus"
 version = "0.1.8"
 description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
@@ -39,6 +39,7 @@ fuzzywuzzy = "^0.18.0"
 matplotlib = "^3.4.3"
 seaborn = "^0.11.2"
 portray = "^1.7.0"
+termcolor = "^2.1.1"
 
 [build-system]
 requires = ["poetry-core"]
