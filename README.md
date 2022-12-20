@@ -1,5 +1,4 @@
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![PyPI version](https://badge.fury.io/py/pygus.svg)](https://badge.fury.io/py/pygus) [![Versions](https://img.shields.io/pypi/pyversions/pygus)]()
 # gus
 ![GUS-IMAGE](https://miro.medium.com/max/1400/1*fMM7rnq1RJCh-nFBGLUvyA.png)
 Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis.
