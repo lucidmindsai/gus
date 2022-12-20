@@ -9,7 +9,7 @@ Green Urban Scenarios - A digital twin representation, simulation of urban fores
 Install GUS from PyPi:
 
 ```
-$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple gus==0.1.8
+$ pip install pyGus==0.1.8
 ```
 
 You can use, Poetry as well:
@@ -79,3 +79,12 @@ And run the tests:
 `$ pytest`
 
 All tests are in the `tests/` folder
+
+### Who maintains GUS?
+The GUS is currently developed and maintained by [Lucidminds](https://lucidminds.ai/) and [Dark Matter Labs](https://darkmatterlabs.org/) members as part of their joint project [TreesAI](https://treesasinfrastructure.com/#/).
+
+### Notes
+* The GUS is open for PRs.
+* PRs will be reviewed by the current maintainers of the project.
+* Extensive development guidelines will be provided soon.
+* To report bugs, fixes, and questions, please use the [GitHub issues](https://github.com/lucidmindsai/gus/issues).
