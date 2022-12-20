@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyGus"
-version = "0.1.8"
+version = "0.1.9"
 description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
 maintainers = [
@@ -12,7 +12,7 @@ license = "Apache License 2.0"
 readme = "README-pypi.md"
 repository = "https://github.com/lucidmindsai/gus"
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 4 - Beta",
     'Environment :: Console',
     'Operating System :: OS Independent',
     'Intended Audience :: Developers',
