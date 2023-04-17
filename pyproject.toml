@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "pyGus"
-version = "0.1.9"
+name = "pyGUS"
+version = "0.1.10"
 description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
 maintainers = [
@@ -24,7 +24,7 @@ classifiers = [
     'Topic :: Utilities'
 ]
 packages = [
-    {include = "src"},
+    {include = "pygus"},
 ]
 
 
@@ -46,7 +46,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.portray]
-modules = ["src"]
+modules = ["pygus"]
 
 
 [tool.portray.mkdocs.theme]

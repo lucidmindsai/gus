@@ -163,7 +163,7 @@ class Urban(Model):
                 "mulched": 'mulched',
                 "burnt": 'immediate_release',
                 "coordinates": 'pos',})
-        logging.info("Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!".format(self.num_agents,width,height))
+        logging.info("Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!".format(self.num_agents,width,length))
 
     def step(self):
         """Customized MESA method that sets the major components of scenario analyses process.
