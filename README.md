@@ -58,15 +58,11 @@ $ poetry build
 ```
 
 
-Stick to PEP8 rules for code development. To do the checks, install `flake8` to your local machine:
-
-`$ pip3 install flake8`
+Stick to PEP8 rules for code development. To do the checks, you can run code checks with [Black](https://black.readthedocs.io/en/stable/index.html)
 
 Once you're done with developing on your branch, before pushing your changes, please run:
 
-`$ flake8 <file_you_changed_or_added>`
-
-Please fix the errors and warnings if they appear.
+`$ poetry run black .`
 
 ### Testing
 
