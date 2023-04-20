@@ -4,7 +4,8 @@
 
 from ..gus.allometrics import Species
 
-class Carbon():
+
+class Carbon:
     """Species specific biomass and carbon storage estimator."""
 
     #  Unit: Kg, Ref: iTree, 2020
@@ -18,19 +19,19 @@ class Carbon():
         """Constructor method.
 
         Args:
-            allometrics (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site. 
+            allometrics (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.
             species_name: (:obj:`string`): name of the species in 'genusName_speciesName' format.
                 Ex: 'picea_abies'. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch
 
         Returns:
             None
         """
-        self.Allometrics = Species(allometrics)      
+        self.Allometrics = Species(allometrics)
         if species_name:
             self.species_name = self.Allometrics.fuzzymatching(species_name)
-            self.f_biomass =self.Allometrics.get_eqn_biomass(species_name)
+            self.f_biomass = self.Allometrics.get_eqn_biomass(species_name)
 
-    def compute_carbon_storage(self, dbh, species_name = 'decidu', height=None) -> float:
+    def compute_carbon_storage(self, dbh, species_name="decidu", height=None) -> float:
         """The carbon storage calculation for a tree, in KG.
 
         Args:
@@ -41,7 +42,7 @@ class Carbon():
 
         Returns:
             (:obj:`float`): Carbon in Kg.
-        
+
         TODO:
             Update the method to allow receive the height data and use the allometric equations
             with height parameter.
@@ -49,14 +50,14 @@ class Carbon():
         """
         # Load species composition and their allometrics
         self.species_name = self.Allometrics.fuzzymatching(species_name)
-        self.f_biomass =self.Allometrics.get_eqn_biomass(species_name)
+        self.f_biomass = self.Allometrics.get_eqn_biomass(species_name)
         biomass = self.f_biomass(dbh)
         carbon_estimate = biomass * Carbon.coeff
         # min() function prevents carbon storage from over estimation for very large trees
         carbon_storage = min(carbon_estimate, Carbon.storage_cap)
         return carbon_storage
 
-    def compute_biomass(self, dbh, species_name = 'decidu', height=None) -> float:
+    def compute_biomass(self, dbh, species_name="decidu", height=None) -> float:
         """The carbon storage calculation for a tree, in KG.
 
         Args:
@@ -69,7 +70,7 @@ class Carbon():
             (:obj:`float`): Carbon in Kg.
 
         TODO:
-            Convert and extend this into carbon estimation object. 
+            Convert and extend this into carbon estimation object.
 
         """
         carbon_estimate = self.compute_carbon_storage(dbh, species_name)
