@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+"""The module holds general purpose python functions on data preperations."""
 from functools import reduce
 import numpy as np
 import utm
