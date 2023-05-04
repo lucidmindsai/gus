@@ -1,3 +1,4 @@
+"""The standard init module."""
 from .models import Urban
 from .agents import Tree
 from .allometrics import Species
