@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+""" The module that implements biomass and carbon storage. """
 
 # Carbon storage estimation.
 
