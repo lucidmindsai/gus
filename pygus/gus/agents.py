@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
+"""Module that holds implementation of Tree agents."""
 
-# Basic Python packages
 import numpy as np
 
 # Mesa Packages
