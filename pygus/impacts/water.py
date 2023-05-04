@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
+""" The module implements water retention related implementation. """
 
-# Water retention related implementation.
 # Based on Notebook implemenation created by Marko Petrovic
 
 # Numerical data processing
