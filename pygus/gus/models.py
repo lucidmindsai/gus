@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+""" The module holds the main objects that manage and handle simulation runtime and data collection. """
 
 # Importing Python Libraries
 import site
