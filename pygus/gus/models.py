@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 
 # Importing Python Libraries
-import site
+from typing import Dict
 import numpy as np
+import pandas as pd
 from functools import reduce
 import json
 import logging
@@ -32,7 +33,7 @@ class Urban(Model):
     site_types = ["park", "street", "forest", "pocket"]
 
     def __init__(
-        self, population, species_composition, site_config, scenario, batch=False
+        self, population: pd.DataFrame, species_composition: str, site_config: str, scenario: Dict, batch=False
     ):
         """The constructor method.
 
@@ -155,6 +156,39 @@ class Urban(Model):
                 self.num_agents, width, length
             )
         )
+        
+    def run_model(self) -> pd.DataFrame:
+        """
+        Loop that steps the simulation through each step of its time horizon.
+        """
+        if not self.time_horizon:
+            raise ValueError("Time horizon is not set.")
+        
+        for _ in range(self.time_horizon):
+            self.step()
+
+        logging.warning("Model run complete! Cleaning data...")
+        df_out = self._clean_output(pd.DataFrame(self.datacollector.get_model_vars_dataframe()))
+        return df_out
+        
+    def _clean_output(self, df_out: pd.DataFrame) -> pd.DataFrame:
+         # IMPACT ANALYSIS
+        df_out["Cum_Seq"] = df_out.Seq.cumsum()
+        df_out["Avg_Seq"] = df_out.Seq / df_out.Alive
+        df_out["Avg_Rel"] = df_out.Released / df_out.Alive
+        # Processing to avoid out of range float values
+        inf_count = np.isinf(df_out).values.sum()
+        if inf_count > 0:
+            logging.info("Cleaning {} INF values...".format(str(inf_count)))
+            df_out.replace([np.inf, -np.inf], np.nan, inplace=True)
+
+        # Replace Nan values with 0. This can happen when the number of alive trees is 0 and the above divisions in 'IMPACT ANALYSIS' are performed.
+        has_na_values = df_out.isnull().values.any()
+        if has_na_values:
+            logging.info("Removing N/A values...")
+            df_out.fillna(0, inplace=True)
+
+        return df_out.to_dict()
 
     def step(self):
         """Customized MESA method that sets the major components of scenario analyses process.
@@ -183,7 +217,7 @@ class Urban(Model):
         # print(self.release_bins['slow'])
         # print(self.release_bins['fast'])
 
-    def _load_experiment_parameters(self, experiment):
+    def _load_experiment_parameters(self, experiment: Dict):
         """Loads site configuration information.
 
         Args:
@@ -206,6 +240,15 @@ class Urban(Model):
                 "Maintenance scope is not given. A high maintenance site is assumed."
             )
             self.maintenance_scope = 2
+        
+        if "time_horizon_years" in experiment.keys():
+            self.time_horizon = experiment["time_horizon_years"]
+        else:
+            logging.warning(
+                "Time horizon is not given. A default value of 100 years is assumed."
+            )
+            self.time_horizon = 100
+        
 
     def _load_site_parameters(self, config_file):
         """Loads site configuration information.
