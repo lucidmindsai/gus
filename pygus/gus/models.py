@@ -3,7 +3,7 @@
 
 # Importing Python Libraries
 import time
-from typing import Dict
+from typing import Dict, Union
 import pandas as pd
 import numpy as np
 from functools import reduce
@@ -29,12 +29,16 @@ class WeatherConfig:
 class SiteConfig:
     """A class to hold site configuration parameters."""
 
-    def __init__(self, total_m2: int, impervious_m2: int, pervious_m2: int, weather: Dict, tree_density_per_ha: int = None, site_type: str = "park"):
+    def __init__(self, total_m2: int, impervious_m2: int, pervious_m2: int, weather: Union[Dict, WeatherConfig], tree_density_per_ha: int = None, site_type: str = "park"):
         self.total_m2 = total_m2
         self.impervious_m2 = impervious_m2
         self.pervious_m2 = pervious_m2
         self.tree_density_per_ha = tree_density_per_ha
-        self.weather = WeatherConfig(**weather)
+        # if weather is a dict, create a weatherConfig, else use the object
+        if isinstance(weather, dict):
+            self.weather = WeatherConfig(**weather)
+        else:
+            self.weather = weather
         self.site_type = site_type
          
 class Urban(Model):
