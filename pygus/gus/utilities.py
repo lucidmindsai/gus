@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 from functools import reduce
+import json
+import logging
 import numpy as np
 import utm
+
+from .models import Urban, SiteConfig, WeatherConfig
 
 
 def get_raster_data(
@@ -75,3 +79,50 @@ def raster_grid(row, minx, miny, grid_width):
     row['gus_y'] = int((row['ypos'] - miny) // grid_width)
     return row
 
+def load_site_config_file(config_file) -> SiteConfig:
+        """Loads site configuration information from a json file in the form:
+        
+        {
+            "area_total_in_m2":1000,
+            "area_impervious_in_m2":500,
+            "area_pervious_in_m2": 500,
+            "area_tree_density_per_hectare": 400,
+            "weather": {
+                "growth_season_mean": 200,
+                "growth_season_var": 7
+                },
+            "project_site_type":"park"
+        }
+
+        Args:
+            config_file: (:obj:`string`): name of the json file.
+        """
+        try:
+            f = open(config_file)
+        except IOError as e:
+            print(str(e))
+        params = json.loads(f.read())
+
+        # Read in growth season mean and variance to be used by weather forecasting module.
+        try:
+            season_mean = params["weather"]["growth_season_mean"]
+            season_var = params["weather"]["growth_season_var"]
+        except KeyError:
+            logging.warning(
+                "Tree growth season mean and variance is not provided as expected. Global average is used."
+            )
+        weather = WeatherConfig(season_mean, season_var)
+
+        # read site type
+        stype = "park"  # default type
+        if "project_site_type" in params.keys():
+            if params["project_site_type"] in Urban.site_types:
+                stype = params["project_site_type"]
+            else:
+                logging.warning(
+                    "Undefined site type recognized. Park type will be used."
+                )
+        else:
+            logging.warning("Site type is not provided. Park type will be used.")
+        return SiteConfig(params.get("area_total_in_m2", 1000), params.get("area_impervious_in_m2", 500), params.get("area_pervious_in_m2", 500), params.get("area_tree_density_per_hectare", 400), weather, stype)
+        

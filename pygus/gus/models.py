@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 # Importing Python Libraries
-import site
+import time
+from typing import Dict, Union
+import pandas as pd
 import numpy as np
 from functools import reduce
-import json
 import logging
 
 # Importing necessary Mesa packages
@@ -19,20 +20,40 @@ from .agents import Tree
 from .allometrics import Species
 from .weather import WeatherSim
 
+       
+class WeatherConfig:
+    def __init__(self, mean_growth_rate: int = 153, growth_rate_var: int = 7):
+        self.mean_growth_rate = mean_growth_rate
+        self.growth_rate_var = growth_rate_var
 
+class SiteConfig:
+    """A class to hold site configuration parameters."""
+
+    def __init__(self, total_m2: int, impervious_m2: int, pervious_m2: int, weather: Union[Dict, WeatherConfig], tree_density_per_ha: int = None, site_type: str = "park"):
+        self.total_m2 = total_m2
+        self.impervious_m2 = impervious_m2
+        self.pervious_m2 = pervious_m2
+        self.tree_density_per_ha = tree_density_per_ha
+        # if weather is a dict, create a weatherConfig, else use the object
+        if isinstance(weather, dict):
+            self.weather = WeatherConfig(**weather)
+        else:
+            self.weather = weather
+        self.site_type = site_type
+         
 class Urban(Model):
     """A generic urban green space model. To be tailored according to specific sites."""
 
     # Used to hold the scaling of actual physical space within the digital space.
     # It shows the size of each cell (square) in meters.
-    # TODO: this needs to be brought up as a parameter and placed within the groups
+    # FIXME: this needs to be brought up as a parameter and placed within the groups
     #      of parameters that handle physical to digital twin mapping.
-    dt_resolution = 2  # in meters
+    # dt_resolution = 2  # in meters
 
     site_types = ["park", "street", "forest", "pocket"]
 
     def __init__(
-        self, population, species_composition, site_config, scenario, batch=False
+        self, population: pd.DataFrame, species_composition: str, site_config: SiteConfig, scenario: Dict, batch=False
     ):
         """The constructor method.
 
@@ -57,9 +78,8 @@ class Urban(Model):
         length = int(max(population.ypos)) + 1
         self.grid = MultiGrid(width, length, torus=False)
         # to be parameterized and set during initialization.
-        self.schedule = RandomActivation(self)
 
-        self._load_site_parameters(site_config)
+        self._handle_site_configuration(site_config, len(population))
         self._load_experiment_parameters(scenario)
 
         # Load species composition and their allometrics
@@ -72,6 +92,8 @@ class Urban(Model):
         # copy and import df
         self.df = population
         self.num_agents = len(population)
+        self.schedule = RandomActivation(self)
+        
         self.sapling_dbh = min(population.dbh)
         # Each entry index i, represents number of years since the biomass is decay period.
         self.release_bins = {
@@ -81,24 +103,12 @@ class Urban(Model):
 
         # Create agents.
         for index, row in self.df.iterrows():
-            # Tree init
             a = Tree(
                 row.id, self, dbh=row.dbh, species=row.species, condition=row.condition
             )
             self.schedule.add(a)
 
-            # Place trees on the plot sequentially
-            # based on their id/index.
-            # TODO: This snippet may need to be converted into a function as part of
-            # initilisartion module and x,y points need to be part of input DB.
-            # x = int(index % self.grid.width)
-            # y = int(index / self.grid.height)
-
-            # # Add the agent to a random grid cell
-            # x = self.random.randrange(self.grid.width)
-            # y = self.random.randrange(self.grid.height)
-
-            # # Locate the trees based on actual physical positioning
+            # Place trees on the plot based on actual physical positioning
             x = row.xpos
             y = row.ypos
             self.grid.place_agent(a, (x, y))
@@ -130,6 +140,7 @@ class Urban(Model):
                 ),
                 "Seq_std": self.agg_std_sequestration,
             },
+
             agent_reporters={
                 "species": "species",
                 "dbh": "dbh",
@@ -155,22 +166,23 @@ class Urban(Model):
                 self.num_agents, width, length
             )
         )
-
+        
+    def run(self, steps = None):
+        """Customized MESA method that sets the major components of scenario analyses process."""
+        pop = str(self.df.shape[0])
+        if not steps:
+            steps = self.scenario.get("time_horizon_years")
+            print("Running for {} steps".format(steps))
+        start = time.time()
+        logging.info("Year:{}".format(self.schedule.time + 1))
+        for _ in range(steps):
+            self.step()
+        end = time.time()
+        print("{} steps completed (pop. {}): {}".format(steps, pop, end - start))
+        logging.info("Simulation is complete!")
+        
     def step(self):
-        """Customized MESA method that sets the major components of scenario analyses process.
-
-        Args:
-            None
-
-        Returns:
-            None
-
-        Note:
-            None
-
-        Todo:
-            None
-        """
+        """Customized MESA method that sets the major components of scenario analyses process."""
         logging.info("Year:{}".format(self.schedule.time + 1))
         self.get_weather_projection()
 
@@ -179,20 +191,24 @@ class Urban(Model):
 
         logging.info("Yearly data is being collected ...")
         self.datacollector.collect(self)
-        # print('Step:{}'.format(self.schedule.time))
+        
+        # print('Step:{} ({}s)'.format(self.schedule.time, end-start))
         # print(self.release_bins['slow'])
         # print(self.release_bins['fast'])
-
-    def _load_experiment_parameters(self, experiment):
+    
+    def impact_analysis(self) -> pd.DataFrame:
+        """
+        Provides impact analysis of the simulation
+        """
+        df_out_site = self.datacollector.get_model_vars_dataframe()
+        return Urban.format_impact_analysis(df_out_site)
+        
+    def _load_experiment_parameters(self, experiment: Dict):
         """Loads site configuration information.
 
         Args:
             experiment: (:obj:`dict`): Python dictionary that holds experiment parameters.
 
-        Returns:
-            None
-        Todo:
-            None
 
         """
 
@@ -207,61 +223,18 @@ class Urban(Model):
             )
             self.maintenance_scope = 2
 
-    def _load_site_parameters(self, config_file):
-        """Loads site configuration information.
-
-        Args:
-            config_file: (:obj:`string`): name of the json file.
-
-        Returns:
-            None
-        Todo:
-            None
-
-        """
-        try:
-            f = open(config_file)
-        except IOError as e:
-            print(str(e))
-        params = json.loads(f.read())
-
-        # read site type
-        stype = "park"  # default type
-        if "project_site_type" in params.keys():
-            if params["project_site_type"] in Urban.site_types:
-                stype = params["project_site_type"]
-            else:
-                logging.warning(
-                    "Undefined site type recognized. Park type will be used."
-                )
-        else:
-            logging.warning("Site type is not provided. Park type will be used.")
-        self.site_type = stype
-
-        # Read in growth season mean and variance to be used by weather forecasting module.
-        try:
-            self.season_mean = params["weather"]["growth_season_mean"]
-            self.season_var = params["weather"]["growth_season_var"]
-        except KeyError:
-            self.season_mean = 153
-            self.season_var = 7
-            logging.warning(
-                "Tree growth season mean and variance is not provided as expected. Global average is used."
-            )
-
-        # Read denisty to set the digital twin resolution which is defined as
-        # the cell size in terms of actual distance.
-        if "area_tree_density_per_hectare" in params.keys():
-            self.dt_resolution = np.sqrt(
-                10000 / params["area_tree_density_per_hectare"]
-            )
-            # The distance between the center of two tree trunks in meters. Even spatial distribution is assumed.
-        else:
-            logging.warning(
-                "area_tree_density_per_hectare is not given the default {} meters is used the distance from the clossest tree trunks.".format(
-                    self.dt_resolution
-                )
-            )
+    def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
+        """Loads site configuration information."""
+        
+        self.season_mean = site_config.season_mean
+        self.season_var = site_config.season_var
+        self.site_type = site_config.site_type
+        self.dt_resolution = round(
+            np.sqrt(
+                1 / (population_size / site_config.total_m2)
+            ),
+            2 # round to < decimal places
+        )
 
     def get_weather_projection(self):
         """The method retrieves wetaher projection for the current iteration,
@@ -419,3 +392,29 @@ class Urban(Model):
         """
         k = 2 if state in ("mulched", "fast") else 5
         return 1 / k * np.exp(-1 * year / k)
+
+    @staticmethod
+    def format_impact_analysis(model_vars: pd.DataFrame) -> pd.DataFrame:
+        """
+        Cleans the output of the simulation
+        """
+        # Process and clean data after the simulation
+
+        # IMPACT ANALYSIS
+        model_vars["Cum_Seq"] = model_vars.Seq.cumsum()
+        model_vars["Avg_Seq"] = model_vars.Seq / model_vars.Alive
+        model_vars["Avg_Rel"] = model_vars.Released / model_vars.Alive
+
+        # Processing to avoid out of range float values
+        inf_count = np.isinf(model_vars).values.sum()
+        if inf_count > 0:
+            logging.debug("Cleaning {} INF values...".format(str(inf_count)))
+            model_vars.replace([np.inf, -np.inf], np.nan, inplace=True)
+
+        # Replace Nan values with 0. This can happen when the number of alive trees is 0 and the above divisions in 'IMPACT ANALYSIS' are performed.
+        has_na_values = model_vars.isnull().values.any()
+        if has_na_values:
+            logging.debug("Removing N/A values...")
+            model_vars.fillna(0, inplace=True)
+
+        return model_vars
