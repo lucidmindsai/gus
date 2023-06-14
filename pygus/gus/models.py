@@ -226,8 +226,8 @@ class Urban(Model):
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
         """Loads site configuration information."""
         
-        self.season_mean = site_config.season_mean
-        self.season_var = site_config.season_var
+        self.season_mean = site_config.weather.mean_growth_rate
+        self.season_var = site_config.weather.growth_rate_var
         self.site_type = site_config.site_type
         self.dt_resolution = round(
             np.sqrt(
