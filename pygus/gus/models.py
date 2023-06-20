@@ -22,8 +22,9 @@ from .weather import WeatherSim
 
        
 class WeatherConfig:
-    def __init__(self, mean_growth_rate: int = 153, growth_rate_var: int = 7):
-        self.mean_growth_rate = mean_growth_rate
+    
+    def __init__(self, mean_growth_days: int = 153, growth_rate_var: int = 7):
+        self.mean_growth_rate = mean_growth_days
         self.growth_rate_var = growth_rate_var
 
 class SiteConfig:

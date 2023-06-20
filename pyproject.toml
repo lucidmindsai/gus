@@ -44,6 +44,7 @@ utm = "^0.7.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
+ipykernel = "^6.23.2"
 
 [build-system]
 requires = ["poetry-core"]

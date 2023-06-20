@@ -128,7 +128,7 @@ class Tree(Agent):
             self.dieback = np.random.uniform(0, 0.1)
             self.condition = self._get_condition_class(self.dieback)
 
-        self.diameter_growth = model.species.get_diameter_growth(species)
+        self.diameter_growth = self.model.species.get_diameter_growth(species)
         # Slow, moderate and fast growing species respectively.
         # c(0.23, 0.33, 0.43) in inch/yr Source: https://database.itreetools.org/#/splash
         # Converted into cm.
@@ -141,7 +141,7 @@ class Tree(Agent):
         # (2) Park conditions
         # (3) Open-grown conditions.
 
-        self.average_height_at_maturity = model.species.get_height_at_maturity(
+        self.average_height_at_maturity = self.model.species.get_height_at_maturity(
             self.species
         )
         # Avg height at maturity for the given species.
@@ -161,10 +161,10 @@ class Tree(Agent):
         self.immediate_release = 0
         self.death_acc = False
 
-        if model.maintenance_scope == 0:
+        if self.model.maintenance_scope == 0:
             self.expected_care = 0
-        elif model.maintenance_scope == 1:
-            self.expected_care = 0.3
+        elif self.model.maintenance_scope == 1:
+            self.expected_care = 0.5
         else:
             self.expected_care = 1.0
 
@@ -451,12 +451,12 @@ class Tree(Agent):
         #  13.08% for critical condition
         #  50% for dying condition
         risk = np.random.uniform(0, 1)
-        if self.model.maintenance_scope < 1:
+        if self.model.maintenance_scope == 0:
             dr = 5
-        elif self.model.maintenance_scope > 1:
-            dr = 1
-        else:
+        elif self.model.maintenance_scope == 1:
             dr = 4
+        else:
+            dr = 1
 
         if self.dieback >= 1:
             register_death()
