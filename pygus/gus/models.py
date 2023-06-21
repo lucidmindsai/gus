@@ -23,8 +23,8 @@ from .weather import WeatherSim
        
 class WeatherConfig:
     
-    def __init__(self, mean_growth_days: int = 153, growth_rate_var: int = 7):
-        self.mean_growth_rate = mean_growth_days
+    def __init__(self, mean_growth_rate: int = 153, growth_rate_var: int = 7):
+        self.mean_growth_rate = mean_growth_rate
         self.growth_rate_var = growth_rate_var
 
 class SiteConfig:
@@ -223,6 +223,13 @@ class Urban(Model):
                 "Maintenance scope is not given. A high maintenance site is assumed."
             )
             self.maintenance_scope = 2
+
+        if "time_horizon" in experiment.keys():
+            self.time_horizon = experiment["time_horizon"]
+        else:
+            logging.warning(
+                "Now time horizon found, the model will have to be run for a fixed number of years."
+            )
 
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
         """Loads site configuration information."""
