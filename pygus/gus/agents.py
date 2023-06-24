@@ -164,7 +164,7 @@ class Tree(Agent):
         if self.model.maintenance_scope == 0:
             self.expected_care = 0
         elif self.model.maintenance_scope == 1:
-            self.expected_care = 0.3
+            self.expected_care = 0.5
         else:
             self.expected_care = 1.0
 
