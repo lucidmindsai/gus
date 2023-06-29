@@ -40,6 +40,7 @@ class SiteConfig:
             self.weather = WeatherConfig(**weather)
         else:
             self.weather = weather
+
         self.site_type = site_type
          
 class Urban(Model):
@@ -79,6 +80,7 @@ class Urban(Model):
         length = int(max(population.ypos)) + 1
         self.grid = MultiGrid(width, length, torus=False)
         # to be parameterized and set during initialization.
+
 
         self._handle_site_configuration(site_config, len(population))
         self._load_experiment_parameters(scenario)
@@ -233,7 +235,6 @@ class Urban(Model):
 
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
         """Loads site configuration information."""
-        
         self.season_mean = site_config.weather.mean_growth_rate
         self.season_var = site_config.weather.growth_rate_var
         self.site_type = site_config.site_type
