@@ -147,5 +147,12 @@ def load_site_config_file(config_file) -> SiteConfig:
                 )
         else:
             logging.warning("Site type is not provided. Park type will be used.")
-        return SiteConfig(params.get("area_total_in_m2", 1000), params.get("area_impervious_in_m2", 500), params.get("area_pervious_in_m2", 500), params.get("area_tree_density_per_hectare", 400), weather, stype)
+            
+            
+        return SiteConfig(total_m2=params.get("area_total_in_m2", 1000), 
+                          impervious_m2=params.get("area_impervious_in_m2", 500), 
+                          pervious_m2=params.get("area_pervious_in_m2", 500), 
+                          tree_density_per_ha=params.get("area_tree_density_per_hectare", 400), 
+                          weather=weather, 
+                          site_type=stype)
         
