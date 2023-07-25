@@ -230,7 +230,7 @@ class Urban(Model):
             self.time_horizon = experiment["time_horizon"]
         else:
             logging.warning(
-                "Now time horizon found, the model will have to be run for a fixed number of years."
+                "No time horizon found, the model will have to be run for a fixed number of years."
             )
 
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
