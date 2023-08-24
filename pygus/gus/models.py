@@ -22,9 +22,9 @@ from .weather import WeatherSim
 
 
 class WeatherConfig:
-    def __init__(self, mean_growth_rate: int = 153, growth_rate_var: int = 7):
-        self.mean_growth_rate = mean_growth_rate
-        self.growth_rate_var = growth_rate_var
+    def __init__(self, growth_season_mean: int = 153, growth_season_var: int = 7):
+        self.growth_season_mean = growth_season_mean
+        self.growth_season_var = growth_season_var
 
 
 class SiteConfig:
@@ -69,7 +69,6 @@ class Urban(Model):
         species_composition: str,
         site_config: SiteConfig,
         scenario: Dict,
-        batch=False,
     ):
         """The constructor method.
 
@@ -78,7 +77,6 @@ class Urban(Model):
             species_composition (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.
             site_config: (:obj:`string`): name of the json file.
             scenario: (:obj:`dict`): Python dictionary that holds experiment parameters.
-            batch: (:obj:`bool`): Mesa parameter to control single vs batch runs.
         Returns:
             None
 
@@ -151,6 +149,13 @@ class Urban(Model):
                     )
                 ),
                 "Released": self.compute_current_carbon_release,
+                # Avg released carbon per year is annual carbon release divided by number of living trees
+                "Avg_Rel": lambda m: self.compute_current_carbon_release(m)
+                / self.count(
+                    m,
+                    "condition",
+                    lambda x: x in ALIVE_STATE,
+                ),
                 "Alive": lambda m: self.count(
                     m, "condition", lambda x: x in ALIVE_STATE
                 ),
@@ -195,7 +200,7 @@ class Urban(Model):
         """Customized MESA method that sets the major components of scenario analyses process."""
         pop = str(self.df.shape[0])
         if not steps:
-            steps = self.scenario.get("time_horizon_years")
+            steps = self.time_horizon
             print("Running for {} steps".format(steps))
         start = time.time()
         logging.info("Year:{}".format(self.schedule.time + 1))
@@ -204,6 +209,8 @@ class Urban(Model):
         end = time.time()
         print("{} steps completed (pop. {}): {}".format(steps, pop, end - start))
         logging.info("Simulation is complete!")
+
+        return self.impact_analysis()
 
     def step(self):
         """Customized MESA method that sets the major components of scenario analyses process."""
@@ -249,6 +256,8 @@ class Urban(Model):
 
         if "time_horizon" in experiment.keys():
             self.time_horizon = experiment["time_horizon"]
+        elif "time_horizon_years" in experiment.keys():
+            self.time_horizon = experiment["time_horizon_years"]
         else:
             logging.warning(
                 "No time horizon found, the model will have to be run for a fixed number of years."
@@ -256,8 +265,8 @@ class Urban(Model):
 
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
         """Loads site configuration information."""
-        self.season_mean = site_config.weather.mean_growth_rate
-        self.season_var = site_config.weather.growth_rate_var
+        self.season_mean = site_config.weather.growth_season_mean
+        self.season_var = site_config.weather.growth_season_var
         self.site_type = site_config.site_type
         self.dt_resolution = round(
             np.sqrt(1 / (population_size / site_config.total_m2)),
@@ -430,8 +439,6 @@ class Urban(Model):
 
         # IMPACT ANALYSIS
         model_vars["Cum_Seq"] = model_vars.Seq.cumsum()
-        model_vars["Avg_Seq"] = model_vars.Seq / model_vars.Alive
-        model_vars["Avg_Rel"] = model_vars.Released / model_vars.Alive
 
         # Processing to avoid out of range float values
         inf_count = np.isinf(model_vars).values.sum()
