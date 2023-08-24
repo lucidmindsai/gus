@@ -68,8 +68,6 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
     population_df["xpos"] = population_df["xpos"] - population_df["xpos"].min()
     population_df["ypos"] = population_df["ypos"] - population_df["ypos"].min()
 
-    return population_df
-
 def latlng_to_xy(row):
     """DEPRECATED: Much slower than latlng_array_to_xy, but works on a single row.
 
@@ -108,7 +106,6 @@ def raster_grid(df, minx, miny, grid_width):
     df["gus_x"] = ((df["xpos"] - minx) // grid_width).astype(int)
     df["gus_y"] = ((df["ypos"] - miny) // grid_width).astype(int)
     return df
-
 
 def load_site_config_file(config_file) -> SiteConfig:
     """Loads site configuration information from a json file in the form:
@@ -165,16 +162,8 @@ def load_site_config_file(config_file) -> SiteConfig:
 
 
 def calculate_dataframe_area(tree_df: pd.DataFrame):
-    # If xpos and ypos columns exist, calculate area with them
-    if "xpos" in tree_df.columns and "ypos" in tree_df.columns:
-        # Get area
-        min_x = tree_df["xpos"].min()
-        max_x = tree_df["xpos"].max()
-        min_y = tree_df["ypos"].min()
-        max_y = tree_df["ypos"].max()
-        return (max_x - min_x) * (max_y - min_y)
     # otherwise, check for lat and lon columns
-    elif "lat" in tree_df.columns and "lng" in tree_df.columns:
+    if "lat" in tree_df.columns and "lng" in tree_df.columns:
         R = 6371000  # Radius of the Earth in meters
         min_lat = tree_df["lat"].min()
         max_lat = tree_df["lat"].max()
@@ -196,5 +185,13 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
 
         # Calculate the area
         return d_lat * d_lon * R * R * math.cos(lat_avg)
+    # If xpos and ypos columns exist, calculate area with them
+    elif "xpos" in tree_df.columns and "ypos" in tree_df.columns:
+        # Get area
+        min_x = tree_df["xpos"].min()
+        max_x = tree_df["xpos"].max()
+        min_y = tree_df["ypos"].min()
+        max_y = tree_df["ypos"].max()
+        return (max_x - min_x) * (max_y - min_y)
 
     return None
