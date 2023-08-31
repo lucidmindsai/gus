@@ -1,5 +1,4 @@
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![PyPI version](https://badge.fury.io/py/pygus.svg)](https://badge.fury.io/py/pygus) [![Versions](https://img.shields.io/pypi/pyversions/pygus)]()
 # gus
 ![GUS-IMAGE](https://miro.medium.com/max/1400/1*fMM7rnq1RJCh-nFBGLUvyA.png)
 Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis.
@@ -9,13 +8,13 @@ Green Urban Scenarios - A digital twin representation, simulation of urban fores
 Install GUS from PyPi:
 
 ```
-$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple gus==0.1.8
+$ pip install pyGus==0.1.9
 ```
 
 You can use, Poetry as well:
 
 ```
-$ poetry add gus
+$ poetry add pyGus
 ```
 
 ### Development
@@ -59,15 +58,11 @@ $ poetry build
 ```
 
 
-Stick to PEP8 rules for code development. To do the checks, install `flake8` to your local machine:
-
-`$ pip3 install flake8`
+Stick to PEP8 rules for code development. To do the checks, you can run code checks with [Black](https://black.readthedocs.io/en/stable/index.html)
 
 Once you're done with developing on your branch, before pushing your changes, please run:
 
-`$ flake8 <file_you_changed_or_added>`
-
-Please fix the errors and warnings if they appear.
+`$ poetry run black .`
 
 ### Testing
 
@@ -79,3 +74,12 @@ And run the tests:
 `$ pytest`
 
 All tests are in the `tests/` folder
+
+### Who maintains GUS?
+The GUS is currently developed and maintained by [Lucidminds](https://lucidminds.ai/) and [Dark Matter Labs](https://darkmatterlabs.org/) members as part of their joint project [TreesAI](https://treesasinfrastructure.com/#/).
+
+### Notes
+* The GUS is open for PRs.
+* PRs will be reviewed by the current maintainers of the project.
+* Extensive development guidelines will be provided soon.
+* To report bugs, fixes, and questions, please use the [GitHub issues](https://github.com/lucidmindsai/gus/issues).
