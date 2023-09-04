@@ -9,7 +9,6 @@ import numpy as np
 
 from .models import Urban, SiteConfig, WeatherConfig
 
-
 def get_raster_data(
     dtwin,
     var="unique_id",
@@ -55,14 +54,29 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
             (:obj:numpy.ndarray`): array of x,y positions.
         Note:
             None
-    """
+    """    
     lat = population_df[lat_column].to_numpy()
     lng = population_df[lng_column].to_numpy()
+<<<<<<< HEAD
     easting, northing, _, _ = utm.from_latlon(
         lat, lng
     )  # also returns zone and zone letter
     population_df["xpos"] = easting.astype(int)
     population_df["ypos"] = northing.astype(int)
+=======
+    easting, northing, _, _ = utm.from_latlon(lat, lng) #also returns zone and zone letter
+    #convert to integers
+    population_df['xpos'] = easting.astype(int)
+    population_df['ypos'] = northing.astype(int)
+
+    # Normalise the xpos, ypos values, and round to integers
+    population_df['xpos'] = population_df['xpos'] - population_df['xpos'].min()
+    population_df['ypos'] = population_df['ypos'] - population_df['ypos'].min()
+    
+    # remove lat and lng
+    population_df = population_df.drop([lat_column, lng_column], axis=1)
+    return population_df
+>>>>>>> 3e6c89c (Add some cells handling the Songpa data)
 
     # Normalise the xpos, ypos values, and round to integers
     population_df["xpos"] = population_df["xpos"] - population_df["xpos"].min()
