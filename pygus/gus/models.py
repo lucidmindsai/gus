@@ -19,7 +19,6 @@ from mesa.datacollection import DataCollector
 from .agents import Tree
 from .allometrics import Species
 from .weather import WeatherSim
-
        
 class WeatherConfig:
     
@@ -75,15 +74,17 @@ class Urban(Model):
             Check for hard coded constants and parameterize further.
         """
         super().__init__()
+        self._handle_site_configuration(site_config, len(population))
+        self._load_experiment_parameters(scenario)
+        
         # Setting MESA specific parameters
         width = int(max(population.xpos)) + 1
         length = int(max(population.ypos)) + 1
+        logging.info("Grid size: {} x {}".format(width, length))
+        
         self.grid = MultiGrid(width, length, torus=False)
         # to be parameterized and set during initialization.
 
-
-        self._handle_site_configuration(site_config, len(population))
-        self._load_experiment_parameters(scenario)
 
         # Load species composition and their allometrics
         self.species = Species(species_composition)  # will be used by agents.
@@ -114,6 +115,7 @@ class Urban(Model):
             # Place trees on the plot based on actual physical positioning
             x = row.xpos
             y = row.ypos
+            logging.debug("Placing agent {} at ({},{})".format(index, x, y))
             self.grid.place_agent(a, (x, y))
 
         # This variable below works as an indexer while adding new trees to the population during the run time.
@@ -205,6 +207,13 @@ class Urban(Model):
         """
         df_out_site = self.datacollector.get_model_vars_dataframe()
         return Urban.format_impact_analysis(df_out_site)
+    
+    def get_agent_data(self) -> pd.DataFrame:
+        """
+        Provides agent data of the simulation
+        """
+        df_out_agents = self.datacollector.get_agent_vars_dataframe()
+        return df_out_agents
         
     def _load_experiment_parameters(self, experiment: Dict):
         """Loads site configuration information.
