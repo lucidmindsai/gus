@@ -122,17 +122,33 @@ class Urban(Model):
         self.current_id = max(population.id)
 
         # Collecting model and agent level data
+        ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         self.datacollector = DataCollector(
             model_reporters={
                 "Storage": lambda m: self.aggregate(m, "carbon_storage"),
                 "Seq": lambda m: self.aggregate(m, "annual_gross_carbon_sequestration"),
                 # "Sequestrated": self.aggregate_sequestration,
+                # Avg sequestered carbon per tree is annual carbon divided by number of living trees
+                "Avg_Seq": lambda m: self.aggregate(
+                    m, "annual_gross_carbon_sequestration"
+                )
+                / (
+                    self.count(
+                        m,
+                        "condition",
+                        lambda x: x in ALIVE_STATE,
+                    )
+                ),
                 "Released": self.compute_current_carbon_release,
-                "Alive": lambda m: self.count(
+                # Avg released carbon per year is annual carbon release divided by number of living trees
+                "Avg_Rel": lambda m: self.compute_current_carbon_release(m)
+                / self.count(
                     m,
                     "condition",
-                    lambda x: x
-                    in ["excellent", "good", "fair", "poor", "critical", "dying"],
+                    lambda x: x in ALIVE_STATE,
+                ),
+                "Alive": lambda m: self.count(
+                    m, "condition", lambda x: x in ALIVE_STATE
                 ),
                 "Dead": lambda m: self.count(m, "condition", lambda x: x == "dead"),
                 "Critical": lambda m: self.count(
@@ -166,6 +182,7 @@ class Urban(Model):
                 "coordinates": "pos",
             },
         )
+    
         logging.info(
             "Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!".format(
                 self.num_agents, width, length
