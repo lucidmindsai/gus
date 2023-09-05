@@ -19,17 +19,26 @@ from mesa.datacollection import DataCollector
 from .agents import Tree
 from .allometrics import Species
 from .weather import WeatherSim
-       
+
+
 class WeatherConfig:
-    
     def __init__(self, growth_season_mean: int = 153, growth_season_var: int = 7):
         self.growth_season_mean = growth_season_mean
         self.growth_season_var = growth_season_var
 
+
 class SiteConfig:
     """A class to hold site configuration parameters."""
 
-    def __init__(self, total_m2: int, impervious_m2: int, pervious_m2: int, weather: Union[Dict, WeatherConfig], tree_density_per_ha: int = None, project_site_type: str = "park"):
+    def __init__(
+        self,
+        total_m2: int,
+        impervious_m2: int,
+        pervious_m2: int,
+        weather: Union[Dict, WeatherConfig],
+        tree_density_per_ha: int = None,
+        project_site_type: str = "park",
+    ):
         self.total_m2 = total_m2
         self.impervious_m2 = impervious_m2
         self.pervious_m2 = pervious_m2
@@ -41,7 +50,8 @@ class SiteConfig:
             self.weather = weather
 
         self.project_site_type = project_site_type
-         
+
+
 class Urban(Model):
     """A generic urban green space model. To be tailored according to specific sites."""
 
@@ -54,7 +64,12 @@ class Urban(Model):
     site_types = ["park", "street", "forest", "pocket"]
 
     def __init__(
-        self, population: pd.DataFrame, species_allometrics_file: str, site_config: SiteConfig, scenario: Dict, batch=False
+        self,
+        population: pd.DataFrame,
+        species_allometrics_file: str,
+        site_config: SiteConfig,
+        scenario: Dict,
+        batch=False,
     ):
         """The constructor method.
 
@@ -76,15 +91,14 @@ class Urban(Model):
         super().__init__()
         self._handle_site_configuration(site_config, len(population))
         self._load_experiment_parameters(scenario)
-        
+
         # Setting MESA specific parameters
         width = int(max(population.xpos)) + 1
         length = int(max(population.ypos)) + 1
         logging.info("Grid size: {} x {}".format(width, length))
-        
+
         self.grid = MultiGrid(width, length, torus=False)
         # to be parameterized and set during initialization.
-
 
         # Load species composition and their allometrics
         self.species = Species(species_allometrics_file)  # will be used by agents.
@@ -97,7 +111,7 @@ class Urban(Model):
         self.df = population
         self.num_agents = len(population)
         self.schedule = RandomActivation(self)
-        
+
         self.sapling_dbh = min(population.dbh)
         # Each entry index i, represents number of years since the biomass is decay period.
         self.release_bins = {
@@ -161,7 +175,6 @@ class Urban(Model):
                 ),
                 "Seq_std": self.agg_std_sequestration,
             },
-
             agent_reporters={
                 "species": "species",
                 "dbh": "dbh",
@@ -182,14 +195,14 @@ class Urban(Model):
                 "coordinates": "pos",
             },
         )
-    
+
         logging.info(
             "Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!".format(
                 self.num_agents, width, length
             )
         )
-        
-    def run(self, steps = None):
+
+    def run(self, steps=None):
         """Customized MESA method that sets the major components of scenario analyses process."""
         pop = str(self.df.shape[0])
         if not steps:
@@ -202,7 +215,7 @@ class Urban(Model):
         end = time.time()
         print("{} steps completed (pop. {}): {}".format(steps, pop, end - start))
         logging.info("Simulation is complete!")
-        
+
     def step(self):
         """Customized MESA method that sets the major components of scenario analyses process."""
         logging.info("Year:{}".format(self.schedule.time + 1))
@@ -213,25 +226,25 @@ class Urban(Model):
 
         logging.info("Yearly data is being collected ...")
         self.datacollector.collect(self)
-        
+
         # print('Step:{} ({}s)'.format(self.schedule.time, end-start))
         # print(self.release_bins['slow'])
         # print(self.release_bins['fast'])
-    
+
     def impact_analysis(self) -> pd.DataFrame:
         """
         Provides impact analysis of the simulation
         """
         df_out_site = self.datacollector.get_model_vars_dataframe()
         return Urban.format_impact_analysis(df_out_site)
-    
+
     def get_agent_data(self) -> pd.DataFrame:
         """
         Provides agent data of the simulation
         """
         df_out_agents = self.datacollector.get_agent_vars_dataframe()
         return df_out_agents
-        
+
     def _load_experiment_parameters(self, experiment: Dict):
         """Loads site configuration information.
 
@@ -251,7 +264,7 @@ class Urban(Model):
                 "Maintenance scope is not given. A high maintenance site is assumed."
             )
             self.maintenance_scope = 2
-        #rewrite for clarity:
+        # rewrite for clarity:
         if "time_horizon" in experiment.keys():
             self.time_horizon = experiment["time_horizon"]
         elif "time_horizon_years" in experiment.keys():
@@ -267,10 +280,8 @@ class Urban(Model):
         self.season_var = site_config.weather.growth_season_var
         self.site_type = site_config.project_site_type
         self.dt_resolution = round(
-            np.sqrt(
-                1 / (population_size / site_config.total_m2)
-            ),
-            2 # round to < decimal places
+            np.sqrt(1 / (population_size / site_config.total_m2)),
+            2,  # round to < decimal places
         )
 
     def get_weather_projection(self):

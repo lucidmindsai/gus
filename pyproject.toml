@@ -44,8 +44,9 @@ utm = "^0.7.0"
 python-levenshtein = "^0.21.1"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
+black = {extras = ["jupyter"], version = "^23.7.0"}
 ipykernel = "^6.23.2"
+pytest = "^7.4.1"
 
 [build-system]
 requires = ["poetry-core"]

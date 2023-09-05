@@ -9,6 +9,7 @@ import numpy as np
 
 from .models import Urban, SiteConfig, WeatherConfig
 
+
 def get_raster_data(
     dtwin,
     var="unique_id",
@@ -54,18 +55,20 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
             (:obj:numpy.ndarray`): array of x,y positions.
         Note:
             None
-    """    
+    """
     lat = population_df[lat_column].to_numpy()
     lng = population_df[lng_column].to_numpy()
-    easting, northing, _, _ = utm.from_latlon(lat, lng) #also returns zone and zone letter
-    #convert to integers
-    population_df['xpos'] = easting.astype(int)
-    population_df['ypos'] = northing.astype(int)
+    easting, northing, _, _ = utm.from_latlon(
+        lat, lng
+    )  # also returns zone and zone letter
+    # convert to integers
+    population_df["xpos"] = easting.astype(int)
+    population_df["ypos"] = northing.astype(int)
 
     # Normalise the xpos, ypos values, and round to integers
-    population_df['xpos'] = population_df['xpos'] - population_df['xpos'].min()
-    population_df['ypos'] = population_df['ypos'] - population_df['ypos'].min()
-    
+    population_df["xpos"] = population_df["xpos"] - population_df["xpos"].min()
+    population_df["ypos"] = population_df["ypos"] - population_df["ypos"].min()
+
     # remove lat and lng
     population_df = population_df.drop([lat_column, lng_column], axis=1)
     return population_df
@@ -73,7 +76,7 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
 
 def latlng_to_xy(row):
     """DEPRECATED: Much slower than latlng_array_to_xy, but works on a single row.
-    
+
     A general purpose function that translates lat, lng data to x,y pos.
 
     Args:
@@ -109,6 +112,7 @@ def raster_grid(df, minx, miny, grid_width):
     df["gus_x"] = ((df["xpos"] - minx) // grid_width).astype(int)
     df["gus_y"] = ((df["ypos"] - miny) // grid_width).astype(int)
     return df
+
 
 def load_site_config_file(config_file) -> SiteConfig:
     """Loads site configuration information from a json file in the form:
@@ -163,6 +167,7 @@ def load_site_config_file(config_file) -> SiteConfig:
         project_site_type=stype,
     )
 
+
 def calculate_dataframe_area(tree_df: pd.DataFrame):
     # If xpos and ypos columns exist, calculate area with them
     if "xpos" in tree_df.columns and "ypos" in tree_df.columns:
@@ -195,5 +200,5 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
 
         # Calculate the area
         return d_lat * d_lon * R * R * math.cos(lat_avg)
-    
+
     return None
