@@ -72,7 +72,9 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
 
 
 def latlng_to_xy(row):
-    """A general purpose function that translates lat, lng data to x,y pos.
+    """DEPRECATED: Much slower than latlng_array_to_xy, but works on a single row.
+    
+    A general purpose function that translates lat, lng data to x,y pos.
 
     Args:
             row: (pandas.DataFrame.row): a Pandas DataFrame row.
@@ -158,7 +160,7 @@ def load_site_config_file(config_file) -> SiteConfig:
         pervious_m2=params.get("area_pervious_in_m2", 500),
         tree_density_per_ha=params.get("area_tree_density_per_hectare", 400),
         weather=weather,
-        site_type=stype,
+        project_site_type=stype,
     )
 
 def calculate_dataframe_area(tree_df: pd.DataFrame):

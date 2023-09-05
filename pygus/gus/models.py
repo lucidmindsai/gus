@@ -22,14 +22,14 @@ from .weather import WeatherSim
        
 class WeatherConfig:
     
-    def __init__(self, mean_growth_rate: int = 153, growth_rate_var: int = 7):
-        self.mean_growth_rate = mean_growth_rate
-        self.growth_rate_var = growth_rate_var
+    def __init__(self, growth_season_mean: int = 153, growth_season_var: int = 7):
+        self.growth_season_mean = growth_season_mean
+        self.growth_season_var = growth_season_var
 
 class SiteConfig:
     """A class to hold site configuration parameters."""
 
-    def __init__(self, total_m2: int, impervious_m2: int, pervious_m2: int, weather: Union[Dict, WeatherConfig], tree_density_per_ha: int = None, site_type: str = "park"):
+    def __init__(self, total_m2: int, impervious_m2: int, pervious_m2: int, weather: Union[Dict, WeatherConfig], tree_density_per_ha: int = None, project_site_type: str = "park"):
         self.total_m2 = total_m2
         self.impervious_m2 = impervious_m2
         self.pervious_m2 = pervious_m2
@@ -40,7 +40,7 @@ class SiteConfig:
         else:
             self.weather = weather
 
-        self.site_type = site_type
+        self.project_site_type = project_site_type
          
 class Urban(Model):
     """A generic urban green space model. To be tailored according to specific sites."""
@@ -54,7 +54,7 @@ class Urban(Model):
     site_types = ["park", "street", "forest", "pocket"]
 
     def __init__(
-        self, population: pd.DataFrame, species_composition: str, site_config: SiteConfig, scenario: Dict, batch=False
+        self, population: pd.DataFrame, species_allometrics_file: str, site_config: SiteConfig, scenario: Dict, batch=False
     ):
         """The constructor method.
 
@@ -87,7 +87,7 @@ class Urban(Model):
 
 
         # Load species composition and their allometrics
-        self.species = Species(species_composition)  # will be used by agents.
+        self.species = Species(species_allometrics_file)  # will be used by agents.
 
         # Test that the df is complete or raise keyerror
         for attribute in ["dbh", "species", "condition", "xpos", "ypos"]:
@@ -176,7 +176,7 @@ class Urban(Model):
         """Customized MESA method that sets the major components of scenario analyses process."""
         pop = str(self.df.shape[0])
         if not steps:
-            steps = self.scenario.get("time_horizon_years")
+            steps = self.time_horizon
             print("Running for {} steps".format(steps))
         start = time.time()
         logging.info("Year:{}".format(self.schedule.time + 1))
@@ -234,19 +234,21 @@ class Urban(Model):
                 "Maintenance scope is not given. A high maintenance site is assumed."
             )
             self.maintenance_scope = 2
-
+        #rewrite for clarity:
         if "time_horizon" in experiment.keys():
             self.time_horizon = experiment["time_horizon"]
+        elif "time_horizon_years" in experiment.keys():
+            self.time_horizon = experiment["time_horizon_years"]
         else:
             logging.warning(
-                "No time horizon found, the model will have to be run for a fixed number of years."
+                "No time horizon found, the model will be run for 10 years. Setting `time_horizon` will change this."
             )
 
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
         """Loads site configuration information."""
-        self.season_mean = site_config.weather.mean_growth_rate
-        self.season_var = site_config.weather.growth_rate_var
-        self.site_type = site_config.site_type
+        self.season_mean = site_config.weather.growth_season_mean
+        self.season_var = site_config.weather.growth_season_var
+        self.site_type = site_config.project_site_type
         self.dt_resolution = round(
             np.sqrt(
                 1 / (population_size / site_config.total_m2)

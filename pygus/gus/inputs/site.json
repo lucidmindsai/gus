@@ -1,8 +1,8 @@
 {
-    "area_total_in_m2":1000,
-    "area_impervious_in_m2":500,
-    "area_pervious_in_m2": 500,
-    "area_tree_density_per_hectare": 400,
+    "total_m2":1000,
+    "impervious_m2":500,
+    "pervious_m2": 500,
+    "tree_density_per_ha": 400,
     "weather": {
         "growth_season_mean": 200,
         "growth_season_var": 7
