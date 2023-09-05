@@ -18,12 +18,7 @@ from mesa.datacollection import DataCollector
 from .agents import Tree
 from .allometrics import Species
 from .weather import WeatherSim
-<<<<<<< HEAD
-
-
-=======
-       
->>>>>>> 3e6c89c (Add some cells handling the Songpa data)
+    
 class WeatherConfig:
     def __init__(self, growth_season_mean: int = 153, growth_season_var: int = 7):
         self.growth_season_mean = growth_season_mean
@@ -53,8 +48,7 @@ class SiteConfig:
             self.weather = weather
 
         self.project_site_type = project_site_type
-
-
+         
 class Urban(Model):
     """A generic urban green space model. To be tailored according to specific sites."""
 
@@ -92,27 +86,15 @@ class Urban(Model):
         super().__init__()
         self._handle_site_configuration(site_config, len(population))
         self._load_experiment_parameters(scenario)
-<<<<<<< HEAD
-
-=======
         
->>>>>>> 3e6c89c (Add some cells handling the Songpa data)
         # Setting MESA specific parameters
         width = int(max(population.xpos)) + 1
         length = int(max(population.ypos)) + 1
         logging.info("Grid size: {} x {}".format(width, length))
-<<<<<<< HEAD
 
         self.grid = MultiGrid(width, length, torus=False)
         # to be parameterized and set during initialization.
 
-=======
-        
-        self.grid = MultiGrid(width, length, torus=False)
-        # to be parameterized and set during initialization.
-
-
->>>>>>> 3e6c89c (Add some cells handling the Songpa data)
         # Load species composition and their allometrics
         self.species = Species(species_allometrics_file)  # will be used by agents.
 
@@ -257,22 +239,14 @@ class Urban(Model):
         """
         df_out_site = self.datacollector.get_model_vars_dataframe()
         return Urban.format_impact_analysis(df_out_site)
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 3e6c89c (Add some cells handling the Songpa data)
     def get_agent_data(self) -> pd.DataFrame:
         """
         Provides agent data of the simulation
         """
         df_out_agents = self.datacollector.get_agent_vars_dataframe()
         return df_out_agents
-<<<<<<< HEAD
-
-=======
         
->>>>>>> 3e6c89c (Add some cells handling the Songpa data)
     def _load_experiment_parameters(self, experiment: Dict):
         """Loads site configuration information.
 
