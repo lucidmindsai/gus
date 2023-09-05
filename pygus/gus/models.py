@@ -136,6 +136,7 @@ class Urban(Model):
 
         ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         # Collecting model and agent level data
+        ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         self.datacollector = DataCollector(
             model_reporters={
                 "Storage": lambda m: self.aggregate(m, "carbon_storage"),
@@ -195,7 +196,7 @@ class Urban(Model):
                 **{col: col for col in extra_columns},
             },
         )
-
+    
         logging.info(
             "Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!".format(
                 self.num_agents, width, length
