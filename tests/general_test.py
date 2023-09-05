@@ -4,7 +4,7 @@ import time
 import json
 import pandas as pd
 from pygus.gus import Urban
-from pygus.gus.models import SiteConfig
+from pygus.gus.utilities import load_site_config_file
 
 # input_trees = "pygus/gus/inputs/trees.csv"
 input_trees = "pygus/gus/inputs/amsterdam_all_trees_1000.csv"
@@ -15,15 +15,13 @@ def test_parallelise():
     site_file = "pygus/gus/inputs/site.json"
     try:
         scen = open(scenario_file)
-        site = open(site_file)
     except IOError as e:
         print(str(e))
     scenario = json.loads(scen.read())
-    site_config = SiteConfig(**json.loads(site.read()))
     model = Urban(
         population=pd.read_csv(input_trees),
         species_allometrics_file="pygus/gus/inputs/allometrics.json",
-        site_config=site_config,
+        site_config=load_site_config_file(site_file),
         scenario=scenario,
     )
 
