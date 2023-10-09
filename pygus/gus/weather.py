@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+"""The module holds a simple weather simulation for the length of growth season."""
+
 import numpy as np
 
 
