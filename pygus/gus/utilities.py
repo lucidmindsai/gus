@@ -153,5 +153,5 @@ def load_site_config_file(config_file) -> SiteConfig:
         pervious_m2=params.get("area_pervious_in_m2", 500),
         tree_density_per_ha=params.get("area_tree_density_per_hectare", 400),
         weather=weather,
-        site_type=stype,
+        project_site_type=stype,
     )

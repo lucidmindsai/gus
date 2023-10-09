@@ -36,7 +36,7 @@ class SiteConfig:
         pervious_m2: int,
         weather: Union[Dict, WeatherConfig],
         tree_density_per_ha: int = None,
-        site_type: str = "park",
+        project_site_type: str = "park",
     ):
         self.total_m2 = total_m2
         self.impervious_m2 = impervious_m2
@@ -48,7 +48,7 @@ class SiteConfig:
         else:
             self.weather = weather
 
-        self.site_type = site_type
+        self.site_type = project_site_type
 
 
 class Urban(Model):
@@ -65,7 +65,7 @@ class Urban(Model):
     def __init__(
         self,
         population: pd.DataFrame,
-        species_composition: str,
+        species_allometrics_file: str,
         site_config: SiteConfig,
         scenario: Dict,
     ):
@@ -96,7 +96,7 @@ class Urban(Model):
         self._load_experiment_parameters(scenario)
 
         # Load species composition and their allometrics
-        self.species = Species(species_composition)  # will be used by agents.
+        self.species = Species(species_allometrics_file)  # will be used by agents.
 
         # Test that the df is complete or raise keyerror
         for attribute in ["dbh", "species", "condition", "xpos", "ypos"]:
@@ -124,6 +124,7 @@ class Urban(Model):
             # Place trees on the plot based on actual physical positioning
             x = row.xpos
             y = row.ypos
+            logging.debug("Placing agent {} at ({},{})".format(index, x, y))
             self.grid.place_agent(a, (x, y))
 
         # This variable below works as an indexer while adding new trees to the population during the run time.
@@ -233,6 +234,13 @@ class Urban(Model):
         df_out_site = self.datacollector.get_model_vars_dataframe()
         return Urban.format_impact_analysis(df_out_site)
 
+    def get_agent_data(self) -> pd.DataFrame:
+        """
+        Provides agent data of the simulation
+        """
+        df_out_agents = self.datacollector.get_agent_vars_dataframe()
+        return df_out_agents
+    
     def _load_experiment_parameters(self, experiment: Dict):
         """Loads site configuration information.
 
@@ -259,7 +267,7 @@ class Urban(Model):
             self.time_horizon = experiment["time_horizon_years"]
         else:
             logging.warning(
-                "No time horizon found, the model will have to be run for a fixed number of years."
+                "No time horizon found, the model will be run for 10 years. Setting `time_horizon` will change this."
             )
 
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):

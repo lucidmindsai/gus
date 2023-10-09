@@ -22,7 +22,7 @@ def test_parallelise():
     site_config = SiteConfig(**json.loads(site.read()))
     model = Urban(
         population=pd.read_csv(input_trees),
-        species_composition="pygus/gus/inputs/allometrics.json",
+        species_allometrics_file="pygus/gus/inputs/allometrics.json",
         site_config=site_config,
         scenario=scenario,
     )
