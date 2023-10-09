@@ -107,10 +107,10 @@ def load_site_config_file(config_file) -> SiteConfig:
     """Loads site configuration information from a json file in the form:
 
     {
-        "area_total_in_m2":1000,
-        "area_impervious_in_m2":500,
-        "area_pervious_in_m2": 500,
-        "area_tree_density_per_hectare": 400,
+        "total_m2":1000,
+        "impervious_m2":500,
+        "pervious_m2": 500,
+        "tree_density_per_ha": 400,
         "weather": {
             "growth_season_mean": 200,
             "growth_season_var": 7
@@ -148,10 +148,10 @@ def load_site_config_file(config_file) -> SiteConfig:
         logging.warning("Site type is not provided. Park type will be used.")
 
     return SiteConfig(
-        total_m2=params.get("area_total_in_m2", 1000),
-        impervious_m2=params.get("area_impervious_in_m2", 500),
-        pervious_m2=params.get("area_pervious_in_m2", 500),
-        tree_density_per_ha=params.get("area_tree_density_per_hectare", 400),
+        total_m2=params.get("total_m2", 1000),
+        impervious_m2=params.get("impervious_m2", 500),
+        pervious_m2=params.get("pervious_m2", 500),
+        tree_density_per_ha=params.get("tree_density_per_ha", 400),
         weather=weather,
         project_site_type=stype,
     )
