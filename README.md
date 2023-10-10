@@ -8,7 +8,7 @@ Green Urban Scenarios - A digital twin representation, simulation of urban fores
 Install GUS from PyPi:
 
 ```
-$ pip install pyGus==0.1.9
+$ pip install pyGus==2.1.0
 ```
 
 You can use, Poetry as well:
@@ -19,11 +19,17 @@ $ poetry add pyGus
 
 ### Development
 
-Create a virtualenv by using pyenv, install it first:
+You can create and use a virtualenv easily with `pyenv` and `poetry`
 
+#### PyENV
+
+See: [pyenv on github](https://github.com/pyenv/pyenv)
+
+##### MacOS + Homebrew
 ```
-$ brew install readline xz
-$ brew install pyenv pyenv-virtualenv
+brew update &&
+brew install readline xz &&
+brew install pyenv
 ```
 
 Add those to your `~/.bashrc` or `~/.zshrc` (or any profiler you use)
@@ -36,27 +42,33 @@ eval "$(pyenv virtualenv-init -)"
 Install a specific python version:
 
 ```
-$ pyenv install 3.9.12 -- Pick your Python version (3.8 is available too)
+$ PY_VERSION = 3.9.17 # or 3.8.13 or 3.10.12, whichever you like :)
+$ pyenv install $PY_VERSION
 ```
 
-Create a virtualenv:
+Then set this as your system global (or local) version
 
 ```
-$ pyenv virtualenv 3.9.12 gus
+$ pyenv global $PY_VERSION
 ```
 
-To enable virtualenv:
+and install poetry
 
 ```
-$ pyenv shell gus
+$ pip install poetry
 ```
 
-Now run poetry to setup GUS:
+Sidenote: We recommend to store your poetry virtualenvs within the project directory for ease of access to source code, etc.
 
 ```
-$ poetry build
+$ poetry config virtualenvs.in-project true
 ```
 
+Finally, install dependencies using
+
+```
+$ poetry install
+```
 
 Stick to PEP8 rules for code development. To do the checks, you can run code checks with [Black](https://black.readthedocs.io/en/stable/index.html)
 
