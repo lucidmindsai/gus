@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+""" The module holds the main objects that manage and handle simulation runtime and data collection. """
 
 # Importing Python Libraries
 import time
@@ -22,9 +21,10 @@ from .weather import WeatherSim
 
 
 class WeatherConfig:
-    def __init__(self, mean_growth_rate: int = 153, growth_rate_var: int = 7):
-        self.mean_growth_rate = mean_growth_rate
-        self.growth_rate_var = growth_rate_var
+    def __init__(self, growth_season_mean: int = 153, growth_season_var: int = 7):
+        self.growth_season_mean = growth_season_mean
+        self.growth_season_var = growth_season_var
+
 
 
 class SiteConfig:
@@ -37,7 +37,7 @@ class SiteConfig:
         pervious_m2: int,
         weather: Union[Dict, WeatherConfig],
         tree_density_per_ha: int = None,
-        site_type: str = "park",
+        project_site_type: str = "park",
     ):
         self.total_m2 = total_m2
         self.impervious_m2 = impervious_m2
@@ -49,7 +49,7 @@ class SiteConfig:
         else:
             self.weather = weather
 
-        self.site_type = site_type
+        self.project_site_type = project_site_type
 
 
 class Urban(Model):
@@ -66,10 +66,9 @@ class Urban(Model):
     def __init__(
         self,
         population: pd.DataFrame,
-        species_composition: str,
+        species_allometrics_file: str,
         site_config: SiteConfig,
         scenario: Dict,
-        batch=False,
     ):
         """The constructor method.
 
@@ -78,7 +77,6 @@ class Urban(Model):
             species_composition (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.
             site_config: (:obj:`string`): name of the json file.
             scenario: (:obj:`dict`): Python dictionary that holds experiment parameters.
-            batch: (:obj:`bool`): Mesa parameter to control single vs batch runs.
         Returns:
             None
 
@@ -99,7 +97,7 @@ class Urban(Model):
         self._load_experiment_parameters(scenario)
 
         # Load species composition and their allometrics
-        self.species = Species(species_composition)  # will be used by agents.
+        self.species = Species(species_allometrics_file)  # will be used by agents.
 
         # Test that the df is complete or raise keyerror
         for attribute in ["dbh", "species", "condition", "xpos", "ypos"]:
@@ -127,23 +125,40 @@ class Urban(Model):
             # Place trees on the plot based on actual physical positioning
             x = row.xpos
             y = row.ypos
+            logging.debug("Placing agent {} at ({},{})".format(index, x, y))
             self.grid.place_agent(a, (x, y))
 
         # This variable below works as an indexer while adding new trees to the population during the run time.
         self.current_id = max(population.id)
 
+        ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         # Collecting model and agent level data
         self.datacollector = DataCollector(
             model_reporters={
                 "Storage": lambda m: self.aggregate(m, "carbon_storage"),
                 "Seq": lambda m: self.aggregate(m, "annual_gross_carbon_sequestration"),
                 # "Sequestrated": self.aggregate_sequestration,
+                # Avg sequestered carbon per tree is annual carbon divided by number of living trees
+                "Avg_Seq": lambda m: self.aggregate(
+                    m, "annual_gross_carbon_sequestration"
+                )
+                / (
+                    self.count(
+                        m,
+                        "condition",
+                        lambda x: x in ALIVE_STATE,
+                    )
+                ),
                 "Released": self.compute_current_carbon_release,
-                "Alive": lambda m: self.count(
+                # Avg released carbon per year is annual carbon release divided by number of living trees
+                "Avg_Rel": lambda m: self.compute_current_carbon_release(m)
+                / self.count(
                     m,
                     "condition",
-                    lambda x: x
-                    in ["excellent", "good", "fair", "poor", "critical", "dying"],
+                    lambda x: x in ALIVE_STATE,
+                ),
+                "Alive": lambda m: self.count(
+                    m, "condition", lambda x: x in ALIVE_STATE
                 ),
                 "Dead": lambda m: self.count(m, "condition", lambda x: x == "dead"),
                 "Critical": lambda m: self.count(
@@ -186,7 +201,7 @@ class Urban(Model):
         """Customized MESA method that sets the major components of scenario analyses process."""
         pop = str(self.df.shape[0])
         if not steps:
-            steps = self.scenario.get("time_horizon_years")
+            steps = self.time_horizon
             print("Running for {} steps".format(steps))
         start = time.time()
         logging.info("Year:{}".format(self.schedule.time + 1))
@@ -195,6 +210,8 @@ class Urban(Model):
         end = time.time()
         print("{} steps completed (pop. {}): {}".format(steps, pop, end - start))
         logging.info("Simulation is complete!")
+
+        return self.impact_analysis()
 
     def step(self):
         """Customized MESA method that sets the major components of scenario analyses process."""
@@ -218,6 +235,13 @@ class Urban(Model):
         df_out_site = self.datacollector.get_model_vars_dataframe()
         return Urban.format_impact_analysis(df_out_site)
 
+    def get_agent_data(self) -> pd.DataFrame:
+        """
+        Provides agent data of the simulation
+        """
+        df_out_agents = self.datacollector.get_agent_vars_dataframe()
+        return df_out_agents
+    
     def _load_experiment_parameters(self, experiment: Dict):
         """Loads site configuration information.
 
@@ -240,16 +264,18 @@ class Urban(Model):
 
         if "time_horizon" in experiment.keys():
             self.time_horizon = experiment["time_horizon"]
+        elif "time_horizon_years" in experiment.keys():
+            self.time_horizon = experiment["time_horizon_years"]
         else:
             logging.warning(
-                "Now time horizon found, the model will have to be run for a fixed number of years."
+                "No time horizon found, the model will be run for 10 years. Setting `time_horizon` will change this."
             )
 
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
         """Loads site configuration information."""
-        self.season_mean = site_config.weather.mean_growth_rate
-        self.season_var = site_config.weather.growth_rate_var
-        self.site_type = site_config.site_type
+        self.growth_season_mean = site_config.weather.growth_season_mean
+        self.growth_season_var = site_config.weather.growth_season_var
+        self.project_site_type = site_config.project_site_type
         self.dt_resolution = round(
             np.sqrt(1 / (population_size / site_config.total_m2)),
             2,  # round to < decimal places
@@ -279,7 +305,7 @@ class Urban(Model):
         # season_mean = 200
 
         self.WeatherAPI = WeatherSim(
-            season_length=self.season_mean, season_var=self.season_var
+            season_length=self.growth_season_mean, season_var=self.growth_season_var
         )
 
     @staticmethod
@@ -421,8 +447,6 @@ class Urban(Model):
 
         # IMPACT ANALYSIS
         model_vars["Cum_Seq"] = model_vars.Seq.cumsum()
-        model_vars["Avg_Seq"] = model_vars.Seq / model_vars.Alive
-        model_vars["Avg_Rel"] = model_vars.Released / model_vars.Alive
 
         # Processing to avoid out of range float values
         inf_count = np.isinf(model_vars).values.sum()
