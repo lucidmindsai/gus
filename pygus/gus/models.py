@@ -26,6 +26,7 @@ class WeatherConfig:
         self.growth_season_var = growth_season_var
 
 
+
 class SiteConfig:
     """A class to hold site configuration parameters."""
 
@@ -48,7 +49,7 @@ class SiteConfig:
         else:
             self.weather = weather
 
-        self.site_type = project_site_type
+        self.project_site_type = project_site_type
 
 
 class Urban(Model):
@@ -272,9 +273,9 @@ class Urban(Model):
 
     def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
         """Loads site configuration information."""
-        self.season_mean = site_config.weather.growth_season_mean
-        self.season_var = site_config.weather.growth_season_var
-        self.site_type = site_config.site_type
+        self.growth_season_mean = site_config.weather.growth_season_mean
+        self.growth_season_var = site_config.weather.growth_season_var
+        self.project_site_type = site_config.project_site_type
         self.dt_resolution = round(
             np.sqrt(1 / (population_size / site_config.total_m2)),
             2,  # round to < decimal places
@@ -304,7 +305,7 @@ class Urban(Model):
         # season_mean = 200
 
         self.WeatherAPI = WeatherSim(
-            season_length=self.season_mean, season_var=self.season_var
+            season_length=self.growth_season_mean, season_var=self.growth_season_var
         )
 
     @staticmethod

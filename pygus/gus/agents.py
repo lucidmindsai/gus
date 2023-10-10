@@ -133,7 +133,7 @@ class Tree(Agent):
         # Converted into cm.
 
         # Default crown light exposure based on site types.
-        self.cle = Tree.sun_exposure_rates[self.model.site_type]
+        self.cle = Tree.sun_exposure_rates[self.model.project_site_type]
         # Crown light exposure to sunlight (CLE).
         # CLE <- c(0.44, 0.56, 1)
         # (1) Forest conditions with a closed, or nearly closed canopy,
