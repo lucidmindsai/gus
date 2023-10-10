@@ -26,7 +26,6 @@ class WeatherConfig:
         self.growth_season_var = growth_season_var
 
 
-
 class SiteConfig:
     """A class to hold site configuration parameters."""
 
@@ -241,7 +240,7 @@ class Urban(Model):
         """
         df_out_agents = self.datacollector.get_agent_vars_dataframe()
         return df_out_agents
-    
+
     def _load_experiment_parameters(self, experiment: Dict):
         """Loads site configuration information.
 
