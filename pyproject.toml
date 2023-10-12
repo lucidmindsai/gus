@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyGUS"
-version = "2.1.1"
+version = "2.1.2"
 description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
 maintainers = [
