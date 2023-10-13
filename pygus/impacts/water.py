@@ -1,17 +1,10 @@
-# -*- coding: utf-8 -*-
+""" The module implements water retention related implementation. """
 
-# Water retention related implementation.
 # Based on Notebook implemenation created by Marko Petrovic
 
 # Numerical data processing
 import pandas as pd
 import numpy as np
-from scipy import stats
-
-# Time series operations
-import glob
-from datetime import datetime
-
 
 class Calibration:
     """Water retention and impact estimate related parameters setting."""

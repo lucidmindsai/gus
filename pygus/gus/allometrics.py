@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+"""The module holds implementation of classes that handle identification and selection of right allomteric parameters and equations."""
 
 # Importing Python Libraries
 import numpy as np

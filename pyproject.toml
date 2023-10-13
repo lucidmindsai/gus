@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyGUS"
-version = "2.0.6"
+version = "2.1.2"
 description = "Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
 maintainers = [
@@ -30,21 +30,21 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.8.0"
-ipython = "^7.27.0"
 mesa = "^0.8.9"
 numpy = "^1.21.2"
 pandas = "^1.3.3"
-pytest = "^7.1.2"
 fuzzywuzzy = "^0.18.0"
-matplotlib = "^3.4.3"
-seaborn = "^0.11.2"
-portray = "^1.7.0"
 termcolor = "^2.1.1"
 utm = "^0.7.0"
 python-levenshtein = "^0.21.1"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
+seaborn = "^0.11.2"
+matplotlib = "^3.4.3"
+pytest = "^7.1.2"
+ipython = "^7.27.0"
+portray = "^1.7.0"
+black = {extras = ["jupyter"], version = "^23.7.0"}
 ipykernel = "^6.23.2"
 
 [build-system]

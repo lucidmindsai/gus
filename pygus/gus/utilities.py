@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+"""The module holds general purpose python functions on data preperations."""
 from functools import reduce
 import utm
 import json
@@ -57,6 +57,7 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
     """    
     lat = population_df[lat_column].to_numpy()
     lng = population_df[lng_column].to_numpy()
+    # TODO: Which is faster? This or the below?
     easting, northing, _, _ = utm.from_latlon(lat, lng) #also returns zone and zone letter
     #convert to integers
     population_df['xpos'] = easting.astype(int)
@@ -66,6 +67,10 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
     population_df['xpos'] = population_df['xpos'] - population_df['xpos'].min()
     population_df['ypos'] = population_df['ypos'] - population_df['ypos'].min()
     
+    # xpos, ypos = utm.from_latlon(lat, lng)
+    # population_df["xpos"] = xpos
+    # population_df["ypos"] = ypos
+
     # remove lat and lng
     population_df = population_df.drop([lat_column, lng_column], axis=1)
     return population_df
@@ -110,14 +115,15 @@ def raster_grid(df, minx, miny, grid_width):
     df["gus_y"] = ((df["ypos"] - miny) // grid_width).astype(int)
     return df
 
+
 def load_site_config_file(config_file) -> SiteConfig:
     """Loads site configuration information from a json file in the form:
 
     {
-        "area_total_in_m2":1000,
-        "area_impervious_in_m2":500,
-        "area_pervious_in_m2": 500,
-        "area_tree_density_per_hectare": 400,
+        "total_m2":1000,
+        "impervious_m2":500,
+        "pervious_m2": 500,
+        "tree_density_per_ha": 400,
         "weather": {
             "growth_season_mean": 200,
             "growth_season_var": 7
@@ -155,14 +161,14 @@ def load_site_config_file(config_file) -> SiteConfig:
         logging.warning("Site type is not provided. Park type will be used.")
 
     return SiteConfig(
-        total_m2=params.get("area_total_in_m2", 1000),
-        impervious_m2=params.get("area_impervious_in_m2", 500),
-        pervious_m2=params.get("area_pervious_in_m2", 500),
-        tree_density_per_ha=params.get("area_tree_density_per_hectare", 400),
+        total_m2=params.get("total_m2", 1000),
+        impervious_m2=params.get("impervious_m2", 500),
+        pervious_m2=params.get("pervious_m2", 500),
+        tree_density_per_ha=params.get("tree_density_per_ha", 400),
         weather=weather,
         project_site_type=stype,
     )
-
+    
 def calculate_dataframe_area(tree_df: pd.DataFrame):
     # If xpos and ypos columns exist, calculate area with them
     if "xpos" in tree_df.columns and "ypos" in tree_df.columns:
