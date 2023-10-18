@@ -57,15 +57,15 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
     """    
     lat = population_df[lat_column].to_numpy()
     lng = population_df[lng_column].to_numpy()
-    easting, northing, _, _ = utm.from_latlon(
-        lat, lng
-    )  # also returns zone and zone letter
-    population_df["xpos"] = easting.astype(int)
-    population_df["ypos"] = northing.astype(int)
+
+    easting, northing, _, _ = utm.from_latlon(lat, lng) #also returns zone and zone letter
+    
+    population_df['xpos'] = easting.astype(int)
+    population_df['ypos'] = northing.astype(int)
 
     # Normalise the xpos, ypos values, and round to integers
-    population_df["xpos"] = population_df["xpos"] - population_df["xpos"].min()
-    population_df["ypos"] = population_df["ypos"] - population_df["ypos"].min()
+    population_df['xpos'] = population_df['xpos'] - population_df['xpos'].min()
+    population_df['ypos'] = population_df['ypos'] - population_df['ypos'].min()
 
 def latlng_to_xy(row):
     """DEPRECATED: Much slower than latlng_array_to_xy, but works on a single row.
