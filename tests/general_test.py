@@ -18,6 +18,12 @@ def test_parallelise():
     except IOError as e:
         print(str(e))
     scenario = json.loads(scen.read())
+<<<<<<< HEAD
+=======
+    site_config = SiteConfig(**json.loads(site.read()))
+
+    tree_population = latlng_array_to_xy(pd.read_csv(input_trees))
+>>>>>>> 12dd927 (black formatting)
     model = Urban(
         population=pd.read_csv(input_trees),
         species_allometrics_file="pygus/gus/inputs/allometrics.json",

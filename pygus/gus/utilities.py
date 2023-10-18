@@ -9,6 +9,7 @@ import numpy as np
 
 from .models import Urban, SiteConfig, WeatherConfig
 
+
 def get_raster_data(
     dtwin,
     var="unique_id",
@@ -54,7 +55,7 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
             (:obj:numpy.ndarray`): array of x,y positions.
         Note:
             None
-    """    
+    """
     lat = population_df[lat_column].to_numpy()
     lng = population_df[lng_column].to_numpy()
 
@@ -64,12 +65,12 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
     population_df['ypos'] = northing.astype(int)
 
     # Normalise the xpos, ypos values, and round to integers
-    population_df['xpos'] = population_df['xpos'] - population_df['xpos'].min()
-    population_df['ypos'] = population_df['ypos'] - population_df['ypos'].min()
+    population_df["xpos"] = population_df["xpos"] - population_df["xpos"].min()
+    population_df["ypos"] = population_df["ypos"] - population_df["ypos"].min()
 
 def latlng_to_xy(row):
     """DEPRECATED: Much slower than latlng_array_to_xy, but works on a single row.
-    
+
     A general purpose function that translates lat, lng data to x,y pos.
 
     Args:
@@ -184,6 +185,7 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
 
         # Calculate the area
         return d_lat * d_lon * R * R * math.cos(lat_avg)
+<<<<<<< HEAD
     # If xpos and ypos columns exist, calculate area with them
     elif "xpos" in tree_df.columns and "ypos" in tree_df.columns:
         # Get area
@@ -192,5 +194,7 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
         min_y = tree_df["ypos"].min()
         max_y = tree_df["ypos"].max()
         return (max_x - min_x) * (max_y - min_y)
+=======
+>>>>>>> 12dd927 (black formatting)
 
     return None

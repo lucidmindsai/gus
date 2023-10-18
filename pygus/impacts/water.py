@@ -6,6 +6,7 @@
 import pandas as pd
 import numpy as np
 
+
 class Calibration:
     """Water retention and impact estimate related parameters setting."""
 
