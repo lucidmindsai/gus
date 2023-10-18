@@ -21,7 +21,7 @@ def test_parallelise():
         print(str(e))
     scenario = json.loads(scen.read())
     site_config = SiteConfig(**json.loads(site.read()))
-    
+
     tree_population = latlng_array_to_xy(pd.read_csv(input_trees))
     model = Urban(
         population=tree_population,
