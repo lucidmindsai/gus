@@ -53,15 +53,17 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
             (:obj:numpy.ndarray`): array of x,y positions.
         Note:
             None
-    """
+    """    
     lat = population_df[lat_column].to_numpy()
     lng = population_df[lng_column].to_numpy()
-    xpos, ypos = utm.from_latlon(lat, lng)
-    population_df["xpos"] = xpos
-    population_df["ypos"] = ypos
+    easting, northing, _, _ = utm.from_latlon(lat, lng) #also returns zone and zone letter
+    population_df['xpos'] = easting.astype(int)
+    population_df['ypos'] = northing.astype(int)
 
-    # remove lat and lng
-    population_df = population_df.drop([lat_column, lng_column], axis=1)
+    # Normalise the xpos, ypos values, and round to integers
+    population_df['xpos'] = population_df['xpos'] - population_df['xpos'].min()
+    population_df['ypos'] = population_df['ypos'] - population_df['ypos'].min()
+
     return population_df
 
 
