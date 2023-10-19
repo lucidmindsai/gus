@@ -106,6 +106,10 @@ class Urban(Model):
 
         # copy and import df
         self.df = population
+        expected_columns_latlng = ["id", "dbh", "height", "species", "CrownW", "condition", "lat", "lng", "xpos", "ypos"]
+        # list any extra columns that are present in the input data
+        extra_columns = list(set(population.columns) - set(expected_columns_latlng))
+        
         self.num_agents = len(population)
         self.schedule = RandomActivation(self)
 
@@ -119,7 +123,7 @@ class Urban(Model):
         # Create agents.
         for index, row in self.df.iterrows():
             a = Tree(
-                row.id, self, dbh=row.dbh, species=row.species, condition=row.condition
+                row.id, self, dbh=row.dbh, species=row.species, condition=row.condition, **{col: row[col] for col in extra_columns}
             )
             self.schedule.add(a)
 
@@ -191,6 +195,7 @@ class Urban(Model):
                 "mulched": "mulched",
                 "burnt": "immediate_release",
                 "coordinates": "pos",
+                **{col: col for col in extra_columns},
             },
         )
 
