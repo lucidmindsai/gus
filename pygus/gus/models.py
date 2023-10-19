@@ -18,12 +18,7 @@ from mesa.datacollection import DataCollector
 from .agents import Tree
 from .allometrics import Species
 from .weather import WeatherSim
-<<<<<<< HEAD
-    
-=======
 
-
->>>>>>> 12dd927 (black formatting)
 class WeatherConfig:
     def __init__(self, growth_season_mean: int = 153, growth_season_var: int = 7):
         self.growth_season_mean = growth_season_mean
@@ -110,9 +105,9 @@ class Urban(Model):
 
         # copy and import df
         self.df = population
-        required_cols = ["id", "dbh", "height", "species", "CrownW", "condition", "xpos", "ypos"]
+        expected_columns_latlng = ["id", "dbh", "height", "species", "CrownW", "condition", "lat", "lng", "xpos", "ypos"]
         # list any extra columns that are present in the input data
-        extra_columns = list(set(population.columns) - set(required_cols))
+        extra_columns = list(set(population.columns) - set(expected_columns_latlng))
         
         self.num_agents = len(population)
         self.schedule = RandomActivation(self)

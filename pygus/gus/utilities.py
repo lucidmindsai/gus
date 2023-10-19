@@ -185,7 +185,6 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
 
         # Calculate the area
         return d_lat * d_lon * R * R * math.cos(lat_avg)
-<<<<<<< HEAD
     # If xpos and ypos columns exist, calculate area with them
     elif "xpos" in tree_df.columns and "ypos" in tree_df.columns:
         # Get area
@@ -194,7 +193,5 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
         min_y = tree_df["ypos"].min()
         max_y = tree_df["ypos"].max()
         return (max_x - min_x) * (max_y - min_y)
-=======
->>>>>>> 12dd927 (black formatting)
 
     return None
