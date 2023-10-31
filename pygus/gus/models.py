@@ -86,14 +86,16 @@ class Urban(Model):
             Check for hard coded constants and parameterize further.
         """
         super().__init__()
+        self._handle_site_configuration(site_config, len(population))
+        self._load_experiment_parameters(scenario)
+
         # Setting MESA specific parameters
         width = int(max(population.xpos)) + 1
         length = int(max(population.ypos)) + 1
+        logging.info("Grid size: {} x {}".format(width, length))
+
         self.grid = MultiGrid(width, length, torus=False)
         # to be parameterized and set during initialization.
-
-        self._handle_site_configuration(site_config, len(population))
-        self._load_experiment_parameters(scenario)
 
         # Load species composition and their allometrics
         self.species = Species(species_allometrics_file)  # will be used by agents.
@@ -104,6 +106,10 @@ class Urban(Model):
 
         # copy and import df
         self.df = population
+        required_cols = ["id", "dbh", "height", "species", "CrownW", "condition", "xpos", "ypos"]
+        # list any extra columns that are present in the input data
+        extra_columns = list(set(population.columns) - set(required_cols))
+        
         self.num_agents = len(population)
         self.schedule = RandomActivation(self)
 
@@ -117,7 +123,7 @@ class Urban(Model):
         # Create agents.
         for index, row in self.df.iterrows():
             a = Tree(
-                row.id, self, dbh=row.dbh, species=row.species, condition=row.condition
+                row.id, self, dbh=row.dbh, species=row.species, condition=row.condition, **{col: row[col] for col in extra_columns}
             )
             self.schedule.add(a)
 
@@ -132,6 +138,7 @@ class Urban(Model):
 
         ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         # Collecting model and agent level data
+        ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         self.datacollector = DataCollector(
             model_reporters={
                 "Storage": lambda m: self.aggregate(m, "carbon_storage"),
@@ -188,8 +195,10 @@ class Urban(Model):
                 "mulched": "mulched",
                 "burnt": "immediate_release",
                 "coordinates": "pos",
+                **{col: col for col in extra_columns},
             },
         )
+
         logging.info(
             "Initialisation of the Digital Twins of {} trees on a {} by {} digital space is complete!".format(
                 self.num_agents, width, length
@@ -260,7 +269,7 @@ class Urban(Model):
                 "Maintenance scope is not given. A high maintenance site is assumed."
             )
             self.maintenance_scope = 2
-
+        # rewrite for clarity:
         if "time_horizon" in experiment.keys():
             self.time_horizon = experiment["time_horizon"]
         elif "time_horizon_years" in experiment.keys():

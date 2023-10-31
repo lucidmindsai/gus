@@ -64,6 +64,7 @@ class Tree(Agent):
         fixed_sun_exposure=False,
         condition=None,
         dieback=None,
+        **kwargs
     ):
         """The constructor method.
 
@@ -95,6 +96,12 @@ class Tree(Agent):
         self.dbh = dbh
         self.fixed_sun_exposure = fixed_sun_exposure
         self.overlap_ratio = 0
+        
+        # Set additional keyword arguments as attributes
+        self.additional_attributes = []
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+            self.additional_attributes.append(key)
 
         # Initialize canonical growth functions
         self.f_tree_height = self.model.species.get_eqn(self.species, "height")
@@ -744,10 +751,17 @@ class Tree(Agent):
 
         # Replacing with the site specific minimum sapling.
         dbh = np.random.uniform(self.model.sapling_dbh, self.model.sapling_dbh + 1)
-        id = self.model.next_id()
+        new_id = self.model.next_id()
         new_tree = Tree(
-            id, self.model, dbh, self.species, condition="excellent", dieback=0
+            new_id, self.model, dbh, self.species, condition="excellent", dieback=0
         )
+        new_tree.additional_attributes = self.additional_attributes[:]
+        
+        # Inherit additional attributes from the old tree
+        for attr in self.additional_attributes:
+            value = getattr(self, attr)
+            setattr(new_tree, attr, value)
+            
         self.model.grid.place_agent(new_tree, self.pos)
         self.model.schedule.add(new_tree)
-        return id
+        return new_id
