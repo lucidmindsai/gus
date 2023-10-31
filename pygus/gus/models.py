@@ -106,9 +106,9 @@ class Urban(Model):
 
         # copy and import df
         self.df = population
-        expected_columns_latlng = ["id", "dbh", "height", "species", "CrownW", "condition", "lat", "lng", "xpos", "ypos"]
+        required_cols = ["id", "dbh", "height", "species", "CrownW", "condition", "xpos", "ypos"]
         # list any extra columns that are present in the input data
-        extra_columns = list(set(population.columns) - set(expected_columns_latlng))
+        extra_columns = list(set(population.columns) - set(required_cols))
         
         self.num_agents = len(population)
         self.schedule = RandomActivation(self)
