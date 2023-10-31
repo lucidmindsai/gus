@@ -138,7 +138,6 @@ class Urban(Model):
 
         ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         # Collecting model and agent level data
-        ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         self.datacollector = DataCollector(
             model_reporters={
                 "Storage": lambda m: self.aggregate(m, "carbon_storage"),
