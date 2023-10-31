@@ -8,7 +8,7 @@ Green Urban Scenarios - A digital twin representation, simulation of urban fores
 Install GUS from PyPi:
 
 ```
-$ pip install pyGus==2.1.0
+$ pip install pyGus==2.1.2
 ```
 
 You can use, Poetry as well:
