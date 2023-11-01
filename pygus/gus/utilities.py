@@ -70,27 +70,6 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
 
     return population_df
 
-
-def latlng_to_xy(row):
-    """DEPRECATED: Much slower than latlng_array_to_xy, but works on a single row.
-
-    A general purpose function that translates lat, lng data to x,y pos.
-
-    Args:
-            row: (pandas.DataFrame.row): a Pandas DataFrame row.
-
-    Returns:
-            row: (pandas.DataFrame.row): converted xpos and ypos added to the DataFrame row.
-        Note:
-            None
-        Todo:
-            None
-    """
-    coordinates = utm.from_latlon(row["lat"], row["lng"])
-    row["xpos"], row["ypos"] = coordinates[0], coordinates[1]
-    return row
-
-
 def raster_grid(df, minx, miny, grid_width):
     """A general purpose function is to place the data on the grid with given sizes.
 
@@ -198,4 +177,22 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
         # Calculate the area
         return d_lat * d_lon * R * R * math.cos(lat_avg)
 
+    # FIXME - this should be an exception
     return None
+
+def filter_dataset_by_bounding_box(df, bbox, lat_col = "lat", lng_col = "lng"):
+    # This could be a type check, but it's not worth it
+    assert len(bbox) == 4
+    assert type(bbox) == list
+    assert type(bbox[0]) == float
+    assert type(bbox[1]) == float
+    assert type(bbox[2]) == float
+    assert type(bbox[3]) == float
+    assert bbox[0] < bbox[2]
+    assert bbox[1] < bbox[3]
+    
+    # Filter the trees
+    df = df[df[lng_col] > bbox[0]]
+    df = df[df[lng_col] < bbox[2]]
+    df = df[df[lat_col] > bbox[1]]
+    df = df[df[lat_col] < bbox[3]]

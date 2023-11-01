@@ -15,9 +15,9 @@ from mesa.space import MultiGrid
 from mesa.datacollection import DataCollector
 
 # Importing needed GUS objects
-from .agents import Tree
-from .allometrics import Species
-from .weather import WeatherSim
+from ..agents import Tree
+from ..allometrics import Species
+from ..weather import WeatherSim
 
 
 class WeatherConfig:
