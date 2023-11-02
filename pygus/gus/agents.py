@@ -92,7 +92,7 @@ class Tree(Agent):
         # Initializing variables for a Tree.
         self.model = model
         self.kind = kind
-        self.species = model.species.fuzzymatching(species)
+        self.species = model.allometrics.fuzzymatching(species)
         self.dbh = dbh
         self.fixed_sun_exposure = fixed_sun_exposure
         self.overlap_ratio = 0
@@ -104,10 +104,10 @@ class Tree(Agent):
             self.additional_attributes.append(key)
 
         # Initialize canonical growth functions
-        self.f_tree_height = self.model.species.get_eqn(self.species, "height")
-        self.f_biomass = self.model.species.get_eqn_biomass(self.species)
-        self.f_crown_width = self.model.species.get_eqn(self.species, "crown_width")
-        self.f_crown_height = self.model.species.get_eqn(self.species, "crown_height")
+        self.f_tree_height = self.model.allometrics.get_eqn(self.species, "height")
+        self.f_biomass = self.model.allometrics.get_eqn_biomass(self.species)
+        self.f_crown_width = self.model.allometrics.get_eqn(self.species, "crown_width")
+        self.f_crown_height = self.model.allometrics.get_eqn(self.species, "crown_height")
 
         # Record initial allometries
         if height:
@@ -134,7 +134,7 @@ class Tree(Agent):
             self.dieback = np.random.uniform(0, 0.1)
             self.condition = self._get_condition_class(self.dieback)
 
-        self.diameter_growth = self.model.species.get_diameter_growth(species)
+        self.diameter_growth = self.model.allometrics.get_diameter_growth(species)
         # Slow, moderate and fast growing species respectively.
         # c(0.23, 0.33, 0.43) in inch/yr Source: https://database.itreetools.org/#/splash
         # Converted into cm.
@@ -147,7 +147,7 @@ class Tree(Agent):
         # (2) Park conditions
         # (3) Open-grown conditions.
 
-        self.average_height_at_maturity = self.model.species.get_height_at_maturity(
+        self.average_height_at_maturity = self.model.allometrics.get_height_at_maturity(
             self.species
         )
         # Avg height at maturity for the given species.

@@ -17,4 +17,5 @@ from mesa import Model
 # For miyawaki method, we'll need to operate on the millimetre level
 
 class Miyawaki(Model):
+    #TODO
     pass

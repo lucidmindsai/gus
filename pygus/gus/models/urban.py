@@ -98,7 +98,7 @@ class Urban(Model):
         # to be parameterized and set during initialization.
 
         # Load species composition and their allometrics
-        self.species = Species(species_allometrics_file)  # will be used by agents.
+        self.allometrics = Species(species_allometrics_file)  # will be used by agents.
 
         # Test that the df is complete or raise keyerror
         for attribute in ["dbh", "species", "condition", "xpos", "ypos"]:
