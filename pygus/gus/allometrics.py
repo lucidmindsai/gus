@@ -30,9 +30,9 @@ class Species:
 
         species_filename = species_db
         f = open(species_filename)
-        self.parameters = json.loads(f.read())
+        self.species = json.loads(f.read())
 
-    def get_diameter_growth(self, species):
+    def get_diameter_growth(self, species_name):
         """Retrieve annual avg diameter growth rate for the site for the given species.
 
         Args:
@@ -42,13 +42,13 @@ class Species:
         Returns:
             (:obj:`float`): the standard growth per year in cm.
         """
-        if species in self.parameters.keys():
-            return self.parameters[species]["diameter_growth"]
+        if species_name in self.species.keys():
+            return self.species[species_name]["diameter_growth"]
         else:
             # Return moderate growth rate.
             return 0.8382
 
-    def get_height_at_maturity(self, species):
+    def get_height_at_maturity(self, species_name):
         """Observed avg total height of the tree for the given species.
 
         Args:
@@ -58,8 +58,8 @@ class Species:
         Returns:
             (:obj:`int`): Avg height in meters.
         """
-        if species in self.parameters.keys():
-            return self.parameters[species]["height_at_maturity"]
+        if species_name in self.species.keys():
+            return self.species[species_name]["height_at_maturity"]
         else:
             # Return moderate growth rate.
             return 25
@@ -73,9 +73,9 @@ class Species:
         Returns:
             (:obj:`list` of `String`): List of species names.
         """
-        return list(self.parameters.keys())
+        return list(self.species.keys())
 
-    def fuzzymatching(self, species):
+    def fuzzymatch(self, species):
         """Fuzzy matching species name.
 
         Args:
@@ -164,10 +164,10 @@ class Species:
         Returns:
             (:obj:`(string, dict`)
         """
-        form = self.parameters[species_name]["equations"][allometry_type][
+        form = self.species[species_name]["equations"][allometry_type][
             "equation_type"
         ]
-        params = self.parameters[species_name]["equations"][allometry_type]["params"]
+        params = self.species[species_name]["equations"][allometry_type]["params"]
         return (form, params)
 
     @staticmethod
