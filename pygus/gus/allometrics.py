@@ -1,6 +1,7 @@
 """The module holds implementation of classes that handle identification and selection of right allomteric parameters and equations."""
 
 # Importing Python Libraries
+from typing import Dict, List, Tuple
 import numpy as np
 import json
 from fuzzywuzzy import process
@@ -22,7 +23,7 @@ class Species:
 
         Args:
             species_db: (:obj:`str`): File name that holds parameters for allometrics of
-            the species used in the models. Eg:'./gus/inpurs/allometrics.json'
+            the species used in the models. Eg:'./gus/inputs/allometrics.json'
 
         Returns:
             None
@@ -30,7 +31,7 @@ class Species:
 
         species_filename = species_db
         f = open(species_filename)
-        self.species = json.loads(f.read())
+        self.species_data: Dict = json.loads(f.read())
 
     def get_diameter_growth(self, species_name):
         """Retrieve annual avg diameter growth rate for the site for the given species.
@@ -42,8 +43,8 @@ class Species:
         Returns:
             (:obj:`float`): the standard growth per year in cm.
         """
-        if species_name in self.species.keys():
-            return self.species[species_name]["diameter_growth"]
+        if species_name in self.species_data.keys():
+            return self.species_data[species_name]["diameter_growth"]
         else:
             # Return moderate growth rate.
             return 0.8382
@@ -58,41 +59,65 @@ class Species:
         Returns:
             (:obj:`int`): Avg height in meters.
         """
-        if species_name in self.species.keys():
-            return self.species[species_name]["height_at_maturity"]
+        if species_name in self.species_data.keys():
+            return self.species_data[species_name]["height_at_maturity"]
         else:
             # Return moderate growth rate.
             return 25
 
-    def list_species(self):
-        """List existing species whose carbon related parameters exist within the library.
-
-        Args:
-            None
+    def list_species_names(self) -> List[Tuple[str, str]]:
+        """
+        List existing species names (both Latin and common) with association to Latin names.
 
         Returns:
-            (:obj:`list` of `String`): List of species names.
+            List[Tuple[str, str]]: List of tuples where each tuple is (name, Latin name).
+                                Name can be either a Latin name or a common name.
         """
-        return list(self.species.keys())
+        species_pairs = []
+        for latin_name, species_info in self.species_data.items():
+            species_pairs.append((latin_name, latin_name))
+            for common_name in species_info["common_names"]:
+                species_pairs.append((common_name, latin_name))
 
-    def fuzzymatch(self, species):
-        """Fuzzy matching species name.
+        return species_pairs
 
-        Args:
-            species: (:obj:`string`): name of the species
+
+    def fuzzymatch(self, species_input):
+        """
+        Fuzzy matching species name.
 
         Returns:
-            (:obj:`string`): Species name in 'genusName_speciesName' format
-            that has highest matching score.
-
-        Note:
-            If the best matching has a poor score (<10% similarity) then
-            betula_pendula is passed on as default.
+            string: Latin name of the species that has the highest matching score.
+                    If the best matching has a poor score (<40% similarity), European Birch is returned as a default growth model
         """
-        highest, score = process.extractOne(species, self.list_species())
-        if score < 10:
-            highest = "betula_pendula"
-        return highest
+        name_pairs = self.list_species_names()
+        names, latin_names = zip(*name_pairs)  # Separate the names and their corresponding Latin names
+
+        highest, score = process.extractOne(species_input, names)
+        print("Found {} to be the best match for the input {} with a score of {}.".format(highest, species_input, score))
+        
+        if score < 40:
+            return "decidu"
+        
+        # Get the Latin name corresponding to the highest match
+        index = names.index(highest)
+        return latin_names[index]
+    
+    def is_evergreen(self, species_name):
+        """Returns True if the species is evergreen, False if it is deciduous or unknown.
+        """
+        if species_name in self.species_data.keys():
+            return self.species_data[species_name]["is_evergreen"]
+        else:
+            return False
+
+    def get_leaf_type(self, species_name):
+        """Returns the leaf type of the species: broadleaf or needles
+        """
+        if species_name in self.species_data.keys():
+            return self.species_data[species_name]["leaf_type"]
+        else:
+            return "broadleaf"
 
     def get_eqn(self, species_name, allometry_type):
         """The method retrieves parameters of a given growth function
@@ -164,10 +189,10 @@ class Species:
         Returns:
             (:obj:`(string, dict`)
         """
-        form = self.species[species_name]["equations"][allometry_type][
+        form = self.species_data[species_name]["equations"][allometry_type][
             "equation_type"
         ]
-        params = self.species[species_name]["equations"][allometry_type]["params"]
+        params = self.species_data[species_name]["equations"][allometry_type]["params"]
         return (form, params)
 
     @staticmethod

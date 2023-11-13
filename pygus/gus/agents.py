@@ -92,7 +92,7 @@ class Tree(Agent):
         # Initializing variables for a Tree.
         self.model = model
         self.kind = kind
-        self.species = model.allometrics.fuzzymatching(species)
+        self.species = model.allometrics.fuzzymatch(species)
         self.dbh = dbh
         self.fixed_sun_exposure = fixed_sun_exposure
         self.overlap_ratio = 0

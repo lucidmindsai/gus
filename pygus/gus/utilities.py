@@ -1,11 +1,11 @@
 """The module holds general purpose python functions on data preperations."""
-from functools import reduce
 import utm
 import json
 import math
 import logging
-import pandas as pd
 import numpy as np
+import pandas as pd
+from functools import reduce
 
 from .models import Urban, SiteConfig, WeatherConfig
 
@@ -145,6 +145,14 @@ def load_site_config_file(config_file) -> SiteConfig:
 
 
 def calculate_dataframe_area(tree_df: pd.DataFrame):
+    """Calculates the area in UTM grid units (or square metres) of a dataframe of trees.
+    
+    Args:
+        tree_df (pd.DataFrame): The dataframe of trees to calculate the area of
+
+    Returns:
+        _type_: Returns the area of the dataframe in UTM grid units (or square metres)
+    """
     # If xpos and ypos columns exist, calculate area with them
     if "xpos" in tree_df.columns and "ypos" in tree_df.columns:
         # Get area
@@ -180,7 +188,20 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
     # FIXME - this should be an exception
     return None
 
-def filter_dataset_by_bounding_box(df, bbox, lat_col = "lat", lng_col = "lng"):
+def filter_dataframe_to_bounding_box(df: pd.DataFrame, bbox, lat_col = "lat", lng_col = "lng") -> pd.DataFrame:
+    """Filters a pandas dataframe with `lat` and `lng` columns to a bbox (list of floats), of the form:
+    
+    [min_lng, min_lat, max_lng, max_lat]
+
+    Args:
+        df (pd.DataFrame): The dataframe to filter
+        bbox (list): A list of floats representing the bounding box
+        lat_col (str, optional): The name for the latitude column. Defaults to "lat".
+        lng_col (str, optional): The name for the longitude column. Defaults to "lng".
+
+    Returns:
+        pd.DataFrame: Returns the filtered dataframe
+    """
     # This could be a type check, but it's not worth it
     assert len(bbox) == 4
     assert type(bbox) == list
@@ -196,3 +217,4 @@ def filter_dataset_by_bounding_box(df, bbox, lat_col = "lat", lng_col = "lng"):
     df = df[df[lng_col] < bbox[2]]
     df = df[df[lat_col] > bbox[1]]
     df = df[df[lat_col] < bbox[3]]
+    return df
