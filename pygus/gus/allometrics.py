@@ -94,9 +94,9 @@ class Species:
         names, latin_names = zip(*name_pairs)  # Separate the names and their corresponding Latin names
 
         highest, score = process.extractOne(species_input, names)
-        print("Found {} to be the best match for the input {} with a score of {}.".format(highest, species_input, score))
         
         if score < 40:
+            print("Found {} to be the best match for the input {} with a score of {}.".format(highest, species_input, score))
             return "decidu"
         
         # Get the Latin name corresponding to the highest match
