@@ -15,6 +15,24 @@ def generate_population_allometrics(
     conifer_percentage=0.2,
     condition_weights=[0.6, 0.3, 0.1, 0.0, 0.0],
 ) -> pd.DataFrame:
+    """This function generates a population of trees, with possibility for modifying the ranges of
+    the different parameters. The trees are randomly distributed in a square of side length equal
+    to the square root of the area in m2. The trees are assigned a species, a condition, a dbh, a
+    height and a crown width.
+
+    Args:
+        df (pd.DataFrame): _description_
+        location (_type_): _description_
+        area_m2 (_type_): _description_
+        dbh_range (list, optional): _description_. Defaults to [10, 15].
+        height_range (list, optional): _description_. Defaults to [2, 5].
+        crownW_range (list, optional): _description_. Defaults to [1, 4].
+        conifer_percentage (float, optional): _description_. Defaults to 0.2.
+        condition_weights (list, optional): _description_. Defaults to [0.6, 0.3, 0.1, 0.0, 0.0].
+
+    Returns:
+        pd.DataFrame: Returns a tree population which can be used as input for the model.
+    """
     ### id,lat,lng
     if "lat" not in df.columns or "lng" not in df.columns:
         df = generate_tree_locations(df, location, area_m2)
@@ -46,7 +64,7 @@ def generate_population_allometrics(
     if "dbh" not in df.columns:
         df["dbh"] = np.around(np.random.uniform(*dbh_range, len(df)), 3)
 
-    ## These could be determined by the model, so I understood we shouldn't bother creating these..
+    ## These will be determined by the model, so I understood we shouldn't bother creating these..
     if "height" not in df.columns:
         df["height"] = np.around(np.random.uniform(*height_range, len(df)), 3)
 

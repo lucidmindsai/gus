@@ -194,6 +194,7 @@ class Urban(Model):
                 "mulched": "mulched",
                 "burnt": "immediate_release",
                 "coordinates": "pos",
+                "est_age": "age",
                 **{col: col for col in extra_columns},
             },
         )

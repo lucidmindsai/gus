@@ -62,8 +62,14 @@ class Species:
         if species_name in self.species_data.keys():
             return self.species_data[species_name]["height_at_maturity"]
         else:
-            # Return moderate growth rate.
-            return 25
+            return 20
+        
+    def get_maturity_age(self, species_name):
+        """Observed avg maturity age of the given species."""
+        if species_name in self.species_data.keys():
+            return self.species_data[species_name]["maturity_age"]
+        else:
+            return 20
 
     def list_species_names(self) -> List[Tuple[str, str]]:
         """
