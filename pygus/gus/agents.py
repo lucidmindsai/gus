@@ -591,9 +591,13 @@ class Tree(Agent):
         return self.dieback
     
     def _estimate_age(self):
+        if hasattr(self, "age"):
+            return
+        
+        
         L = 2 * self.model.allometrics.get_maturity_age(self.species)
         x0 = self.model.allometrics.get_height_at_maturity(self.species)
-        k = 0.3 # FIXME: This is a guess
+        k = 0.73 # FIXME: This is a guess
         
         # Estimate age using logistic function
         age_estimate = L / (1 + math.exp(-k * (self.f_tree_height(self.dbh) - x0)))
@@ -852,6 +856,7 @@ class Tree(Agent):
                             condition="excellent",
                             dieback=0,
                         )
+                        sapling.age = 0
                         
                         # Inherit additional attributes from the old tree
                         for attr in self.additional_attributes:
