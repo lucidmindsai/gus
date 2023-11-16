@@ -106,7 +106,7 @@ class Urban(Model):
 
         # copy and import df
         self.df = population
-        required_cols = ["id", "dbh", "height", "species", "CrownW", "condition", "xpos", "ypos"]
+        required_cols = ["id", "dbh", "height", "species", "condition", "xpos", "ypos"]
         # list any extra columns that are present in the input data
         extra_columns = list(set(population.columns) - set(required_cols))
         

@@ -863,7 +863,8 @@ class Tree(Agent):
                             value = getattr(self, attr)
                             setattr(sapling, attr, value)
                         
-                        self.model.grid.place_agent(sapling, self.pos)
+                        new_position = self.pos # TODO: We should place the seed somewhere nearby
+                        self.model.grid.place_agent(sapling, new_position)
                         self.model.schedule.add(sapling)
 
         if total_new_trees_planted > 0:

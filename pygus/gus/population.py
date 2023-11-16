@@ -64,13 +64,6 @@ def generate_population_allometrics(
     if "dbh" not in df.columns:
         df["dbh"] = np.around(np.random.uniform(*dbh_range, len(df)), 3)
 
-    ## These will be determined by the model, so I understood we shouldn't bother creating these..
-    if "height" not in df.columns:
-        df["height"] = np.around(np.random.uniform(*height_range, len(df)), 3)
-
-    if "CrownW" not in df.columns:
-        df["CrownW"] = np.around(np.random.uniform(*crownW_range, len(df)), 3)
-
     df.reset_index(inplace=True)
     return df
 
