@@ -1,9 +1,11 @@
 """The module holds general purpose python functions on data preperations."""
 from functools import reduce
-import json
-import logging
-import numpy as np
 import utm
+import json
+import math
+import logging
+import pandas as pd
+import numpy as np
 
 from .models import Urban, SiteConfig, WeatherConfig
 
@@ -69,7 +71,9 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
     return population_df
 
 def latlng_to_xy(row):
-    """A general purpose function that translates lat, lng data to x,y pos.
+    """DEPRECATED: Much slower than latlng_array_to_xy, but works on a single row.
+
+    A general purpose function that translates lat, lng data to x,y pos.
 
     Args:
             row: (pandas.DataFrame.row): a Pandas DataFrame row.
@@ -86,7 +90,7 @@ def latlng_to_xy(row):
     return row
 
 
-def raster_grid(row, minx, miny, grid_width):
+def raster_grid(df, minx, miny, grid_width):
     """A general purpose function is to place the data on the grid with given sizes.
 
     Args:
@@ -101,9 +105,9 @@ def raster_grid(row, minx, miny, grid_width):
         Todo:
             None
     """
-    row["gus_x"] = int((row["xpos"] - minx) // grid_width)
-    row["gus_y"] = int((row["ypos"] - miny) // grid_width)
-    return row
+    df["gus_x"] = ((df["xpos"] - minx) // grid_width).astype(int)
+    df["gus_y"] = ((df["ypos"] - miny) // grid_width).astype(int)
+    return df
 
 
 def load_site_config_file(config_file) -> SiteConfig:
@@ -158,3 +162,39 @@ def load_site_config_file(config_file) -> SiteConfig:
         weather=weather,
         project_site_type=stype,
     )
+
+
+def calculate_dataframe_area(tree_df: pd.DataFrame):
+    # If xpos and ypos columns exist, calculate area with them
+    if "xpos" in tree_df.columns and "ypos" in tree_df.columns:
+        # Get area
+        min_x = tree_df["xpos"].min()
+        max_x = tree_df["xpos"].max()
+        min_y = tree_df["ypos"].min()
+        max_y = tree_df["ypos"].max()
+        return (max_x - min_x) * (max_y - min_y)
+    # otherwise, check for lat and lon columns
+    elif "lat" in tree_df.columns and "lng" in tree_df.columns:
+        R = 6371000  # Radius of the Earth in meters
+        min_lat = tree_df["lat"].min()
+        max_lat = tree_df["lat"].max()
+        min_lon = tree_df["lng"].min()
+        max_lon = tree_df["lng"].max()
+
+        # Convert degrees to radians
+        lat1_rad = math.radians(min_lat)
+        lat2_rad = math.radians(max_lat)
+        lon1_rad = math.radians(min_lon)
+        lon2_rad = math.radians(max_lon)
+
+        # Calculate average latitude
+        lat_avg = (lat1_rad + lat2_rad) / 2
+
+        # Calculate the differences in latitude and longitude
+        d_lat = abs(math.sin(lat2_rad) - math.sin(lat1_rad))
+        d_lon = abs(lon2_rad - lon1_rad)
+
+        # Calculate the area
+        return d_lat * d_lon * R * R * math.cos(lat_avg)
+
+    return None
