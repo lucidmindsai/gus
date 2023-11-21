@@ -98,26 +98,3 @@ def generate_tree_locations(
 
 def generate_scenario_population(actual, scenario):
     pass
-
-
-# FRom GPT:
-
-estimated_allometrics_at_maturity = {
-    "Lime - small": {"Height (m)": (15, 20), "DBH (cm)": (40, 60)},
-    "Oak Sessile": {"Height (m)": (20, 40), "DBH (cm)": (70, 120)},
-    "Oak English": {"Height (m)": (20, 40), "DBH (cm)": (70, 120)},
-    "Hornbeam": {"Height (m)": (15, 25), "DBH (cm)": (40, 80)},
-    "Willow goat": {"Height (m)": (10, 15), "DBH (cm)": (30, 50)},
-    "Willow bay": {"Height (m)": (6, 12), "DBH (cm)": (20, 40)},
-    "Rowan": {"Height (m)": (6, 15), "DBH (cm)": (20, 40)},
-    "Maple": {"Height (m)": (10, 25), "DBH (cm)": (30, 60)},
-    "Crab apple": {"Height (m)": (4, 10), "DBH (cm)": (15, 30)},
-    "Willow - grey": {"Height (m)": (4, 12), "DBH (cm)": (20, 40)},
-    "Yew": {"Height (m)": (10, 20), "DBH (cm)": (30, 60)},
-    "Holly": {"Height (m)": (2, 15), "DBH (cm)": (10, 30)},
-    "Hazel": {"Height (m)": (4, 8), "DBH (cm)": (15, 25)},
-    "Hawthorn": {"Height (m)": (5, 15), "DBH (cm)": (20, 40)},
-    "Blackthorn": {"Height (m)": (2, 4), "DBH (cm)": (10, 20)},
-    "Whitebeam": {"Height (m)": (8, 15), "DBH (cm)": (20, 40)},
-    "Willow wooly": {"Height (m)": (3, 8), "DBH (cm)": (10, 25)},
-}
