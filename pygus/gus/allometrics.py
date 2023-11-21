@@ -60,6 +60,8 @@ class Species:
             (:obj:`int`): Avg height in meters.
         """
         if species_name in self.species_data.keys():
+            if "height_at_maturity" not in self.species_data[species_name].keys():
+                return 20
             return self.species_data[species_name]["height_at_maturity"]
         else:
             return 20
@@ -67,6 +69,8 @@ class Species:
     def get_maturity_age(self, species_name):
         """Observed avg maturity age of the given species."""
         if species_name in self.species_data.keys():
+            if "maturity_age" not in self.species_data[species_name].keys():
+                return 20
             return self.species_data[species_name]["maturity_age"]
         else:
             return 20
@@ -82,8 +86,12 @@ class Species:
         species_pairs = []
         for latin_name, species_info in self.species_data.items():
             species_pairs.append((latin_name, latin_name))
-            for common_name in species_info["common_names"]:
-                species_pairs.append((common_name, latin_name))
+            if "common_names" in species_info.keys():
+                for common_name in species_info["common_names"]:
+                    species_pairs.append((common_name, latin_name))
+            
+            if "common_name" in species_info.keys():
+                species_pairs.append((species_info["common_name"], latin_name))
 
         return species_pairs
 
@@ -113,6 +121,8 @@ class Species:
         """Returns True if the species is evergreen, False if it is deciduous or unknown.
         """
         if species_name in self.species_data.keys():
+            if "is_evergreen" not in self.species_data[species_name].keys():
+                return False
             return self.species_data[species_name]["is_evergreen"]
         else:
             return False
@@ -121,6 +131,8 @@ class Species:
         """Returns the leaf type of the species: broadleaf or needles
         """
         if species_name in self.species_data.keys():
+            if "leaf_type" not in self.species_data[species_name].keys():
+                return "broadleaf"
             return self.species_data[species_name]["leaf_type"]
         else:
             return "broadleaf"
