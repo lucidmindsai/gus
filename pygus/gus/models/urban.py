@@ -1,7 +1,9 @@
 """ The module holds the main objects that manage and handle simulation runtime and data collection. """
 
 # Importing Python Libraries
+import json
 import time
+from enum import Enum, EnumMeta
 from typing import Dict, Union
 import pandas as pd
 import numpy as np
@@ -48,8 +50,7 @@ class SiteConfig:
         else:
             self.weather = weather
 
-        self.project_site_type = project_site_type
-
+        self.project_site_type = project_site_type 
 
 class Urban(Model):
     """A generic urban green space model. To be tailored according to specific sites."""
@@ -66,7 +67,7 @@ class Urban(Model):
         self,
         population: pd.DataFrame,
         species_allometrics_file: str,
-        site_config: SiteConfig,
+        site_config: Union[str, SiteConfig],
         scenario: Dict,
     ):
         """The constructor method.
@@ -279,8 +280,12 @@ class Urban(Model):
                 "No time horizon found, the model will be run for 10 years. Setting `time_horizon` will change this."
             )
 
-    def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
+    def _handle_site_configuration(self, site_config: Union[str, SiteConfig], population_size: int):
         """Loads site configuration information."""
+        if isinstance(site_config, str):
+            with open(site_config) as json_file:
+                site_config = SiteConfig(**json.load(json_file))
+        
         self.growth_season_mean = site_config.weather.growth_season_mean
         self.growth_season_var = site_config.weather.growth_season_var
         self.project_site_type = site_config.project_site_type

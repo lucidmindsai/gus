@@ -224,7 +224,9 @@ class Tree(Agent):
         # compute the growth
         # print('Tree: {} grows ...'.format(self.unique_id))
         self.grow(frost_free_days)
-        self.tree_regeneration()
+        
+        if self.model.project_site_type == "pocket":
+            self.tree_regeneration()
 
         # compute the total biomass
         self.compute_biomass()
