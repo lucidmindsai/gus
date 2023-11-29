@@ -93,7 +93,7 @@ class Urban(Model):
         # Setting MESA specific parameters
         width = int(max(population.xpos)) + 1
         length = int(max(population.ypos)) + 1
-        logging.info("Grid size: {} x {}".format(width, length))
+        logging.debug("Grid size: {} x {}".format(width, length))
 
         self.grid = MultiGrid(width, length, torus=False)
         # to be parameterized and set during initialization.
@@ -211,13 +211,13 @@ class Urban(Model):
         pop = str(self.df.shape[0])
         if not steps:
             steps = self.time_horizon
-            print("Running for {} steps".format(steps))
+            logging.debug("Running for {} steps".format(steps))
         start = time.time()
         logging.info("Year:{}".format(self.schedule.time + 1))
         for _ in range(steps):
             self.step()
         end = time.time()
-        print("{} steps completed (pop. {}): {}".format(steps, pop, end - start))
+        logging.debug("{} steps completed (pop. {}): {}".format(steps, pop, end - start))
         logging.info("Simulation is complete!")
 
         return self.impact_analysis()

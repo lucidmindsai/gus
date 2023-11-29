@@ -111,7 +111,7 @@ def load_site_config_file(config_file) -> SiteConfig:
     try:
         f = open(config_file)
     except IOError as e:
-        print(str(e))
+        logging.error(str(e))
     params = json.loads(f.read())
 
     # Read in growth season mean and variance to be used by weather forecasting module.

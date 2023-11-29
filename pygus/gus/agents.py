@@ -1,6 +1,6 @@
 """Module that holds implementation of Tree agents."""
-
 import math
+import logging
 import numpy as np
 
 # Mesa Packages
@@ -212,17 +212,17 @@ class Tree(Agent):
 
         # check frost free days for the past year.
         frost_free_days = self.model.WeatherAPI.check_frost_free_days()
-        # print('Tree: {} checks ffdays = {} ...'.format(self.unique_id, frost_free_days))
+        logging.debug('Tree: {} checks ffdays = {} ...'.format(self.unique_id, frost_free_days))
 
         # compute the light exposure
         self.compute_light_exposure()
 
         # check state of the health of the tree
-        # print('Tree: {} checks dieback ...'.format(self.unique_id))
+        logging.debug('Tree: {} checks dieback ...'.format(self.unique_id))
         self.check_dieback()
 
         # compute the growth
-        # print('Tree: {} grows ...'.format(self.unique_id))
+        logging.debug('Tree: {} grows ...'.format(self.unique_id))
         self.grow(frost_free_days)
         
         if self.model.project_site_type == "pocket":
@@ -230,14 +230,14 @@ class Tree(Agent):
 
         # compute the total biomass
         self.compute_biomass()
-        # print('Tree: {} biomass ...'.format(self.unique_id))
+        logging.debug('Tree: {} biomass ...'.format(self.unique_id))
 
         # compute the amount of new carbon sequestration
         self.compute_sequestration()
-        # print('Tree: {} sequestration ...'.format(self.unique_id))
+        logging.debug('Tree: {} sequestration ...'.format(self.unique_id))
 
         # compute the amount of carbon release due to decomposition
-        # print('Tree: {} decomposition ...'.format(self.unique_id))
+        logging.debug('Tree: {} decomposition ...'.format(self.unique_id))
         self.compute_decomposition()
 
     def grow(self, frost_free_days):
@@ -604,12 +604,10 @@ class Tree(Agent):
         # Estimate age using logistic function
         age_estimate = L / (1 + math.exp(-k * (self.f_tree_height(self.dbh) - x0)))
         if age_estimate > 50:
-            print(self.species, age_estimate)
-            print(self.model.allometrics.get_maturity_age(self.species))
+            logging.debug(self.species, age_estimate)
+            logging.debug(self.model.allometrics.get_maturity_age(self.species))
         self.age = age_estimate
         if not self.age:
-            print(L, x0)
-            print("Estimated age: {}".format(age_estimate))
             self.age = 0
 
     def compute_biomass(self, ignore_height=True) -> float:
@@ -846,7 +844,7 @@ class Tree(Agent):
                 for _ in range(num_seeds):
                     if np.random.uniform(0, 1) < sapling_survival_rate:
                         # Create a new sapling/tree agent
-                        print("We're planting A NEW TREEEEEEEEE!")
+                        logging.debug("We're planting A NEW TREEEEEEEEE!")
                         total_new_trees_planted += 1
                         sapling = Tree(
                             self.model.next_id(),
@@ -870,4 +868,4 @@ class Tree(Agent):
                         self.model.schedule.add(sapling)
 
         if total_new_trees_planted > 0:
-            print("Planted {} new trees".format(total_new_trees_planted))
+            logging.debug("Planted {} new trees".format(total_new_trees_planted))
