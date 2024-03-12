@@ -1,6 +1,7 @@
 """ The module holds the main objects that manage and handle simulation runtime and data collection. """
 
 # Importing Python Libraries
+import json
 import time
 from typing import Dict, Union
 import pandas as pd
@@ -15,40 +16,14 @@ from mesa.space import MultiGrid
 from mesa.datacollection import DataCollector
 
 # Importing needed GUS objects
-from .agents import Tree
-from .allometrics import Species
-from .weather import WeatherSim
+from .config import ScenarioConfig, SiteConfig
+from ..utilities import latlng_array_to_xy
+from ..enums import HealthCondition
+from ..agents import Tree
+from ..allometrics import Species
+from ..weather import WeatherSim
 
-class WeatherConfig:
-    def __init__(self, growth_season_mean: int = 153, growth_season_var: int = 7):
-        self.growth_season_mean = growth_season_mean
-        self.growth_season_var = growth_season_var
-
-
-class SiteConfig:
-    """A class to hold site configuration parameters."""
-
-    def __init__(
-        self,
-        total_m2: int,
-        impervious_m2: int,
-        pervious_m2: int,
-        weather: Union[Dict, WeatherConfig],
-        tree_density_per_ha: int = None,
-        project_site_type: str = "park",
-    ):
-        self.total_m2 = total_m2
-        self.impervious_m2 = impervious_m2
-        self.pervious_m2 = pervious_m2
-        self.tree_density_per_ha = tree_density_per_ha
-        # if weather is a dict, create a weatherConfig, else use the object
-        if isinstance(weather, dict):
-            self.weather = WeatherConfig(**weather)
-        else:
-            self.weather = weather
-
-        self.project_site_type = project_site_type
-
+# logging.basicConfig(level=logging.DEBUG)
 
 class Urban(Model):
     """A generic urban green space model. To be tailored according to specific sites."""
@@ -59,14 +34,12 @@ class Urban(Model):
     #      of parameters that handle physical to digital twin mapping.
     # dt_resolution = 2  # in meters
 
-    site_types = ["park", "street", "forest", "pocket"]
-
     def __init__(
         self,
-        population: pd.DataFrame,
-        species_allometrics_file: str,
-        site_config: SiteConfig,
-        scenario: Dict,
+        population: Union[str,pd.DataFrame],
+        species_allometrics: Union[str, Species],
+        site_config: Union[str, SiteConfig],
+        scenario: Union[str, ScenarioConfig],
     ):
         """The constructor method.
 
@@ -84,35 +57,46 @@ class Urban(Model):
         Todo:
             Check for hard coded constants and parameterize further.
         """
+
+        ############################################################
+        # INPUTS
+        ############################################################
+
         super().__init__()
-        self._handle_site_configuration(site_config, len(population))
-        self._load_experiment_parameters(scenario)
+        self.df = self._handle_population_input(population)
+        self.allometrics = Species(species_allometrics) if isinstance(species_allometrics, str) else species_allometrics
+        self._handle_site_configuration(site_config, len(self.df))
+        self._handle_scenario_configuration(scenario)
+
+        ############################################################
+        ############################################################
+
+        # If the dataset has no xpos and ypos columns, use the utility method to generate them
+        if "xpos" not in self.df.columns or "ypos" not in self.df.columns:
+            latlng_array_to_xy(self.df)
 
         # Setting MESA specific parameters
-        width = int(max(population.xpos)) + 1
-        length = int(max(population.ypos)) + 1
-        logging.info("Grid size: {} x {}".format(width, length))
+        width = int(max(self.df.xpos)) + 1
+        length = int(max(self.df.ypos)) + 1
 
+        logging.debug("Building grid with size: {} x {} ...".format(width, length))
         self.grid = MultiGrid(width, length, torus=False)
         # to be parameterized and set during initialization.
 
         # Load species composition and their allometrics
-        self.species = Species(species_allometrics_file)  # will be used by agents.
+        required_cols = ["id", "dbh", "height", "species", "condition", "xpos", "ypos"]
 
         # Test that the df is complete or raise keyerror
-        for attribute in ["dbh", "species", "condition", "xpos", "ypos"]:
-            population[attribute]
+        for attribute in required_cols:
+            self.df[attribute]
 
-        # copy and import df
-        self.df = population
-        required_cols = ["id", "dbh", "height", "species", "CrownW", "condition", "xpos", "ypos"]
         # list any extra columns that are present in the input data
-        extra_columns = list(set(population.columns) - set(required_cols))
-        
-        self.num_agents = len(population)
+        extra_columns = list(set(self.df.columns) - set(required_cols))
+
+        self.num_agents = len(self.df)
         self.schedule = RandomActivation(self)
 
-        self.sapling_dbh = min(population.dbh)
+        self.sapling_dbh = min(self.df.dbh)
         # Each entry index i, represents number of years since the biomass is decay period.
         self.release_bins = {
             "slow": np.zeros(10),  # for dead root and standing tree.
@@ -120,35 +104,42 @@ class Urban(Model):
         }
 
         # Create agents.
+        count = 0
         for index, row in self.df.iterrows():
             a = Tree(
-                row.id, self, dbh=row.dbh, species=row.species, condition=row.condition, **{col: row[col] for col in extra_columns}
+                row.id,
+                self,
+                dbh=row.dbh,
+                species=row.species,
+                condition=str(row.condition).lower(),
+                xpos=row.xpos,
+                ypos=row.ypos,
+                **{col: row[col] for col in extra_columns}
             )
             self.schedule.add(a)
+            count += 1
 
             # Place trees on the plot based on actual physical positioning
             x = row.xpos
             y = row.ypos
             logging.debug("Placing agent {} at ({},{})".format(index, x, y))
             self.grid.place_agent(a, (x, y))
+        logging.info(f"Placed {count} tree agents")
 
         # This variable below works as an indexer while adding new trees to the population during the run time.
-        self.current_id = max(population.id)
+        self.current_id = max(self.df.id)
 
         ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         # Collecting model and agent level data
-        ALIVE_STATE = ["excellent", "good", "fair", "poor", "critical", "dying"]
         self.datacollector = DataCollector(
             model_reporters={
                 "Storage": lambda m: self.aggregate(m, "carbon_storage"),
                 "Seq": lambda m: self.aggregate(m, "annual_gross_carbon_sequestration"),
-                # "Sequestrated": self.aggregate_sequestration,
                 # Avg sequestered carbon per tree is annual carbon divided by number of living trees
-                "Avg_Seq": lambda m: self.aggregate(
+                "Avg_Seq": (lambda m: self.aggregate(
                     m, "annual_gross_carbon_sequestration"
                 )
-                / (
-                    self.count(
+                / self.count(
                         m,
                         "condition",
                         lambda x: x in ALIVE_STATE,
@@ -157,11 +148,11 @@ class Urban(Model):
                 "Released": self.compute_current_carbon_release,
                 # Avg released carbon per year is annual carbon release divided by number of living trees
                 "Avg_Rel": lambda m: self.compute_current_carbon_release(m)
-                / self.count(
-                    m,
-                    "condition",
-                    lambda x: x in ALIVE_STATE,
-                ),
+                    / self.count(
+                        m,
+                        "condition",
+                        lambda x: x in ALIVE_STATE,
+                    ),
                 "Alive": lambda m: self.count(
                     m, "condition", lambda x: x in ALIVE_STATE
                 ),
@@ -193,7 +184,11 @@ class Urban(Model):
                 "detrunk": "decomposing_trunk",
                 "mulched": "mulched",
                 "burnt": "immediate_release",
-                "coordinates": "pos",
+                "xpos": "xpos",
+                "ypos": "ypos",
+                "est_age": "age",
+                "lat": "lat",
+                "lng": "lng",
                 **{col: col for col in extra_columns},
             },
         )
@@ -209,13 +204,16 @@ class Urban(Model):
         pop = str(self.df.shape[0])
         if not steps:
             steps = self.time_horizon
-            print("Running for {} steps".format(steps))
+        logging.debug("Running simulation ({} years)...".format(steps))
         start = time.time()
-        logging.info("Year:{}".format(self.schedule.time + 1))
         for _ in range(steps):
+            logging.info("Year:{}".format(self.schedule.time + 1))
             self.step()
+        print("carbon storage: ", self.aggregate(self, "carbon_storage"))
         end = time.time()
-        print("{} steps completed (pop. {}): {}".format(steps, pop, end - start))
+        logging.debug(
+            "{} steps completed (pop. {}): {}".format(steps, pop, end - start)
+        )
         logging.info("Simulation is complete!")
 
         return self.impact_analysis()
@@ -248,38 +246,23 @@ class Urban(Model):
         """
         df_out_agents = self.datacollector.get_agent_vars_dataframe()
         return df_out_agents
+    
+    def _handle_population_input(
+            self, population: Union[str, pd.DataFrame]
+    ) -> pd.DataFrame:
+        """Load population dataframe if necessary"""
+        if isinstance(population, str):
+            population = pd.read_csv(population)
 
-    def _load_experiment_parameters(self, experiment: Dict):
-        """Loads site configuration information.
+        return population
 
-        Args:
-            experiment: (:obj:`dict`): Python dictionary that holds experiment parameters.
-
-
-        """
-
-        # Read denisty to set the digital twin resolution which is defined as
-        # the cell size in terms of actual distance.
-        if "maintenance_scope" in experiment.keys():
-            # maintenance_scope: (:obj:`int`): It can be 0:None,1:base, 2:cared)
-            self.maintenance_scope = experiment["maintenance_scope"]
-        else:
-            logging.warning(
-                "Maintenance scope is not given. A high maintenance site is assumed."
-            )
-            self.maintenance_scope = 2
-        # rewrite for clarity:
-        if "time_horizon" in experiment.keys():
-            self.time_horizon = experiment["time_horizon"]
-        elif "time_horizon_years" in experiment.keys():
-            self.time_horizon = experiment["time_horizon_years"]
-        else:
-            logging.warning(
-                "No time horizon found, the model will be run for 10 years. Setting `time_horizon` will change this."
-            )
-
-    def _handle_site_configuration(self, site_config: SiteConfig, population_size: int):
+    def _handle_site_configuration(
+        self, site_config: Union[str, SiteConfig], population_size: int
+    ):
         """Loads site configuration information."""
+        if isinstance(site_config, str):
+            site_config = SiteConfig.from_file(site_config)
+
         self.growth_season_mean = site_config.weather.growth_season_mean
         self.growth_season_var = site_config.weather.growth_season_var
         self.project_site_type = site_config.project_site_type
@@ -287,6 +270,14 @@ class Urban(Model):
             np.sqrt(1 / (population_size / site_config.total_m2)),
             2,  # round to < decimal places
         )
+
+    def _handle_scenario_configuration(self, scenario: Union[str, ScenarioConfig]):
+        """Loads site configuration information."""
+        if isinstance(scenario, str):
+            scenario = ScenarioConfig.from_file(scenario)
+
+        self.maintenance_scope = scenario.maintenance_scope
+        self.time_horizon = scenario.time_horizon_years
 
     def get_weather_projection(self):
         """The method retrieves wetaher projection for the current iteration,
@@ -321,9 +312,13 @@ class Urban(Model):
 
         The aggregation function and the initial conditions can be specified.
         """
-        return reduce(
-            func, [eval("a.{}".format(var)) for a in model.schedule.agents], init
-        )
+        agent_values = [eval("a.{}".format(var)) for a in model.schedule.agents]
+        
+        # Filter out nan values from the list
+        filtered_values = [value for value in agent_values if not np.isnan(value)]
+        
+        # Use reduce on the filtered list
+        return reduce(func, filtered_values, init)
 
     @staticmethod
     def count(model, memory, predicate):
@@ -451,12 +446,11 @@ class Urban(Model):
         Cleans the output of the simulation
         """
         # Process and clean data after the simulation
-
         # IMPACT ANALYSIS
         model_vars["Cum_Seq"] = model_vars.Seq.cumsum()
 
         # Processing to avoid out of range float values
-        inf_count = np.isinf(model_vars).values.sum()
+        inf_count = float(np.isinf(model_vars).values.sum())
         if inf_count > 0:
             logging.debug("Cleaning {} INF values...".format(str(inf_count)))
             model_vars.replace([np.inf, -np.inf], np.nan, inplace=True)

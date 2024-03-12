@@ -6,7 +6,7 @@
 # gus
 ![GUS-IMAGE](https://miro.medium.com/max/1400/1*fMM7rnq1RJCh-nFBGLUvyA.png)
 
-Green Urban Scenarios - A digital twin representation, simulation of urban forests and their impact analysis.
+Green Unified Scenarios - A digital twin representation, simulation of urban forests and their impact analysis.
 
 ## Getting Started
 Visit the GUS [website documentation](https://lucidmindsai.github.io/gus/) for help with installing GUS, code documentation, and a [basic tutorial](https://github.com/lucidmindsai/gus/blob/main/notebooks/Tutorial.ipynb) to get you started. 
