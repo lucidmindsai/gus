@@ -4,7 +4,9 @@
     "diameter_growth": 1.0922,
     "height_at_maturity": 18.288,
     "height_at_maturity_feet": 60,
-    "common_name": "European White Birch",
+    "is_evergreen": false,
+    "leaf_type": "broadleaf",
+    "common_names": ["European White Birch"],
     "equations": {
       "biomass": {
         "equation_type": "mass_1",
@@ -50,7 +52,9 @@
     "diameter_growth": 0.5842,
     "height_at_maturity": 39.624,
     "height_at_maturity_feet": 130,
-    "common_name": "Norway Spruce",
+    "is_evergreen": true,
+    "leaf_type": "needles",
+    "common_names": ["Norway Spruce"],
     "equations": {
       "biomass": {
         "equation_type": "mass_2",
@@ -92,12 +96,14 @@
       }
     }
   },
-  "Fraxinus Excelsior": {
+  "fraxinus excelsior": {
     "growth_type": "moderate",
     "diameter_growth": 0.8382,
     "height_at_maturity": 19.2024,
     "height_at_maturity_feet": 63,
-    "common_name": "European Ash",
+    "is_evergreen": false,
+    "leaf_type": "broadleaf",
+    "common_names": ["European Ash"],
     "equations": {
       "biomass": {
         "equation_type": "mass_1",

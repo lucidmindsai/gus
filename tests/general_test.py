@@ -1,30 +1,32 @@
 # -*- coding: utf-8 -*-
+import logging
 import pytest
 import time
 import json
 import pandas as pd
 
-from pygus.gus import Urban
-from pygus.gus.utilities import latlng_array_to_xy, load_site_config_file
+from pygus import Urban, SiteConfig, latlng_array_to_xy
+
 
 # input_trees = "pygus/gus/inputs/trees.csv"
 input_trees = "pygus/gus/inputs/amsterdam_all_trees_1000.csv"
 
 
 def test_parallelise():
-    scenario_file = "pygus/gus/inputs/scenario.json"
     site_file = "pygus/gus/inputs/site.json"
+    tree_population = pd.read_csv(input_trees)
+    scenario_file = "pygus/gus/inputs/scenario.json"
     try:
-        scen = json.loads(open(scenario_file).read())
+        f = open(scenario_file)
     except IOError as e:
-        print(str(e))
-    df = pd.read_csv(input_trees)
-    tree_population = latlng_array_to_xy(df)
+        logging.error(str(e))
+    scenario = json.loads(f.read())
+
     model = Urban(
         population=tree_population,
         species_allometrics_file="pygus/gus/inputs/allometrics.json",
-        site_config=load_site_config_file(site_file),
-        scenario=scen,
+        site_config=SiteConfig.from_file(site_file),
+        scenario=scenario,
     )
 
     start = time.time()

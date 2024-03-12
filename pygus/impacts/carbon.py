@@ -28,7 +28,7 @@ class Carbon:
         """
         self.Allometrics = Species(allometrics)
         if species_name:
-            self.species_name = self.Allometrics.fuzzymatching(species_name)
+            self.species_name = self.Allometrics.fuzzymatch(species_name)
             self.f_biomass = self.Allometrics.get_eqn_biomass(species_name)
 
     def compute_carbon_storage(self, dbh, species_name="decidu", height=None) -> float:
@@ -49,7 +49,7 @@ class Carbon:
 
         """
         # Load species composition and their allometrics
-        self.species_name = self.Allometrics.fuzzymatching(species_name)
+        self.species_name = self.Allometrics.fuzzymatch(species_name)
         self.f_biomass = self.Allometrics.get_eqn_biomass(species_name)
         biomass = self.f_biomass(dbh)
         carbon_estimate = biomass * Carbon.coeff

@@ -1,9 +1,13 @@
 """Module that holds implementation of Tree agents."""
 
+import math
+import logging
 import numpy as np
 
 # Mesa Packages
 from mesa import Agent
+
+from pygus.gus.enums import HealthCondition
 
 
 class Tree(Agent):
@@ -62,7 +66,7 @@ class Tree(Agent):
         height=None,
         kind="deciduous",
         fixed_sun_exposure=False,
-        condition=None,
+        condition="good",
         dieback=None,
         **kwargs
     ):
@@ -92,10 +96,13 @@ class Tree(Agent):
         # Initializing variables for a Tree.
         self.model = model
         self.kind = kind
-        self.species = model.species.fuzzymatching(species)
+        self.species = model.allometrics.fuzzymatch(species)
         self.dbh = dbh
         self.fixed_sun_exposure = fixed_sun_exposure
         self.overlap_ratio = 0
+
+        if condition not in ["excellent", "good", "fair", "poor", "critical", "dying"]:
+            condition = "good"
         
         # Set additional keyword arguments as attributes
         self.additional_attributes = []
@@ -104,10 +111,18 @@ class Tree(Agent):
             self.additional_attributes.append(key)
 
         # Initialize canonical growth functions
-        self.f_tree_height = self.model.species.get_eqn(self.species, "height")
-        self.f_biomass = self.model.species.get_eqn_biomass(self.species)
-        self.f_crown_width = self.model.species.get_eqn(self.species, "crown_width")
-        self.f_crown_height = self.model.species.get_eqn(self.species, "crown_height")
+        self.f_tree_height = self.model.allometrics.get_eqn(self.species, "height")
+        self.f_biomass = self.model.allometrics.get_eqn_biomass(self.species)
+        self.f_crown_width = self.model.allometrics.get_eqn(self.species, "crown_width")
+        self.f_crown_height = self.model.allometrics.get_eqn(
+            self.species, "crown_height"
+        )
+
+        self.diameter_growth = self.model.allometrics.get_diameter_growth(species)
+        # Slow, moderate and fast growing species respectively.
+        # c(0.23, 0.33, 0.43) in inch/yr Source: https://database.itreetools.org/#/splash
+        # Converted into cm.
+        self.age = self._estimate_age()
 
         # Record initial allometries
         if height:
@@ -121,6 +136,7 @@ class Tree(Agent):
         # Note: this needs to be handled at the initialization module
         self.dieback = 0
         self.condition = "excellent"
+        
         if dieback and condition:
             self.condition = condition
             self.dieback = dieback
@@ -134,11 +150,6 @@ class Tree(Agent):
             self.dieback = np.random.uniform(0, 0.1)
             self.condition = self._get_condition_class(self.dieback)
 
-        self.diameter_growth = self.model.species.get_diameter_growth(species)
-        # Slow, moderate and fast growing species respectively.
-        # c(0.23, 0.33, 0.43) in inch/yr Source: https://database.itreetools.org/#/splash
-        # Converted into cm.
-
         # Default crown light exposure based on site types.
         self.cle = Tree.sun_exposure_rates[self.model.project_site_type]
         # Crown light exposure to sunlight (CLE).
@@ -147,9 +158,11 @@ class Tree(Agent):
         # (2) Park conditions
         # (3) Open-grown conditions.
 
-        self.average_height_at_maturity = self.model.species.get_height_at_maturity(
+        self.maturity_age = self.model.allometrics.get_maturity_age(self.species)
+        self.average_height_at_maturity = self.model.allometrics.get_height_at_maturity(
             self.species
         )
+
         # Avg height at maturity for the given species.
 
         self.biomass = self.compute_biomass()  # In Kg
@@ -176,18 +189,6 @@ class Tree(Agent):
 
     def step(self):
         """State transitions of a given Tree agent.
-
-        Args:
-            None
-
-        Returns:
-            None
-
-        Note:
-            None
-
-        Todo:
-            None
         """
         # Once the replaced tree agents are removed from the model, this line will be idle and s
         # should be removed too.
@@ -207,29 +208,34 @@ class Tree(Agent):
 
         # check frost free days for the past year.
         frost_free_days = self.model.WeatherAPI.check_frost_free_days()
-        # print('Tree: {} checks ffdays = {} ...'.format(self.unique_id, frost_free_days))
+        logging.debug(
+            "Tree: {} checks ffdays = {} ...".format(self.unique_id, frost_free_days)
+        )
 
         # compute the light exposure
         self.compute_light_exposure()
 
         # check state of the health of the tree
-        # print('Tree: {} checks dieback ...'.format(self.unique_id))
+        logging.debug("Tree: {} checks dieback ...".format(self.unique_id))
         self.check_dieback()
 
         # compute the growth
-        # print('Tree: {} grows ...'.format(self.unique_id))
+        logging.debug("Tree: {} grows ...".format(self.unique_id))
         self.grow(frost_free_days)
+
+        if self.model.project_site_type == "pocket":
+            self.tree_regeneration()
 
         # compute the total biomass
         self.compute_biomass()
-        # print('Tree: {} biomass ...'.format(self.unique_id))
+        logging.debug("Tree: {} biomass ...".format(self.unique_id))
 
         # compute the amount of new carbon sequestration
         self.compute_sequestration()
-        # print('Tree: {} sequestration ...'.format(self.unique_id))
+        logging.debug("Tree: {} sequestration ...".format(self.unique_id))
 
         # compute the amount of carbon release due to decomposition
-        # print('Tree: {} decomposition ...'.format(self.unique_id))
+        logging.debug("Tree: {} decomposition ...".format(self.unique_id))
         self.compute_decomposition()
 
     def grow(self, frost_free_days):
@@ -279,6 +285,11 @@ class Tree(Agent):
         # Update the change at canopy.
         self.update_crown_width()
         self.update_crown_height()
+
+        # Increase the age estimate by 1 year
+        if not self.age:
+            self.age = 0
+        self.age += 1
 
     def estimate_tree_height(self):
         """Computes the height of tree based on the species and current dbh.
@@ -469,13 +480,13 @@ class Tree(Agent):
         elif self.condition == "dead":
             register_death()
         elif (
-            self.condition in ("good", "excellent")
+            self.condition in ["excellent", "good"]
             and self.dbh < 7.62
             and risk <= 0.0196 * dr
         ):
             register_death()
         elif (
-            self.condition in ("good", "excellent")
+            self.condition in ["excellent", "good"]
             and self.dbh >= 7.62
             and risk <= 0.0146 * dr
         ):
@@ -578,6 +589,24 @@ class Tree(Agent):
         else:
             self.dieback = 1.0
         return self.dieback
+
+    def _estimate_age(self):
+        """
+        Estimate the age of a tree from its Diameter at Breast Height (DBH).
+
+        :param dbh: Diameter at Breast Height in centimeters.
+        :param growth_rate_per_year: Average increase in DBH per year in centimeters.
+        :return: Estimated age of the tree in years.
+        """
+        # Assuming the tree starts with a minimal DBH, which we set to a small positive value
+        initial_dbh = (
+            1.0  # cm, this is an assumption and may vary based on the tree species
+        )
+
+        # Calculate the estimated age
+        # The age is estimated by dividing the current DBH minus the initial DBH by the yearly growth rate
+        estimated_age = (self.dbh - initial_dbh) / self.diameter_growth
+        return max(1, estimated_age)
 
     def compute_biomass(self, ignore_height=True) -> float:
         """The biomass calculation for the tree, in KG.
@@ -753,15 +782,101 @@ class Tree(Agent):
         dbh = np.random.uniform(self.model.sapling_dbh, self.model.sapling_dbh + 1)
         new_id = self.model.next_id()
         new_tree = Tree(
-            new_id, self.model, dbh, self.species, condition="excellent", dieback=0
+            new_id,
+            self.model,
+            dbh,
+            self.species,
+            condition="excellent",
+            dieback=0,
         )
         new_tree.additional_attributes = self.additional_attributes[:]
-        
+
         # Inherit additional attributes from the old tree
         for attr in self.additional_attributes:
             value = getattr(self, attr)
             setattr(new_tree, attr, value)
-            
+
         self.model.grid.place_agent(new_tree, self.pos)
         self.model.schedule.add(new_tree)
         return new_id
+
+    def tree_regeneration(self):
+        """Simulate tree regeneration process.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Note:
+            This method simulates the statistical chances of a tree producing seeds,
+            the survival of saplings, and their growth to be included in the model as
+            small trees. The regeneration is dependent on factors like the age and health
+            of the tree.
+        """
+
+        # Assuming age and health are properties of the TreeAgent
+        # Only mature and healthy trees can produce seeds
+        total_new_trees_planted = 0
+        if self.age >= self.maturity_age and self.condition in [
+            "fair",
+            "good",
+            "excellent",
+        ]:  # TODO: validate all this
+            dbh_range_saplings = [0.2, 0.4]  # cm
+            height_range_saplings = [0.2, 0.4]  # m
+            crownW_range_saplings = [0.02, 0.03]  # m
+
+            BASE_SEED_PRODUCTION_PROBABILITY = 0.1
+            BASE_AVERAGE_SEED_COUNT = 100
+            BASE_SAPLING_SURVIVAL_RATE = 0.0
+
+            condition_score = ["fair", "good", "excellent"].index(self.condition) + 1
+            seed_production_bonus = condition_score * 0.25
+            # +25%, +50%, or +75% based on condition
+            seed_production_probability = (
+                BASE_SEED_PRODUCTION_PROBABILITY + seed_production_bonus
+            )
+
+            average_seed_count = BASE_AVERAGE_SEED_COUNT * condition_score
+
+            sapling_survival_bonus = condition_score * 0.25
+            sapling_survival_rate = BASE_SAPLING_SURVIVAL_RATE * sapling_survival_bonus
+
+            # Chance of seed production
+            if np.random.uniform(0, 1) < seed_production_probability:
+                # Simulate number of seeds produced
+                num_seeds = np.random.poisson(lam=average_seed_count)
+
+                # For each seed, simulate the chance of growing into a sapling
+                for _ in range(num_seeds):
+                    if np.random.uniform(0, 1) < sapling_survival_rate:
+                        # Create a new sapling/tree agent
+                        logging.debug("We're planting A NEW TREEEEEEEEE!")
+                        total_new_trees_planted += 1
+                        sapling = Tree(
+                            self.model.next_id(),
+                            self.model,
+                            np.random.uniform(*dbh_range_saplings, 1)[0],
+                            self.species,
+                            height=np.random.uniform(*height_range_saplings, 1)[0],
+                            crownW=np.random.uniform(*crownW_range_saplings, 1)[0],
+                            condition="excellent",
+                            dieback=0,
+                        )
+                        sapling.age = 0
+
+                        # Inherit additional attributes from the old tree
+                        for attr in self.additional_attributes:
+                            value = getattr(self, attr)
+                            setattr(sapling, attr, value)
+
+                        new_position = (
+                            self.pos
+                        )  # TODO: We should place the seed somewhere nearby
+                        self.model.grid.place_agent(sapling, new_position)
+                        self.model.schedule.add(sapling)
+
+        if total_new_trees_planted > 0:
+            logging.debug("Planted {} new trees".format(total_new_trees_planted))
