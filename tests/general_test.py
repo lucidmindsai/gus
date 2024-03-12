@@ -18,10 +18,10 @@ def test_parallelise():
         scen = json.loads(open(scenario_file).read())
     except IOError as e:
         print(str(e))
-
-    tree_population = latlng_array_to_xy(pd.read_csv(input_trees))
+    df = pd.read_csv(input_trees)
+    tree_population = latlng_array_to_xy(df)
     model = Urban(
-        population=pd.read_csv(input_trees),
+        population=tree_population,
         species_allometrics_file="pygus/gus/inputs/allometrics.json",
         site_config=load_site_config_file(site_file),
         scenario=scen,
