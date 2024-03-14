@@ -209,7 +209,6 @@ class Urban(Model):
         for _ in range(steps):
             logging.info("Year:{}".format(self.schedule.time + 1))
             self.step()
-        print("carbon storage: ", self.aggregate(self, "carbon_storage"))
         end = time.time()
         logging.debug(
             "{} steps completed (pop. {}): {}".format(steps, pop, end - start)

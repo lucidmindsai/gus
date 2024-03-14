@@ -78,16 +78,9 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
     Returns:
         _type_: Returns the area of the dataframe in UTM grid units (or square metres)
     """
-    # If xpos and ypos columns exist, calculate area with them
-    if "xpos" in tree_df.columns and "ypos" in tree_df.columns:
-        # Get area
-        min_x = tree_df["xpos"].min()
-        max_x = tree_df["xpos"].max()
-        min_y = tree_df["ypos"].min()
-        max_y = tree_df["ypos"].max()
-        return (max_x - min_x) * (max_y - min_y)
-    # otherwise, check for lat and lon columns
-    elif "lat" in tree_df.columns and "lng" in tree_df.columns:
+    # If lat and lng columns exist, calculate area with them
+    if "lat" in tree_df.columns and "lng" in tree_df.columns:
+    # otherwise, if xpos and ypos columns exist, use them
         R = 6371000  # Radius of the Earth in meters
         min_lat = tree_df["lat"].min()
         max_lat = tree_df["lat"].max()
@@ -109,6 +102,13 @@ def calculate_dataframe_area(tree_df: pd.DataFrame):
 
         # Calculate the area
         return d_lat * d_lon * R * R * math.cos(lat_avg)
+    elif "xpos" in tree_df.columns and "ypos" in tree_df.columns:
+        # Get area
+        min_x = tree_df["xpos"].min()
+        max_x = tree_df["xpos"].max()
+        min_y = tree_df["ypos"].min()
+        max_y = tree_df["ypos"].max()
+        return (max_x - min_x) * (max_y - min_y)
 
     # FIXME - this should be an exception
     return None

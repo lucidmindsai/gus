@@ -1,9 +1,11 @@
 import os
 import math
 import random
+import logging
 import pandas as pd
 import numpy as np
 from typing import Union
+from pkg_resources import resource_filename
 
 from shapely.geometry import Polygon, MultiPolygon, Point
 
@@ -42,11 +44,9 @@ def tree_population_from_geojson(
     else:
         evergreen_pc = _get_evergreen_percentage(species)
 
-    generate_population_features(
+    return generate_population_features(
         df, dbh_range, height_range, crownW_range, species, condition_weights
     )
-
-    return df
 
 
 # Ideally, this function could take a dataframe, and add any missing elements needed for the simulation
@@ -119,9 +119,9 @@ def generate_population_features(
         df.index.name = 'id'
         df.reset_index(inplace=True)
 
-    print(df.columns)
     column_out_order = ["id", "species", "dbh", "height", "lat", "lng", "condition", "crownW", "xpos", "ypos"]
     df.reindex(columns=column_out_order)
+    return df
         
 def _generate_locations_in_geojson(df, polygon: Union[Polygon, MultiPolygon], num_points):
     if polygon.geom_type == "Polygon":
@@ -140,7 +140,7 @@ def _generate_locations_in_geojson(df, polygon: Union[Polygon, MultiPolygon], nu
     df["lat"] = [point.y for point in points]
     df["lng"] = [point.x for point in points]
 
-def _get_evergreen_percentage(species_dict, path = os.path.join(".", "inputs", "allometrics.json")):
+def _get_evergreen_percentage(species_dict, path = resource_filename("pygus", "gus/inputs/allometrics.json")):
     allometrics = Species(path)
 
     # check species_dict values total 1
@@ -157,7 +157,7 @@ def _get_evergreen_percentage(species_dict, path = os.path.join(".", "inputs", "
         else:
             print(f"Species {species} not found in allometrics.json")
 
-    print(f"Evergreen percentage: {evergreens * 100:.2f}%")
+    logging.debug(f"Evergreen percentage: {evergreens * 100:.2f}%")
     return evergreens
 
 
