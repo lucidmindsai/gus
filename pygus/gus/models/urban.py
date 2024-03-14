@@ -36,7 +36,7 @@ class Urban(Model):
 
     def __init__(
         self,
-        population: Union[str,pd.DataFrame],
+        population: Union[str, pd.DataFrame],
         species_allometrics: Union[str, Species],
         site_config: Union[str, SiteConfig],
         scenario: Union[str, ScenarioConfig],
