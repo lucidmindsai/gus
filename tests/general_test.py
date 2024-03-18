@@ -13,7 +13,7 @@ from pygus import Urban, SiteConfig, latlng_array_to_xy
 
 def test_parallelise():
     site_file = "pygus/gus/inputs/site.json"
-    input_trees = "pygus/gus/inputs/amsterdam_all_trees_1000.csv"
+    input_trees = "pygus/gus/inputs/amsterdam_trees_1000.csv"
     scenario_file = "pygus/gus/inputs/scenario.json"
 
     model = Urban(

@@ -60,13 +60,13 @@ def latlng_array_to_xy(population_df, lat_column="lat", lng_column="lng"):
     lng = population_df[lng_column].to_numpy()
     easting, northing, _, _ = utm.from_latlon(lat, lng)  # also returns zone and zone letter
 
-    # Use .loc to ensure we modify the original dataframe
-    population_df['xpos'] = easting.astype(int)
-    population_df['ypos'] = northing.astype(int)
+    # Use .loc to modify the DataFrame explicitly:
+    population_df.loc[:, 'xpos'] = easting.astype(int)
+    population_df.loc[:, 'ypos'] = northing.astype(int)
 
     # Normalise the xpos, ypos values, and round to integers
-    population_df["xpos"] = population_df["xpos"] - population_df["xpos"].min()
-    population_df["ypos"] = population_df["ypos"] - population_df["ypos"].min()
+    population_df.loc[:,"xpos"] = population_df["xpos"] - population_df["xpos"].min()
+    population_df.loc[:, "ypos"] = population_df["ypos"] - population_df["ypos"].min()
 
 
 def calculate_dataframe_area(tree_df: pd.DataFrame):
