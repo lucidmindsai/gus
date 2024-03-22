@@ -45,7 +45,7 @@ def tree_population_from_geojson(
         evergreen_pc = _get_evergreen_percentage(species)
 
     return generate_population_features(
-        df, dbh_range, height_range, crownW_range, species, condition_weights
+        df, dbh_range, species, condition_weights
     )
 
 
@@ -54,8 +54,6 @@ def tree_population_from_geojson(
 def generate_population_features(
     df: pd.DataFrame,
     dbh_range=[10, 15],
-    height_range=[2, 5],
-    crownW_range=[1, 4],  # computed from dbh
     species={"Deciduous": 0.8, "Conifers": 0.2}, # % conifers
     condition_weights=[0.6, 0.3, 0.1, 0.0, 0.0],
 ) -> pd.DataFrame:
@@ -69,8 +67,6 @@ def generate_population_features(
         location (_type_): _description_
         area_m2 (_type_): _description_
         dbh_range (list, optional): _description_. Defaults to [10, 15].
-        height_range (list, optional): _description_. Defaults to [2, 5].
-        crownW_range (list, optional): _description_. Defaults to [1, 4].
         conifer_percentage (float, optional): _description_. Defaults to 0.2.
         condition_weights (list, optional): _description_. Defaults to [0.6, 0.3, 0.1, 0.0, 0.0].
 
@@ -103,23 +99,13 @@ def generate_population_features(
     if "dbh" not in df.columns:
         df["dbh"] = np.around(np.random.uniform(*dbh_range, len(df)), 3)
 
-    ## id,lat,lng,xpos,ypos,species,condition,dbh,height
-    if "height" not in df.columns:
-        df["height"] = np.around(np.random.uniform(*height_range, len(df)), 3)
+    # TODO: handle allometrics to height here?
 
-    ## id,lat,lng,xpos,ypos,species,condition,dbh,height,crownW
-    if "crownW" not in df.columns:
-        df["crownW"] = np.around(
-            np.random.uniform(
-                df["dbh"] * crownW_range[0], df["dbh"] * crownW_range[1], len(df)
-            ),
-            3,
-        )
     if "id" not in df.columns:
         df.index.name = 'id'
         df.reset_index(inplace=True)
 
-    column_out_order = ["id", "species", "dbh", "height", "lat", "lng", "condition", "crownW", "xpos", "ypos"]
+    column_out_order = ["id", "species", "dbh", "lat", "lng", "condition", "xpos", "ypos"]
     df.reindex(columns=column_out_order)
     return df
         
