@@ -113,7 +113,7 @@ class Species:
 
         highest, score = process.extractOne(species_input, names)
         
-        if score < 40:
+        if score < 60:
             print("Found {} to be the best match for the input {} with a score of {}.".format(highest, species_input, score))
             return "decidu"
         
