@@ -81,6 +81,10 @@ def generate_population_features(
     ## id,lat,lng,xpos,ypos,dbh
     if "dbh" not in df.columns:
         df["dbh"] = np.around(np.random.uniform(*dbh_range, len(df)), 3)
+        print(df["dbh"].mean())
+        if df["dbh"].mean() < 2:
+            SAPLING_HEIGHT = [0.3, 1.0]
+            df["height"] = np.around(np.random.uniform(*SAPLING_HEIGHT, len(df)), 3)
 
     ## id,lat,lng,xpos,ypos,dbh,species
     if "species" not in df.columns:
