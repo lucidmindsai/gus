@@ -308,7 +308,7 @@ class Tree(Agent):
         self.tree_height = self.f_tree_height(self.dbh)
         return self.tree_height
 
-    def update_tree_height(self, generic=False):
+    def update_tree_height(self, generic=False, SAPLING_MAX_HEIGHT=5.0):
         """Computes the height of tree based on the species and current dbh.
 
         Args:
@@ -317,7 +317,7 @@ class Tree(Agent):
             None
 
         """
-        if generic:
+        if generic or self.tree_height < SAPLING_MAX_HEIGHT:
             self.fleming_height()
             return
         self.tree_height = self.f_tree_height(self.dbh)
