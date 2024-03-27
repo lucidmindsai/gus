@@ -1,2 +1,2 @@
-from .urban import Urban
+from .urban import Urban, Miyawaki
 from .config import SiteConfig, WeatherConfig, ScenarioConfig

@@ -398,8 +398,8 @@ class Tree(Agent):
             self.overlap_ratio += overlap_ratio
         # Cases needs to be inspected
         self.overlap_ratio = min(1, self.overlap_ratio)
-        light_loss_multiplier = 0.75  # arbitrary to be fixed with empirical data.
-        self.cle = max(0, 1 - light_loss_multiplier * combined_overlap)
+        #light_loss_multiplier = 0.75  # arbitrary to be fixed with empirical data.
+        self.cle = max(0, 1 - self.model.light_loss_multiplier * combined_overlap)
 
         # try:
         #     total_dbh = sum([t.dbh for t in cellmates])

@@ -1,0 +1,5444 @@
+{
+  "acer campestre": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6,
+    "maturity_age": 30,
+    "common_names": [
+      "Field Maple"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "acer negundo": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 12.5,
+    "height_at_maturity_feet": 41.0105,
+    "maturity_age": 25,
+    "common_names": [
+      "Boxelder"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 38.40,
+          "B0": 2.479,
+          "B1": 0.5371
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 36.00,
+          "B0": 5.854,
+          "B1": 1.9553,
+          "B2": -0.0275
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 21.00,
+          "B0": 4.4778,
+          "B1": 3.1358,
+          "B2": -0.0742
+        }
+      }
+    }
+  },
+  "acer palmatum": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 8.0,
+    "height_at_maturity_feet": 26.24672,
+    "maturity_age": 17,
+    "common_names": [
+      "Japanese Maple"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.20,
+          "B0": 2.0076,
+          "B1": 0.4723
+        }
+      },
+      "crown_width": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.20,
+          "B0": 6.61,
+          "B1": 1.7147
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.20,
+          "B0": 4.8807,
+          "B1": 1.1865
+        }
+      }
+    }
+  },
+  "acer platanoides": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 25.0,
+    "height_at_maturity_feet": 82.0,
+    "maturity_age": 50,
+    "common_names": [
+      "Norway Maple"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "acer pseudoplatanus": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 13.0,
+    "height_at_maturity_feet": 42.7,
+    "maturity_age": 40,
+    "common_names": [
+      "Rowan"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "acer rubrum": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 22.5,
+    "height_at_maturity_feet": 73.8189,
+    "maturity_age": 25,
+    "common_names": [
+      "Red Maple"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 45.00,
+          "B0": 2.6393,
+          "B1": 0.5613
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 6.8474,
+          "B1": 2.1853,
+          "B2": -0.0335
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 45.00,
+          "B0": 1.9422,
+          "B1": 0.6517
+        }
+      }
+    }
+  },
+  "acer saccharinum": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6168,
+    "maturity_age": 30,
+    "common_names": [
+      "Silver Maple"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 70.90,
+          "B0": 2.69,
+          "B1": 0.4652
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 70.90,
+          "B0": 1.9519,
+          "B1": 0.5629
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 70.90,
+          "B0": 2.0482,
+          "B1": 0.5967
+        }
+      }
+    }
+  },
+  "acer saccharum": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4252,
+    "maturity_age": 35,
+    "common_names": [
+      "Sugar Maple"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.00,
+          "B0": 11.3449,
+          "B1": 19.5311
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 32.00,
+          "B0": 6.4681,
+          "B1": 2.2287,
+          "B2": -0.0351
+        }
+      },
+      "crown_height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.00,
+          "B0": 4.3008,
+          "B1": 13.1534
+        }
+      }
+    }
+  },
+  "alnus glutinosa": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6168,
+    "maturity_age": 40,
+    "common_names": [
+      "Black Alder"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 44.00,
+          "B0": 2.6073,
+          "B1": 0.5432
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 44.00,
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488
+        }
+      }
+    }
+  },
+  "betula papyrifera": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6168,
+    "maturity_age": 35,
+    "common_names": [
+      "Paper Birch"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 21.30,
+          "B0": 2.8698,
+          "B1": 0.4381
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 21.30,
+          "B0": 5.064,
+          "B1": 1.2265,
+          "B2": 0.0395
+        }
+      },
+      "crown_height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 21.30,
+          "B0": 8.6195,
+          "B1": 8.8565
+        }
+      }
+    }
+  },
+  "betula pendula": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4,
+    "maturity_age": 40,
+    "common_names": [
+      "Silver Birch"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "betula populifolia": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 9.0,
+    "height_at_maturity_feet": 29.52756,
+    "maturity_age": 25,
+    "common_names": [
+      "Grey Birch"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 12.20,
+          "B0": 2.575,
+          "B1": 0.5303
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 12.20,
+          "B0": 1.9078,
+          "B1": 0.5326
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 12.20,
+          "B0": 2.331,
+          "B1": 0.4096
+        }
+      }
+    }
+  },
+  "betula pubescens": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4,
+    "maturity_age": 40,
+    "common_names": [
+      "Downy Birch"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "buxus sempervirens": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": true,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 12.0,
+    "height_at_maturity_feet": 39.4,
+    "maturity_age": 25,
+    "common_names": [
+      "Common Box"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "carpinus betulus": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4,
+    "maturity_age": 60,
+    "common_names": [
+      "Hornbeam"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "carpinus caroliniana": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 9.0,
+    "height_at_maturity_feet": 29.52756,
+    "maturity_age": 25,
+    "common_names": [
+      "American Hornbeam"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 10.40,
+          "B0": 2.783,
+          "B1": 0.3189
+        }
+      },
+      "crown_width": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 10.40,
+          "B0": 9.0348,
+          "B1": 6.7159
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 7.00,
+          "B0": 3.9616,
+          "B1": 4.5169,
+          "B2": -0.3409
+        }
+      }
+    }
+  },
+  "carya alba": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 17.5,
+    "height_at_maturity_feet": 57.414699999999996,
+    "maturity_age": 45,
+    "common_names": [
+      "Mockernut Hickory"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 22.00,
+          "B0": 9.3934,
+          "B1": 6.5955,
+          "B2": -0.1521
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 38.50,
+          "B0": 1.9301,
+          "B1": 0.5499
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 22.00,
+          "B0": 3.4081,
+          "B1": 4.5112,
+          "B2": -0.1021
+        }
+      }
+    }
+  },
+  "carya cordiformis": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4252,
+    "maturity_age": 45,
+    "common_names": [
+      "Bitternut Hickory"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 6.4104,
+          "B1": 6.3745,
+          "B2": -0.083
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 1.946,
+          "B1": 0.5517
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 1.8466,
+          "B1": 0.7115
+        }
+      }
+    }
+  },
+  "carya glabra": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 21.0,
+    "height_at_maturity_feet": 68.89764,
+    "maturity_age": 45,
+    "common_names": [
+      "Pignut Hickory"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.90,
+          "B0": 2.6764,
+          "B1": 0.5947
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.90,
+          "B0": 2.0043,
+          "B1": 0.4994
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.90,
+          "B0": 1.9634,
+          "B1": 0.7264
+        }
+      }
+    }
+  },
+  "carya illinoinensis": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4252,
+    "maturity_age": 25,
+    "common_names": [
+      "Pecan"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.50,
+          "DBHMax": 35.00,
+          "B0": 2.7997,
+          "B1": 0.4137
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.50,
+          "DBHMax": 35.00,
+          "B0": 1.7231,
+          "B1": 0.6653
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.50,
+          "DBHMax": 35.00,
+          "B0": 2.2766,
+          "B1": 0.4262
+        }
+      }
+    }
+  },
+  "carya ovata": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 22.5,
+    "height_at_maturity_feet": 73.8189,
+    "maturity_age": 45,
+    "common_names": [
+      "Shagbark Hickory"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 25.20,
+          "B0": 2.6684,
+          "B1": 0.6181
+        }
+      },
+      "crown_width": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 25.20,
+          "B0": 6.7211,
+          "B1": 1.6122
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 25.20,
+          "B0": 5.8375,
+          "B1": 2.4594
+        }
+      }
+    }
+  },
+  "catalpa speciosa": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 15.0,
+    "height_at_maturity_feet": 49.2126,
+    "maturity_age": 35,
+    "common_names": [
+      "Northern Catalpa"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 35.50,
+          "B0": 2.4414,
+          "B1": 0.5456
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 35.50,
+          "B0": 2.0308,
+          "B1": 0.5362
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 35.50,
+          "B0": 1.6645,
+          "B1": 0.6539
+        }
+      }
+    }
+  },
+  "celtis laevigata": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 25.0,
+    "height_at_maturity_feet": 82.021,
+    "maturity_age": 25,
+    "common_names": [
+      "Sugarberry"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.30,
+          "DBHMax": 25.00,
+          "B0": 2.6831,
+          "B1": 0.4544
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.30,
+          "DBHMax": 25.00,
+          "B0": 1.7738,
+          "B1": 0.6299
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.30,
+          "DBHMax": 25.00,
+          "B0": 2.158,
+          "B1": 0.4732
+        }
+      }
+    }
+  },
+  "celtis occidentalis": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 16.0,
+    "height_at_maturity_feet": 52.49344,
+    "maturity_age": 25,
+    "common_names": [
+      "Common Hackberry"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 25.10,
+          "B0": 2.3792,
+          "B1": 0.6343
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 25.10,
+          "B0": 5.0384,
+          "B1": 2.3903,
+          "B2": -0.0527
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 25.10,
+          "B0": 1.5917,
+          "B1": 0.7817
+        }
+      }
+    }
+  },
+  "conifer": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 39.624,
+    "height_at_maturity_feet": 130.0,
+    "maturity_age": 25,
+    "common_names": [
+      "Coniferous"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 0.7293,
+          "B1": 5.4819,
+          "B2": -0.0988,
+          "DBHMin": 1.3,
+          "DBHMax": 28.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 1.786,
+          "B1": 1.732,
+          "B2": -0.0221,
+          "DBHMin": 1.3,
+          "DBHMax": 39
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 3.8501,
+          "B1": 2.5431,
+          "B2": -0.0436,
+          "DBHMin": 1.3,
+          "DBHMax": 31.0
+        }
+      }
+    }
+  },
+  "cornus florida": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 7.5,
+    "height_at_maturity_feet": 24.6063,
+    "maturity_age": 25,
+    "common_names": [
+      "Flowering Dogwood"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 17.60,
+          "B0": 2.6208,
+          "B1": 0.3129
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 17.60,
+          "B0": 2.1047,
+          "B1": 0.4727
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 17.60,
+          "B0": 1.6619,
+          "B1": 0.5154
+        }
+      }
+    }
+  },
+  "cornus sanguinea": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 10.0,
+    "height_at_maturity_feet": 32.8,
+    "maturity_age": 20,
+    "common_names": [
+      "Dogwood"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "corylus avellana": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 12.0,
+    "height_at_maturity_feet": 39.4,
+    "maturity_age": 40,
+    "common_names": [
+      "Hazel"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "crataegus laevigata": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 8.0,
+    "height_at_maturity_feet": 26.2,
+    "maturity_age": 30,
+    "common_names": [
+      "Midland Hawthorn"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "crataegus monogyna": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 8.0,
+    "height_at_maturity_feet": 26.2,
+    "maturity_age": 30,
+    "common_names": [
+      "Hawthorn"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "decidu": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 18.288,
+    "height_at_maturity_feet": 60.0,
+    "maturity_age": 20,
+    "common_names": [
+      "Deciduous"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "eucalyptus globulus": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 42.5,
+    "height_at_maturity_feet": 139.4357,
+    "maturity_age": 40,
+    "common_names": [
+      "Blue Gum"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 2.00,
+          "DBHMax": 101.60,
+          "B0": 2.6534,
+          "B1": 0.5052
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 2.00,
+          "DBHMax": 101.60,
+          "B0": -0.0593,
+          "B1": 1.233
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 2.00,
+          "DBHMax": 101.60,
+          "B0": 0.3438,
+          "B1": 1.2775
+        }
+      }
+    }
+  },
+  "fagus grandifolia": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 27.5,
+    "height_at_maturity_feet": 90.2231,
+    "maturity_age": 50,
+    "common_names": [
+      "American Beech"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 27.00,
+          "B0": 8.68,
+          "B1": 5.9536,
+          "B2": -0.1094
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 36.00,
+          "B0": 7.8252,
+          "B1": 2.4359,
+          "B2": -0.0335
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 26.00,
+          "B0": 3.858,
+          "B1": 4.9592,
+          "B2": -0.0939
+        }
+      }
+    }
+  },
+  "fagus sylvatica": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 40.0,
+    "height_at_maturity_feet": 131.2,
+    "maturity_age": 40,
+    "common_names": [
+      "Common Beech"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "fraxinus americana": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 21.5,
+    "height_at_maturity_feet": 70.53806,
+    "maturity_age": 35,
+    "common_names": [
+      "White Ash"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 22.00,
+          "B0": 9.0318,
+          "B1": 6.2878,
+          "B2": -0.1428
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 38.00,
+          "B0": 4.8708,
+          "B1": 2.221,
+          "B2": -0.0295
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 26.00,
+          "B0": 4.9291,
+          "B1": 2.9204,
+          "B2": -0.0554
+        }
+      }
+    }
+  },
+  "fraxinus excelsior": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 19.2024,
+    "height_at_maturity_feet": 63.0,
+    "maturity_age": 40,
+    "common_names": [
+      "European Ash"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -2.4718,
+          "B": 2.5466,
+          "C": 0.0
+        }
+      },
+      "height": {
+        "equation_type": "parametric",
+        "params": {
+          "B0": 1.37,
+          "B1": 2.78,
+          "B2": 0.46,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "parametric",
+        "params": {
+          "B0": 0,
+          "B1": 0.54,
+          "B2": 0.78,
+          "DBHMin": 1,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1,
+          "DBHMax": 27
+        }
+      }
+    }
+  },
+  "fraxinus pennsylvanica": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 16.0,
+    "height_at_maturity_feet": 52.49344,
+    "maturity_age": 25,
+    "common_names": [
+      "Green Ash"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.00,
+          "B0": 2.6417,
+          "B1": 0.5015
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.00,
+          "B0": 1.759,
+          "B1": 0.6078
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.00,
+          "B0": 2.0069,
+          "B1": 0.567
+        }
+      }
+    }
+  },
+  "ilex aquifolium": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": true,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 15.0,
+    "height_at_maturity_feet": 49.2,
+    "maturity_age": 20,
+    "common_names": [
+      "Holly"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "ilex opaca": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 15.0,
+    "height_at_maturity_feet": 49.2126,
+    "maturity_age": 45,
+    "common_names": [
+      "American Holly"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.40,
+          "DBHMax": 16.50,
+          "B0": 4.1301,
+          "B1": 3.8555,
+          "B2": -0.1097
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.40,
+          "DBHMax": 16.50,
+          "B0": 1.7641,
+          "B1": 0.4682
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.40,
+          "DBHMax": 16.50,
+          "B0": 4.6572,
+          "B1": 2.3151
+        }
+      }
+    }
+  },
+  "juglans nigra": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 35.0,
+    "height_at_maturity_feet": 114.82939999999999,
+    "maturity_age": 35,
+    "common_names": [
+      "Black Walnut"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 2.426,
+          "B1": 0.6078
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 1.8653,
+          "B1": 0.5878
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 2.9058,
+          "B1": 2.8986,
+          "B2": -0.038
+        }
+      }
+    }
+  },
+  "juniperus communis": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 10.0,
+    "height_at_maturity_feet": 32.8,
+    "maturity_age": 40,
+    "common_names": [
+      "Juniper"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 0.7293,
+          "B1": 5.4819,
+          "B2": -0.0988,
+          "DBHMin": 1.3,
+          "DBHMax": 28.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 1.786,
+          "B1": 1.732,
+          "B2": -0.0221,
+          "DBHMin": 1.3,
+          "DBHMax": 39.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 3.8501,
+          "B1": 2.5431,
+          "B2": -0.0436,
+          "DBHMin": 1.3,
+          "DBHMax": 31.0
+        }
+      }
+    }
+  },
+  "juniperus virginiana": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 12.5,
+    "height_at_maturity_feet": 41.0105,
+    "maturity_age": 25,
+    "common_names": [
+      "Eastern Red Cedar"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.40,
+          "B0": 2.2621,
+          "B1": 0.5944
+        }
+      },
+      "crown_width": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.40,
+          "B0": 3.6967,
+          "B1": 1.2866
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.40,
+          "B0": 2.0926,
+          "B1": 0.5665
+        }
+      }
+    }
+  },
+  "lagerstroemia indica": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 4.5,
+    "height_at_maturity_feet": 14.76378,
+    "maturity_age": 15,
+    "common_names": [
+      "Crape Myrtle"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 10.20,
+          "B0": 2.6184,
+          "B1": 0.1761
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 10.20,
+          "B0": 1.9526,
+          "B1": 0.3644
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 10.20,
+          "B0": 4.8082,
+          "B1": 1.6692
+        }
+      }
+    }
+  },
+  "liquidambar styraciflua": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 25.0,
+    "height_at_maturity_feet": 82.021,
+    "maturity_age": 25,
+    "common_names": [
+      "Sweetgum"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.00,
+          "B0": 10.193,
+          "B1": 6.0733,
+          "B2": -0.1317
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.00,
+          "B0": 5.0207,
+          "B1": 1.5969,
+          "B2": -0.0074
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 27.00,
+          "B0": 4.9091,
+          "B1": 3.1597,
+          "B2": -0.0576
+        }
+      }
+    }
+  },
+  "liriodendron tulipifera": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 37.5,
+    "height_at_maturity_feet": 123.0315,
+    "maturity_age": 25,
+    "common_names": [
+      "Tulip Tree"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.30,
+          "DBHMax": 52.00,
+          "B0": 4.2684,
+          "B1": 27.5937
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.30,
+          "DBHMax": 52.00,
+          "B0": 5.6119,
+          "B1": 1.9934,
+          "B2": -0.0186
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.30,
+          "DBHMax": 52.00,
+          "B0": 2.1078,
+          "B1": 0.6018
+        }
+      }
+    }
+  },
+  "magnolia grandiflora": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6168,
+    "maturity_age": 45,
+    "common_names": [
+      "Southern Magnolia"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 26.00,
+          "B0": 2.5784,
+          "B1": 0.457
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 26.00,
+          "B0": 1.9737,
+          "B1": 0.4751
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 26.00,
+          "B0": 2.3096,
+          "B1": 0.496
+        }
+      }
+    }
+  },
+  "malus pumila": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 7.5,
+    "height_at_maturity_feet": 24.6063,
+    "maturity_age": 7,
+    "common_names": [
+      "Apple Tree"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 22.00,
+          "B0": 2.3415,
+          "B1": 0.3107
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 22.00,
+          "B0": 2.2312,
+          "B1": 0.3735
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 22.00,
+          "B0": 2.1383,
+          "B1": 0.2531
+        }
+      }
+    }
+  },
+  "malus sylvestris": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 10.0,
+    "height_at_maturity_feet": 32.8,
+    "maturity_age": 30,
+    "common_names": [
+      "Crab apple"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "morus alba": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 15.0,
+    "height_at_maturity_feet": 49.2126,
+    "maturity_age": 15,
+    "common_names": [
+      "White Mulberry"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 43.10,
+          "B0": 2.4252,
+          "B1": 0.4958
+        }
+      },
+      "crown_width": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 43.10,
+          "B0": 5.5645,
+          "B1": 7.96
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 24.00,
+          "B0": 5.0542,
+          "B1": 2.4817,
+          "B2": -0.0524
+        }
+      }
+    }
+  },
+  "morus rubra": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 12.5,
+    "height_at_maturity_feet": 41.0105,
+    "maturity_age": 15,
+    "common_names": [
+      "Red Mulberry"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 22.20,
+          "B0": 2.4371,
+          "B1": 0.4384
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 22.20,
+          "B0": 2.0067,
+          "B1": 0.5491
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 22.20,
+          "B0": 1.9783,
+          "B1": 0.5286
+        }
+      }
+    }
+  },
+  "picea abies": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 45.0,
+    "height_at_maturity_feet": 147.6,
+    "maturity_age": 40,
+    "common_names": [
+      "Norway Spruce"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 0.7293,
+          "B1": 5.4819,
+          "B2": -0.0988,
+          "DBHMin": 1.3,
+          "DBHMax": 28.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 1.786,
+          "B1": 1.732,
+          "B2": -0.0221,
+          "DBHMin": 1.3,
+          "DBHMax": 39
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 3.8501,
+          "B1": 2.5431,
+          "B2": -0.0436,
+          "DBHMin": 1.3,
+          "DBHMax": 31.0
+        }
+      }
+    }
+  },
+  "picea glauca": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 22.5,
+    "height_at_maturity_feet": 73.8189,
+    "maturity_age": 50,
+    "common_names": [
+      "White Spruce"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 19.70,
+          "B0": 2.1318,
+          "B1": 0.6375
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 19.70,
+          "B0": 1.3573,
+          "B1": 0.5622
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 19.70,
+          "B0": 2.0261,
+          "B1": 0.6099
+        }
+      }
+    }
+  },
+  "picea pungens": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 15.0,
+    "height_at_maturity_feet": 49.2126,
+    "maturity_age": 50,
+    "common_names": [
+      "Blue Spruce"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.50,
+          "DBHMax": 21.70,
+          "B0": 1.7763,
+          "B1": 0.7273
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.50,
+          "DBHMax": 21.70,
+          "B0": 3.1772,
+          "B1": 1.3664,
+          "B2": -0.0162
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.50,
+          "DBHMax": 21.70,
+          "B0": 3.4727,
+          "B1": 2.8321,
+          "B2": -0.0441
+        }
+      }
+    }
+  },
+  "pinus elliottii": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 24.0,
+    "height_at_maturity_feet": 78.74016,
+    "maturity_age": 30,
+    "common_names": [
+      "Slash Pine"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 5.00,
+          "DBHMax": 25.00,
+          "B0": -19.9031,
+          "B1": 37.2196
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 5.00,
+          "DBHMax": 25.00,
+          "B0": 1.2235,
+          "B1": 0.7611
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 5.00,
+          "DBHMax": 25.00,
+          "B0": 9.5228,
+          "B1": 1.3195
+        }
+      }
+    }
+  },
+  "pinus nigra": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4252,
+    "maturity_age": 50,
+    "common_names": [
+      "Austrian Pine"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 2.20,
+          "DBHMax": 23.00,
+          "B0": 7.7851,
+          "B1": 2.8191,
+          "B2": -0.0616
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 2.20,
+          "DBHMax": 24.00,
+          "B0": 5.6682,
+          "B1": 1.6952,
+          "B2": -0.036
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 2.20,
+          "DBHMax": 24.00,
+          "B0": 7.2858,
+          "B1": 1.7886,
+          "B2": -0.0379
+        }
+      }
+    }
+  },
+  "pinus radiata": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 40.0,
+    "height_at_maturity_feet": 131.2336,
+    "maturity_age": 25,
+    "common_names": [
+      "Monterey Pine"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.90,
+          "DBHMax": 62.70,
+          "B0": 2.1094,
+          "B1": 0.5924
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.90,
+          "DBHMax": 62.70,
+          "B0": 1.4297,
+          "B1": 0.5938
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.90,
+          "DBHMax": 62.70,
+          "B0": 2.055,
+          "B1": 0.4619
+        }
+      }
+    }
+  },
+  "pinus strobus": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 27.5,
+    "height_at_maturity_feet": 90.2231,
+    "maturity_age": 35,
+    "common_names": [
+      "Eastern White Pine"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 37.20,
+          "B0": 3.7779,
+          "B1": 3.9924,
+          "B2": -0.0284
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 37.20,
+          "B0": 3.3445,
+          "B1": 1.5814,
+          "B2": -0.0142
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 31.00,
+          "B0": 3.2668,
+          "B1": 3.0301,
+          "B2": -0.0485
+        }
+      }
+    }
+  },
+  "pinus taeda": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4252,
+    "maturity_age": 25,
+    "common_names": [
+      "Loblolly Pine"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.00,
+          "B0": 3.6528,
+          "B1": 6.7587,
+          "B2": -0.15
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 34.00,
+          "B0": 1.1535,
+          "B1": 0.7313
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 34.00,
+          "B0": 1.6624,
+          "B1": 0.6361
+        }
+      }
+    }
+  },
+  "pinus virginiana": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 13.5,
+    "height_at_maturity_feet": 44.29134,
+    "maturity_age": 25,
+    "common_names": [
+      "Virginia Pine"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 19.00,
+          "B0": 2.0008,
+          "B1": 0.7644
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 19.00,
+          "B0": 1.5891,
+          "B1": 0.6557
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 19.00,
+          "B0": 1.4992,
+          "B1": 0.6753
+        }
+      }
+    }
+  },
+  "platanus hybrida": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 35.0,
+    "height_at_maturity_feet": 114.82939999999999,
+    "maturity_age": 40,
+    "common_names": [
+      "London Plane"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 45.00,
+          "B0": 2.2615,
+          "B1": 0.5779
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 45.00,
+          "B0": 3.9088,
+          "B1": 2.6747,
+          "B2": -0.0329
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 45.00,
+          "B0": 1.6125,
+          "B1": 0.6897
+        }
+      }
+    }
+  },
+  "platanus occidentalis": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 35.0,
+    "height_at_maturity_feet": 114.82939999999999,
+    "maturity_age": 50,
+    "common_names": [
+      "American Sycamore"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 2.6718,
+          "B1": 0.5512
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 1.9074,
+          "B1": 0.5682
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 4.9825,
+          "B1": 2.5967,
+          "B2": -0.0176
+        }
+      }
+    }
+  },
+  "platanus x acerifolia": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 30.48,
+    "height_at_maturity_feet": 100,
+    "maturity_age": 50,
+    "common_names": [
+      "London Plane"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 2.6718,
+          "B1": 0.5512
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 1.9074,
+          "B1": 0.5682
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 4.9825,
+          "B1": 2.5967,
+          "B2": -0.0176
+        }
+      }
+    }
+  },
+  "platanus x hispanica": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 30.48,
+    "height_at_maturity_feet": 100,
+    "maturity_age": 50,
+    "common_names": [
+      "London Plane"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 2.6718,
+          "B1": 0.5512
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 1.9074,
+          "B1": 0.5682
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.20,
+          "B0": 4.9825,
+          "B1": 2.5967,
+          "B2": -0.0176
+        }
+      }
+    }
+  },
+  "populus balsamifera": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 22.5,
+    "height_at_maturity_feet": 73.8189,
+    "maturity_age": 35,
+    "common_names": [
+      "Balsam Poplar"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.20,
+          "B0": 0.5398,
+          "B1": 23.3071
+        }
+      },
+      "crown_width": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.20,
+          "B0": 4.1386,
+          "B1": 1.1984
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 23.20,
+          "B0": 6.8646,
+          "B1": 1.0936,
+          "B2": 0.133
+        }
+      }
+    }
+  },
+  "populus deltoides": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4252,
+    "maturity_age": 25,
+    "common_names": [
+      "Eastern Cottonwood"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 24.00,
+          "B0": 5.0638,
+          "B1": 6.2902,
+          "B2": -0.1315
+        }
+      },
+      "crown_width": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 41.80,
+          "B0": 4.3047,
+          "B1": 1.6294
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 41.80,
+          "B0": 2.2951,
+          "B1": 0.4959
+        }
+      }
+    }
+  },
+  "populus tremuloides": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6168,
+    "maturity_age": 25,
+    "common_names": [
+      "Quaking Aspen"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 15.80,
+          "B0": 6.7078,
+          "B1": 4.541
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 9.00,
+          "B0": 1.2786,
+          "B1": 2.3693,
+          "B2": -0.1346
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 9.00,
+          "B0": 1.4702,
+          "B1": 4.3657,
+          "B2": -0.2558
+        }
+      }
+    }
+  },
+  "prunus avium": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4,
+    "maturity_age": 50,
+    "common_names": [
+      "Wild Cherry"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 50.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "prunus padus": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 25.0,
+    "height_at_maturity_feet": 82.0,
+    "maturity_age": 20,
+    "common_names": [
+      "Bird Cherry"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "prunus serotina": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 22.5,
+    "height_at_maturity_feet": 73.8189,
+    "maturity_age": 25,
+    "common_names": [
+      "Black Cherry"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 24.00,
+          "B0": 6.447,
+          "B1": 5.5094,
+          "B2": -0.1154
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 28.00,
+          "B0": 6.1133,
+          "B1": 2.0116,
+          "B2": -0.0355
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 27.00,
+          "B0": 3.8327,
+          "B1": 2.7042,
+          "B2": -0.0492
+        }
+      }
+    }
+  },
+  "prunus spinosa": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 6.0,
+    "height_at_maturity_feet": 19.7,
+    "maturity_age": 20,
+    "common_names": [
+      "Blackthorn"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "prunus virginiana": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 7.0,
+    "height_at_maturity_feet": 22.96588,
+    "maturity_age": 17,
+    "common_names": [
+      "Chokecherry"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 25.40,
+          "B0": 10.9243,
+          "B1": 9.0672
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 25.40,
+          "B0": 1.7052,
+          "B1": 0.5541
+        }
+      },
+      "crown_height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 25.40,
+          "B0": 5.6824,
+          "B1": 7.617
+        }
+      }
+    }
+  },
+  "pyrus calleryana": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 12.5,
+    "height_at_maturity_feet": 41.0105,
+    "maturity_age": 17,
+    "common_names": [
+      "Callery Pear"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 15.60,
+          "B0": 10.5106,
+          "B1": 1.6266
+        }
+      },
+      "crown_width": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 15.60,
+          "B0": 3.3114,
+          "B1": 1.7738
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 15.60,
+          "B0": 7.677,
+          "B1": 1.18
+        }
+      }
+    }
+  },
+  "quercus alba": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 27.5,
+    "height_at_maturity_feet": 90.2231,
+    "maturity_age": 50,
+    "common_names": [
+      "White Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 30.00,
+          "B0": 11.3288,
+          "B1": 5.2509,
+          "B2": -0.0868
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 51.60,
+          "B0": 5.5617,
+          "B1": 1.8924,
+          "B2": -0.0109
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 32.00,
+          "B0": 5.8887,
+          "B1": 3.1019,
+          "B2": -0.0483
+        }
+      }
+    }
+  },
+  "quercus falcata": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 21.5,
+    "height_at_maturity_feet": 70.53806,
+    "maturity_age": 50,
+    "common_names": [
+      "Southern Red Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 37.00,
+          "B0": 2.7638,
+          "B1": 0.4974
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 37.00,
+          "B0": 3.2783,
+          "B1": 2.3124,
+          "B2": -0.0246
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 33.00,
+          "B0": 4.4512,
+          "B1": 3.0397,
+          "B2": -0.0464
+        }
+      }
+    }
+  },
+  "quercus nigra": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 21.5,
+    "height_at_maturity_feet": 70.53806,
+    "maturity_age": 35,
+    "common_names": [
+      "Water Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 27.00,
+          "B0": 13.7152,
+          "B1": 4.1217,
+          "B2": -0.0753
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 42.00,
+          "B0": 4.1202,
+          "B1": 2.269,
+          "B2": -0.0263
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 27.00,
+          "B0": 4.2006,
+          "B1": 3.2994,
+          "B2": -0.0609
+        }
+      }
+    }
+  },
+  "quercus palustris": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 25.0,
+    "height_at_maturity_feet": 82.021,
+    "maturity_age": 35,
+    "common_names": [
+      "Pin Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.10,
+          "B0": 2.4768,
+          "B1": 0.6079
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.10,
+          "B0": 7.7679,
+          "B1": 1.7229,
+          "B2": -0.011
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.10,
+          "B0": 1.8501,
+          "B1": 0.6992
+        }
+      }
+    }
+  },
+  "quercus petraea": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4,
+    "maturity_age": 80,
+    "common_names": [
+      "Sessile Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "quercus phellos": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 24.0,
+    "height_at_maturity_feet": 78.74016,
+    "maturity_age": 35,
+    "common_names": [
+      "Willow Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 54.20,
+          "B0": 2.3827,
+          "B1": 0.6018
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 37.00,
+          "B0": 3.8672,
+          "B1": 2.1683,
+          "B2": -0.0297
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 54.20,
+          "B0": 9.6871,
+          "B1": 1.9065
+        }
+      }
+    }
+  },
+  "quercus prinus": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 19.5,
+    "height_at_maturity_feet": 63.97638,
+    "maturity_age": 50,
+    "common_names": [
+      "Chestnut Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.80,
+          "DBHMax": 41.50,
+          "B0": 2.6032,
+          "B1": 0.5449
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.80,
+          "DBHMax": 41.50,
+          "B0": 2.1046,
+          "B1": 0.4575
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.80,
+          "DBHMax": 41.50,
+          "B0": 2.2264,
+          "B1": 0.4799
+        }
+      }
+    }
+  },
+  "quercus robur": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4,
+    "maturity_age": 80,
+    "common_names": [
+      "English Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "quercus rubra": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 25.0,
+    "height_at_maturity_feet": 82.021,
+    "maturity_age": 50,
+    "common_names": [
+      "Northern Red Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 37.00,
+          "B0": 12.5945,
+          "B1": 4.3658,
+          "B2": -0.0594
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 67.00,
+          "B0": 6.5916,
+          "B1": 1.7597,
+          "B2": -0.011
+        }
+      },
+      "crown_height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 67.00,
+          "B0": 0.4641,
+          "B1": 13.7235
+        }
+      }
+    }
+  },
+  "quercus stellata": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 12.5,
+    "height_at_maturity_feet": 41.0105,
+    "maturity_age": 50,
+    "common_names": [
+      "Post Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 28.00,
+          "B0": 2.5234,
+          "B1": 0.5601
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 28.00,
+          "B0": 1.1202,
+          "B1": 0.8338
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 28.00,
+          "B0": 1.5045,
+          "B1": 0.7604
+        }
+      }
+    }
+  },
+  "quercus velutina": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 21.5,
+    "height_at_maturity_feet": 70.53806,
+    "maturity_age": 50,
+    "common_names": [
+      "Black Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 32.00,
+          "B0": 9.2622,
+          "B1": 4.8707,
+          "B2": -0.0765
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 54.60,
+          "B0": 4.7156,
+          "B1": 1.8432,
+          "B2": -0.0116
+        }
+      },
+      "crown_height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.50,
+          "DBHMax": 54.60,
+          "B0": -1.6038,
+          "B1": 14.3242
+        }
+      }
+    }
+  },
+  "quercus virginiana": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 18.5,
+    "height_at_maturity_feet": 60.69554,
+    "maturity_age": 60,
+    "common_names": [
+      "Southern Live Oak"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 2.70,
+          "DBHMax": 50.30,
+          "B0": 2.2789,
+          "B1": 0.4319
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 2.70,
+          "DBHMax": 50.30,
+          "B0": 4.905,
+          "B1": 1.959,
+          "B2": -0.0166
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 2.70,
+          "DBHMax": 50.30,
+          "B0": 1.8411,
+          "B1": 0.4913
+        }
+      }
+    }
+  },
+  "rhamnus cathartica": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 6.5,
+    "height_at_maturity_feet": 21.32546,
+    "maturity_age": 15,
+    "common_names": [
+      "Common Buckthorn"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 16.40,
+          "B0": 2.6402,
+          "B1": 0.1898
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 16.40,
+          "B0": 1.6671,
+          "B1": 0.5227
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 16.40,
+          "B0": 1.6648,
+          "B1": 0.2501
+        }
+      }
+    }
+  },
+  "rhus hirta": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 7.5,
+    "height_at_maturity_feet": 24.6063,
+    "maturity_age": 12,
+    "common_names": [
+      "Staghorn Sumac"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 5.00,
+          "B0": 4.2632,
+          "B1": 6.9728,
+          "B2": -0.6906
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 9.80,
+          "B0": 1.6611,
+          "B1": 0.4203
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 9.80,
+          "B0": 1.0038,
+          "B1": 0.1913
+        }
+      }
+    }
+  },
+  "robinia pseudoacacia": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 18.5,
+    "height_at_maturity_feet": 60.69554,
+    "maturity_age": 25,
+    "common_names": [
+      "Black Locust"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 24.00,
+          "B0": 6.9592,
+          "B1": 5.7702,
+          "B2": -0.1203
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 27.00,
+          "B0": 6.4707,
+          "B1": 2.0431,
+          "B2": -0.0381
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 35.00,
+          "B0": 5.9067,
+          "B1": 2.2067,
+          "B2": -0.0245
+        }
+      }
+    }
+  },
+  "salix caprea": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 10.0,
+    "height_at_maturity_feet": 32.8,
+    "maturity_age": 25,
+    "common_names": [
+      "Goat Willow"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "salix cinerea": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 10.0,
+    "height_at_maturity_feet": 32.8,
+    "maturity_age": 30,
+    "common_names": [
+      "Grey Willow"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "salix nigra": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 15.0,
+    "height_at_maturity_feet": 49.2126,
+    "maturity_age": 15,
+    "common_names": [
+      "Black Willow"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 25.20,
+          "B0": 2.6306,
+          "B1": 0.4739
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 25.20,
+          "B0": 1.6136,
+          "B1": 0.6141
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.20,
+          "DBHMax": 25.20,
+          "B0": 1.9764,
+          "B1": 0.5817
+        }
+      }
+    }
+  },
+  "salix pentandra": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 18.0,
+    "height_at_maturity_feet": 59.1,
+    "maturity_age": 30,
+    "common_names": [
+      "Bay Willow"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "salix sericea": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 5.0,
+    "height_at_maturity_feet": 16.4042,
+    "maturity_age": 15,
+    "common_names": [
+      "Silky Willow"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 29.30,
+          "B0": 2.6269,
+          "B1": 0.3717
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 29.30,
+          "B0": 1.5732,
+          "B1": 0.6126
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 20.00,
+          "B0": 3.9912,
+          "B1": 2.1772,
+          "B2": -0.0543
+        }
+      }
+    }
+  },
+  "salix viminalis": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "fast",
+    "diameter_growth": 1.0922,
+    "height_at_maturity": 7.0,
+    "height_at_maturity_feet": 23.0,
+    "maturity_age": 25,
+    "common_names": [
+      "Osier Willow"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "sorbus aria": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 15.0,
+    "height_at_maturity_feet": 49.2,
+    "maturity_age": 40,
+    "common_names": [
+      "Whitebeam"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "sorbus rupicola": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 10.0,
+    "height_at_maturity_feet": 32.8,
+    "maturity_age": 40,
+    "common_names": [
+      "Rock Whitebeam"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "sorbus torminalis": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 25.0,
+    "height_at_maturity_feet": 82.0,
+    "maturity_age": 50,
+    "common_names": [
+      "Wild Service Tree"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "syringa vulgaris": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 3.5,
+    "height_at_maturity_feet": 11.48294,
+    "maturity_age": 15,
+    "common_names": [
+      "Common Lilac"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "log_linear",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 10.10,
+          "B0": 12.1013,
+          "B1": 5.2485
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 10.10,
+          "B0": 1.6104,
+          "B1": 0.454
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 10.10,
+          "B0": 2.9685,
+          "B1": 1.14
+        }
+      }
+    }
+  },
+  "taxus baccata": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6,
+    "maturity_age": 400,
+    "common_names": [
+      "Yew"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 0.7293,
+          "B1": 5.4819,
+          "B2": -0.0988,
+          "DBHMin": 1.3,
+          "DBHMax": 28.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 1.786,
+          "B1": 1.732,
+          "B2": -0.0221,
+          "DBHMin": 1.3,
+          "DBHMax": 39
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 3.8501,
+          "B1": 2.5431,
+          "B2": -0.0436,
+          "DBHMin": 1.3,
+          "DBHMax": 31.0
+        }
+      }
+    }
+  },
+  "thuja occidentalis": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 15.0,
+    "height_at_maturity_feet": 49.2126,
+    "maturity_age": 35,
+    "common_names": [
+      "Northern White Cedar"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 35.60,
+          "B0": 5.8337,
+          "B1": 2.1101
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 35.60,
+          "B0": 1.8741,
+          "B1": 1.0552,
+          "B2": -0.0141
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 35.60,
+          "B0": 4.8903,
+          "B1": 1.4952
+        }
+      }
+    }
+  },
+  "tilia americana": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 21.0,
+    "height_at_maturity_feet": 68.89764,
+    "maturity_age": 25,
+    "common_names": [
+      "American Basswood"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 27.00,
+          "B0": 9.8287,
+          "B1": 4.5034,
+          "B2": -0.0843
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.00,
+          "B0": 5.2194,
+          "B1": 1.8045,
+          "B2": -0.0195
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 40.00,
+          "B0": 5.3963,
+          "B1": 2.3592,
+          "B2": -0.0274
+        }
+      }
+    }
+  },
+  "tilia cordata": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6,
+    "maturity_age": 60,
+    "common_names": [
+      "Small-leaved Lime"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      }
+    }
+  },
+  "tilia platyphyllos": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 30.0,
+    "height_at_maturity_feet": 98.4,
+    "maturity_age": 60,
+    "common_names": [
+      "Large-leaved Lime"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "B0": 2.6073,
+          "B1": 0.5432,
+          "DBHMin": 1.0,
+          "DBHMax": 44.0
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.4295,
+          "B1": 2.2431,
+          "B2": -0.0344,
+          "DBHMin": 1.0,
+          "DBHMax": 33.0
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "B0": 4.9344,
+          "B1": 2.6714,
+          "B2": -0.0488,
+          "DBHMin": 1.0,
+          "DBHMax": 27.0
+        }
+      }
+    }
+  },
+  "tsuga canadensis": {
+    "leaf_type": "needles",
+    "is_evergreen": true,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6168,
+    "maturity_age": 50,
+    "common_names": [
+      "Eastern Hemlock"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_2",
+        "params": {
+          "A": 0.093,
+          "B": 2.385,
+          "C": 0.061
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 25.00,
+          "B0": 1.2021,
+          "B1": 5.1368,
+          "B2": -0.1035
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 36.00,
+          "B0": 2.9619,
+          "B1": 1.7751,
+          "B2": -0.0242
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 36.00,
+          "B0": 3.0025,
+          "B1": 2.5558,
+          "B2": -0.0221
+        }
+      }
+    }
+  },
+  "ulmus alata": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 13.5,
+    "height_at_maturity_feet": 44.29134,
+    "maturity_age": 35,
+    "common_names": [
+      "Winged Elm"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 24.00,
+          "B0": 2.4175,
+          "B1": 0.579
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 24.00,
+          "B0": 1.5054,
+          "B1": 0.7179
+        }
+      },
+      "crown_height": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 24.00,
+          "B0": 4.74,
+          "B1": 2.2668
+        }
+      }
+    }
+  },
+  "ulmus americana": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 37.5,
+    "height_at_maturity_feet": 123.0315,
+    "maturity_age": 35,
+    "common_names": [
+      "American Elm"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 38.00,
+          "B0": 2.5502,
+          "B1": 0.5341
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 38.00,
+          "B0": 5.642,
+          "B1": 2.0847,
+          "B2": -0.0193
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 38.00,
+          "B0": 1.8999,
+          "B1": 0.6114
+        }
+      }
+    }
+  },
+  "ulmus crassifolia": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "slow",
+    "diameter_growth": 0.5842,
+    "height_at_maturity": 20.0,
+    "height_at_maturity_feet": 65.6168,
+    "maturity_age": 25,
+    "common_names": [
+      "Cedar Elm"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 17.00,
+          "B0": 7.1054,
+          "B1": 4.3431,
+          "B2": -0.0949
+        }
+      },
+      "crown_width": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 17.00,
+          "B0": 3.8747,
+          "B1": 1.9785,
+          "B2": -0.0015
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 17.00,
+          "B0": 1.7337,
+          "B1": 0.7143
+        }
+      }
+    }
+  },
+  "ulmus pumila": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 17.5,
+    "height_at_maturity_feet": 57.414699999999996,
+    "maturity_age": 20,
+    "common_names": [
+      "Siberian Elm"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 36.00,
+          "B0": 2.3164,
+          "B1": 0.6227
+        }
+      },
+      "crown_width": {
+        "equation_type": "linear",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 36.00,
+          "B0": 2.7381,
+          "B1": 1.6825
+        }
+      },
+      "crown_height": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.00,
+          "DBHMax": 36.00,
+          "B0": 1.7744,
+          "B1": 0.6095
+        }
+      }
+    }
+  },
+  "ulmus rubra": {
+    "leaf_type": "broadleaf",
+    "is_evergreen": false,
+    "growth_type": "moderate",
+    "diameter_growth": 0.8382,
+    "height_at_maturity": 21.5,
+    "height_at_maturity_feet": 70.53806,
+    "maturity_age": 35,
+    "common_names": [
+      "Slippery Elm"
+    ],
+    "equations": {
+      "biomass": {
+        "equation_type": "mass_1",
+        "params": {
+          "A": -1.77212,
+          "B": 2.25022,
+          "C": 0.06069
+        }
+      },
+      "height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 26.00,
+          "B0": 8.3578,
+          "B1": 4.4572,
+          "B2": -0.0845
+        }
+      },
+      "crown_width": {
+        "equation_type": "exponential",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 37.00,
+          "B0": 2.1143,
+          "B1": 0.4987
+        }
+      },
+      "crown_height": {
+        "equation_type": "polynomial",
+        "params": {
+          "DBHMin": 1.10,
+          "DBHMax": 28.00,
+          "B0": 3.1371,
+          "B1": 3.1945,
+          "B2": -0.0578
+        }
+      }
+    }
+  }
+}

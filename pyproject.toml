@@ -37,6 +37,7 @@ termcolor = "^2.1.1"
 utm = "^0.7.0"
 python-levenshtein = "^0.21.1"
 shapely = "^2.0.3"
+ipykernel = "^6.29.3"
 
 [tool.poetry.group.dev.dependencies]
 seaborn = "^0.11.2"
@@ -45,7 +46,6 @@ pytest = "^7.1.2"
 ipython = "^7.27.0"
 portray = "^1.7.0"
 black = {extras = ["jupyter"], version = "^23.7.0"}
-ipykernel = "^6.23.2"
 folium = "^0.14.0"
 basemap = "^1.3.8"
 basemap-data-hires = "^1.3.2"
