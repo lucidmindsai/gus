@@ -84,7 +84,7 @@ class Urban(Model):
         # to be parameterized and set during initialization.
 
         # Load species composition and their allometrics
-        required_cols = ["id", "dbh", "species", "condition", "xpos", "ypos"]
+        required_cols = ["id", "dbh", "height", "species", "condition", "xpos", "ypos"]
 
         # Test that the df is complete or raise keyerror
         for attribute in required_cols:
