@@ -308,7 +308,7 @@ class Tree(Agent):
         self.tree_height = self.f_tree_height(self.dbh)
         return self.tree_height
 
-    def update_tree_height(self, generic=False):
+    def update_tree_height(self, generic=False, SAPLING_MAX_HEIGHT=5.0):
         """Computes the height of tree based on the species and current dbh.
 
         Args:
@@ -317,7 +317,7 @@ class Tree(Agent):
             None
 
         """
-        if generic:
+        if generic or self.tree_height < SAPLING_MAX_HEIGHT:
             self.fleming_height()
             return
         self.tree_height = self.f_tree_height(self.dbh)
@@ -398,8 +398,8 @@ class Tree(Agent):
             self.overlap_ratio += overlap_ratio
         # Cases needs to be inspected
         self.overlap_ratio = min(1, self.overlap_ratio)
-        light_loss_multiplier = 0.75  # arbitrary to be fixed with empirical data.
-        self.cle = max(0, 1 - light_loss_multiplier * combined_overlap)
+        #light_loss_multiplier = 0.75  # arbitrary to be fixed with empirical data.
+        self.cle = max(0, 1 - self.model.light_loss_multiplier * combined_overlap)
 
         # try:
         #     total_dbh = sum([t.dbh for t in cellmates])
