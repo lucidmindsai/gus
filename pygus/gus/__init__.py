@@ -1,4 +1,4 @@
-from .models import Miyawaki, Urban, SiteConfig, WeatherConfig, ScenarioConfig
+from .models import Urban, SiteConfig, WeatherConfig, ScenarioConfig
 from .agents import Tree
 from .allometrics import Species
 from .weather import WeatherSim

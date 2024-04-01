@@ -1,5 +1,5 @@
 # Simulation model, agents, and configuration
-from .gus import Miyawaki, Urban, WeatherSim, Tree, Species, SiteConfig, WeatherConfig, ScenarioConfig
+from .gus import Urban, WeatherSim, Tree, Species, SiteConfig, WeatherConfig, ScenarioConfig
 
 # Dataframe Utility functions
 from .gus import get_raster_data, latlng_array_to_xy, calculate_dataframe_area, filter_dataframe_to_bounding_box
