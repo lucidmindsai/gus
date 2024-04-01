@@ -40,27 +40,6 @@ class Urban(Model):
         site_config: Union[str, SiteConfig],
         scenario: Union[str, ScenarioConfig],
     ):
-        ############################################################
-        # INPUTS
-        ############################################################
-
-        super().__init__()
-
-    """A generic green space model. To be tailored according to specific sites."""
-
-    # Used to hold the scaling of actual physical space within the digital space.
-    # It shows the size of each cell (square) in meters.
-    # FIXME: this needs to be brought up as a parameter and placed within the groups
-    #      of parameters that handle physical to digital twin mapping.
-    # dt_resolution = 2  # in meters
-
-    def __init__(
-        self,
-        population: Union[str, pd.DataFrame],
-        species_allometrics: Union[str, Species],
-        site_config: Union[str, SiteConfig],
-        scenario: Union[str, ScenarioConfig],
-    ):
         """The constructor method.
 
         Args:

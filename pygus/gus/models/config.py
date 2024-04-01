@@ -58,8 +58,11 @@ class SiteConfig:
         else:
             self.weather = weather
 
-        self.project_site_type = project_site_type 
-        self.light_loss_multiplier = light_loss_multiplier
+        self.project_site_type = project_site_type
+        if self.project_site_type == "miyawaki":
+            self.light_loss_multiplier = 0.1
+        else:
+            self.light_loss_multiplier = light_loss_multiplier
 
     @staticmethod
     def from_file(config_file: str):
