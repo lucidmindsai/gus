@@ -1,7 +1,9 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![PyPI version](https://badge.fury.io/py/pygus.svg)](https://badge.fury.io/py/pygus) [![Versions](https://img.shields.io/pypi/pyversions/pygus)]()
-# gus
+
 ![GUS-IMAGE](https://i-p.rmcdn.net/61d40c7b94627d001f2e8309/4445961/image-86e86df2-51c6-4f23-893d-6beaeb528260.png?w=176&e=webp&nll=true)
-Green Unified Scenarios - A digital twin representation, simulation of forests and their impact analysis.
+
+## Green Unified Scenarios 
+A digital twin representation, simulation of forests and their impact analysis.
 
 ### Installation
 
