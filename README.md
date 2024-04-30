@@ -88,7 +88,7 @@ And run the tests:
 All tests are in the `tests/` folder
 
 ### Who maintains GUS?
-The GUS is currently developed and maintained by [Lucidminds](https://lucidminds.ai/) and [Dark Matter Labs](https://darkmatterlabs.org/) members as part of their joint project [TreesAI](https://treesasinfrastructure.com/#/).
+The GUS is currently developed and maintained by [Lucidminds](https://lucidminds.ai/) 
 
 ### Notes
 * The GUS is open for PRs.
