@@ -46,6 +46,7 @@ class SiteConfig:
         weather: Union[Dict, WeatherConfig],
         tree_density_per_ha: int = None,
         project_site_type: str = "park",
+        light_loss_multiplier: float = 0.75
     ):
         self.total_m2 = total_m2
         self.impervious_m2 = impervious_m2
@@ -57,7 +58,11 @@ class SiteConfig:
         else:
             self.weather = weather
 
-        self.project_site_type = project_site_type 
+        self.project_site_type = project_site_type
+        if self.project_site_type == "miyawaki":
+            self.light_loss_multiplier = 0.1
+        else:
+            self.light_loss_multiplier = light_loss_multiplier
 
     @staticmethod
     def from_file(config_file: str):
@@ -72,7 +77,8 @@ class SiteConfig:
                 "growth_season_mean": 200,
                 "growth_season_var": 7
                 },
-            "project_site_type":"park"
+            "project_site_type":"park",
+            "light_loss_multiplier":0.1
         }
 
         Args:
@@ -104,9 +110,10 @@ class SiteConfig:
             total_m2=params.get("total_m2", 1000),
             impervious_m2=params.get("impervious_m2", 500),
             pervious_m2=params.get("pervious_m2", 500),
-            tree_density_per_ha=params.get("tree_density_per_ha", 400),
+            tree_density_per_ha=params.get("tree_density_per_ha", None),
             weather=weather,
             project_site_type=stype,
+            light_loss_multiplier = params.get("light_loss_multiplier", 0.75)
         )
     
 def _read_file_to_dict(file):

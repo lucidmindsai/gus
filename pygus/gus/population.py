@@ -16,10 +16,8 @@ from .utilities import latlng_array_to_xy
 def tree_population_from_geojson(
     geojson: Union[Polygon, MultiPolygon],
     num_trees,
-    allometrics_file=None,
-    dbh_range=[10, 15], # cm
-    height_range=[2, 5], # m
-    crownW_range=[1, 4],  # m (computed from dbh in the model)
+    allometrics: Species = None,
+    dbh_range=[10, 15], # cm)
     species={"Deciduous": 0.8, "Conifers": 0.2}, # % conifers
     condition_weights=[0.6, 0.3, 0.1, 0.0, 0.0], # excellent, good, fair, critical, dying
 ) -> pd.DataFrame:
@@ -39,13 +37,13 @@ def tree_population_from_geojson(
     _generate_locations_in_geojson(df, geojson, num_trees)
 
     #TODO: What do we do with this now?
-    if allometrics_file:
-        evergreen_pc = _get_evergreen_percentage(species, allometrics_file)
-    else:
-        evergreen_pc = _get_evergreen_percentage(species)
+    if allometrics is None:
+        allometrics = Species(resource_filename("pygus", "gus/inputs/allometrics.json"))
+
+    evergreen_pc = _get_evergreen_percentage(species, allometrics)
 
     return generate_population_features(
-        df, dbh_range, height_range, crownW_range, species, condition_weights
+        df, allometrics, dbh_range, species, condition_weights
     )
 
 
@@ -53,9 +51,8 @@ def tree_population_from_geojson(
 # id, dbh, height, crownW, species, condition, xpos, ypos, lat, lng
 def generate_population_features(
     df: pd.DataFrame,
+    allometrics: Species,
     dbh_range=[10, 15],
-    height_range=[2, 5],
-    crownW_range=[1, 4],  # computed from dbh
     species={"Deciduous": 0.8, "Conifers": 0.2}, # % conifers
     condition_weights=[0.6, 0.3, 0.1, 0.0, 0.0],
 ) -> pd.DataFrame:
@@ -69,8 +66,6 @@ def generate_population_features(
         location (_type_): _description_
         area_m2 (_type_): _description_
         dbh_range (list, optional): _description_. Defaults to [10, 15].
-        height_range (list, optional): _description_. Defaults to [2, 5].
-        crownW_range (list, optional): _description_. Defaults to [1, 4].
         conifer_percentage (float, optional): _description_. Defaults to 0.2.
         condition_weights (list, optional): _description_. Defaults to [0.6, 0.3, 0.1, 0.0, 0.0].
 
@@ -82,16 +77,33 @@ def generate_population_features(
     ## id,lat,lng,xpos,ypos
     if "xpos" not in df.columns or "ypos" not in df.columns:
         latlng_array_to_xy(df, "lat", "lng")
+    
+    ## id,lat,lng,xpos,ypos,dbh
+    if "dbh" not in df.columns:
+        df["dbh"] = np.around(np.random.uniform(*dbh_range, len(df)), 3)
+        print(df["dbh"].mean())
+        if df["dbh"].mean() < 2:
+            SAPLING_DBH_TO_HEIGHT_MULTIPLIER = 0.3
+            df["height"] = df["dbh"] * SAPLING_DBH_TO_HEIGHT_MULTIPLIER
 
-    ## id,lat,lng,xpos,ypos,species
+    ## id,lat,lng,xpos,ypos,dbh,species
     if "species" not in df.columns:
+        s = list(species.keys())
         # species is a dict of str to float
         df["species"] = random.choices(
-            list(species.keys()), weights=list(species.values()),
+            s, weights=list(species.values()),
             k=len(df),
         )
 
-    ## id,lat,lng,xpos,ypos,species,condition
+    if "height" not in df.columns:
+        all_species = list(species.keys())
+        equations = {}
+        for s in all_species:
+            equations[s] = allometrics.get_eqn(allometrics.fuzzymatch(s), "height")
+        print(equations)
+        df["height"] = df.apply(lambda row: equations[row["species"]](row["dbh"]), axis=1)
+
+    ## id,lat,lng,xpos,ypos,dbh,species,condition
     if "condition" not in df.columns:
         df["condition"] = random.choices(
             ["excellent", "good", "fair", "critical", "dying"],
@@ -99,27 +111,11 @@ def generate_population_features(
             k=len(df),
         )
 
-    ## id,lat,lng,xpos,ypos,species,condition,dbh
-    if "dbh" not in df.columns:
-        df["dbh"] = np.around(np.random.uniform(*dbh_range, len(df)), 3)
-
-    ## id,lat,lng,xpos,ypos,species,condition,dbh,height
-    if "height" not in df.columns:
-        df["height"] = np.around(np.random.uniform(*height_range, len(df)), 3)
-
-    ## id,lat,lng,xpos,ypos,species,condition,dbh,height,crownW
-    if "crownW" not in df.columns:
-        df["crownW"] = np.around(
-            np.random.uniform(
-                df["dbh"] * crownW_range[0], df["dbh"] * crownW_range[1], len(df)
-            ),
-            3,
-        )
     if "id" not in df.columns:
         df.index.name = 'id'
         df.reset_index(inplace=True)
 
-    column_out_order = ["id", "species", "dbh", "height", "lat", "lng", "condition", "crownW", "xpos", "ypos"]
+    column_out_order = ["id", "species", "dbh", "lat", "lng", "condition", "xpos", "ypos"]
     df.reindex(columns=column_out_order)
     return df
         
@@ -140,9 +136,7 @@ def _generate_locations_in_geojson(df, polygon: Union[Polygon, MultiPolygon], nu
     df["lat"] = [point.y for point in points]
     df["lng"] = [point.x for point in points]
 
-def _get_evergreen_percentage(species_dict, path = resource_filename("pygus", "gus/inputs/allometrics.json")):
-    allometrics = Species(path)
-
+def _get_evergreen_percentage(species_dict, allometrics: Species):
     # check species_dict values total 1
     if not sum(species_dict.values()) - 1.0 < 1e-6:
         raise ValueError(f"Species dictionary values must sum to 1, got {sum(species_dict.values())}")

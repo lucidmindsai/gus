@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyGUS"
-version = "2.2.1"
+version = "2.2.2"
 description = "Green Unified Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
 authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
 maintainers = [
@@ -45,10 +45,10 @@ pytest = "^7.1.2"
 ipython = "^7.27.0"
 portray = "^1.7.0"
 black = {extras = ["jupyter"], version = "^23.7.0"}
-ipykernel = "^6.23.2"
 folium = "^0.14.0"
 basemap = "^1.3.8"
 basemap-data-hires = "^1.3.2"
+ipykernel = "^6.29.3"
 
 [build-system]
 requires = ["poetry-core"]

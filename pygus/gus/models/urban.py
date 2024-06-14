@@ -1,11 +1,11 @@
 """ The module holds the main objects that manage and handle simulation runtime and data collection. """
 
 # Importing Python Libraries
-import json
-import time
-from typing import Dict, Union
+from typing import Union
 import pandas as pd
 import numpy as np
+import time
+from typing import Union
 from functools import reduce
 import logging
 
@@ -18,15 +18,14 @@ from mesa.datacollection import DataCollector
 # Importing needed GUS objects
 from .config import ScenarioConfig, SiteConfig
 from ..utilities import latlng_array_to_xy
-from ..enums import HealthCondition
 from ..agents import Tree
 from ..allometrics import Species
 from ..weather import WeatherSim
 
-# logging.basicConfig(level=logging.DEBUG)
 
+# logging.basicConfig(level=logging.DEBUG)
 class Urban(Model):
-    """A generic urban green space model. To be tailored according to specific sites."""
+    """An urban green space model. To be tailored according to specific sites."""
 
     # Used to hold the scaling of actual physical space within the digital space.
     # It shows the size of each cell (square) in meters.
@@ -48,26 +47,21 @@ class Urban(Model):
             species_composition (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.
             site_config: (:obj:`string`): name of the json file.
             scenario: (:obj:`dict`): Python dictionary that holds experiment parameters.
-        Returns:
-            None
-
-        Note:
-            First release model.
 
         Todo:
             Check for hard coded constants and parameterize further.
         """
 
-        ############################################################
-        # INPUTS
-        ############################################################
-
         super().__init__()
         self.df = self._handle_population_input(population)
-        self.allometrics = Species(species_allometrics) if isinstance(species_allometrics, str) else species_allometrics
+        self.allometrics = (
+            Species(species_allometrics)
+            if isinstance(species_allometrics, str)
+            else species_allometrics
+        )
         self._handle_site_configuration(site_config, len(self.df))
         self._handle_scenario_configuration(scenario)
-
+        
         ############################################################
         ############################################################
 
@@ -114,7 +108,7 @@ class Urban(Model):
                 condition=str(row.condition).lower(),
                 xpos=row.xpos,
                 ypos=row.ypos,
-                **{col: row[col] for col in extra_columns}
+                **{col: row[col] for col in extra_columns},
             )
             self.schedule.add(a)
             count += 1
@@ -136,10 +130,9 @@ class Urban(Model):
                 "Storage": lambda m: self.aggregate(m, "carbon_storage"),
                 "Seq": lambda m: self.aggregate(m, "annual_gross_carbon_sequestration"),
                 # Avg sequestered carbon per tree is annual carbon divided by number of living trees
-                "Avg_Seq": (lambda m: self.aggregate(
-                    m, "annual_gross_carbon_sequestration"
-                )
-                / self.count(
+                "Avg_Seq": (
+                    lambda m: self.aggregate(m, "annual_gross_carbon_sequestration")
+                    / self.count(
                         m,
                         "condition",
                         lambda x: x in ALIVE_STATE,
@@ -148,11 +141,11 @@ class Urban(Model):
                 "Released": self.compute_current_carbon_release,
                 # Avg released carbon per year is annual carbon release divided by number of living trees
                 "Avg_Rel": lambda m: self.compute_current_carbon_release(m)
-                    / self.count(
-                        m,
-                        "condition",
-                        lambda x: x in ALIVE_STATE,
-                    ),
+                / self.count(
+                    m,
+                    "condition",
+                    lambda x: x in ALIVE_STATE,
+                ),
                 "Alive": lambda m: self.count(
                     m, "condition", lambda x: x in ALIVE_STATE
                 ),
@@ -245,38 +238,6 @@ class Urban(Model):
         """
         df_out_agents = self.datacollector.get_agent_vars_dataframe()
         return df_out_agents
-    
-    def _handle_population_input(
-            self, population: Union[str, pd.DataFrame]
-    ) -> pd.DataFrame:
-        """Load population dataframe if necessary"""
-        if isinstance(population, str):
-            population = pd.read_csv(population)
-
-        return population
-
-    def _handle_site_configuration(
-        self, site_config: Union[str, SiteConfig], population_size: int
-    ):
-        """Loads site configuration information."""
-        if isinstance(site_config, str):
-            site_config = SiteConfig.from_file(site_config)
-
-        self.growth_season_mean = site_config.weather.growth_season_mean
-        self.growth_season_var = site_config.weather.growth_season_var
-        self.project_site_type = site_config.project_site_type
-        self.dt_resolution = round(
-            np.sqrt(1 / (population_size / site_config.total_m2)),
-            2,  # round to < decimal places
-        )
-
-    def _handle_scenario_configuration(self, scenario: Union[str, ScenarioConfig]):
-        """Loads site configuration information."""
-        if isinstance(scenario, str):
-            scenario = ScenarioConfig.from_file(scenario)
-
-        self.maintenance_scope = scenario.maintenance_scope
-        self.time_horizon = scenario.time_horizon_years
 
     def get_weather_projection(self):
         """The method retrieves wetaher projection for the current iteration,
@@ -305,6 +266,39 @@ class Urban(Model):
             season_length=self.growth_season_mean, season_var=self.growth_season_var
         )
 
+    def _handle_population_input(
+            self, population: Union[str, pd.DataFrame]
+    ) -> pd.DataFrame:
+        """Load population dataframe if necessary"""
+        if isinstance(population, str):
+            population = pd.read_csv(population)
+
+        return population
+
+    def _handle_site_configuration(
+        self, site_config: Union[str, SiteConfig], population_size: int
+    ):
+        """Loads site configuration information."""
+        if isinstance(site_config, str):
+            site_config = SiteConfig.from_file(site_config)
+
+        self.growth_season_mean = site_config.weather.growth_season_mean
+        self.growth_season_var = site_config.weather.growth_season_var
+        self.project_site_type = site_config.project_site_type
+        self.dt_resolution = round(
+            np.sqrt(1 / (population_size / site_config.total_m2)),
+            2,  # round to < decimal places
+        )
+        self.light_loss_multiplier = site_config.light_loss_multiplier
+
+    def _handle_scenario_configuration(self, scenario: Union[str, ScenarioConfig]):
+        """Loads site configuration information."""
+        if isinstance(scenario, str):
+            scenario = ScenarioConfig.from_file(scenario)
+
+        self.maintenance_scope = scenario.maintenance_scope
+        self.time_horizon = scenario.time_horizon_years
+
     @staticmethod
     def aggregate(model, var, func=lambda x, y: x + y, init=0):
         """A higher order function that aggregates a given variable.
@@ -312,10 +306,10 @@ class Urban(Model):
         The aggregation function and the initial conditions can be specified.
         """
         agent_values = [eval("a.{}".format(var)) for a in model.schedule.agents]
-        
+
         # Filter out nan values from the list
         filtered_values = [value for value in agent_values if not np.isnan(value)]
-        
+
         # Use reduce on the filtered list
         return reduce(func, filtered_values, init)
 
