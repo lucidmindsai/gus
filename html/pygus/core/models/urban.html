@@ -1,0 +1,1330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>pygus.core.models.urban API documentation</title>
+<meta name="description" content="The module holds the main objects that manage and handle simulation runtime and data collection.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pygus.core.models.urban</code></h1>
+</header>
+<section id="section-intro">
+<p>The module holds the main objects that manage and handle simulation runtime and data collection.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="pygus.core.models.urban.alive_count"><code class="name flex">
+<span>def <span class="ident">alive_count</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def alive_count(model):
+    return Urban.count(model, &#34;condition&#34;, is_alive)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.all_trees"><code class="name flex">
+<span>def <span class="ident">all_trees</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def all_trees(model):
+    return Urban.count(model, &#34;condition&#34;, always_true)  # Counting all trees</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.always_true"><code class="name flex">
+<span>def <span class="ident">always_true</span></span>(<span>x)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def always_true(x):
+    return True</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.avg_rel"><code class="name flex">
+<span>def <span class="ident">avg_rel</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def avg_rel(model):
+    total_rel = Urban.compute_current_carbon_release(model)
+    alive_count = Urban.count(model, &#34;condition&#34;, is_alive)
+    return total_rel / alive_count if alive_count != 0 else 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.avg_seq"><code class="name flex">
+<span>def <span class="ident">avg_seq</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def avg_seq(model):
+    total_seq = Urban.aggregate(model, &#34;annual_gross_carbon_sequestration&#34;)
+    alive_count = Urban.count(model, &#34;condition&#34;, is_alive)
+    return total_seq / alive_count if alive_count != 0 else 0</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.critical_count"><code class="name flex">
+<span>def <span class="ident">critical_count</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def critical_count(model):
+    return Urban.count(model, &#34;condition&#34;, is_critical)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.dead_count"><code class="name flex">
+<span>def <span class="ident">dead_count</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dead_count(model):
+    return Urban.count(model, &#34;condition&#34;, is_dead)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.dying_count"><code class="name flex">
+<span>def <span class="ident">dying_count</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dying_count(model):
+    return Urban.count(model, &#34;condition&#34;, is_dying)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.is_alive"><code class="name flex">
+<span>def <span class="ident">is_alive</span></span>(<span>condition)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_alive(condition):
+    return condition.upper() in ALIVE_STATE</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.is_critical"><code class="name flex">
+<span>def <span class="ident">is_critical</span></span>(<span>condition)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_critical(condition):
+    return condition.lower() == &#34;CRITICAL&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.is_dead"><code class="name flex">
+<span>def <span class="ident">is_dead</span></span>(<span>condition)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_dead(condition):
+    return condition.lower() == &#34;DEAD&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.is_dying"><code class="name flex">
+<span>def <span class="ident">is_dying</span></span>(<span>condition)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_dying(condition):
+    return condition.lower() == &#34;DYING&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.is_poor"><code class="name flex">
+<span>def <span class="ident">is_poor</span></span>(<span>condition)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_poor(condition):
+    return condition.lower() == &#34;POOR&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.is_replaced"><code class="name flex">
+<span>def <span class="ident">is_replaced</span></span>(<span>condition)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_replaced(condition):
+    return condition.lower() == &#34;REPLACED&#34;</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.poor_count"><code class="name flex">
+<span>def <span class="ident">poor_count</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def poor_count(model):
+    return Urban.count(model, &#34;condition&#34;, is_poor)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.replaced_count"><code class="name flex">
+<span>def <span class="ident">replaced_count</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replaced_count(model):
+    return Urban.count(model, &#34;condition&#34;, is_replaced)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.seq"><code class="name flex">
+<span>def <span class="ident">seq</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def seq(model):
+    return Urban.aggregate(model, &#34;annual_gross_carbon_sequestration&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.storage"><code class="name flex">
+<span>def <span class="ident">storage</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def storage(model):
+    return Urban.aggregate(model, &#34;carbon_storage&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="pygus.core.models.urban.Urban"><code class="flex name class">
+<span>class <span class="ident">Urban</span></span>
+<span>(</span><span>population: str | pandas.core.frame.DataFrame,<br>scenario: str | <a title="pygus.core.models.config.ScenarioConfig" href="config.html#pygus.core.models.config.ScenarioConfig">ScenarioConfig</a> = None,<br>site_config: str | <a title="pygus.core.models.config.SiteConfig" href="config.html#pygus.core.models.config.SiteConfig">SiteConfig</a> = None,<br>species_allometrics: str | <a title="pygus.core.allometrics.Species" href="../allometrics.html#pygus.core.allometrics.Species">Species</a> = None,<br>SHOULD_USE_NEW_ALLOMETRICS: bool = True,<br>grid_shape: tuple = None,<br>seed=None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Urban(Model):
+    &#34;&#34;&#34;An urban green space model. To be tailored according to specific sites.&#34;&#34;&#34;
+
+    # Contagion multiplier for the contagion level parameters received from the scenario builder inputs.
+    contagion_multiplier_low_rate = 0.5
+    contagion_multiplier_high_rate = 2
+
+    # Disease risks component that is not spread through neighbouring trees.
+    # TODO: To be made and instance attribute and  set via site configurations
+    noncontagion_disease_rate = 0.05
+   
+    def __init__(
+        self,
+        population: Union[str, pd.DataFrame],
+        scenario: Union[str, ScenarioConfig] = None,
+        site_config: Union[str, SiteConfig] = None,
+        species_allometrics: Union[str, Species] = None,
+        SHOULD_USE_NEW_ALLOMETRICS: bool = True,
+        grid_shape: tuple = None,
+        seed=None,
+    ):
+        &#34;&#34;&#34;The constructor method.
+
+        Args:
+            population: (:obj:`pd.DataFrame`): A dataframe tree properties are read from a site.
+            species_composition (:obj:`str`): The name of the file that keeps allometrics of the tree species for the site.
+            site_config: (:obj:`string`): name of the json file.
+            scenario: (:obj:`dict`): Python dictionary that holds experiment parameters.
+
+        Todo:
+            Check for hard coded constants and parameterize further.
+        &#34;&#34;&#34;
+
+        super().__init__(seed=seed)
+        self.df = self._handle_population_input(population)
+        self.USING_NEW_ALLOMETRICS = SHOULD_USE_NEW_ALLOMETRICS
+        self._handle_allometrics(species_allometrics)
+        self._handle_site_configuration(site_config, len(self.df))
+        self._handle_scenario_configuration(scenario)
+
+        ############################################################
+        ############################################################
+
+        # If the dataset has no xpos and ypos columns, use the utility method to generate them
+        if &#34;xpos&#34; not in self.df.columns or &#34;ypos&#34; not in self.df.columns:
+            latlng_array_to_xy(self.df)
+
+        # Setting MESA specific parameters
+        if grid_shape is None:
+            width = int(max(self.df.xpos)) + 1
+            length = int(max(self.df.ypos)) + 1
+        else:
+            width, length = grid_shape
+
+        logger.debug(
+            &#34;Building grid with size: {} x {} ({}) ...&#34;.format(
+                width, length, width * length
+            )
+        )
+        s = time.time()
+        self.grid = SparseMultiGrid(width, length, torus=False)
+        e = time.time()
+        logger.debug(&#34;Grid built in {}s&#34;.format(e - s))
+
+        # Load species composition and their allometrics
+        required_cols = [&#34;id&#34;, &#34;dbh&#34;, &#34;height&#34;, &#34;species&#34;, &#34;condition&#34;, &#34;xpos&#34;, &#34;ypos&#34;]
+
+        # Test that the df is complete or raise keyerror
+        for attribute in required_cols:
+            self.df[attribute]
+
+        # list any extra columns that are present in the input data
+        extra_columns = list(set(self.df.columns) - set(required_cols))
+
+        self.num_agents = len(self.df)
+
+        self.sapling_dbh = min(self.df.dbh)
+        # Each entry index i, represents number of years since the biomass is decay period.
+        self.release_bins = {
+            &#34;slow&#34;: np.zeros(10),  # for dead root and standing tree.
+            &#34;fast&#34;: np.zeros(10),  # for mulched biomass
+        }
+
+        # Function to check if a tree is alive
+        def is_alive(condition):
+            return condition.upper() in ALIVE_STATE
+
+        # Create agents.
+        count = 0
+        logger.debug(f&#34;Placing {len(self.df)} tree agents&#34;)
+        logger.debug(f&#34;{self.df[&#39;condition&#39;].value_counts()}&#34;)
+        for index, row in self.df.iterrows():
+            a = Tree(
+                self,
+                dbh=row.dbh,
+                species=row.species,
+                # height (calculated from dbh)
+                # kind
+                condition=str(row.condition).lower(),
+                xpos=row.xpos,
+                ypos=row.ypos,
+                **{col: row[col] for col in extra_columns},
+            )
+            count += 1
+
+            # Place trees on the plot based on actual physical positioning
+            x = row.xpos
+            y = row.ypos
+            logging.debug(&#34;Placing agent {} at ({},{})&#34;.format(index, x, y))
+            self.grid.place_agent(a, (x, y))
+            
+        # This variable below works as an indexer while adding new trees to the population during the run time.
+        self.current_id = max(self.df.id)
+
+        logger.debug(&#34;########## GRID #################################&#34;)
+        logger.debug(f&#34;Grid takes up: {self.grid._grid.__sizeof__()/ 1024 / 1024} MB&#34;)
+
+        logger.debug(f&#34;Placed {count} tree agents&#34;)
+        logger.debug(self.df[&#34;condition&#34;].describe())
+        logger.debug(&#34;Alive trees: &#34;, len(self.df[self.df[&#34;condition&#34;].apply(is_alive)]))
+        logger.debug(&#34;#################################################&#34;)
+
+        # Collecting model and agent level data
+        self.datacollector = DataCollector(
+            model_reporters={
+                &#34;AllTrees&#34;: all_trees,
+                &#34;Storage&#34;: storage,
+                &#34;Seq&#34;: seq,
+                &#34;Avg_Seq&#34;: avg_seq,
+                &#34;Released&#34;: self.compute_current_carbon_release,
+                &#34;Avg_Rel&#34;: avg_rel,
+                &#34;Alive&#34;: alive_count,
+                &#34;Dead&#34;: dead_count,
+                &#34;Critical&#34;: critical_count,
+                &#34;Dying&#34;: dying_count,
+                &#34;Poor&#34;: poor_count,
+                &#34;Replaced&#34;: replaced_count,
+                &#34;Seq_std&#34;: self.agg_std_sequestration,
+            },
+            agent_reporters={
+                &#34;species&#34;: &#34;species&#34;,
+                &#34;dbh&#34;: &#34;dbh&#34;,
+                &#34;height&#34;: &#34;tree_height&#34;,
+                &#34;crownH&#34;: &#34;crown_height&#34;,
+                &#34;crownW&#34;: &#34;crown_width&#34;,
+                &#34;canopy_overlap&#34;: &#34;overlap_ratio&#34;,
+                &#34;cle&#34;: &#34;cle&#34;,
+                &#34;condition&#34;: &#34;condition&#34;,
+                &#34;dieback&#34;: &#34;dieback&#34;,
+                &#34;biomass&#34;: &#34;biomass&#34;,
+                &#34;seq&#34;: &#34;annual_gross_carbon_sequestration&#34;,
+                &#34;carbon&#34;: &#34;carbon_storage&#34;,
+                &#34;deroot&#34;: &#34;decomposing_root&#34;,
+                &#34;detrunk&#34;: &#34;decomposing_trunk&#34;,
+                &#34;mulched&#34;: &#34;mulched&#34;,
+                &#34;burnt&#34;: &#34;immediate_release&#34;,
+                &#34;xpos&#34;: &#34;xpos&#34;,
+                &#34;ypos&#34;: &#34;ypos&#34;,
+                &#34;est_age&#34;: &#34;age&#34;,
+                &#34;lat&#34;: &#34;lat&#34;,
+                &#34;lng&#34;: &#34;lng&#34;,
+                **{col: col for col in extra_columns},
+            },
+        )
+
+        logging.debug(
+            &#34;Initialisation of the Digital Twin is complete. {} trees have been placed on a space of {} by {} ({}) cells!&#34;.format(
+                self.num_agents, width, length, width * length
+            )
+        )
+
+    def run_model(self):
+        &#34;&#34;&#34;Customized MESA method that sets the major components of scenario analyses process.&#34;&#34;&#34;
+        pop = str(self.df.shape[0])
+        if not self.steps:
+            steps = self.time_horizon
+        logging.debug(&#34;Running simulation ({} years)...&#34;.format(steps))
+        start = time.time()
+        for _ in range(steps):
+            logging.debug(&#34;Year:{}&#34;.format(self.steps + 1))
+            self.step()
+        end = time.time()
+        logging.debug(
+            &#34;{} steps completed (pop. {}): {}&#34;.format(steps, pop, end - start)
+        )
+        logging.debug(&#34;Simulation is complete!&#34;)
+
+        return self.impact_analysis()
+
+    # Custom methods to support pickling
+    def __getstate__(self):
+        # Copy the object&#39;s state from self.__dict__ which contains all our instance attributes
+        state = self.__dict__.copy()
+        # Remove unpickleable attributes if any
+        # e.g., state.pop(&#39;unpickleable_attr&#39;, None)
+        return state
+
+    def __setstate__(self, state):
+        # Restore instance attributes
+        self.__dict__.update(state)
+
+    def step(self):
+        &#34;&#34;&#34;Customized MESA method that sets the major components of scenario analyses process.&#34;&#34;&#34;
+        logging.debug(&#34;Year:{}&#34;.format(self.steps + 1))
+        self.get_weather_projection()
+
+        logging.debug(&#34;Agents are working ...&#34;)
+        self.agents.shuffle_do(&#34;step&#34;)
+
+        logging.debug(&#34;Yearly data is being collected ...&#34;)
+        self.datacollector.collect(self)
+        # print survival rate
+        alive = 0
+        replaced = 0
+        for a in self.agents:
+            if a.condition.upper() in ALIVE_STATE:
+                alive += 1
+            if a.condition.upper() == &#34;REPLACED&#34;:
+                replaced += 1
+
+        logger.debug(
+            &#34;Survival rate after {}yrs: {}%&#34;.format(
+                self.steps + 1,
+                (alive / (len(self.agents) - replaced)) * 100,
+            )
+        )
+
+        # logger.debug(self.release_bins[&#39;slow&#39;])
+        # logger.debug(self.release_bins[&#39;fast&#39;])
+
+    def impact_analysis(self) -&gt; pd.DataFrame:
+        &#34;&#34;&#34;
+        Provides impact analysis of the simulation
+        &#34;&#34;&#34;
+        df_out_site = self.datacollector.get_model_vars_dataframe()
+        return Urban.format_impact_analysis(df_out_site)
+
+    def get_agent_data(self) -&gt; pd.DataFrame:
+        &#34;&#34;&#34;
+        Provides agent data of the simulation
+        &#34;&#34;&#34;
+        df_out_agents = self.datacollector.get_agent_vars_dataframe()
+        return df_out_agents
+
+    def get_weather_projection(self):
+        &#34;&#34;&#34;The method retrieves wetaher projection for the current iteration,
+        eg. year, at the moment it uses a simulated projections on the go,
+        instead previously computed estimates or forecasts can be used as well.
+
+        Args:
+            None
+
+        Returns:
+            None
+        Note:
+            The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)
+            These variables need to be parameterrized and read-in through site (model) specific
+            initialization module.
+        Todo:
+            * Implement a site initialization method that sets the initial parameters
+            and tree specific variables.
+        &#34;&#34;&#34;
+        # The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)
+        # These variables need to be parameterrized and read-in through site (model) specific
+        # initialization module.
+        # season_mean = 200
+
+        self.WeatherAPI = WeatherSim(
+            season_length=self.growth_season_mean, season_var=self.growth_season_var
+        )
+
+    def _handle_population_input(
+        self, population: Union[str, pd.DataFrame]
+    ) -&gt; pd.DataFrame:
+        &#34;&#34;&#34;Load population dataframe if necessary&#34;&#34;&#34;
+        if isinstance(population, str):
+            population = pd.read_csv(population)
+
+        if isinstance(population, pd.DataFrame):
+            return population
+
+        raise ValueError(&#34;Population input must be a pandas DataFrame or a file path.&#34;)
+
+    def _handle_allometrics(self, species_allometrics: Union[str, Species]):
+        &#34;&#34;&#34;Loads allometric data for the species in the population.&#34;&#34;&#34;
+        if species_allometrics is None:
+            species_allometrics = Species()
+
+        if isinstance(species_allometrics, str):
+            species_allometrics = Species(species_allometrics)
+
+        self.allometrics = species_allometrics
+
+    def _handle_site_configuration(
+        self, site_config: Union[str, SiteConfig], population_size: int
+    ):
+        &#34;&#34;&#34;Loads site configuration information.&#34;&#34;&#34;
+        if site_config is None:
+            site_config = SiteConfig()
+
+        if isinstance(site_config, str):
+            site_config = SiteConfig.from_file(site_config)
+
+        if site_config.total_m2 is None or site_config.total_m2 == 0:
+            total_m2 = calculate_dataframe_area(self.df)
+            site_config.total_m2 = total_m2
+            site_config.impervious_m2 = 0
+            site_config.pervious_m2 = total_m2
+
+        self.growth_season_mean = site_config.weather.growth_season_mean
+        self.growth_season_var = site_config.weather.growth_season_var
+        self.project_site_type = site_config.project_site_type
+        self.dt_resolution = round(
+            np.sqrt(1 / (population_size / site_config.total_m2)),
+            2,  # round to &lt; decimal places
+        )
+        self.light_loss_multiplier = site_config.light_loss_multiplier
+
+    def _handle_scenario_configuration(self, scenario: Union[str, ScenarioConfig]):
+        &#34;&#34;&#34;Loads site configuration information.&#34;&#34;&#34;
+        if scenario is None:
+            scenario = ScenarioConfig()
+
+        if isinstance(scenario, str):
+            scenario = ScenarioConfig.from_file(scenario)
+
+        self.maintenance_scope = scenario.maintenance_scope
+        self.time_horizon = scenario.time_horizon_years
+
+        contagion_level = scenario.contagion_level
+        if contagion_level == &#39;low&#39;:
+            self.contagion_multiplier = self.contagion_multiplier_low_rate
+        elif contagion_level == &#39;high&#39;:
+            self.contagion_multiplier = self.contagion_multiplier_high_rate
+        else:
+            self.contagion_multiplier = 1.0
+
+    @staticmethod
+    def aggregate(model, var, func=lambda x, y: x + y, init=0):
+        &#34;&#34;&#34;A higher order function that aggregates a given variable.
+
+        The aggregation function and the initial conditions can be specified.
+        &#34;&#34;&#34;
+        agent_values = [eval(&#34;a.{}&#34;.format(var)) for a in model.agents]
+
+        # Filter out nan values from the list
+        filtered_values = [value for value in agent_values if not np.isnan(value)]
+
+        # Use reduce on the filtered list
+        return reduce(func, filtered_values, init)
+
+    @staticmethod
+    def count(model, memory, predicate):
+        &#34;&#34;&#34;A higher order function for counting agents that satisfy a specific attribute.&#34;&#34;&#34;
+        return len(
+            list(
+                filter(
+                    predicate,
+                    [eval(&#34;a.{}&#34;.format(memory)) for a in model.agents],
+                )
+            )
+        )
+
+    @staticmethod
+    def aggregate_sequestration(model):
+        &#34;&#34;&#34;The function that accumulates yearly sequestration data from all trees within the site.
+
+        Args:
+            model: (:obj:`Urban`): an urban forest model.
+
+
+        Returns:
+            (:obj:float`): total sequestration in Kg.
+        Note:
+            None
+        Todo:
+            None
+        &#34;&#34;&#34;
+        captured = [a.annual_gross_carbon_sequestration for a in model.agents]
+        return sum(captured)
+
+    @staticmethod
+    def agg_std_sequestration(model):
+        &#34;&#34;&#34;The function estimates the standard deviation for yearly sequestration data from all trees within the site.
+
+        Args:
+            model: (:obj:`Urban`): an urban forest model.
+
+
+        Returns:
+            (:obj:float`): total sequestration in Kg.
+        &#34;&#34;&#34;
+        captured = [a.annual_gross_carbon_sequestration for a in model.agents]
+        return np.std(captured)
+
+    @staticmethod
+    def compute_current_carbon_release(model):
+        &#34;&#34;&#34;The function that accumulates yearly sequestration data from all trees within the site.
+
+        Args:
+            model: (:obj:`Urban`): an urban forest model.
+
+
+        Returns:
+            (:obj:float`): total sequestration in Kg.
+        Note:
+            None
+        Todo:
+            None
+        &#34;&#34;&#34;
+        # roll current bins stored as np.array
+        model.release_bins[&#34;slow&#34;] = np.roll(model.release_bins[&#34;slow&#34;], 1)
+        model.release_bins[&#34;fast&#34;] = np.roll(model.release_bins[&#34;fast&#34;], 1)
+
+        # aggregate required type of release (mulched, etc)
+        mulched = Urban.aggregate(model, &#34;mulched&#34;)
+        standing = Urban.aggregate(model, &#34;decomposing_trunk&#34;)
+        root = Urban.aggregate(model, &#34;decomposing_root&#34;)
+        immediate = Urban.aggregate(model, &#34;immediate_release&#34;)
+
+        # add new potential releases into release bins
+        model.release_bins[&#34;slow&#34;][0] = standing + root
+        model.release_bins[&#34;fast&#34;][0] = mulched
+
+        # compute and aggregate release
+        def update_release(type):
+            carbon_release = 0
+            for i in range(len(model.release_bins[type])):
+                mass = model.release_bins[type][i]
+                rate = Urban.compute_carbon_release_rate(i + 1, type)
+                released = rate * mass
+                carbon_release += released
+                model.release_bins[type][i] -= released
+            return carbon_release
+
+        carbon_release_slow = update_release(&#34;slow&#34;)
+        carbon_release_fast = update_release(&#34;fast&#34;)
+
+        return carbon_release_fast + carbon_release_slow + immediate
+
+    @staticmethod
+    def compute_carbon_release_rate(year, state=&#34;fast&#34;):
+        &#34;&#34;&#34;Determines a carbon release rate.
+
+        Args:
+
+            year: (:obj:`int`) or (:obj:`float`): time passed since the biomass is dead.
+            state: (:obj:`str`): Represents exposure type can be one of (&#39;standing&#39;, &#39;mulched&#39;, &#39;root&#39;, &#39;fast&#39;, &#39;slow&#39;,)
+
+        Returns:
+            (:obj:`float`): decay rate.
+
+        Note:
+
+            The function computes the release rate based on the time spent since
+            the total carbon within biomass of a dead tree or its parts. The shape of function
+            assures a unit integral as time goes to infinity.
+
+            When k = 2, in the first 3 years around 60% is released, which corresponds to
+            empirical findings for mulched biomass above ground.
+
+            When k = 5, in the first 3 years around 40% is released, which corresponds to
+            empirical reports for carbon release for standing dead trees as well as underground roots.
+
+            check:
+                import scipy.integrate as integrate
+                integrate.quad(f, 0, 20) &gt; 0.96 for k in (2:5).
+        &#34;&#34;&#34;
+        k = 2 if state in (&#34;mulched&#34;, &#34;fast&#34;) else 5
+        return 1 / k * np.exp(-1 * year / k)
+
+    @staticmethod
+    def format_impact_analysis(model_vars: pd.DataFrame) -&gt; pd.DataFrame:
+        &#34;&#34;&#34;
+        Cleans the output of the simulation
+        &#34;&#34;&#34;
+        # Process and clean data after the simulation
+        # IMPACT ANALYSIS
+        model_vars[&#34;Cum_Seq&#34;] = model_vars.Seq.cumsum()
+
+        # Processing to avoid out of range float values
+        inf_count = float(np.isinf(model_vars).values.sum())
+        if inf_count &gt; 0:
+            logging.debug(&#34;Cleaning {} INF values...&#34;.format(str(inf_count)))
+            model_vars.replace([np.inf, -np.inf], np.nan, inplace=True)
+
+        # Replace Nan values with 0. This can happen when the number of alive trees is 0 and the above divisions in &#39;IMPACT ANALYSIS&#39; are performed.
+        has_na_values = model_vars.isnull().values.any()
+        if has_na_values:
+            logging.debug(&#34;Removing N/A values...&#34;)
+            model_vars.fillna(0, inplace=True)
+
+        return model_vars</code></pre>
+</details>
+<div class="desc"><p>An urban green space model. To be tailored according to specific sites.</p>
+<p>The constructor method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>population</code></strong></dt>
+<dd>(:obj:<code>pd.DataFrame</code>): A dataframe tree properties are read from a site.</dd>
+<dt>species_composition (:obj:<code>str</code>): The name of the file that keeps allometrics of the tree species for the site.</dt>
+<dt><strong><code>site_config</code></strong></dt>
+<dd>(:obj:<code>string</code>): name of the json file.</dd>
+<dt><strong><code>scenario</code></strong></dt>
+<dd>(:obj:<code>dict</code>): Python dictionary that holds experiment parameters.</dd>
+</dl>
+<h2 id="todo">Todo</h2>
+<p>Check for hard coded constants and parameterize further.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mesa.model.Model</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pygus.core.models.urban.Urban.contagion_multiplier_high_rate"><code class="name">var <span class="ident">contagion_multiplier_high_rate</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.contagion_multiplier_low_rate"><code class="name">var <span class="ident">contagion_multiplier_low_rate</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.noncontagion_disease_rate"><code class="name">var <span class="ident">noncontagion_disease_rate</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="pygus.core.models.urban.Urban.agg_std_sequestration"><code class="name flex">
+<span>def <span class="ident">agg_std_sequestration</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def agg_std_sequestration(model):
+    &#34;&#34;&#34;The function estimates the standard deviation for yearly sequestration data from all trees within the site.
+
+    Args:
+        model: (:obj:`Urban`): an urban forest model.
+
+
+    Returns:
+        (:obj:float`): total sequestration in Kg.
+    &#34;&#34;&#34;
+    captured = [a.annual_gross_carbon_sequestration for a in model.agents]
+    return np.std(captured)</code></pre>
+</details>
+<div class="desc"><p>The function estimates the standard deviation for yearly sequestration data from all trees within the site.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>model</code></strong></dt>
+<dd>(:obj:<code><a title="pygus.core.models.urban.Urban" href="#pygus.core.models.urban.Urban">Urban</a></code>): an urban forest model.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(:obj:float`): total sequestration in Kg.</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.aggregate"><code class="name flex">
+<span>def <span class="ident">aggregate</span></span>(<span>model, var, func=&lt;function Urban.&lt;lambda&gt;&gt;, init=0)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def aggregate(model, var, func=lambda x, y: x + y, init=0):
+    &#34;&#34;&#34;A higher order function that aggregates a given variable.
+
+    The aggregation function and the initial conditions can be specified.
+    &#34;&#34;&#34;
+    agent_values = [eval(&#34;a.{}&#34;.format(var)) for a in model.agents]
+
+    # Filter out nan values from the list
+    filtered_values = [value for value in agent_values if not np.isnan(value)]
+
+    # Use reduce on the filtered list
+    return reduce(func, filtered_values, init)</code></pre>
+</details>
+<div class="desc"><p>A higher order function that aggregates a given variable.</p>
+<p>The aggregation function and the initial conditions can be specified.</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.aggregate_sequestration"><code class="name flex">
+<span>def <span class="ident">aggregate_sequestration</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def aggregate_sequestration(model):
+    &#34;&#34;&#34;The function that accumulates yearly sequestration data from all trees within the site.
+
+    Args:
+        model: (:obj:`Urban`): an urban forest model.
+
+
+    Returns:
+        (:obj:float`): total sequestration in Kg.
+    Note:
+        None
+    Todo:
+        None
+    &#34;&#34;&#34;
+    captured = [a.annual_gross_carbon_sequestration for a in model.agents]
+    return sum(captured)</code></pre>
+</details>
+<div class="desc"><p>The function that accumulates yearly sequestration data from all trees within the site.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>model</code></strong></dt>
+<dd>(:obj:<code><a title="pygus.core.models.urban.Urban" href="#pygus.core.models.urban.Urban">Urban</a></code>): an urban forest model.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(:obj:float`): total sequestration in Kg.</p>
+<h2 id="note">Note</h2>
+<p>None</p>
+<h2 id="todo">Todo</h2>
+<p>None</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.compute_carbon_release_rate"><code class="name flex">
+<span>def <span class="ident">compute_carbon_release_rate</span></span>(<span>year, state='fast')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def compute_carbon_release_rate(year, state=&#34;fast&#34;):
+    &#34;&#34;&#34;Determines a carbon release rate.
+
+    Args:
+
+        year: (:obj:`int`) or (:obj:`float`): time passed since the biomass is dead.
+        state: (:obj:`str`): Represents exposure type can be one of (&#39;standing&#39;, &#39;mulched&#39;, &#39;root&#39;, &#39;fast&#39;, &#39;slow&#39;,)
+
+    Returns:
+        (:obj:`float`): decay rate.
+
+    Note:
+
+        The function computes the release rate based on the time spent since
+        the total carbon within biomass of a dead tree or its parts. The shape of function
+        assures a unit integral as time goes to infinity.
+
+        When k = 2, in the first 3 years around 60% is released, which corresponds to
+        empirical findings for mulched biomass above ground.
+
+        When k = 5, in the first 3 years around 40% is released, which corresponds to
+        empirical reports for carbon release for standing dead trees as well as underground roots.
+
+        check:
+            import scipy.integrate as integrate
+            integrate.quad(f, 0, 20) &gt; 0.96 for k in (2:5).
+    &#34;&#34;&#34;
+    k = 2 if state in (&#34;mulched&#34;, &#34;fast&#34;) else 5
+    return 1 / k * np.exp(-1 * year / k)</code></pre>
+</details>
+<div class="desc"><p>Determines a carbon release rate.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>year</code></strong></dt>
+<dd>(:obj:<code>int</code>) or (:obj:<code>float</code>): time passed since the biomass is dead.</dd>
+<dt><strong><code>state</code></strong></dt>
+<dd>(:obj:<code>str</code>): Represents exposure type can be one of ('standing', 'mulched', 'root', 'fast', 'slow',)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(:obj:<code>float</code>): decay rate.</p>
+<h2 id="note">Note</h2>
+<p>The function computes the release rate based on the time spent since
+the total carbon within biomass of a dead tree or its parts. The shape of function
+assures a unit integral as time goes to infinity.</p>
+<p>When k = 2, in the first 3 years around 60% is released, which corresponds to
+empirical findings for mulched biomass above ground.</p>
+<p>When k = 5, in the first 3 years around 40% is released, which corresponds to
+empirical reports for carbon release for standing dead trees as well as underground roots.</p>
+<p>check:
+import scipy.integrate as integrate
+integrate.quad(f, 0, 20) &gt; 0.96 for k in (2:5).</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.compute_current_carbon_release"><code class="name flex">
+<span>def <span class="ident">compute_current_carbon_release</span></span>(<span>model)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def compute_current_carbon_release(model):
+    &#34;&#34;&#34;The function that accumulates yearly sequestration data from all trees within the site.
+
+    Args:
+        model: (:obj:`Urban`): an urban forest model.
+
+
+    Returns:
+        (:obj:float`): total sequestration in Kg.
+    Note:
+        None
+    Todo:
+        None
+    &#34;&#34;&#34;
+    # roll current bins stored as np.array
+    model.release_bins[&#34;slow&#34;] = np.roll(model.release_bins[&#34;slow&#34;], 1)
+    model.release_bins[&#34;fast&#34;] = np.roll(model.release_bins[&#34;fast&#34;], 1)
+
+    # aggregate required type of release (mulched, etc)
+    mulched = Urban.aggregate(model, &#34;mulched&#34;)
+    standing = Urban.aggregate(model, &#34;decomposing_trunk&#34;)
+    root = Urban.aggregate(model, &#34;decomposing_root&#34;)
+    immediate = Urban.aggregate(model, &#34;immediate_release&#34;)
+
+    # add new potential releases into release bins
+    model.release_bins[&#34;slow&#34;][0] = standing + root
+    model.release_bins[&#34;fast&#34;][0] = mulched
+
+    # compute and aggregate release
+    def update_release(type):
+        carbon_release = 0
+        for i in range(len(model.release_bins[type])):
+            mass = model.release_bins[type][i]
+            rate = Urban.compute_carbon_release_rate(i + 1, type)
+            released = rate * mass
+            carbon_release += released
+            model.release_bins[type][i] -= released
+        return carbon_release
+
+    carbon_release_slow = update_release(&#34;slow&#34;)
+    carbon_release_fast = update_release(&#34;fast&#34;)
+
+    return carbon_release_fast + carbon_release_slow + immediate</code></pre>
+</details>
+<div class="desc"><p>The function that accumulates yearly sequestration data from all trees within the site.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>model</code></strong></dt>
+<dd>(:obj:<code><a title="pygus.core.models.urban.Urban" href="#pygus.core.models.urban.Urban">Urban</a></code>): an urban forest model.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(:obj:float`): total sequestration in Kg.</p>
+<h2 id="note">Note</h2>
+<p>None</p>
+<h2 id="todo">Todo</h2>
+<p>None</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.count"><code class="name flex">
+<span>def <span class="ident">count</span></span>(<span>model, memory, predicate)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def count(model, memory, predicate):
+    &#34;&#34;&#34;A higher order function for counting agents that satisfy a specific attribute.&#34;&#34;&#34;
+    return len(
+        list(
+            filter(
+                predicate,
+                [eval(&#34;a.{}&#34;.format(memory)) for a in model.agents],
+            )
+        )
+    )</code></pre>
+</details>
+<div class="desc"><p>A higher order function for counting agents that satisfy a specific attribute.</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.format_impact_analysis"><code class="name flex">
+<span>def <span class="ident">format_impact_analysis</span></span>(<span>model_vars: pandas.core.frame.DataFrame) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def format_impact_analysis(model_vars: pd.DataFrame) -&gt; pd.DataFrame:
+    &#34;&#34;&#34;
+    Cleans the output of the simulation
+    &#34;&#34;&#34;
+    # Process and clean data after the simulation
+    # IMPACT ANALYSIS
+    model_vars[&#34;Cum_Seq&#34;] = model_vars.Seq.cumsum()
+
+    # Processing to avoid out of range float values
+    inf_count = float(np.isinf(model_vars).values.sum())
+    if inf_count &gt; 0:
+        logging.debug(&#34;Cleaning {} INF values...&#34;.format(str(inf_count)))
+        model_vars.replace([np.inf, -np.inf], np.nan, inplace=True)
+
+    # Replace Nan values with 0. This can happen when the number of alive trees is 0 and the above divisions in &#39;IMPACT ANALYSIS&#39; are performed.
+    has_na_values = model_vars.isnull().values.any()
+    if has_na_values:
+        logging.debug(&#34;Removing N/A values...&#34;)
+        model_vars.fillna(0, inplace=True)
+
+    return model_vars</code></pre>
+</details>
+<div class="desc"><p>Cleans the output of the simulation</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="pygus.core.models.urban.Urban.get_agent_data"><code class="name flex">
+<span>def <span class="ident">get_agent_data</span></span>(<span>self) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_agent_data(self) -&gt; pd.DataFrame:
+    &#34;&#34;&#34;
+    Provides agent data of the simulation
+    &#34;&#34;&#34;
+    df_out_agents = self.datacollector.get_agent_vars_dataframe()
+    return df_out_agents</code></pre>
+</details>
+<div class="desc"><p>Provides agent data of the simulation</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.get_weather_projection"><code class="name flex">
+<span>def <span class="ident">get_weather_projection</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_weather_projection(self):
+    &#34;&#34;&#34;The method retrieves wetaher projection for the current iteration,
+    eg. year, at the moment it uses a simulated projections on the go,
+    instead previously computed estimates or forecasts can be used as well.
+
+    Args:
+        None
+
+    Returns:
+        None
+    Note:
+        The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)
+        These variables need to be parameterrized and read-in through site (model) specific
+        initialization module.
+    Todo:
+        * Implement a site initialization method that sets the initial parameters
+        and tree specific variables.
+    &#34;&#34;&#34;
+    # The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)
+    # These variables need to be parameterrized and read-in through site (model) specific
+    # initialization module.
+    # season_mean = 200
+
+    self.WeatherAPI = WeatherSim(
+        season_length=self.growth_season_mean, season_var=self.growth_season_var
+    )</code></pre>
+</details>
+<div class="desc"><p>The method retrieves wetaher projection for the current iteration,
+eg. year, at the moment it uses a simulated projections on the go,
+instead previously computed estimates or forecasts can be used as well.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p>
+<h2 id="note">Note</h2>
+<p>The avg season length is based on iTree Glasgow estimates (see iTree 2015 report)
+These variables need to be parameterrized and read-in through site (model) specific
+initialization module.</p>
+<h2 id="todo">Todo</h2>
+<ul>
+<li>Implement a site initialization method that sets the initial parameters
+and tree specific variables.</li>
+</ul></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.impact_analysis"><code class="name flex">
+<span>def <span class="ident">impact_analysis</span></span>(<span>self) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def impact_analysis(self) -&gt; pd.DataFrame:
+    &#34;&#34;&#34;
+    Provides impact analysis of the simulation
+    &#34;&#34;&#34;
+    df_out_site = self.datacollector.get_model_vars_dataframe()
+    return Urban.format_impact_analysis(df_out_site)</code></pre>
+</details>
+<div class="desc"><p>Provides impact analysis of the simulation</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.run_model"><code class="name flex">
+<span>def <span class="ident">run_model</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run_model(self):
+    &#34;&#34;&#34;Customized MESA method that sets the major components of scenario analyses process.&#34;&#34;&#34;
+    pop = str(self.df.shape[0])
+    if not self.steps:
+        steps = self.time_horizon
+    logging.debug(&#34;Running simulation ({} years)...&#34;.format(steps))
+    start = time.time()
+    for _ in range(steps):
+        logging.debug(&#34;Year:{}&#34;.format(self.steps + 1))
+        self.step()
+    end = time.time()
+    logging.debug(
+        &#34;{} steps completed (pop. {}): {}&#34;.format(steps, pop, end - start)
+    )
+    logging.debug(&#34;Simulation is complete!&#34;)
+
+    return self.impact_analysis()</code></pre>
+</details>
+<div class="desc"><p>Customized MESA method that sets the major components of scenario analyses process.</p></div>
+</dd>
+<dt id="pygus.core.models.urban.Urban.step"><code class="name flex">
+<span>def <span class="ident">step</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def step(self):
+    &#34;&#34;&#34;Customized MESA method that sets the major components of scenario analyses process.&#34;&#34;&#34;
+    logging.debug(&#34;Year:{}&#34;.format(self.steps + 1))
+    self.get_weather_projection()
+
+    logging.debug(&#34;Agents are working ...&#34;)
+    self.agents.shuffle_do(&#34;step&#34;)
+
+    logging.debug(&#34;Yearly data is being collected ...&#34;)
+    self.datacollector.collect(self)
+    # print survival rate
+    alive = 0
+    replaced = 0
+    for a in self.agents:
+        if a.condition.upper() in ALIVE_STATE:
+            alive += 1
+        if a.condition.upper() == &#34;REPLACED&#34;:
+            replaced += 1
+
+    logger.debug(
+        &#34;Survival rate after {}yrs: {}%&#34;.format(
+            self.steps + 1,
+            (alive / (len(self.agents) - replaced)) * 100,
+        )
+    )
+
+    # logger.debug(self.release_bins[&#39;slow&#39;])
+    # logger.debug(self.release_bins[&#39;fast&#39;])</code></pre>
+</details>
+<div class="desc"><p>Customized MESA method that sets the major components of scenario analyses process.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pygus.core.models" href="index.html">pygus.core.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="pygus.core.models.urban.alive_count" href="#pygus.core.models.urban.alive_count">alive_count</a></code></li>
+<li><code><a title="pygus.core.models.urban.all_trees" href="#pygus.core.models.urban.all_trees">all_trees</a></code></li>
+<li><code><a title="pygus.core.models.urban.always_true" href="#pygus.core.models.urban.always_true">always_true</a></code></li>
+<li><code><a title="pygus.core.models.urban.avg_rel" href="#pygus.core.models.urban.avg_rel">avg_rel</a></code></li>
+<li><code><a title="pygus.core.models.urban.avg_seq" href="#pygus.core.models.urban.avg_seq">avg_seq</a></code></li>
+<li><code><a title="pygus.core.models.urban.critical_count" href="#pygus.core.models.urban.critical_count">critical_count</a></code></li>
+<li><code><a title="pygus.core.models.urban.dead_count" href="#pygus.core.models.urban.dead_count">dead_count</a></code></li>
+<li><code><a title="pygus.core.models.urban.dying_count" href="#pygus.core.models.urban.dying_count">dying_count</a></code></li>
+<li><code><a title="pygus.core.models.urban.is_alive" href="#pygus.core.models.urban.is_alive">is_alive</a></code></li>
+<li><code><a title="pygus.core.models.urban.is_critical" href="#pygus.core.models.urban.is_critical">is_critical</a></code></li>
+<li><code><a title="pygus.core.models.urban.is_dead" href="#pygus.core.models.urban.is_dead">is_dead</a></code></li>
+<li><code><a title="pygus.core.models.urban.is_dying" href="#pygus.core.models.urban.is_dying">is_dying</a></code></li>
+<li><code><a title="pygus.core.models.urban.is_poor" href="#pygus.core.models.urban.is_poor">is_poor</a></code></li>
+<li><code><a title="pygus.core.models.urban.is_replaced" href="#pygus.core.models.urban.is_replaced">is_replaced</a></code></li>
+<li><code><a title="pygus.core.models.urban.poor_count" href="#pygus.core.models.urban.poor_count">poor_count</a></code></li>
+<li><code><a title="pygus.core.models.urban.replaced_count" href="#pygus.core.models.urban.replaced_count">replaced_count</a></code></li>
+<li><code><a title="pygus.core.models.urban.seq" href="#pygus.core.models.urban.seq">seq</a></code></li>
+<li><code><a title="pygus.core.models.urban.storage" href="#pygus.core.models.urban.storage">storage</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="pygus.core.models.urban.Urban" href="#pygus.core.models.urban.Urban">Urban</a></code></h4>
+<ul class="">
+<li><code><a title="pygus.core.models.urban.Urban.agg_std_sequestration" href="#pygus.core.models.urban.Urban.agg_std_sequestration">agg_std_sequestration</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.aggregate" href="#pygus.core.models.urban.Urban.aggregate">aggregate</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.aggregate_sequestration" href="#pygus.core.models.urban.Urban.aggregate_sequestration">aggregate_sequestration</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.compute_carbon_release_rate" href="#pygus.core.models.urban.Urban.compute_carbon_release_rate">compute_carbon_release_rate</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.compute_current_carbon_release" href="#pygus.core.models.urban.Urban.compute_current_carbon_release">compute_current_carbon_release</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.contagion_multiplier_high_rate" href="#pygus.core.models.urban.Urban.contagion_multiplier_high_rate">contagion_multiplier_high_rate</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.contagion_multiplier_low_rate" href="#pygus.core.models.urban.Urban.contagion_multiplier_low_rate">contagion_multiplier_low_rate</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.count" href="#pygus.core.models.urban.Urban.count">count</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.format_impact_analysis" href="#pygus.core.models.urban.Urban.format_impact_analysis">format_impact_analysis</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.get_agent_data" href="#pygus.core.models.urban.Urban.get_agent_data">get_agent_data</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.get_weather_projection" href="#pygus.core.models.urban.Urban.get_weather_projection">get_weather_projection</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.impact_analysis" href="#pygus.core.models.urban.Urban.impact_analysis">impact_analysis</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.noncontagion_disease_rate" href="#pygus.core.models.urban.Urban.noncontagion_disease_rate">noncontagion_disease_rate</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.run_model" href="#pygus.core.models.urban.Urban.run_model">run_model</a></code></li>
+<li><code><a title="pygus.core.models.urban.Urban.step" href="#pygus.core.models.urban.Urban.step">step</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

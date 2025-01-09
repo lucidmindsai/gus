@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>pygus.core.models.config API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pygus.core.models.config</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="pygus.core.models.config.ScenarioConfig"><code class="flex name class">
+<span>class <span class="ident">ScenarioConfig</span></span>
+<span>(</span><span>time_horizon_years: int = 10,<br>maintenance_scope: int = 2,<br>is_crownsunexposure_fixed: int = 1,<br>contagion_level=None)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ScenarioConfig:
+    def __init__(
+        self,
+        time_horizon_years: int = 10,
+        maintenance_scope: int = 2,
+        is_crownsunexposure_fixed: int = 1,
+        contagion_level = None,
+    ):
+        self.maintenance_scope = maintenance_scope
+        self.is_crownsunexposure_fixed = is_crownsunexposure_fixed
+        self.time_horizon_years = time_horizon_years
+        self.contagion_level = contagion_level
+
+    @staticmethod
+    def from_file(config_file: str):
+        &#34;&#34;&#34;Loads scenario configuration information from a json file in the form:
+
+        {
+            &#34;maintenance_scope&#34;: 2,
+            &#34;is_crownsunexposure_fixed&#34;: 1,
+            &#34;time_horizon_years&#34;: 10,
+            &#34;contagion_level&#34;: None
+        }
+
+        Args:
+            config_file: (:obj:`string`): name of the json file.
+        &#34;&#34;&#34;
+        params = _read_file_to_dict(config_file)
+        return ScenarioConfig(
+            time_horizon_years=params.get(&#34;time_horizon_years&#34;, 10),
+            maintenance_scope=params.get(&#34;maintenance_scope&#34;, 2),
+            is_crownsunexposure_fixed=params.get(&#34;is_crownsunexposure_fixed&#34;, 1),
+            contagion_level = params.get(&#34;contagion_level&#34;, None)
+        )</code></pre>
+</details>
+<div class="desc"></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="pygus.core.models.config.ScenarioConfig.from_file"><code class="name flex">
+<span>def <span class="ident">from_file</span></span>(<span>config_file: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def from_file(config_file: str):
+    &#34;&#34;&#34;Loads scenario configuration information from a json file in the form:
+
+    {
+        &#34;maintenance_scope&#34;: 2,
+        &#34;is_crownsunexposure_fixed&#34;: 1,
+        &#34;time_horizon_years&#34;: 10,
+        &#34;contagion_level&#34;: None
+    }
+
+    Args:
+        config_file: (:obj:`string`): name of the json file.
+    &#34;&#34;&#34;
+    params = _read_file_to_dict(config_file)
+    return ScenarioConfig(
+        time_horizon_years=params.get(&#34;time_horizon_years&#34;, 10),
+        maintenance_scope=params.get(&#34;maintenance_scope&#34;, 2),
+        is_crownsunexposure_fixed=params.get(&#34;is_crownsunexposure_fixed&#34;, 1),
+        contagion_level = params.get(&#34;contagion_level&#34;, None)
+    )</code></pre>
+</details>
+<div class="desc"><p>Loads scenario configuration information from a json file in the form:</p>
+<p>{
+"maintenance_scope": 2,
+"is_crownsunexposure_fixed": 1,
+"time_horizon_years": 10,
+"contagion_level": None
+}</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>config_file</code></strong></dt>
+<dd>(:obj:<code>string</code>): name of the json file.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="pygus.core.models.config.SiteConfig"><code class="flex name class">
+<span>class <span class="ident">SiteConfig</span></span>
+<span>(</span><span>total_m2: int | None = None,<br>impervious_m2: int | None = 0,<br>pervious_m2: int | None = None,<br>weather: Dict | <a title="pygus.core.models.config.WeatherConfig" href="#pygus.core.models.config.WeatherConfig">WeatherConfig</a> = &lt;pygus.core.models.config.WeatherConfig object&gt;,<br>tree_density_per_ha: int = None,<br>project_site_type: str = 'park',<br>light_loss_multiplier: float = 0.75)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SiteConfig:
+    &#34;&#34;&#34;A class to hold site configuration parameters.&#34;&#34;&#34;
+
+    def __init__(
+        self,
+        total_m2: Optional[int] = None,
+        impervious_m2: Optional[int] = 0,
+        pervious_m2: Optional[int] = None,
+        weather: Union[Dict, WeatherConfig] = WeatherConfig(),
+        tree_density_per_ha: int = None,
+        project_site_type: str = &#34;park&#34;,
+        light_loss_multiplier: float = 0.75,
+    ):
+        self.total_m2 = total_m2
+        self.impervious_m2 = impervious_m2
+        self.pervious_m2 = pervious_m2
+        self.tree_density_per_ha = tree_density_per_ha  # FIXME, never used -_-
+        # if weather is a dict, create a weatherConfig, else use the object
+        if isinstance(weather, dict):
+            self.weather = WeatherConfig(**weather)
+        else:
+            self.weather = weather
+
+        self.project_site_type = project_site_type
+
+        if self.project_site_type == &#34;miyawaki&#34;:
+            self.light_loss_multiplier = 0.15
+        else:
+            self.light_loss_multiplier = light_loss_multiplier
+
+    @staticmethod
+    def from_file(config_file: str):
+        &#34;&#34;&#34;Loads site configuration information from a json file in the form:
+
+        {
+            &#34;total_m2&#34;:1000,
+            &#34;impervious_m2&#34;:500,
+            &#34;pervious_m2&#34;: 500,
+            &#34;tree_density_per_ha&#34;: 400,
+            &#34;weather&#34;: {
+                &#34;growth_season_mean&#34;: 200,
+                &#34;growth_season_var&#34;: 7
+                },
+            &#34;project_site_type&#34;:&#34;park&#34;,
+            &#34;light_loss_multiplier&#34;:0.1
+        }
+
+        Args:
+            config_file: (:obj:`string`): name of the json file.
+        &#34;&#34;&#34;
+        params = _read_file_to_dict(config_file)
+
+        # Read in growth season mean and variance to be used by weather forecasting module.
+        try:
+            season_mean = params[&#34;weather&#34;][&#34;growth_season_mean&#34;]
+            season_var = params[&#34;weather&#34;][&#34;growth_season_var&#34;]
+        except KeyError:
+            logging.warning(
+                &#34;Tree growth season mean and variance is not provided as expected. Global average is used.&#34;
+            )
+        weather = WeatherConfig(season_mean, season_var)
+
+        # read site type
+        stype = &#34;park&#34;  # default type
+        if &#34;project_site_type&#34; in params.keys():
+            if params[&#34;project_site_type&#34;] in ProjectSiteType:
+                stype = params[&#34;project_site_type&#34;]
+            else:
+                logging.warning(
+                    &#34;Undefined site type recognized. Park type will be used.&#34;
+                )
+        else:
+            logging.warning(&#34;Site type is not provided. Park type will be used.&#34;)
+
+        return SiteConfig(
+            total_m2=params.get(&#34;total_m2&#34;, 1000),
+            impervious_m2=params.get(&#34;impervious_m2&#34;, 500),
+            pervious_m2=params.get(&#34;pervious_m2&#34;, 500),
+            tree_density_per_ha=params.get(&#34;tree_density_per_ha&#34;, None),
+            weather=weather,
+            project_site_type=stype,
+            light_loss_multiplier=params.get(&#34;light_loss_multiplier&#34;, 0.75),
+        )</code></pre>
+</details>
+<div class="desc"><p>A class to hold site configuration parameters.</p></div>
+<h3>Static methods</h3>
+<dl>
+<dt id="pygus.core.models.config.SiteConfig.from_file"><code class="name flex">
+<span>def <span class="ident">from_file</span></span>(<span>config_file: str)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def from_file(config_file: str):
+    &#34;&#34;&#34;Loads site configuration information from a json file in the form:
+
+    {
+        &#34;total_m2&#34;:1000,
+        &#34;impervious_m2&#34;:500,
+        &#34;pervious_m2&#34;: 500,
+        &#34;tree_density_per_ha&#34;: 400,
+        &#34;weather&#34;: {
+            &#34;growth_season_mean&#34;: 200,
+            &#34;growth_season_var&#34;: 7
+            },
+        &#34;project_site_type&#34;:&#34;park&#34;,
+        &#34;light_loss_multiplier&#34;:0.1
+    }
+
+    Args:
+        config_file: (:obj:`string`): name of the json file.
+    &#34;&#34;&#34;
+    params = _read_file_to_dict(config_file)
+
+    # Read in growth season mean and variance to be used by weather forecasting module.
+    try:
+        season_mean = params[&#34;weather&#34;][&#34;growth_season_mean&#34;]
+        season_var = params[&#34;weather&#34;][&#34;growth_season_var&#34;]
+    except KeyError:
+        logging.warning(
+            &#34;Tree growth season mean and variance is not provided as expected. Global average is used.&#34;
+        )
+    weather = WeatherConfig(season_mean, season_var)
+
+    # read site type
+    stype = &#34;park&#34;  # default type
+    if &#34;project_site_type&#34; in params.keys():
+        if params[&#34;project_site_type&#34;] in ProjectSiteType:
+            stype = params[&#34;project_site_type&#34;]
+        else:
+            logging.warning(
+                &#34;Undefined site type recognized. Park type will be used.&#34;
+            )
+    else:
+        logging.warning(&#34;Site type is not provided. Park type will be used.&#34;)
+
+    return SiteConfig(
+        total_m2=params.get(&#34;total_m2&#34;, 1000),
+        impervious_m2=params.get(&#34;impervious_m2&#34;, 500),
+        pervious_m2=params.get(&#34;pervious_m2&#34;, 500),
+        tree_density_per_ha=params.get(&#34;tree_density_per_ha&#34;, None),
+        weather=weather,
+        project_site_type=stype,
+        light_loss_multiplier=params.get(&#34;light_loss_multiplier&#34;, 0.75),
+    )</code></pre>
+</details>
+<div class="desc"><p>Loads site configuration information from a json file in the form:</p>
+<p>{
+"total_m2":1000,
+"impervious_m2":500,
+"pervious_m2": 500,
+"tree_density_per_ha": 400,
+"weather": {
+"growth_season_mean": 200,
+"growth_season_var": 7
+},
+"project_site_type":"park",
+"light_loss_multiplier":0.1
+}</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>config_file</code></strong></dt>
+<dd>(:obj:<code>string</code>): name of the json file.</dd>
+</dl></div>
+</dd>
+</dl>
+</dd>
+<dt id="pygus.core.models.config.WeatherConfig"><code class="flex name class">
+<span>class <span class="ident">WeatherConfig</span></span>
+<span>(</span><span>growth_season_mean: int = 153, growth_season_var: int = 7)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class WeatherConfig:
+    def __init__(self, growth_season_mean: int = 153, growth_season_var: int = 7):
+        self.growth_season_mean = growth_season_mean
+        self.growth_season_var = growth_season_var</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pygus.core.models" href="index.html">pygus.core.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="pygus.core.models.config.ScenarioConfig" href="#pygus.core.models.config.ScenarioConfig">ScenarioConfig</a></code></h4>
+<ul class="">
+<li><code><a title="pygus.core.models.config.ScenarioConfig.from_file" href="#pygus.core.models.config.ScenarioConfig.from_file">from_file</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pygus.core.models.config.SiteConfig" href="#pygus.core.models.config.SiteConfig">SiteConfig</a></code></h4>
+<ul class="">
+<li><code><a title="pygus.core.models.config.SiteConfig.from_file" href="#pygus.core.models.config.SiteConfig.from_file">from_file</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="pygus.core.models.config.WeatherConfig" href="#pygus.core.models.config.WeatherConfig">WeatherConfig</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

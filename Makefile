@@ -11,7 +11,7 @@ init: cmd-exists-python cmd-exists-pip
 	python3 -m venv .venv
 	. .venv/bin/activate && \
 	pip install --upgrade pip && \
-	curl -sSL https://install.python-poetry.org | python3 - && \
-	poetry config virtualenvs.in-project true
-	poetry install
-	cd notebooks && poetry install --no-root
+	pip install poetry && \
+	poetry config virtualenvs.in-project true && \
+	pip install poetry-plugin-export && \
+	poetry install && \

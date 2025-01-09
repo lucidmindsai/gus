@@ -1,0 +1,1978 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>pygus.core.agents API documentation</title>
+<meta name="description" content="Module that holds implementation of Tree agents.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pygus.core.agents</code></h1>
+</header>
+<section id="section-intro">
+<p>Module that holds implementation of Tree agents.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="pygus.core.agents.Tree"><code class="flex name class">
+<span>class <span class="ident">Tree</span></span>
+<span>(</span><span>model,<br>dbh,<br>species,<br>height=None,<br>fixed_sun_exposure=False,<br>condition='GOOD',<br>dieback=None,<br>**kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Tree(Agent):
+    &#34;&#34;&#34;A generic Tree agent with basic structural attributes and a growth model.
+
+    It inherits the generic mesa.Agent class.
+    &#34;&#34;&#34;
+
+    # Def: Carbon storage cap in sequestration calculations. A tree with that amount of CARBON or above this level
+    # has a constant yearly sequestration which is 25kg/year.
+    # Unit: Kg
+    # Ref: iTree, 2020
+    carbon_storage_cap = 7500
+    sequestration_at_maturity = 25
+
+    # The coeff is used to estimate carbon storage through biomass.
+    # The stock of carbon is estimated by multiplying tree biomass by 0.5
+    # (Chow and Rolfe 1989).
+    carbon_coeff = 0.5
+
+    # The coeff is used as the generic decomposition rate of dead portion of a tree.
+    # For more accurate estimates on decompostion revise the methods at Nowak et al. (2002b, 2008)
+    decomposition_coeff = 0.1
+
+    # Fixed rates for crown light exposure to sunlight (CLE).
+    # 0.44: Forest conditions with a closed, or nearly closed canopy,
+    # 0.56: Park conditions
+    # 1.0:  Open-grown conditions, street trees.
+    # Source: iTree
+    sun_exposure_rates = {&#34;forest&#34;: 0.44, &#34;park&#34;: 0.56, &#34;street&#34;: 1.0, &#34;miyawaki&#34;: 0.56}
+
+    # Condition multipliers. Used at adjusting growth rates.
+    # Ref: Fleming, 1988, and Nowak 2002b
+    condition_multiplier = {
+        &#34;EXCELLENT&#34;: 1,
+        &#34;GOOD&#34;: 1,
+        &#34;FAIR&#34;: 1,
+        &#34;POOR&#34;: 0.76,
+        &#34;CRITICAL&#34;: 0.42,
+        &#34;DYING&#34;: 0.15,
+        &#34;DEAD&#34;: 0,
+    }
+
+    # Ref: Root to shoot ratio (Cairns et al. 1997)
+    root_to_shoot_ratio = 0.26
+
+    # Biomass ratio at crown to trunk: Needs validation
+    crown_to_trunk_ratio = 0.05
+
+    def __init__(
+        self,
+        model,
+        dbh,
+        species,
+        height=None,
+        # kind=&#34;deciduous&#34;,
+        fixed_sun_exposure=False,
+        condition=&#34;GOOD&#34;,
+        dieback=None,
+        **kwargs
+    ):
+        &#34;&#34;&#34;The constructor method.
+
+        Args:
+            model: (Mesa.Model): the underlying Mesa model.
+            dbh: (:obj:`float`): the DBH measure which is diameter in cm of the trunk
+                usually measured at 1.3m from the ground.
+            species: (:obj:`str`): species identifier
+            height: (:obj:`float`): The tree height in meters.
+            kind: (:obj:`str`): identifies the kind of tree can be either &#34;deciduous&#34; or
+                &#34;coniferous&#34; (needles)
+            fixed_sun_exposure: (:obj:`bool`): If sun exposure is fixed or to be checked at each
+                iteration.
+            condition: (:obj:`str`): The health condition of the tree.
+            dieback: (:obj:`float`): The percent (0.1 for 10%, etc) of the tree that is dead.
+
+        Returns:
+            None
+        &#34;&#34;&#34;
+
+        # Initializing parent Class.
+        super().__init__(model)
+        #  This now calls register_agent() in the parent class, which adds the agent to the schedule and grid.
+        # as well as: self.model = model
+
+        # Initializing variables for a Tree.
+        # self.kind = kind
+        self.species = self.model.allometrics.fuzzymatch(species)
+        self.dbh = dbh
+        self.fixed_sun_exposure = fixed_sun_exposure
+        self.overlap_ratio = 0
+
+        if condition not in [&#34;EXCELLENT&#34;, &#34;GOOD&#34;, &#34;FAIR&#34;, &#34;POOR&#34;, &#34;CRITICAL&#34;, &#34;DYING&#34;]:
+            # What about &#34;DEAD&#34;? Is there a need to include this since we may have to simulate 
+            #   forests with some dead/decomposing trees?
+            condition = &#34;GOOD&#34;
+        
+        # Set additional keyword arguments as attributes
+        self.additional_attributes = []
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+            self.additional_attributes.append(key)
+
+        # Allometrics for the species
+        allometrics: Species = self.model.allometrics
+
+        if self.model.USING_NEW_ALLOMETRICS:
+            self._instantiate_allometrics(allometrics, height)
+            self.model.USING_NEW_ALLOMETRICS = hasattr(self, &#34;sapling_max_dbh&#34;) and hasattr(self, &#34;f_sapling_height&#34;)
+        else:
+            self._old_instantiate_allometrics(allometrics, height)
+
+        # dieback related initializations:
+        # Note: this needs to be handled at the initialization module
+        self.dieback = 0
+        self.condition = &#34;EXCELLENT&#34;
+        
+        if dieback and condition:
+            self.condition = condition.upper()
+            self.dieback = dieback
+        elif dieback:
+            self.condition = self._get_condition_class(dieback)
+            self.dieback = dieback
+        elif condition:
+            self.condition = condition.upper()
+            self.dieback = self._estimate_dieback(condition)
+        else:
+            self.dieback = np.random.uniform(0, 0.1)
+            self.condition = self._get_condition_class(self.dieback)
+
+        # Default crown light exposure based on site types.
+        self.cle = Tree.sun_exposure_rates[self.model.project_site_type]
+        # Crown light exposure to sunlight (CLE).
+        # CLE &lt;- c(0.44, 0.56, 1)
+        # (1) Forest conditions with a closed, or nearly closed canopy,
+        # (2) Park conditions
+        # (3) Open-grown conditions.
+
+        self.maturity_age = allometrics.get_maturity_age(self.species)
+        self.average_height_at_maturity = allometrics.get_height_at_maturity(self.species)
+
+        # The probabilty that represents regrowth, self-seeding or replacement depending on the site.
+        self.regeneration_probability = allometrics.get_regeneration_probability(self.species)
+
+        self.biomass = self.compute_biomass()  # In Kg
+        self.carbon_storage = Tree.carbon_coeff * self.biomass  # In Kg
+
+        # Amount of carbon release due to dead portion.
+        self.decomposition = 0  # In Kg
+
+        # Annual carbon sequestration in Kg.
+        self.annual_gross_carbon_sequestration = 0
+
+        self.mulched = 0
+        self.decomposing_root = 0
+        self.decomposing_trunk = 0
+        self.immediate_release = 0
+        self.death_acc = False
+
+        if self.model.maintenance_scope == 0:
+            self.expected_care = 0.1
+        elif self.model.maintenance_scope == 1:
+            self.expected_care = 0.5
+        else:
+            self.expected_care = 0.9
+
+    # Custom methods to support pickling
+    def __getstate__(self):
+        # Copy the object&#39;s state from self.__dict__ which contains all our instance attributes
+        state = self.__dict__.copy()
+        # Remove unpickleable attributes if any
+        # e.g., state.pop(&#39;unpickleable_attr&#39;, None)
+        return state
+
+    def __setstate__(self, state):
+        # Restore instance attributes
+        self.__dict__.update(state)
+    
+    def step(self):
+        &#34;&#34;&#34;State transitions of a given Tree agent.
+        &#34;&#34;&#34;
+        # Once the replaced tree agents are removed from the model, this line will be idle and s
+        # should be removed too.
+        if self.condition.upper() == &#34;REPLACED&#34;:
+            return
+
+        # The tree is dead and its carbon release schedule is accounted.
+        if self.death_acc:
+            self._reset_release_track()
+            if np.random.uniform(0, 1) &gt; self.regeneration_probability:
+                return
+            if np.random.uniform(0, 1) &lt; self.expected_care:
+                self.replace()
+            return
+
+        if self.condition.upper() == &#34;DEAD&#34;:
+            self.compute_decomposition()
+            return
+
+        # check frost free days for the past year.
+        frost_free_days = self.model.WeatherAPI.check_frost_free_days()
+        logging.debug(
+            &#34;Tree: {} checks ffdays = {} ...&#34;.format(self.unique_id, frost_free_days)
+        )
+
+        # compute the light exposure
+        self.compute_light_exposure()
+
+        # check state of the health of the tree
+        logging.debug(&#34;Tree: {} checks dieback ...&#34;.format(self.unique_id))
+        self.check_dieback()
+
+        # compute the growth
+        logging.debug(&#34;Tree: {} grows ...&#34;.format(self.unique_id))
+        self.grow(frost_free_days)
+
+        if self.model.project_site_type == &#34;miyawaki&#34;:
+            self.tree_regeneration()
+
+        # compute the total biomass
+        self.compute_biomass()
+        logging.debug(&#34;Tree: {} biomass ...&#34;.format(self.unique_id))
+
+        # compute the amount of new carbon sequestration
+        self.compute_sequestration()
+        logging.debug(&#34;Tree: {} sequestration ...&#34;.format(self.unique_id))
+
+        # compute the amount of carbon release due to decomposition
+        logging.debug(&#34;Tree: {} decomposition ...&#34;.format(self.unique_id))
+        self.compute_decomposition()
+
+    def grow(self, frost_free_days):
+        &#34;&#34;&#34;The method updates DBH of the tree. Currently it is an annual growth in cm.
+
+        Args:
+            frost_free_days: (:obj:`int`): the number of observed frost free days
+
+        Returns:
+            None
+
+        Note:
+            Current version uses the growth model, where
+            the number of frost free days and species specific diameter growth factor is
+            sufficient for the growth mode. Site specific and species specific diameter growth needs
+            to be considered.
+
+            As a tree approaches “maximum” height, growth rate decreases. Thus,the species growth rates
+            are adjusted based on the ratio between the current height of the tree and the average height
+            at maturity for the species. The estimated tree height at maturity is derived from the literature.
+            When a tree’s height is more than 80 percent of its average height at maturity,
+            the annual diameter growth is proportionally reduced from full growth at 80 percent of maximum height
+            to 2.22 percent of full growth at 125 percent of height at maturity.
+
+        Todo:
+            The constants in the formulas below needs to be parameterized.
+            References for the current constants:
+            David J. Nowak, 2020. Understanding i-Tree: Summary of Programs and Methods
+        &#34;&#34;&#34;
+
+        # This equation need to be corrected. Check i-tree paper.
+        height_ratio = self.tree_height / self.average_height_at_maturity
+        if height_ratio &gt;= 1.25: # 125% of height at maturity, growth slows
+            delta_dbh = 0.0222
+        elif height_ratio &gt;= 0.8: # 80% of height at maturity, growth slows
+            # delta_dbh = 0.0222 + ((1 - 0.0222) / (1.25 - 0.8)) * (1.25 - height_ratio)
+            delta_dbh = 0.0222 + 2.1729 * (1.25 - height_ratio)
+        else: # growth is normal
+            delta_dbh = self.diameter_growth * self.cle * (1 - self.dieback)
+
+        # Adjust the growth rate according to health condition.
+        delta_dbh *= Tree.condition_multiplier[self.condition]
+        # delta_dbh = delta_dbh / 32
+        self.dbh += delta_dbh * (frost_free_days / 153)
+
+        # Update the tree height based on the updated dbh.
+        self.update_tree_height(generic=False) # NOTE: &lt;2m, height grows by 15% per year
+        # Update the change at canopy.
+        self.update_crown_width()
+        self.update_crown_height()
+
+        # Increase the age estimate by 1 year
+        if not self.age:
+            self.age = 0
+        self.age += 1
+
+    def estimate_tree_height(self):
+        &#34;&#34;&#34;Computes the height of tree based on the species and current dbh.
+
+        Args:
+            None
+
+        Returns:
+            None
+        Todo:
+            In case of absence of a height function a generic function is used.
+            Current generic function is based on family of height functions yet still
+            arbitrary. It needs to be updated by the higher level phenotypes (needle, leaf, etc.)
+
+        &#34;&#34;&#34;
+        if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+            self.tree_height = self.f_sapling_height(self.dbh)
+        else:
+            self.tree_height = self.f_tree_height(self.dbh)
+        return self.tree_height
+
+    def update_tree_height(self, generic=False, SAPLING_MAX_HEIGHT=2.0):
+        &#34;&#34;&#34;Computes the height of tree based on the species and current dbh.
+
+        Args:
+            None
+        Returns:
+            None
+
+        &#34;&#34;&#34;
+        if generic:
+            self.fleming_height()
+            return
+        if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+            self.tree_height = self.f_sapling_height(self.dbh)
+        else:
+            self.tree_height = self.f_tree_height(self.dbh)
+
+    def fleming_height(self):
+        &#34;&#34;&#34;Updates the tree height based on the model by Fleming (1988)
+
+        Args:
+            None
+        Returns:
+            None
+        &#34;&#34;&#34;
+        self.tree_height += Tree.condition_multiplier[self.condition] * 0.15
+
+    def update_crown_height(self):
+        &#34;&#34;&#34;Computes the vertical length of the tree crown based on
+        the species and its current dbh.
+
+        Args:
+            None
+        Returns:
+            (:obj:`float`): Current crown width in meters
+        &#34;&#34;&#34;
+        if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+            self.crown_height = self.f_sapling_crown_height(self.dbh)
+            return self.crown_height
+        else:
+            self.crown_height = self.f_crown_height(self.dbh)
+            self.crown_height = min(self.crown_height, self.tree_height)
+        return self.crown_height
+
+    def update_crown_width(self):
+        &#34;&#34;&#34;Computes the horizontal length of the tree crown based on
+        the species and its current dbh.
+
+        Args:
+            None
+        Returns:
+            (:obj:`float`): Current crown width in meters
+        &#34;&#34;&#34;
+        if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+            self.crown_width = self.f_sapling_crown_width(self.dbh)
+        else:
+            self.crown_width = self.f_crown_width(self.dbh)
+        return self.crown_width
+
+    def compute_light_exposure(self):
+        &#34;&#34;&#34;The method computes light exposure of a tree on a dynamic manner.
+        The tree checks the state of its neighbouring trees and determines its current CLE.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Note:
+            Current version checks out other trees within the same grid.
+            It checks height and width of each neighboring tree.
+            Canopy overlap ratio is used as proxy to determine available CLE. The model assumes that
+            a taller neighbourung tree reduces sun light exposure.
+
+        Todo:
+            * The assumption needs to be revisited and validated.
+            * The model needs to be revised in case the same location is shared by other species.
+        &#34;&#34;&#34;
+        if self.fixed_sun_exposure:
+            return
+
+        # cellmates = self.model.grid.get_cell_list_contents([self.pos])
+        posns_list = self.model.grid.get_neighborhood(
+            self.pos, moore=False, include_center=False, radius=1
+            # Should Moore=false? The corner trees are not considered here..
+        )
+
+        neighboors = self.model.grid.get_cell_list_contents(posns_list)
+        self.overlap_ratio = 0
+        combined_overlap = 0
+        for t in neighboors:
+            t_w = t.crown_width
+            t_h = t.tree_height
+            # 0.5 multiplier is a mean multiplier to correct square shaped assumption on tree crown shape.
+            overlap = max(0, 0.5 * (self.crown_width + t_w) - self.model.dt_resolution)
+            # 0.25 multiplier is to account one of the four sides of the grid cell.
+            overlap_ratio = 0.25 * min(1, (overlap / self.crown_width))
+            # a taller tree creates more shading
+            combined_overlap += overlap_ratio * (t_h / (t_h + self.tree_height))
+            self.overlap_ratio += overlap_ratio
+        # Cases needs to be inspected
+        self.overlap_ratio = min(1, self.overlap_ratio)
+        self.cle = max(0, 1 - self.model.light_loss_multiplier * combined_overlap)
+
+        # try:
+        #     total_dbh = sum([t.dbh for t in cellmates])
+        #     cle = self.dbh / total_dbh
+        # except ZeroDivisionError as err:
+        #     print(self.unique_id, err)
+        #     cle = 0.56
+        # self.cle = cle
+
+    def compute_contagion_risk(self):
+        &#34;&#34;&#34;A very simplified version of contagion.
+
+        Args:
+            None
+        Returns:
+            (:obj:`float`):  contagion risk a value within the inclusive range [0,1]
+        &#34;&#34;&#34;
+        posns_list = self.model.grid.get_neighborhood(
+            self.pos, moore=False, include_center=False, radius=1
+        )
+        neighboors = self.model.grid.get_cell_list_contents(posns_list)
+        count_neighboors = len(neighboors)
+
+        contagion_risk = 0
+        for atree in neighboors:
+            contagion_risk += atree.dieback
+
+        if count_neighboors &gt; 4:
+            contagion_risk /= count_neighboors
+        else:
+            contagion_risk /= 4
+     
+        return min(self.model.contagion_multiplier * contagion_risk, 1)
+
+    def check_dieback(self, stochastic=True, risk_rate=0.005, healing_rate=0.005):
+        &#34;&#34;&#34;The dieback calculation for the tree. It is a path dependent.
+        A &#39;random walk&#39; from latest state is considered. The new rate is drawn from
+        a uniform distribution between -1 * healing_rate and risk_rate. A tree with
+        a dieback ratio 1 can not recover.
+
+        Args:
+            risk_rate: (:obj:`float`): A mean risk rate used to draw a random dieback ratio.
+            healing_rate: (:obj:`float`): A mean healing rate that is used to model recovery rate
+            of a tree from a sickness.
+
+        Returns:
+            (:obj:`float`): dieback ratio.
+
+        Todo:
+            Update the data either using measured dieback for species or
+            a site/species specific distribution function.
+        &#34;&#34;&#34;
+
+        def register_death():
+            self.dieback = 1.0
+            self.condition = &#34;DEAD&#34;
+
+        # The dieback model below is based on Nowak et al (1986, 2002b:p13)
+        # Mortality rate:
+        #  100% for dead trees
+        #  1.96% for GOOD-EXCELLENT and DBH &lt; 3inches
+        #  1.46% for GOOD-EXCELLENT and DBH &gt; 3inches
+        #  3.32% for FAIR condition
+        #  8.86% for POOR condition
+        #  13.08% for CRITICAL condition
+        #  50% for DYING condition
+        risk = np.random.uniform(0, 1)
+        if self.model.maintenance_scope == 0:
+            dr = 5
+        elif self.model.maintenance_scope == 1:
+            dr = 4
+        else:
+            dr = 1
+
+        if self.dieback &gt;= 1:
+            register_death()
+        elif self.condition.upper() == &#34;DEAD&#34;:
+            register_death()
+        elif (
+            self.condition.upper() in [&#34;EXCELLENT&#34;, &#34;GOOD&#34;]
+            and self.dbh &lt; 7.62
+            and risk &lt;= 0.0196 * dr
+        ):
+            register_death()
+        elif (
+            self.condition.upper() in [&#34;EXCELLENT&#34;, &#34;GOOD&#34;]
+            and self.dbh &gt;= 7.62
+            and risk &lt;= 0.0146 * dr
+        ):
+            register_death()
+        elif self.condition.upper() == &#34;FAIR&#34; and risk &lt;= 0.0332 * dr:
+            register_death()
+        elif self.condition.upper() == &#34;POOR&#34; and risk &lt;= 0.0886 * dr:
+            register_death()
+        elif self.condition.upper() == &#34;CRITICAL&#34; and risk &lt;= 0.1308 * dr:
+            register_death()
+        elif self.condition.upper() == &#34;DYING&#34; and risk &lt;= min(0.9, 0.5 * dr):
+            register_death()
+        else:
+            # The dieback model below is path dependent and depends on
+            # (i) the latest condition of the tree,
+            # (ii) the age via DBH and
+            # (iii) the health of neighboring trees.
+            # (iv) disease risk at the site that are other than contagion.
+            # the new rate is drawn from a
+            # uniform distribution between -1 * healing_rate and risk_rate.
+            if stochastic:
+                contagion_risk_rate = self.compute_contagion_risk()
+                disease_risk = contagion_risk_rate + self.model.noncontagion_disease_rate
+                #print(&#39;disease: {}&#39;.format(disease_risk))
+                disease_risk = min(disease_risk,1)
+                if self.condition.upper() == &#34;EXCELLENT&#34;:
+                    if np.random.uniform(0, 1) &lt; 0.5:
+                        self.dieback -= 0.001
+                    else:
+                        self.dieback += 0.001
+                elif self.condition.upper() == &#34;GOOD&#34;:
+                    if np.random.uniform(0, 1) &lt; 0.5:
+                        self.dieback -= 0.005
+                    else:
+                        self.dieback += 0.005
+                else:
+                    multiplier = (1 - disease_risk) * np.sqrt(self.dbh) / dr
+                    #print(&#39;multiplier:{}&#39;.format(multiplier))
+                    multiplier = max(0.01, multiplier)
+                    heal_range = -1 * multiplier * healing_rate
+                    die_range = risk_rate / multiplier
+                    self.dieback += np.random.uniform(heal_range, die_range)
+                self.dieback = min(1, self.dieback)
+                self.dieback = max(0, self.dieback)
+                self.condition = self._get_condition_class(self.dieback)
+        return self.dieback
+    
+    def _instantiate_allometrics(self, allometrics, height):
+        # Initialize canonical growth functions
+        self.f_biomass = allometrics.get_eqn_biomass(self.species)
+
+        self.diameter_growth = allometrics.get_diameter_growth(self.species)
+        self._growth = allometrics.get_diameter_growth(self.species)
+
+        self.sapling_max_dbh, self.f_sapling_height = allometrics.get_eqn_sapling(self.species, &#34;height&#34;)
+        # Slow, moderate and fast growing species respectively.
+        # c(0.23, 0.33, 0.43) in inch/yr Source: https://database.itreetools.org/#/splash
+        # Converted into cm.
+        self.age = self._estimate_age()
+
+        # Tree height
+        self.f_tree_height, _ = allometrics.get_eqn(self.species, &#34;height&#34;)
+        if height:
+            self.tree_height = height
+        else:
+            if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+                self.tree_height = self.f_sapling_height(self.dbh)
+            else:
+                self.tree_height = self.f_tree_height(self.dbh)
+
+        # Crown width and height
+        self.f_crown_width, _ = allometrics.get_eqn(self.species, &#34;crown_width&#34;)
+        self.f_crown_height, _ = allometrics.get_eqn(
+            self.species, &#34;crown_height&#34;
+        )
+        _, self.f_sapling_crown_width = allometrics.get_eqn_sapling(self.species, &#34;crown_width&#34;)
+        _, self.f_sapling_crown_height = allometrics.get_eqn_sapling(self.species, &#34;crown_height&#34;)
+
+        if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+            self.crown_width = self.f_sapling_crown_width(self.dbh)
+            self.crown_height = self.f_sapling_crown_height(self.dbh)
+        else:
+            self.crown_width = self.f_crown_width(self.dbh)
+            self.crown_height = self.f_crown_height(self.dbh)
+
+    # TODO: Remove me once you&#39;re satisfied with the contents of the new method
+    def _old_instantiate_allometrics(self, allometrics, height):
+        # Initialize canonical growth functions
+        self.f_biomass = allometrics.get_eqn_biomass(self.species)
+
+        self.diameter_growth = allometrics.get_diameter_growth(self.species)
+        # self.sapling_max_dbh, self.f_sapling_height = allometrics.get_eqn_sapling(self.species, &#34;height&#34;)
+        # Slow, moderate and fast growing species respectively.
+        # c(0.23, 0.33, 0.43) in inch/yr Source: https://database.itreetools.org/#/splash
+        # Converted into cm.
+        self.age = self._estimate_age()
+
+        # Tree height
+        self.f_tree_height, _ = allometrics.get_eqn(self.species, &#34;height&#34;)
+        if height:
+            self.tree_height = height
+        else:
+            self.tree_height = self.f_tree_height(self.dbh)
+
+        # Crown width and height
+        self.f_crown_width, _ = allometrics.get_eqn(self.species, &#34;crown_width&#34;)
+        self.f_crown_height, _ = allometrics.get_eqn(
+            self.species, &#34;crown_height&#34;
+        )
+        self.crown_width = self.f_crown_width(self.dbh)
+        self.crown_height = self.f_crown_height(self.dbh)
+
+    def _get_condition_class(self, dieback):
+        &#34;&#34;&#34;Determines the condition class based percent crown lost.
+
+        Args:
+            dieback: (:obj:`float`): percent crown lost
+
+        Returns:
+            (:obj:`str`): condition class.
+
+        Note:
+             The class brackets are based on Nowak 2002b.
+        &#34;&#34;&#34;
+
+        if dieback &lt; 0.01:
+            condition = &#34;EXCELLENT&#34;
+        elif dieback &lt;= 0.10:
+            condition = &#34;GOOD&#34;
+        elif dieback &lt;= 0.25:
+            condition = &#34;FAIR&#34;
+        elif dieback &lt;= 0.50:
+            condition = &#34;POOR&#34;
+        elif dieback &lt;= 0.75:
+            condition = &#34;CRITICAL&#34;
+        elif dieback &lt;= 0.99:
+            condition = &#34;DYING&#34;
+        else:
+            condition = &#34;DEAD&#34;
+        self.condition = condition
+        return condition
+
+    def _estimate_dieback(self, condition):
+        &#34;&#34;&#34;Draws a crown dieback ratio based on the condition class.
+
+        Args:
+            dieback: (:obj:`str`): condition class.
+
+        Returns:
+            (:obj:`str`): (:obj:`float`): percent crown lost.
+
+        Note:
+             This is used when percent crown data is missing but condition of
+             of a tree is given a qualitatively. Condition class brackets are based on Nowak 2002b.
+        &#34;&#34;&#34;
+        if condition == &#34;EXCELLENT&#34;:
+            self.dieback = np.random.uniform(0, 0.01)
+        elif condition == &#34;GOOD&#34;:
+            self.dieback = np.random.uniform(0.01, 0.11)
+        elif condition == &#34;FAIR&#34;:
+            dieback = np.random.uniform(0.11, 0.26)
+        elif condition == &#34;POOR&#34;:
+            self.dieback = np.random.uniform(0.26, 0.51)
+        elif condition == &#34;CRITICAL&#34;:
+            self.dieback = np.random.uniform(0.51, 0.76)
+        elif condition == &#34;DYING&#34;:
+            self.dieback = np.random.uniform(0.76, 0.99)
+        else:
+            self.dieback = 1.0
+        return self.dieback
+
+    def _estimate_age(self):
+        &#34;&#34;&#34;
+        Estimate the age of a tree from its Diameter at Breast Height (DBH).
+
+        :param dbh: Diameter at Breast Height in centimeters.
+        :param growth_rate_per_year: Average increase in DBH per year in centimeters.
+        :return: Estimated age of the tree in years.
+        &#34;&#34;&#34;
+        # Assuming the tree starts with a minimal DBH, which we set to a small positive value
+        initial_dbh = (
+            1.0  # cm, this is an assumption and may vary based on the tree species
+        )
+
+        # Calculate the estimated age
+        # The age is estimated by dividing the current DBH minus the initial DBH by the yearly growth rate
+        estimated_age = (self.dbh - initial_dbh) / self.diameter_growth
+        return max(1, estimated_age)
+
+    def compute_biomass(self, ignore_height=True) -&gt; float:
+        &#34;&#34;&#34;The biomass calculation for the tree, in KG.
+
+        Args:
+            species: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.
+            Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch
+
+        Returns:
+            (:obj:`float`): Biomass in Kg.
+
+        Todo:
+            Update the generic biomass.
+
+        &#34;&#34;&#34;
+        self.biomass = self.f_biomass(self.dbh)
+        carbon_estimate = self.biomass * Tree.carbon_coeff
+        if carbon_estimate &gt; Tree.carbon_storage_cap:
+            # self.biomass = (1 / Tree.carbon_coeff) * Tree.carbon_storage_cap
+            self.biomass = Tree.carbon_storage_cap
+        return self.biomass
+
+    def _reset_release_track(self):
+        &#34;&#34;&#34;The resetting state variables that is being observed by data collectors.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        &#34;&#34;&#34;
+        self.mulched = 0
+        self.decomposing_root = 0
+        self.decomposing_trunk = 0
+        self.immediate_release = 0
+
+    def compute_decomposition(self):
+        &#34;&#34;&#34;The amount of carbon release in KG due to partial diebacks.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Todo:
+            This module on carbon release from alive trees due to partial diebacks or
+            crown loss needs to be revised.
+        &#34;&#34;&#34;
+
+        # self.release = self.decomposition_rate * self.dieback * self.carbon_storage
+        self._reset_release_track()
+        if self.condition.upper() == &#34;DEAD&#34;:
+            self._compute_decomposition_dead()
+            return
+        # the tree is alive
+        self._compute_decomposition_alive()
+
+    def _compute_decomposition_alive(self):
+        &#34;&#34;&#34;The amount of carbon release in KG due to partial diebacks.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Todo:
+            This module on carbon release from alive trees due to partial diebacks or
+            crown loss needs to be revised.
+        &#34;&#34;&#34;
+        to_decompose = Tree.crown_to_trunk_ratio * self.dieback * self.carbon_storage
+        if np.random.uniform(0, 1) &lt; 0.9:
+            self.mulched = to_decompose
+        else:
+            # 100% of the removed dead brunches are burned etc.
+            self.immediate_release = 1.0 * to_decompose
+
+    def _compute_decomposition_dead(self):
+        &#34;&#34;&#34;The amount of carbon release in KG due to diebacks.
+
+        Args:
+            None
+
+        Returns:
+            (:obj:`float`): Amount of carbon release in KG.
+
+        Todo:
+            This implementation is based on Nowak et al. (2002b, 2008)
+        &#34;&#34;&#34;
+
+        # self.release = self.decomposition_rate *  self.carbon_storage
+
+        # accounting carbon release process
+        self.death_acc = True
+        self.decomposing_root = Tree.root_to_shoot_ratio * self.carbon_storage
+        decomposable_above_ground = self.carbon_storage - self.decomposing_root
+
+        # the probability of being removed from the site
+        if np.random.uniform(0, 1) &lt; 0.5:
+            # 70% chance burnt, 30% converted into sustainable products
+            self.immediate_release = 0.7 * decomposable_above_ground
+            return
+
+        # Not removed from the site:
+        # The probability of standing
+        if np.random.uniform(0, 1) &lt; 0.4:
+            self.decomposing_trunk = decomposable_above_ground
+        else:
+            self.mulched = decomposable_above_ground
+        return
+
+    def compute_sequestration(self):
+        &#34;&#34;&#34;The method estimates annual amount of sequestration in Kg. The model is based on
+        Chow and Rolfe (1989) and used by iTree.
+
+        Args:
+            None
+
+        Returns:
+            (:obj:`float`): annual sequestration in carbon.
+
+        Note:
+            The growth of the tree needs to be adjusted for the health condition of a tree
+            &#34;For trees in FAIR to EXCELLENT condition, growth rates were multiplied by 1 (no adjustment),
+            POOR trees’ growth rates were multiplied by 0.76, CRITICAL trees by 0.42,
+            and DYING trees by 0.15 (dead trees’ growth rates = 0).
+            Adjustment factors were based on percent crown dieback and the assumption that
+            less than 25-percent crown dieback had a limited effect on d.b.h. growth rates.&#34;(Nowak et al, 2002b)
+            The difference in estimates of C storage between year x and year x+1 is the gross amount of
+            C sequestered annually.
+
+        Todo:
+            - Raise Warning/Error for unexpected behaviors
+        &#34;&#34;&#34;
+        if self.dieback &gt;= 1.0:
+            self.annual_gross_carbon_sequestration = 0
+            return self.annual_gross_carbon_sequestration
+
+        carbon_storage_lag = self.carbon_storage
+        carbon_estimate = self.biomass * Tree.carbon_coeff
+        # min() function prevents carbon storage from over estimation for very
+        # large trees
+        self.carbon_storage = min(carbon_estimate, Tree.carbon_storage_cap)
+
+        if carbon_estimate &gt;= Tree.carbon_storage_cap:
+            self.annual_gross_carbon_sequestration = Tree.sequestration_at_maturity
+            return self.annual_gross_carbon_sequestration
+
+        sequestration = self.carbon_storage - carbon_storage_lag
+        # Double check and raise a warning message here.
+        if sequestration &lt; 0:
+            sequestration = Tree.sequestration_at_maturity
+            self.carbon_storage = carbon_storage_lag
+
+        self.annual_gross_carbon_sequestration = sequestration
+        return self.annual_gross_carbon_sequestration
+
+    def replace(self) -&gt; int:
+        &#34;&#34;&#34;In case of a maintenance project in place a new young tree or sapling is planted
+        at the location where the tree is dead.
+
+        Args:
+            None
+        Returns:
+            (:obj:`int`): new agent id.
+
+        &#34;&#34;&#34;
+        self.condition = &#34;REPLACED&#34;
+
+        # Replacing with the site specific minimum sapling.
+        dbh = np.random.uniform(self.model.sapling_dbh, self.model.sapling_dbh + 1)
+        new_tree = Tree(
+            self.model,
+            dbh,
+            self.species,
+            condition=&#34;EXCELLENT&#34;,
+            dieback=0,
+        )
+        new_tree.additional_attributes = self.additional_attributes[:]
+
+        # Inherit additional attributes from the old tree
+        for attr in self.additional_attributes:
+            value = getattr(self, attr)
+            setattr(new_tree, attr, value)
+
+        self.model.grid.place_agent(new_tree, self.pos)
+        return new_tree.unique_id
+
+    def tree_regeneration(self):
+        &#34;&#34;&#34;Simulate tree regeneration process.
+
+        Args:
+            None
+
+        Returns:
+            None
+
+        Note:
+            This method simulates the statistical chances of a tree producing seeds,
+            the survival of saplings, and their growth to be included in the model as
+            small trees. The regeneration is dependent on factors like the age and health
+            of the tree.
+        &#34;&#34;&#34;
+
+        # Assuming age and health are properties of the TreeAgent
+        # Only mature and healthy trees can produce seeds
+        total_new_trees_planted = 0
+        if self.age &gt;= self.maturity_age and self.condition.upper() in [
+            &#34;FAIR&#34;,
+            &#34;GOOD&#34;,
+            &#34;EXCELLENT&#34;,
+        ]:  # TODO: validate all this
+            dbh_range_saplings = [1, 5]  # cm
+            height_range_saplings = [0.3, 0.5]  # m
+            crownW_range_saplings = [0.1, 0.3]  # m
+
+            BASE_SEED_PRODUCTION_PROBABILITY = 0.1
+            BASE_AVERAGE_SEED_COUNT = 100
+            BASE_SAPLING_SURVIVAL_RATE = 0.0
+
+            condition_score = [&#34;FAIR&#34;, &#34;GOOD&#34;, &#34;EXCELLENT&#34;].index(self.condition) + 1
+            seed_production_bonus = condition_score * 0.25
+            # +25%, +50%, or +75% based on condition
+            seed_production_probability = (
+                BASE_SEED_PRODUCTION_PROBABILITY + seed_production_bonus
+            )
+
+            average_seed_count = BASE_AVERAGE_SEED_COUNT * condition_score
+
+            sapling_survival_bonus = condition_score * 0.25
+            sapling_survival_rate = BASE_SAPLING_SURVIVAL_RATE * sapling_survival_bonus
+
+            # Chance of seed production
+            if np.random.uniform(0, 1) &lt; seed_production_probability:
+                # Simulate number of seeds produced
+                num_seeds = np.random.poisson(lam=average_seed_count)
+
+                # For each seed, simulate the chance of growing into a sapling
+                for _ in range(num_seeds):
+                    if np.random.uniform(0, 1) &lt; sapling_survival_rate:
+                        # Create a new sapling/tree agent
+                        logging.debug(&#34;We&#39;re planting A NEW TREEEEEEEEE!&#34;)
+                        total_new_trees_planted += 1
+                        sapling = Tree(
+                            self.model,
+                            np.random.uniform(*dbh_range_saplings, 1)[0],
+                            self.species,
+                            height=np.random.uniform(*height_range_saplings, 1)[0],
+                            crownW=np.random.uniform(*crownW_range_saplings, 1)[0],
+                            condition=&#34;EXCELLENT&#34;,
+                            dieback=0,
+                        )
+                        sapling.age = 0
+
+                        # Inherit additional attributes from the old tree
+                        for attr in self.additional_attributes:
+                            value = getattr(self, attr)
+                            setattr(sapling, attr, value)
+
+                        new_position = (
+                            self.pos
+                        )  # TODO: We should place the seed somewhere nearby
+                        self.model.grid.place_agent(sapling, new_position)
+
+        if total_new_trees_planted &gt; 0:
+            logging.debug(&#34;Planted {} new trees&#34;.format(total_new_trees_planted))</code></pre>
+</details>
+<div class="desc"><p>A generic Tree agent with basic structural attributes and a growth model.</p>
+<p>It inherits the generic mesa.Agent class.</p>
+<p>The constructor method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>model</code></strong></dt>
+<dd>(Mesa.Model): the underlying Mesa model.</dd>
+<dt><strong><code>dbh</code></strong></dt>
+<dd>(:obj:<code>float</code>): the DBH measure which is diameter in cm of the trunk
+usually measured at 1.3m from the ground.</dd>
+<dt><strong><code>species</code></strong></dt>
+<dd>(:obj:<code>str</code>): species identifier</dd>
+<dt><strong><code>height</code></strong></dt>
+<dd>(:obj:<code>float</code>): The tree height in meters.</dd>
+<dt><strong><code>kind</code></strong></dt>
+<dd>(:obj:<code>str</code>): identifies the kind of tree can be either "deciduous" or
+"coniferous" (needles)</dd>
+<dt><strong><code>fixed_sun_exposure</code></strong></dt>
+<dd>(:obj:<code>bool</code>): If sun exposure is fixed or to be checked at each
+iteration.</dd>
+<dt><strong><code>condition</code></strong></dt>
+<dd>(:obj:<code>str</code>): The health condition of the tree.</dd>
+<dt><strong><code>dieback</code></strong></dt>
+<dd>(:obj:<code>float</code>): The percent (0.1 for 10%, etc) of the tree that is dead.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mesa.agent.Agent</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pygus.core.agents.Tree.carbon_coeff"><code class="name">var <span class="ident">carbon_coeff</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.agents.Tree.carbon_storage_cap"><code class="name">var <span class="ident">carbon_storage_cap</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.agents.Tree.condition_multiplier"><code class="name">var <span class="ident">condition_multiplier</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.agents.Tree.crown_to_trunk_ratio"><code class="name">var <span class="ident">crown_to_trunk_ratio</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.agents.Tree.decomposition_coeff"><code class="name">var <span class="ident">decomposition_coeff</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.agents.Tree.root_to_shoot_ratio"><code class="name">var <span class="ident">root_to_shoot_ratio</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.agents.Tree.sequestration_at_maturity"><code class="name">var <span class="ident">sequestration_at_maturity</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.agents.Tree.sun_exposure_rates"><code class="name">var <span class="ident">sun_exposure_rates</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="pygus.core.agents.Tree.check_dieback"><code class="name flex">
+<span>def <span class="ident">check_dieback</span></span>(<span>self, stochastic=True, risk_rate=0.005, healing_rate=0.005)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_dieback(self, stochastic=True, risk_rate=0.005, healing_rate=0.005):
+    &#34;&#34;&#34;The dieback calculation for the tree. It is a path dependent.
+    A &#39;random walk&#39; from latest state is considered. The new rate is drawn from
+    a uniform distribution between -1 * healing_rate and risk_rate. A tree with
+    a dieback ratio 1 can not recover.
+
+    Args:
+        risk_rate: (:obj:`float`): A mean risk rate used to draw a random dieback ratio.
+        healing_rate: (:obj:`float`): A mean healing rate that is used to model recovery rate
+        of a tree from a sickness.
+
+    Returns:
+        (:obj:`float`): dieback ratio.
+
+    Todo:
+        Update the data either using measured dieback for species or
+        a site/species specific distribution function.
+    &#34;&#34;&#34;
+
+    def register_death():
+        self.dieback = 1.0
+        self.condition = &#34;DEAD&#34;
+
+    # The dieback model below is based on Nowak et al (1986, 2002b:p13)
+    # Mortality rate:
+    #  100% for dead trees
+    #  1.96% for GOOD-EXCELLENT and DBH &lt; 3inches
+    #  1.46% for GOOD-EXCELLENT and DBH &gt; 3inches
+    #  3.32% for FAIR condition
+    #  8.86% for POOR condition
+    #  13.08% for CRITICAL condition
+    #  50% for DYING condition
+    risk = np.random.uniform(0, 1)
+    if self.model.maintenance_scope == 0:
+        dr = 5
+    elif self.model.maintenance_scope == 1:
+        dr = 4
+    else:
+        dr = 1
+
+    if self.dieback &gt;= 1:
+        register_death()
+    elif self.condition.upper() == &#34;DEAD&#34;:
+        register_death()
+    elif (
+        self.condition.upper() in [&#34;EXCELLENT&#34;, &#34;GOOD&#34;]
+        and self.dbh &lt; 7.62
+        and risk &lt;= 0.0196 * dr
+    ):
+        register_death()
+    elif (
+        self.condition.upper() in [&#34;EXCELLENT&#34;, &#34;GOOD&#34;]
+        and self.dbh &gt;= 7.62
+        and risk &lt;= 0.0146 * dr
+    ):
+        register_death()
+    elif self.condition.upper() == &#34;FAIR&#34; and risk &lt;= 0.0332 * dr:
+        register_death()
+    elif self.condition.upper() == &#34;POOR&#34; and risk &lt;= 0.0886 * dr:
+        register_death()
+    elif self.condition.upper() == &#34;CRITICAL&#34; and risk &lt;= 0.1308 * dr:
+        register_death()
+    elif self.condition.upper() == &#34;DYING&#34; and risk &lt;= min(0.9, 0.5 * dr):
+        register_death()
+    else:
+        # The dieback model below is path dependent and depends on
+        # (i) the latest condition of the tree,
+        # (ii) the age via DBH and
+        # (iii) the health of neighboring trees.
+        # (iv) disease risk at the site that are other than contagion.
+        # the new rate is drawn from a
+        # uniform distribution between -1 * healing_rate and risk_rate.
+        if stochastic:
+            contagion_risk_rate = self.compute_contagion_risk()
+            disease_risk = contagion_risk_rate + self.model.noncontagion_disease_rate
+            #print(&#39;disease: {}&#39;.format(disease_risk))
+            disease_risk = min(disease_risk,1)
+            if self.condition.upper() == &#34;EXCELLENT&#34;:
+                if np.random.uniform(0, 1) &lt; 0.5:
+                    self.dieback -= 0.001
+                else:
+                    self.dieback += 0.001
+            elif self.condition.upper() == &#34;GOOD&#34;:
+                if np.random.uniform(0, 1) &lt; 0.5:
+                    self.dieback -= 0.005
+                else:
+                    self.dieback += 0.005
+            else:
+                multiplier = (1 - disease_risk) * np.sqrt(self.dbh) / dr
+                #print(&#39;multiplier:{}&#39;.format(multiplier))
+                multiplier = max(0.01, multiplier)
+                heal_range = -1 * multiplier * healing_rate
+                die_range = risk_rate / multiplier
+                self.dieback += np.random.uniform(heal_range, die_range)
+            self.dieback = min(1, self.dieback)
+            self.dieback = max(0, self.dieback)
+            self.condition = self._get_condition_class(self.dieback)
+    return self.dieback</code></pre>
+</details>
+<div class="desc"><p>The dieback calculation for the tree. It is a path dependent.
+A 'random walk' from latest state is considered. The new rate is drawn from
+a uniform distribution between -1 * healing_rate and risk_rate. A tree with
+a dieback ratio 1 can not recover.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>risk_rate</code></strong></dt>
+<dd>(:obj:<code>float</code>): A mean risk rate used to draw a random dieback ratio.</dd>
+<dt><strong><code>healing_rate</code></strong></dt>
+<dd>(:obj:<code>float</code>): A mean healing rate that is used to model recovery rate</dd>
+</dl>
+<p>of a tree from a sickness.</p>
+<h2 id="returns">Returns</h2>
+<p>(:obj:<code>float</code>): dieback ratio.</p>
+<h2 id="todo">Todo</h2>
+<p>Update the data either using measured dieback for species or
+a site/species specific distribution function.</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.compute_biomass"><code class="name flex">
+<span>def <span class="ident">compute_biomass</span></span>(<span>self, ignore_height=True) ‑> float</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_biomass(self, ignore_height=True) -&gt; float:
+    &#34;&#34;&#34;The biomass calculation for the tree, in KG.
+
+    Args:
+        species: (:obj:`string`): name of the species in &#39;genusName_speciesName&#39; format.
+        Ex: &#39;picea_abies&#39;. Use the iTree naming scheme: https://database.itreetools.org/#/speciesSearch
+
+    Returns:
+        (:obj:`float`): Biomass in Kg.
+
+    Todo:
+        Update the generic biomass.
+
+    &#34;&#34;&#34;
+    self.biomass = self.f_biomass(self.dbh)
+    carbon_estimate = self.biomass * Tree.carbon_coeff
+    if carbon_estimate &gt; Tree.carbon_storage_cap:
+        # self.biomass = (1 / Tree.carbon_coeff) * Tree.carbon_storage_cap
+        self.biomass = Tree.carbon_storage_cap
+    return self.biomass</code></pre>
+</details>
+<div class="desc"><p>The biomass calculation for the tree, in KG.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>species</code></strong></dt>
+<dd>(:obj:<code>string</code>): name of the species in 'genusName_speciesName' format.</dd>
+<dt><strong><code>Ex</code></strong></dt>
+<dd>'picea_abies'. Use the iTree naming scheme: <a href="https://database.itreetools.org/#/speciesSearch">https://database.itreetools.org/#/speciesSearch</a></dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(:obj:<code>float</code>): Biomass in Kg.</p>
+<h2 id="todo">Todo</h2>
+<p>Update the generic biomass.</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.compute_contagion_risk"><code class="name flex">
+<span>def <span class="ident">compute_contagion_risk</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_contagion_risk(self):
+    &#34;&#34;&#34;A very simplified version of contagion.
+
+    Args:
+        None
+    Returns:
+        (:obj:`float`):  contagion risk a value within the inclusive range [0,1]
+    &#34;&#34;&#34;
+    posns_list = self.model.grid.get_neighborhood(
+        self.pos, moore=False, include_center=False, radius=1
+    )
+    neighboors = self.model.grid.get_cell_list_contents(posns_list)
+    count_neighboors = len(neighboors)
+
+    contagion_risk = 0
+    for atree in neighboors:
+        contagion_risk += atree.dieback
+
+    if count_neighboors &gt; 4:
+        contagion_risk /= count_neighboors
+    else:
+        contagion_risk /= 4
+ 
+    return min(self.model.contagion_multiplier * contagion_risk, 1)</code></pre>
+</details>
+<div class="desc"><p>A very simplified version of contagion.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>(:obj:<code>float</code>):
+contagion risk a value within the inclusive range [0,1]</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.compute_decomposition"><code class="name flex">
+<span>def <span class="ident">compute_decomposition</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_decomposition(self):
+    &#34;&#34;&#34;The amount of carbon release in KG due to partial diebacks.
+
+    Args:
+        None
+
+    Returns:
+        None
+
+    Todo:
+        This module on carbon release from alive trees due to partial diebacks or
+        crown loss needs to be revised.
+    &#34;&#34;&#34;
+
+    # self.release = self.decomposition_rate * self.dieback * self.carbon_storage
+    self._reset_release_track()
+    if self.condition.upper() == &#34;DEAD&#34;:
+        self._compute_decomposition_dead()
+        return
+    # the tree is alive
+    self._compute_decomposition_alive()</code></pre>
+</details>
+<div class="desc"><p>The amount of carbon release in KG due to partial diebacks.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p>
+<h2 id="todo">Todo</h2>
+<p>This module on carbon release from alive trees due to partial diebacks or
+crown loss needs to be revised.</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.compute_light_exposure"><code class="name flex">
+<span>def <span class="ident">compute_light_exposure</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_light_exposure(self):
+    &#34;&#34;&#34;The method computes light exposure of a tree on a dynamic manner.
+    The tree checks the state of its neighbouring trees and determines its current CLE.
+
+    Args:
+        None
+
+    Returns:
+        None
+
+    Note:
+        Current version checks out other trees within the same grid.
+        It checks height and width of each neighboring tree.
+        Canopy overlap ratio is used as proxy to determine available CLE. The model assumes that
+        a taller neighbourung tree reduces sun light exposure.
+
+    Todo:
+        * The assumption needs to be revisited and validated.
+        * The model needs to be revised in case the same location is shared by other species.
+    &#34;&#34;&#34;
+    if self.fixed_sun_exposure:
+        return
+
+    # cellmates = self.model.grid.get_cell_list_contents([self.pos])
+    posns_list = self.model.grid.get_neighborhood(
+        self.pos, moore=False, include_center=False, radius=1
+        # Should Moore=false? The corner trees are not considered here..
+    )
+
+    neighboors = self.model.grid.get_cell_list_contents(posns_list)
+    self.overlap_ratio = 0
+    combined_overlap = 0
+    for t in neighboors:
+        t_w = t.crown_width
+        t_h = t.tree_height
+        # 0.5 multiplier is a mean multiplier to correct square shaped assumption on tree crown shape.
+        overlap = max(0, 0.5 * (self.crown_width + t_w) - self.model.dt_resolution)
+        # 0.25 multiplier is to account one of the four sides of the grid cell.
+        overlap_ratio = 0.25 * min(1, (overlap / self.crown_width))
+        # a taller tree creates more shading
+        combined_overlap += overlap_ratio * (t_h / (t_h + self.tree_height))
+        self.overlap_ratio += overlap_ratio
+    # Cases needs to be inspected
+    self.overlap_ratio = min(1, self.overlap_ratio)
+    self.cle = max(0, 1 - self.model.light_loss_multiplier * combined_overlap)
+
+    # try:
+    #     total_dbh = sum([t.dbh for t in cellmates])
+    #     cle = self.dbh / total_dbh
+    # except ZeroDivisionError as err:
+    #     print(self.unique_id, err)
+    #     cle = 0.56
+    # self.cle = cle</code></pre>
+</details>
+<div class="desc"><p>The method computes light exposure of a tree on a dynamic manner.
+The tree checks the state of its neighbouring trees and determines its current CLE.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p>
+<h2 id="note">Note</h2>
+<p>Current version checks out other trees within the same grid.
+It checks height and width of each neighboring tree.
+Canopy overlap ratio is used as proxy to determine available CLE. The model assumes that
+a taller neighbourung tree reduces sun light exposure.</p>
+<h2 id="todo">Todo</h2>
+<ul>
+<li>The assumption needs to be revisited and validated.</li>
+<li>The model needs to be revised in case the same location is shared by other species.</li>
+</ul></div>
+</dd>
+<dt id="pygus.core.agents.Tree.compute_sequestration"><code class="name flex">
+<span>def <span class="ident">compute_sequestration</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_sequestration(self):
+    &#34;&#34;&#34;The method estimates annual amount of sequestration in Kg. The model is based on
+    Chow and Rolfe (1989) and used by iTree.
+
+    Args:
+        None
+
+    Returns:
+        (:obj:`float`): annual sequestration in carbon.
+
+    Note:
+        The growth of the tree needs to be adjusted for the health condition of a tree
+        &#34;For trees in FAIR to EXCELLENT condition, growth rates were multiplied by 1 (no adjustment),
+        POOR trees’ growth rates were multiplied by 0.76, CRITICAL trees by 0.42,
+        and DYING trees by 0.15 (dead trees’ growth rates = 0).
+        Adjustment factors were based on percent crown dieback and the assumption that
+        less than 25-percent crown dieback had a limited effect on d.b.h. growth rates.&#34;(Nowak et al, 2002b)
+        The difference in estimates of C storage between year x and year x+1 is the gross amount of
+        C sequestered annually.
+
+    Todo:
+        - Raise Warning/Error for unexpected behaviors
+    &#34;&#34;&#34;
+    if self.dieback &gt;= 1.0:
+        self.annual_gross_carbon_sequestration = 0
+        return self.annual_gross_carbon_sequestration
+
+    carbon_storage_lag = self.carbon_storage
+    carbon_estimate = self.biomass * Tree.carbon_coeff
+    # min() function prevents carbon storage from over estimation for very
+    # large trees
+    self.carbon_storage = min(carbon_estimate, Tree.carbon_storage_cap)
+
+    if carbon_estimate &gt;= Tree.carbon_storage_cap:
+        self.annual_gross_carbon_sequestration = Tree.sequestration_at_maturity
+        return self.annual_gross_carbon_sequestration
+
+    sequestration = self.carbon_storage - carbon_storage_lag
+    # Double check and raise a warning message here.
+    if sequestration &lt; 0:
+        sequestration = Tree.sequestration_at_maturity
+        self.carbon_storage = carbon_storage_lag
+
+    self.annual_gross_carbon_sequestration = sequestration
+    return self.annual_gross_carbon_sequestration</code></pre>
+</details>
+<div class="desc"><p>The method estimates annual amount of sequestration in Kg. The model is based on
+Chow and Rolfe (1989) and used by iTree.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>(:obj:<code>float</code>): annual sequestration in carbon.</p>
+<h2 id="note">Note</h2>
+<p>The growth of the tree needs to be adjusted for the health condition of a tree
+"For trees in FAIR to EXCELLENT condition, growth rates were multiplied by 1 (no adjustment),
+POOR trees’ growth rates were multiplied by 0.76, CRITICAL trees by 0.42,
+and DYING trees by 0.15 (dead trees’ growth rates = 0).
+Adjustment factors were based on percent crown dieback and the assumption that
+less than 25-percent crown dieback had a limited effect on d.b.h. growth rates."(Nowak et al, 2002b)
+The difference in estimates of C storage between year x and year x+1 is the gross amount of
+C sequestered annually.</p>
+<h2 id="todo">Todo</h2>
+<ul>
+<li>Raise Warning/Error for unexpected behaviors</li>
+</ul></div>
+</dd>
+<dt id="pygus.core.agents.Tree.estimate_tree_height"><code class="name flex">
+<span>def <span class="ident">estimate_tree_height</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def estimate_tree_height(self):
+    &#34;&#34;&#34;Computes the height of tree based on the species and current dbh.
+
+    Args:
+        None
+
+    Returns:
+        None
+    Todo:
+        In case of absence of a height function a generic function is used.
+        Current generic function is based on family of height functions yet still
+        arbitrary. It needs to be updated by the higher level phenotypes (needle, leaf, etc.)
+
+    &#34;&#34;&#34;
+    if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+        self.tree_height = self.f_sapling_height(self.dbh)
+    else:
+        self.tree_height = self.f_tree_height(self.dbh)
+    return self.tree_height</code></pre>
+</details>
+<div class="desc"><p>Computes the height of tree based on the species and current dbh.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p>
+<h2 id="todo">Todo</h2>
+<p>In case of absence of a height function a generic function is used.
+Current generic function is based on family of height functions yet still
+arbitrary. It needs to be updated by the higher level phenotypes (needle, leaf, etc.)</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.fleming_height"><code class="name flex">
+<span>def <span class="ident">fleming_height</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fleming_height(self):
+    &#34;&#34;&#34;Updates the tree height based on the model by Fleming (1988)
+
+    Args:
+        None
+    Returns:
+        None
+    &#34;&#34;&#34;
+    self.tree_height += Tree.condition_multiplier[self.condition] * 0.15</code></pre>
+</details>
+<div class="desc"><p>Updates the tree height based on the model by Fleming (1988)</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.grow"><code class="name flex">
+<span>def <span class="ident">grow</span></span>(<span>self, frost_free_days)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def grow(self, frost_free_days):
+    &#34;&#34;&#34;The method updates DBH of the tree. Currently it is an annual growth in cm.
+
+    Args:
+        frost_free_days: (:obj:`int`): the number of observed frost free days
+
+    Returns:
+        None
+
+    Note:
+        Current version uses the growth model, where
+        the number of frost free days and species specific diameter growth factor is
+        sufficient for the growth mode. Site specific and species specific diameter growth needs
+        to be considered.
+
+        As a tree approaches “maximum” height, growth rate decreases. Thus,the species growth rates
+        are adjusted based on the ratio between the current height of the tree and the average height
+        at maturity for the species. The estimated tree height at maturity is derived from the literature.
+        When a tree’s height is more than 80 percent of its average height at maturity,
+        the annual diameter growth is proportionally reduced from full growth at 80 percent of maximum height
+        to 2.22 percent of full growth at 125 percent of height at maturity.
+
+    Todo:
+        The constants in the formulas below needs to be parameterized.
+        References for the current constants:
+        David J. Nowak, 2020. Understanding i-Tree: Summary of Programs and Methods
+    &#34;&#34;&#34;
+
+    # This equation need to be corrected. Check i-tree paper.
+    height_ratio = self.tree_height / self.average_height_at_maturity
+    if height_ratio &gt;= 1.25: # 125% of height at maturity, growth slows
+        delta_dbh = 0.0222
+    elif height_ratio &gt;= 0.8: # 80% of height at maturity, growth slows
+        # delta_dbh = 0.0222 + ((1 - 0.0222) / (1.25 - 0.8)) * (1.25 - height_ratio)
+        delta_dbh = 0.0222 + 2.1729 * (1.25 - height_ratio)
+    else: # growth is normal
+        delta_dbh = self.diameter_growth * self.cle * (1 - self.dieback)
+
+    # Adjust the growth rate according to health condition.
+    delta_dbh *= Tree.condition_multiplier[self.condition]
+    # delta_dbh = delta_dbh / 32
+    self.dbh += delta_dbh * (frost_free_days / 153)
+
+    # Update the tree height based on the updated dbh.
+    self.update_tree_height(generic=False) # NOTE: &lt;2m, height grows by 15% per year
+    # Update the change at canopy.
+    self.update_crown_width()
+    self.update_crown_height()
+
+    # Increase the age estimate by 1 year
+    if not self.age:
+        self.age = 0
+    self.age += 1</code></pre>
+</details>
+<div class="desc"><p>The method updates DBH of the tree. Currently it is an annual growth in cm.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>frost_free_days</code></strong></dt>
+<dd>(:obj:<code>int</code>): the number of observed frost free days</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>None</p>
+<h2 id="note">Note</h2>
+<p>Current version uses the growth model, where
+the number of frost free days and species specific diameter growth factor is
+sufficient for the growth mode. Site specific and species specific diameter growth needs
+to be considered.</p>
+<p>As a tree approaches “maximum” height, growth rate decreases. Thus,the species growth rates
+are adjusted based on the ratio between the current height of the tree and the average height
+at maturity for the species. The estimated tree height at maturity is derived from the literature.
+When a tree’s height is more than 80 percent of its average height at maturity,
+the annual diameter growth is proportionally reduced from full growth at 80 percent of maximum height
+to 2.22 percent of full growth at 125 percent of height at maturity.</p>
+<h2 id="todo">Todo</h2>
+<p>The constants in the formulas below needs to be parameterized.
+References for the current constants:
+David J. Nowak, 2020. Understanding i-Tree: Summary of Programs and Methods</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.replace"><code class="name flex">
+<span>def <span class="ident">replace</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def replace(self) -&gt; int:
+    &#34;&#34;&#34;In case of a maintenance project in place a new young tree or sapling is planted
+    at the location where the tree is dead.
+
+    Args:
+        None
+    Returns:
+        (:obj:`int`): new agent id.
+
+    &#34;&#34;&#34;
+    self.condition = &#34;REPLACED&#34;
+
+    # Replacing with the site specific minimum sapling.
+    dbh = np.random.uniform(self.model.sapling_dbh, self.model.sapling_dbh + 1)
+    new_tree = Tree(
+        self.model,
+        dbh,
+        self.species,
+        condition=&#34;EXCELLENT&#34;,
+        dieback=0,
+    )
+    new_tree.additional_attributes = self.additional_attributes[:]
+
+    # Inherit additional attributes from the old tree
+    for attr in self.additional_attributes:
+        value = getattr(self, attr)
+        setattr(new_tree, attr, value)
+
+    self.model.grid.place_agent(new_tree, self.pos)
+    return new_tree.unique_id</code></pre>
+</details>
+<div class="desc"><p>In case of a maintenance project in place a new young tree or sapling is planted
+at the location where the tree is dead.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>(:obj:<code>int</code>): new agent id.</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.step"><code class="name flex">
+<span>def <span class="ident">step</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def step(self):
+    &#34;&#34;&#34;State transitions of a given Tree agent.
+    &#34;&#34;&#34;
+    # Once the replaced tree agents are removed from the model, this line will be idle and s
+    # should be removed too.
+    if self.condition.upper() == &#34;REPLACED&#34;:
+        return
+
+    # The tree is dead and its carbon release schedule is accounted.
+    if self.death_acc:
+        self._reset_release_track()
+        if np.random.uniform(0, 1) &gt; self.regeneration_probability:
+            return
+        if np.random.uniform(0, 1) &lt; self.expected_care:
+            self.replace()
+        return
+
+    if self.condition.upper() == &#34;DEAD&#34;:
+        self.compute_decomposition()
+        return
+
+    # check frost free days for the past year.
+    frost_free_days = self.model.WeatherAPI.check_frost_free_days()
+    logging.debug(
+        &#34;Tree: {} checks ffdays = {} ...&#34;.format(self.unique_id, frost_free_days)
+    )
+
+    # compute the light exposure
+    self.compute_light_exposure()
+
+    # check state of the health of the tree
+    logging.debug(&#34;Tree: {} checks dieback ...&#34;.format(self.unique_id))
+    self.check_dieback()
+
+    # compute the growth
+    logging.debug(&#34;Tree: {} grows ...&#34;.format(self.unique_id))
+    self.grow(frost_free_days)
+
+    if self.model.project_site_type == &#34;miyawaki&#34;:
+        self.tree_regeneration()
+
+    # compute the total biomass
+    self.compute_biomass()
+    logging.debug(&#34;Tree: {} biomass ...&#34;.format(self.unique_id))
+
+    # compute the amount of new carbon sequestration
+    self.compute_sequestration()
+    logging.debug(&#34;Tree: {} sequestration ...&#34;.format(self.unique_id))
+
+    # compute the amount of carbon release due to decomposition
+    logging.debug(&#34;Tree: {} decomposition ...&#34;.format(self.unique_id))
+    self.compute_decomposition()</code></pre>
+</details>
+<div class="desc"><p>State transitions of a given Tree agent.</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.tree_regeneration"><code class="name flex">
+<span>def <span class="ident">tree_regeneration</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tree_regeneration(self):
+    &#34;&#34;&#34;Simulate tree regeneration process.
+
+    Args:
+        None
+
+    Returns:
+        None
+
+    Note:
+        This method simulates the statistical chances of a tree producing seeds,
+        the survival of saplings, and their growth to be included in the model as
+        small trees. The regeneration is dependent on factors like the age and health
+        of the tree.
+    &#34;&#34;&#34;
+
+    # Assuming age and health are properties of the TreeAgent
+    # Only mature and healthy trees can produce seeds
+    total_new_trees_planted = 0
+    if self.age &gt;= self.maturity_age and self.condition.upper() in [
+        &#34;FAIR&#34;,
+        &#34;GOOD&#34;,
+        &#34;EXCELLENT&#34;,
+    ]:  # TODO: validate all this
+        dbh_range_saplings = [1, 5]  # cm
+        height_range_saplings = [0.3, 0.5]  # m
+        crownW_range_saplings = [0.1, 0.3]  # m
+
+        BASE_SEED_PRODUCTION_PROBABILITY = 0.1
+        BASE_AVERAGE_SEED_COUNT = 100
+        BASE_SAPLING_SURVIVAL_RATE = 0.0
+
+        condition_score = [&#34;FAIR&#34;, &#34;GOOD&#34;, &#34;EXCELLENT&#34;].index(self.condition) + 1
+        seed_production_bonus = condition_score * 0.25
+        # +25%, +50%, or +75% based on condition
+        seed_production_probability = (
+            BASE_SEED_PRODUCTION_PROBABILITY + seed_production_bonus
+        )
+
+        average_seed_count = BASE_AVERAGE_SEED_COUNT * condition_score
+
+        sapling_survival_bonus = condition_score * 0.25
+        sapling_survival_rate = BASE_SAPLING_SURVIVAL_RATE * sapling_survival_bonus
+
+        # Chance of seed production
+        if np.random.uniform(0, 1) &lt; seed_production_probability:
+            # Simulate number of seeds produced
+            num_seeds = np.random.poisson(lam=average_seed_count)
+
+            # For each seed, simulate the chance of growing into a sapling
+            for _ in range(num_seeds):
+                if np.random.uniform(0, 1) &lt; sapling_survival_rate:
+                    # Create a new sapling/tree agent
+                    logging.debug(&#34;We&#39;re planting A NEW TREEEEEEEEE!&#34;)
+                    total_new_trees_planted += 1
+                    sapling = Tree(
+                        self.model,
+                        np.random.uniform(*dbh_range_saplings, 1)[0],
+                        self.species,
+                        height=np.random.uniform(*height_range_saplings, 1)[0],
+                        crownW=np.random.uniform(*crownW_range_saplings, 1)[0],
+                        condition=&#34;EXCELLENT&#34;,
+                        dieback=0,
+                    )
+                    sapling.age = 0
+
+                    # Inherit additional attributes from the old tree
+                    for attr in self.additional_attributes:
+                        value = getattr(self, attr)
+                        setattr(sapling, attr, value)
+
+                    new_position = (
+                        self.pos
+                    )  # TODO: We should place the seed somewhere nearby
+                    self.model.grid.place_agent(sapling, new_position)
+
+    if total_new_trees_planted &gt; 0:
+        logging.debug(&#34;Planted {} new trees&#34;.format(total_new_trees_planted))</code></pre>
+</details>
+<div class="desc"><p>Simulate tree regeneration process.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p>
+<h2 id="note">Note</h2>
+<p>This method simulates the statistical chances of a tree producing seeds,
+the survival of saplings, and their growth to be included in the model as
+small trees. The regeneration is dependent on factors like the age and health
+of the tree.</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.update_crown_height"><code class="name flex">
+<span>def <span class="ident">update_crown_height</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_crown_height(self):
+    &#34;&#34;&#34;Computes the vertical length of the tree crown based on
+    the species and its current dbh.
+
+    Args:
+        None
+    Returns:
+        (:obj:`float`): Current crown width in meters
+    &#34;&#34;&#34;
+    if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+        self.crown_height = self.f_sapling_crown_height(self.dbh)
+        return self.crown_height
+    else:
+        self.crown_height = self.f_crown_height(self.dbh)
+        self.crown_height = min(self.crown_height, self.tree_height)
+    return self.crown_height</code></pre>
+</details>
+<div class="desc"><p>Computes the vertical length of the tree crown based on
+the species and its current dbh.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>(:obj:<code>float</code>): Current crown width in meters</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.update_crown_width"><code class="name flex">
+<span>def <span class="ident">update_crown_width</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_crown_width(self):
+    &#34;&#34;&#34;Computes the horizontal length of the tree crown based on
+    the species and its current dbh.
+
+    Args:
+        None
+    Returns:
+        (:obj:`float`): Current crown width in meters
+    &#34;&#34;&#34;
+    if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+        self.crown_width = self.f_sapling_crown_width(self.dbh)
+    else:
+        self.crown_width = self.f_crown_width(self.dbh)
+    return self.crown_width</code></pre>
+</details>
+<div class="desc"><p>Computes the horizontal length of the tree crown based on
+the species and its current dbh.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>(:obj:<code>float</code>): Current crown width in meters</p></div>
+</dd>
+<dt id="pygus.core.agents.Tree.update_tree_height"><code class="name flex">
+<span>def <span class="ident">update_tree_height</span></span>(<span>self, generic=False, SAPLING_MAX_HEIGHT=2.0)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_tree_height(self, generic=False, SAPLING_MAX_HEIGHT=2.0):
+    &#34;&#34;&#34;Computes the height of tree based on the species and current dbh.
+
+    Args:
+        None
+    Returns:
+        None
+
+    &#34;&#34;&#34;
+    if generic:
+        self.fleming_height()
+        return
+    if self.model.USING_NEW_ALLOMETRICS and self.dbh &lt; self.sapling_max_dbh:
+        self.tree_height = self.f_sapling_height(self.dbh)
+    else:
+        self.tree_height = self.f_tree_height(self.dbh)</code></pre>
+</details>
+<div class="desc"><p>Computes the height of tree based on the species and current dbh.</p>
+<h2 id="args">Args</h2>
+<p>None</p>
+<h2 id="returns">Returns</h2>
+<p>None</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pygus.core" href="index.html">pygus.core</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="pygus.core.agents.Tree" href="#pygus.core.agents.Tree">Tree</a></code></h4>
+<ul class="">
+<li><code><a title="pygus.core.agents.Tree.carbon_coeff" href="#pygus.core.agents.Tree.carbon_coeff">carbon_coeff</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.carbon_storage_cap" href="#pygus.core.agents.Tree.carbon_storage_cap">carbon_storage_cap</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.check_dieback" href="#pygus.core.agents.Tree.check_dieback">check_dieback</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.compute_biomass" href="#pygus.core.agents.Tree.compute_biomass">compute_biomass</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.compute_contagion_risk" href="#pygus.core.agents.Tree.compute_contagion_risk">compute_contagion_risk</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.compute_decomposition" href="#pygus.core.agents.Tree.compute_decomposition">compute_decomposition</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.compute_light_exposure" href="#pygus.core.agents.Tree.compute_light_exposure">compute_light_exposure</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.compute_sequestration" href="#pygus.core.agents.Tree.compute_sequestration">compute_sequestration</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.condition_multiplier" href="#pygus.core.agents.Tree.condition_multiplier">condition_multiplier</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.crown_to_trunk_ratio" href="#pygus.core.agents.Tree.crown_to_trunk_ratio">crown_to_trunk_ratio</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.decomposition_coeff" href="#pygus.core.agents.Tree.decomposition_coeff">decomposition_coeff</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.estimate_tree_height" href="#pygus.core.agents.Tree.estimate_tree_height">estimate_tree_height</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.fleming_height" href="#pygus.core.agents.Tree.fleming_height">fleming_height</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.grow" href="#pygus.core.agents.Tree.grow">grow</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.replace" href="#pygus.core.agents.Tree.replace">replace</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.root_to_shoot_ratio" href="#pygus.core.agents.Tree.root_to_shoot_ratio">root_to_shoot_ratio</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.sequestration_at_maturity" href="#pygus.core.agents.Tree.sequestration_at_maturity">sequestration_at_maturity</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.step" href="#pygus.core.agents.Tree.step">step</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.sun_exposure_rates" href="#pygus.core.agents.Tree.sun_exposure_rates">sun_exposure_rates</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.tree_regeneration" href="#pygus.core.agents.Tree.tree_regeneration">tree_regeneration</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.update_crown_height" href="#pygus.core.agents.Tree.update_crown_height">update_crown_height</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.update_crown_width" href="#pygus.core.agents.Tree.update_crown_width">update_crown_width</a></code></li>
+<li><code><a title="pygus.core.agents.Tree.update_tree_height" href="#pygus.core.agents.Tree.update_tree_height">update_tree_height</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>
