@@ -1,0 +1,14 @@
+
+### In short, the basic setup for a GUS simulation is:
+
+- Provide a population dataset, a site, scenario, and possibly also weather configs
+- A grid is built, agents are placed, and initial configuration is done
+- A data-collector is initialised with all the aggregation functions, and also for each agent.
+- The run_model() method has been overloaded mostly for debug logging
+- The step() method has been overloaded for weather & alive-percentage calculation
+
+
+
+### Tests we need to write:
+
+- Since mesa is seeded now, a test run with a fixed-seed should return reliable values that we can assert

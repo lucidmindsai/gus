@@ -1,16 +1,14 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![PyPI version](https://badge.fury.io/py/pygus.svg)](https://badge.fury.io/py/pygus) [![Versions](https://img.shields.io/pypi/pyversions/pygus)]()
-
-![GUS-IMAGE](https://i-p.rmcdn.net/61d40c7b94627d001f2e8309/4445961/image-86e86df2-51c6-4f23-893d-6beaeb528260.png?w=176&e=webp&nll=true)
-
-## Green Unified Scenarios 
-A digital twin representation, simulation of forests and their impact analysis.
+# gus
+![GUS-IMAGE](https://miro.medium.com/max/1400/1*fMM7rnq1RJCh-nFBGLUvyA.png)
+Green Unified Scenarios - A digital twin representation, simulation of urban forests and their impact analysis.
 
 ### Installation
 
 Install GUS from PyPi:
 
 ```
-$ pip install pyGus==2.1.2
+$ pip install pyGus==3.0.0
 ```
 
 You can use, Poetry as well:
@@ -44,14 +42,13 @@ eval "$(pyenv virtualenv-init -)"
 Install a specific python version:
 
 ```
-$ PY_VERSION = 3.9.17 # or 3.8.13 or 3.10.12, whichever you like :)
-$ pyenv install $PY_VERSION
+$ pyenv install 3.12
 ```
 
 Then set this as your system global (or local) version
 
 ```
-$ pyenv global $PY_VERSION
+$ pyenv local 3.12 && pip install --upgrade pip
 ```
 
 and install poetry
@@ -87,10 +84,10 @@ And run the tests:
 
 `$ pytest`
 
-All tests are in the `tests/` folder
+All tests are in the `pygus/tests/` folder
 
 ### Who maintains GUS?
-The GUS is currently developed and maintained by [Lucidminds](https://lucidminds.ai/) 
+Green Urban Scenarios is currently developed and maintained by [Lucidminds](https://lucidminds.ai/) with contributions from our friends at [Dark Matter Labs](https://darkmatterlabs.org/) as part of our joint project [TreesAI](https://treesasinfrastructure.com/#/).
 
 ### Notes
 * The GUS is open for PRs.

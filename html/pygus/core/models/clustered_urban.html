@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.5">
+<title>pygus.core.models.clustered_urban API documentation</title>
+<meta name="description" content="The module holds the main objects that manage and handle simulation runtime and data collection.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pygus.core.models.clustered_urban</code></h1>
+</header>
+<section id="section-intro">
+<p>The module holds the main objects that manage and handle simulation runtime and data collection.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="pygus.core.models.clustered_urban.ClusteredUrban"><code class="flex name class">
+<span>class <span class="ident">ClusteredUrban</span></span>
+<span>(</span><span>population: str | pandas.core.frame.DataFrame,<br>scenario: str | <a title="pygus.core.models.config.ScenarioConfig" href="config.html#pygus.core.models.config.ScenarioConfig">ScenarioConfig</a> = None,<br>site_config: str | <a title="pygus.core.models.config.SiteConfig" href="config.html#pygus.core.models.config.SiteConfig">SiteConfig</a> = None,<br>species_allometrics: str | <a title="pygus.core.allometrics.Species" href="../allometrics.html#pygus.core.allometrics.Species">Species</a> = None,<br>SHOULD_USE_NEW_ALLOMETRICS: bool = True)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ClusteredUrban(Model):
+    &#34;&#34;&#34;An urban green space model. To be tailored according to specific sites.&#34;&#34;&#34;
+
+    # Contagion multiplier for the contagion level parameters received from the scenario builder inputs.
+    contagion_multiplier_low_rate = 0.5
+    contagion_multiplier_high_rate = 2
+
+    # Disease risks component that is not spread through neighbouring trees.
+    # TODO: To be made and instance attribute and  set via site configurations
+    noncontagion_disease_rate = 0.05
+
+    def __init__(
+        self,
+        population: Union[str, pd.DataFrame],
+        scenario: Union[str, ScenarioConfig] = None,
+        site_config: Union[str, SiteConfig] = None,
+        species_allometrics: Union[str, Species] = None,
+        SHOULD_USE_NEW_ALLOMETRICS: bool = True,
+    ):
+        start = time.time()
+        # build an urban model for each cluster
+        # parallelise the whole simulation for each one, and aggregation after?
+        self.df = self._handle_population_input(population)
+        self.site_config = self._handle_site_configuration(site_config)
+        self.scenario = self._handle_scenario_configuration(scenario)
+
+        clusters = self._cluster_coordinates()
+        print(
+            f&#34;Found {len(clusters)} clusters with min. size: {_min_cluster_size(clusters)} trees&#34;
+        )
+
+        if species_allometrics is None:
+            # use defaults
+            species_allometrics = Species()
+
+        # We require global grid coordinates ...
+        width = int(max(self.df.xpos)) + 1
+        length = int(max(self.df.ypos)) + 1
+
+        # For each one of the clusters, build a model
+        self.models: List[Urban] = Parallel(n_jobs=CPUs)(
+            delayed(self._get_urban)(
+                cluster, self.scenario, self.site_config, species_allometrics, SHOULD_USE_NEW_ALLOMETRICS, (width, length)
+            ) for cluster in clusters
+        )
+        end = time.time()
+        print(
+            &#34;Model creation complete in {} seconds.&#34;.format(round(end - start, 2))
+        )
+
+    def _get_urban(self, cluster_pop, scenario, site_config, species_allometrics, SHOULD_USE_NEW_ALLOMETRICS, grid_size):
+        return Urban(
+            cluster_pop,
+            scenario,
+            site_config,
+            species_allometrics,
+            SHOULD_USE_NEW_ALLOMETRICS,
+            grid_size
+        )
+
+    def _cluster_coordinates(self, gap_threshold=100.0):
+        &#34;&#34;&#34;
+        Clusters scattered points based on a distance threshold using DBSCAN.
+
+        Parameters
+        ----------
+        df : pandas.DataFrame (with xpos, ypos)
+        gap_threshold : float
+            The distance threshold below which points are considered neighbours.
+        &#34;&#34;&#34;
+        start = time.time()
+        coords = self.df[[&#34;xpos&#34;, &#34;ypos&#34;]].to_numpy()
+
+        MIN_UNCLUSTERED_XY_RANGE = 1000 # &lt; 1,000,000 m^2 (1 km^2)
+        if (
+            max(self.df[&#34;xpos&#34;]) - min(self.df[&#34;xpos&#34;]) &lt; MIN_UNCLUSTERED_XY_RANGE
+            and max(self.df[&#34;ypos&#34;]) - min(self.df[&#34;ypos&#34;]) &lt; MIN_UNCLUSTERED_XY_RANGE
+        ):
+            if len(self.df) &lt; 2000:
+                # breakout for small populations
+                return [self.df]
+            gap_threshold = 10.0
+        else:
+            gap_threshold = 100.0
+        
+        runs = 0
+        clusters = [&#34;one&#34;]
+        # Arbitrarily, there should be more than one cluster and fewer clusters than 1/5 of the total population
+        # i.e. at least 5 trees per cluster on average
+        while not len(clusters) &gt; 1:
+            db = DBSCAN(eps=gap_threshold, min_samples=1)
+            labels = db.fit_predict(coords)
+
+            # Create clusters
+            clusters = []
+            for label in np.unique(labels):
+                cluster_df = self.df[labels == label].copy()
+                cluster_df.reset_index(drop=True, inplace=True)
+                clusters.append(cluster_df)
+            
+            if len(clusters) &gt; len(self.df)/5:
+                gap_threshold += gap_threshold*(1/10)
+            else:
+                gap_threshold -= gap_threshold*(1/10)
+
+            runs += 1
+
+            # If the gap threshold is too small, break
+            if gap_threshold &lt;= 1.5:
+                break        
+
+        print(f&#34;Threshold for cluster gaps: {gap_threshold}m&#34;)
+        end = time.time()
+        print(
+            &#34;Clustering complete in {} seconds (with {} clustering attempts).&#34;.format(round(end - start, 2), runs)
+        )
+        return clusters
+
+    def run(self, steps=None, with_agents=False):
+        &#34;&#34;&#34;Customized MESA method that sets the major components of scenario analyses process.&#34;&#34;&#34;
+        print(&#34;Running clustered simulation...&#34;)
+        # Run the models in parallel
+        start = time.time()
+        # Aggregate the results
+
+        IMPACTS = pd.DataFrame()
+        if not with_agents:
+            for result in Parallel(n_jobs=CPUs)(delayed(model.run)() for model in self.models):
+                assert isinstance(result[0], pd.DataFrame)
+                IMPACTS += result[0]
+
+            end = time.time()
+            logging.debug(
+                &#34;Simulation is complete in {} seconds.&#34;.format(round(end - start, 2))
+            )
+            self.impacts = IMPACTS
+            return self.impacts, None
+        
+        # Initialize offest for new AgentIDs
+        global_agent_id = 0
+        AGENTS = pd.DataFrame()
+        # with_agents = Parallel(n_jobs=CPUs)(delayed(self._run_with_agents)(model) for model in self.models)
+        for result in Parallel(n_jobs=CPUs)(delayed(self._run_with_agents)(model) for model in self.models):
+
+            # list of tuples (impact, analysis)
+            IMPACTS += result[0]
+
+            misnumbered_agents = result[1]            
+            misnumbered_agents[&#39;AgentID&#39;].apply(lambda x: x + global_agent_id)
+            # Update the global ID offset for the next dataframe
+            global_agent_id += len(misnumbered_agents)
+
+            # Append the updated dataframe to the list
+            AGENTS = AGENTS.append(misnumbered_agents, ignore_index=True)
+            
+            # Concatenate all dataframes with updated IDs
+
+        end = time.time()
+        logging.debug(
+            &#34;Simulation is complete in {} seconds.&#34;.format(round(end - start, 2))
+        )
+        self.impacts = IMPACTS
+        self.agents = AGENTS
+
+        return self.impacts, self.agents
+    
+    def _run_with_agents(self, model, steps=None):
+        &#34;&#34;&#34;Run the model with agents.&#34;&#34;&#34;
+        impacts = model.run(steps)
+        return impacts, model.get_agent_data().reset_index(drop=False)
+
+    def impact_analysis(self):
+        if hasattr(self, &#34;impacts&#34;):
+            return self.impacts
+        
+        raise ValueError(&#34;No impacts have been calculated yet. Please run the simulation first.&#34;)   
+
+    def get_agent_data(self) -&gt; pd.DataFrame:
+        if hasattr(self, &#34;agents&#34;):
+            return self.agents
+        
+        raise ValueError(&#34;No agent data has been collected yet. Please run the simulation `with_agents=True` first.&#34;)
+
+    def _handle_population_input(
+        self, population: Union[str, pd.DataFrame]
+    ) -&gt; pd.DataFrame:
+        &#34;&#34;&#34;Load population dataframe if necessary&#34;&#34;&#34;
+        if isinstance(population, str):
+            population = pd.read_csv(population)
+
+        if isinstance(population, pd.DataFrame):
+            return population
+
+        raise ValueError(&#34;Population input must be a pandas DataFrame or a file path.&#34;)
+
+    def _handle_site_configuration(
+        self, site_config: Union[str, SiteConfig]
+    ):
+        &#34;&#34;&#34;Loads site configuration information.&#34;&#34;&#34;
+        if site_config is None:
+            site_config = SiteConfig()
+
+        if isinstance(site_config, str):
+            site_config = SiteConfig.from_file(site_config)
+
+        if site_config.total_m2 is None or site_config.total_m2 == 0:
+            total_m2 = calculate_dataframe_area(self.df)
+            site_config.total_m2 = total_m2
+            site_config.impervious_m2 = 0
+            site_config.pervious_m2 = total_m2
+
+        self.site_config = site_config
+
+    def _handle_scenario_configuration(self, scenario: Union[str, ScenarioConfig]):
+        &#34;&#34;&#34;Loads site configuration information.&#34;&#34;&#34;
+        if scenario is None:
+            scenario = ScenarioConfig()
+
+        if isinstance(scenario, str):
+            scenario = ScenarioConfig.from_file(scenario)
+
+        self.scenario = scenario</code></pre>
+</details>
+<div class="desc"><p>An urban green space model. To be tailored according to specific sites.</p>
+<p>Create a new model.</p>
+<p>Overload this method with the actual code to initialize the model. Always start with super().<strong>init</strong>()
+to initialize the model object properly.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>args</code></strong></dt>
+<dd>arguments to pass onto super</dd>
+<dt><strong><code>seed</code></strong></dt>
+<dd>the seed for the random number generator</dd>
+<dt>rng : Pseudorandom number generator state. When <code>rng</code> is None, a new <code>numpy.random.Generator</code> is created</dt>
+<dt>using entropy from the operating system. Types other than <code>numpy.random.Generator</code> are passed to</dt>
+<dt><code>numpy.random.default_rng</code> to instantiate a <code>Generator</code>.</dt>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>keyword arguments to pass onto super</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>you have to pass either seed or rng, but not both.</p></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>mesa.model.Model</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="pygus.core.models.clustered_urban.ClusteredUrban.contagion_multiplier_high_rate"><code class="name">var <span class="ident">contagion_multiplier_high_rate</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.clustered_urban.ClusteredUrban.contagion_multiplier_low_rate"><code class="name">var <span class="ident">contagion_multiplier_low_rate</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.clustered_urban.ClusteredUrban.noncontagion_disease_rate"><code class="name">var <span class="ident">noncontagion_disease_rate</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="pygus.core.models.clustered_urban.ClusteredUrban.get_agent_data"><code class="name flex">
+<span>def <span class="ident">get_agent_data</span></span>(<span>self) ‑> pandas.core.frame.DataFrame</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_agent_data(self) -&gt; pd.DataFrame:
+    if hasattr(self, &#34;agents&#34;):
+        return self.agents
+    
+    raise ValueError(&#34;No agent data has been collected yet. Please run the simulation `with_agents=True` first.&#34;)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.clustered_urban.ClusteredUrban.impact_analysis"><code class="name flex">
+<span>def <span class="ident">impact_analysis</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def impact_analysis(self):
+    if hasattr(self, &#34;impacts&#34;):
+        return self.impacts
+    
+    raise ValueError(&#34;No impacts have been calculated yet. Please run the simulation first.&#34;)   </code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="pygus.core.models.clustered_urban.ClusteredUrban.run"><code class="name flex">
+<span>def <span class="ident">run</span></span>(<span>self, steps=None, with_agents=False)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def run(self, steps=None, with_agents=False):
+    &#34;&#34;&#34;Customized MESA method that sets the major components of scenario analyses process.&#34;&#34;&#34;
+    print(&#34;Running clustered simulation...&#34;)
+    # Run the models in parallel
+    start = time.time()
+    # Aggregate the results
+
+    IMPACTS = pd.DataFrame()
+    if not with_agents:
+        for result in Parallel(n_jobs=CPUs)(delayed(model.run)() for model in self.models):
+            assert isinstance(result[0], pd.DataFrame)
+            IMPACTS += result[0]
+
+        end = time.time()
+        logging.debug(
+            &#34;Simulation is complete in {} seconds.&#34;.format(round(end - start, 2))
+        )
+        self.impacts = IMPACTS
+        return self.impacts, None
+    
+    # Initialize offest for new AgentIDs
+    global_agent_id = 0
+    AGENTS = pd.DataFrame()
+    # with_agents = Parallel(n_jobs=CPUs)(delayed(self._run_with_agents)(model) for model in self.models)
+    for result in Parallel(n_jobs=CPUs)(delayed(self._run_with_agents)(model) for model in self.models):
+
+        # list of tuples (impact, analysis)
+        IMPACTS += result[0]
+
+        misnumbered_agents = result[1]            
+        misnumbered_agents[&#39;AgentID&#39;].apply(lambda x: x + global_agent_id)
+        # Update the global ID offset for the next dataframe
+        global_agent_id += len(misnumbered_agents)
+
+        # Append the updated dataframe to the list
+        AGENTS = AGENTS.append(misnumbered_agents, ignore_index=True)
+        
+        # Concatenate all dataframes with updated IDs
+
+    end = time.time()
+    logging.debug(
+        &#34;Simulation is complete in {} seconds.&#34;.format(round(end - start, 2))
+    )
+    self.impacts = IMPACTS
+    self.agents = AGENTS
+
+    return self.impacts, self.agents</code></pre>
+</details>
+<div class="desc"><p>Customized MESA method that sets the major components of scenario analyses process.</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pygus.core.models" href="index.html">pygus.core.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="pygus.core.models.clustered_urban.ClusteredUrban" href="#pygus.core.models.clustered_urban.ClusteredUrban">ClusteredUrban</a></code></h4>
+<ul class="">
+<li><code><a title="pygus.core.models.clustered_urban.ClusteredUrban.contagion_multiplier_high_rate" href="#pygus.core.models.clustered_urban.ClusteredUrban.contagion_multiplier_high_rate">contagion_multiplier_high_rate</a></code></li>
+<li><code><a title="pygus.core.models.clustered_urban.ClusteredUrban.contagion_multiplier_low_rate" href="#pygus.core.models.clustered_urban.ClusteredUrban.contagion_multiplier_low_rate">contagion_multiplier_low_rate</a></code></li>
+<li><code><a title="pygus.core.models.clustered_urban.ClusteredUrban.get_agent_data" href="#pygus.core.models.clustered_urban.ClusteredUrban.get_agent_data">get_agent_data</a></code></li>
+<li><code><a title="pygus.core.models.clustered_urban.ClusteredUrban.impact_analysis" href="#pygus.core.models.clustered_urban.ClusteredUrban.impact_analysis">impact_analysis</a></code></li>
+<li><code><a title="pygus.core.models.clustered_urban.ClusteredUrban.noncontagion_disease_rate" href="#pygus.core.models.clustered_urban.ClusteredUrban.noncontagion_disease_rate">noncontagion_disease_rate</a></code></li>
+<li><code><a title="pygus.core.models.clustered_urban.ClusteredUrban.run" href="#pygus.core.models.clustered_urban.ClusteredUrban.run">run</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.5</a>.</p>
+</footer>
+</body>
+</html>

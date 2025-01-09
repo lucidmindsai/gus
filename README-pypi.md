@@ -14,6 +14,8 @@ Visit the GUS [website documentation](https://lucidmindsai.github.io/gus/) for h
 ## Install from PyPi
 We publish GUS as `pyGus` package in PyPi. Dependencies can be found in the .toml file on the GUS GitHub page. Even though installation with Poetry is possible, the most stable installation can be done via pip.
 
+Note: Python >3.12 is now required. (Check out `pyenv` if you haven't already)
+
 ```
 $ pip install pygus
 ```
@@ -21,7 +23,7 @@ $ pip install pygus
 For further instructions and code documentation, visit [GUS Code Documentation](https://lucidmindsai.github.io/gus/)
 
 ### Who maintains GUS?
-The GUS is currently developed and maintained by [Lucidminds](https://lucidminds.ai/) and [Dark Matter Labs](https://darkmatterlabs.org/) members as part of their joint project [TreesAI](https://treesasinfrastructure.com/#/).
+Green Urban Scenarios is currently developed and maintained by [Lucidminds](https://lucidminds.ai/) with contributions from our friends at [Dark Matter Labs](https://darkmatterlabs.org/) as part of our joint project [TreesAI](https://treesasinfrastructure.com/#/).
 
 ### Notes
 * The GUS is open for PRs.

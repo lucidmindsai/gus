@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "pyGUS"
-version = "2.2.1"
-description = "Green Unified Scenarios - A digital twin representation, simulation of urban forests and their impact analysis."
-authors = ["Bulent Ozel <bulent@lucidminds.ai>"] 
+name = "greenurbanscenarios"
+version = "2.3.0"
+description = "Green Unified Scenarios - A digital twin representation, simulation of urban forests and their impact analysis. -- An updated version of the GUS ABM simulation service, rewritten for performance"
+authors = ["Bulent Ozel <bulent@lucidminds.ai>", "jake <jake@lucidminds.ai>"]
 maintainers = [
     "Oguzhan Yayla <oguzhan@lucidminds.ai>", 
     "Marko Petrovic <marko@lucidminds.ai>", 
@@ -10,7 +10,6 @@ maintainers = [
 ]
 license = "Apache License 2.0"
 readme = "README-pypi.md"
-repository = "https://github.com/lucidmindsai/gus"
 classifiers = [
     "Development Status :: 4 - Beta",
     'Environment :: Console',
@@ -27,39 +26,23 @@ packages = [
     {include = "pygus"},
 ]
 
-
 [tool.poetry.dependencies]
-python = "^3.10,<3.13"
-mesa = "^0.8.9"
-pandas = "^1.3.3"
+python = "^3.12"
+mesa = {extras = ["rec"], version = "^3.1.2"}
+pandas = "^2.2.3"
 fuzzywuzzy = "^0.18.0"
-termcolor = "^2.1.1"
+python-levenshtein = "^0.26.1"
 utm = "^0.7.0"
-python-levenshtein = "^0.21.1"
-shapely = "^2.0.3"
+scikit-learn = "^1.6.0"
+shapely = "^2.0.6"
+numpy = "^2.2.1"
+
 
 [tool.poetry.group.dev.dependencies]
-seaborn = "^0.11.2"
-matplotlib = "^3.4.3"
-pytest = "^7.1.2"
-ipython = "^7.27.0"
-portray = "^1.7.0"
-black = {extras = ["jupyter"], version = "^23.7.0"}
-ipykernel = "^6.23.2"
-folium = "^0.14.0"
-basemap = "^1.3.8"
-basemap-data-hires = "^1.3.2"
+matplotlib = "^3.10.0"
+seaborn = "^0.13.2"
+pdoc3 = "^0.11.5"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.portray]
-modules = ["pygus"]
-
-
-[tool.portray.mkdocs.theme]
-name = "readthedocs"
-
-[[tool.portray.mkdocs.nav]]
-Home = "README.md"
